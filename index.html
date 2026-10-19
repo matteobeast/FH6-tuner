@@ -4,86 +4,91 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>FH6 Tuner</title>
-<meta name="theme-color" content="#0b0e13">
+<meta name="theme-color" content="#0b0c10">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icon-192.png">
 <link rel="icon" href="icon-192.png" type="image/png">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@700;800&family=Saira:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,500;0,600;0,700;1,700&family=Barlow:wght@400;500;600;700&display=swap">
 <style>
-:root{--bg:#eceff3;--sf:#fff;--tx:#0f1419;--mu:#5b6573;--ln:#d8dde3;--fr:#1f6bff;--rr:#f0480f;--ac:#ffd400;--act:#0f1419;
---d:"Saira Condensed","Arial Narrow",Impact,sans-serif;--b:"Saira",system-ui,-apple-system,"Segoe UI",sans-serif;
+:root{--bg:#eef0f4;--sf:#fff;--ln:#d9dde5;--tx:#12141a;--mu:#5c6472;--fr:#0a8fc0;--rr:#d6275f;--ac:#e08a00;--on:#12141a;
+--d:"Chakra Petch",ui-monospace,"Segoe UI",sans-serif;--b:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b0e13;--sf:#151a22;--tx:#f2f4f7;--mu:#97a1af;--ln:#252c37;--fr:#5b9bff;--rr:#ff7a45;--act:#ffd400;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#0b0e13;--sf:#151a22;--tx:#f2f4f7;--mu:#97a1af;--ln:#252c37;--fr:#5b9bff;--rr:#ff7a45;--act:#ffd400;color-scheme:dark}
-body.drift{--ac:#ff2d95}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b0c10;--sf:#14161c;--ln:#262932;--tx:#eef0f5;--mu:#8f96a6;--fr:#38d0ff;--rr:#ff5d8f;--ac:#ffb020;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0b0c10;--sf:#14161c;--ln:#262932;--tx:#eef0f5;--mu:#8f96a6;--fr:#38d0ff;--rr:#ff5d8f;--ac:#ffb020;color-scheme:dark}
+body.drift{--ac:#b36bff}
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
-body{margin:0;background:var(--bg);color:var(--tx);font:400 16px/1.5 var(--b)}
-header{background:#0b0e13;color:#fff;padding:22px 16px 46px;clip-path:polygon(0 0,100% 0,100% 74%,0 100%);position:relative}
-header::after{content:"";position:absolute;left:0;right:0;bottom:0;height:100%;background:linear-gradient(168deg,transparent 80%,var(--ac) 80%,var(--ac) 84%,transparent 84%);pointer-events:none}
-header .in{max-width:640px;margin:0 auto;display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
-h1{font:italic 800 46px/.9 var(--d);margin:0;text-transform:uppercase}
-h1 span{color:var(--ac)}
+body{margin:0;color:var(--tx);font:400 16px/1.5 var(--b);background:radial-gradient(90% 38% at 50% 0,color-mix(in srgb,var(--ac) 18%,transparent),transparent 70%),var(--bg);background-attachment:fixed;min-height:100vh}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+.top{position:relative;padding:14px 0}
+.top::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:linear-gradient(90deg,transparent,var(--ac) 30%,var(--rr) 70%,transparent);box-shadow:0 0 18px var(--ac)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:baseline;gap:10px;font-family:var(--d)}
+.brand b{font-size:32px;font-weight:700;font-style:italic;line-height:1;background:linear-gradient(90deg,var(--ac),var(--rr));-webkit-background-clip:text;background-clip:text;color:transparent}
+.brand span{font-size:13px;letter-spacing:.35em;color:var(--mu);font-weight:600}
 .seg{display:flex;gap:6px}
-.seg button{flex:1;padding:10px 6px;font:600 15px var(--b);color:var(--tx);background:var(--bg);border:1px solid var(--ln);border-radius:8px;cursor:pointer}
-.seg button[aria-pressed="true"]{background:var(--act);color:var(--bg);border-color:var(--act)}
-body:not(.drift) .seg button[aria-pressed="true"]{color:#fff}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) body:not(.drift) .seg button[aria-pressed="true"]{color:#0b0e13}}
-header .seg{min-width:170px}
-header .seg button{background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.25);font:italic 800 20px/1 var(--d);text-transform:uppercase}
-header .seg button[aria-pressed="true"]{background:var(--ac)!important;border-color:var(--ac);color:#0b0e13!important}
-main{max-width:640px;margin:-14px auto 0;padding:0 16px 48px}
-.card{background:var(--sf);border:1px solid var(--ln);border-radius:12px;padding:16px;margin-bottom:12px}
+.seg button{flex:1;padding:10px 8px;font:600 15px var(--b);color:var(--tx);background:transparent;border:1px solid var(--ln);border-radius:10px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ac);color:var(--on);border-color:var(--ac);font-weight:700}
+.mode{min-width:150px}.mode button{font:700 15px var(--d);letter-spacing:.08em;text-transform:uppercase}
+.app{display:grid;gap:14px;padding:18px 0 40px;grid-template-columns:minmax(0,1fr);grid-template-areas:"in" "tabs" "out" "act" "foot"}
+.pin{grid-area:in}.tabs{grid-area:tabs}.pout{grid-area:out}.act{grid-area:act}.foot{grid-area:foot}
+.card{background:var(--sf);border:1px solid var(--ln);border-radius:16px;padding:16px}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-label.f{display:block;font-size:13px;color:var(--mu)}
-label.f input{display:block;width:100%;margin-top:3px;padding:8px 10px;font:700 24px var(--d);color:var(--tx);background:var(--bg);border:1px solid var(--ln);border-radius:8px}
-label.f.s input{font-size:19px;padding:6px 10px}
-input:focus-visible,button:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
-.q{margin:12px 0 4px;font-size:13px;color:var(--mu)}
-.split{display:flex;height:26px;border-radius:6px;overflow:hidden;font:700 16px/26px var(--d);color:#fff;margin-top:12px}
-.split div{padding:0 8px;white-space:nowrap;transition:width .25s}
-.split .f{background:var(--fr)}.split .r{background:var(--rr);flex:1;text-align:right}
-.tabs{display:grid;grid-template-columns:repeat(auto-fit,minmax(104px,1fr));gap:6px;padding:2px 0 10px}
-.tabs button{min-width:0;overflow-wrap:anywhere;padding:10px 6px;font:italic 700 17px/1.1 var(--d);text-transform:uppercase;color:var(--tx);background:var(--sf);border:1px solid var(--ln);border-radius:8px;cursor:pointer}
-.tabs button[aria-selected="true"]{background:var(--tx);color:var(--bg);border-color:var(--tx)}
-.it{padding:12px 0;border-top:1px solid var(--ln)}.it:first-child{border:0;padding-top:0}
-.it .n{font:italic 700 20px/1.1 var(--d);text-transform:uppercase}
-.it small{display:block;color:var(--mu);font-size:12.5px;margin-bottom:4px}
-.ln{display:grid;grid-template-columns:38px 1fr 92px;align-items:center;gap:8px;margin-top:6px}
-.k{font-size:12.5px;font-weight:600}.k.a{color:var(--fr)}.k.p{color:var(--rr)}
-.tr{height:8px;background:var(--ln);border-radius:4px;position:relative}
-.tr i{position:absolute;left:0;top:0;bottom:0;border-radius:4px}
-.k.a~.tr i{background:var(--fr)}.k.p~.tr i{background:var(--rr)}
-.ln b{font:italic 800 24px/1 var(--d);text-align:right}
-.rg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;padding-bottom:12px;border-bottom:1px dashed var(--ln)}
+label.f{display:block;font-size:11.5px;color:var(--mu);letter-spacing:.06em;text-transform:uppercase}
+label.f input{display:block;width:100%;margin-top:4px;padding:8px 10px;font:700 24px var(--d);color:var(--tx);background:var(--bg);border:1px solid var(--ln);border-radius:10px;font-variant-numeric:tabular-nums;text-transform:none;letter-spacing:0}
+label.f input:focus{border-color:var(--ac);box-shadow:0 0 0 3px color-mix(in srgb,var(--ac) 25%,transparent);outline:0}
+label.f.s input{font-size:18px;padding:6px 10px}
+button:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+.q{margin:14px 0 6px;font-size:11.5px;color:var(--mu);letter-spacing:.06em;text-transform:uppercase}
+.split{display:flex;height:22px;border-radius:99px;overflow:hidden;margin-top:16px;font:700 12px/22px var(--d);color:#0b0c10}
+.split div{white-space:nowrap;transition:width .25s}.split .f{background:var(--fr);padding-left:10px}.split .r{background:var(--rr);flex:1;text-align:right;padding-right:10px}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.tabs button{display:flex;flex-direction:column;align-items:flex-start;gap:2px;min-width:0;padding:8px 10px;font:600 clamp(11.5px,3.3vw,14px)/1.15 var(--d);color:var(--tx);background:var(--sf);border:1px solid var(--ln);border-radius:12px;cursor:pointer;text-align:left}
+.tabs button i{font-style:normal;font-size:11px;color:var(--mu);letter-spacing:.1em}
+.tabs button[aria-selected="true"]{border-color:var(--ac);box-shadow:inset 0 0 0 1px var(--ac);background:color-mix(in srgb,var(--ac) 12%,var(--sf))}
+.tabs button[aria-selected="true"] i{color:var(--ac)}
+.pout h2{font:700 24px/1 var(--d);margin:0 0 14px}
+.it{padding:14px 0;border-top:1px solid var(--ln)}.it:first-child{border:0;padding-top:0}
+.it .n{font:700 17px/1.2 var(--d)}
+.it small{display:block;color:var(--mu);font-size:13px}
+.ln{display:grid;grid-template-columns:40px 1fr 96px;align-items:center;gap:12px;margin-top:10px}
+.k{font:600 12px var(--d);letter-spacing:.06em;text-transform:uppercase;color:var(--mu)}.k.a{color:var(--fr)}.k.p{color:var(--rr)}
+.tr{--c:var(--ac);height:8px;border-radius:4px;background:var(--bg);border:1px solid var(--ln);position:relative}
+.tr::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 calc(10% - 1px),var(--ln) calc(10% - 1px) 10%)}
+.k.a~.tr{--c:var(--fr)}.k.p~.tr{--c:var(--rr)}
+.tr i{position:absolute;left:0;top:0;bottom:0;border-radius:4px;background:linear-gradient(90deg,transparent,var(--c))}
+.tr i::after{content:"";position:absolute;right:-7px;top:50%;width:14px;height:14px;margin-top:-7px;border-radius:50%;background:var(--c);box-shadow:0 0 0 3px var(--sf),0 0 14px var(--c)}
+.ln b{font:700 26px/1 var(--d);text-align:right;font-variant-numeric:tabular-nums}
+.rg{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px;margin-bottom:14px;border:1px dashed var(--ln);border-radius:12px}
 .rg p{grid-column:1/-1;margin:0;font-size:13px;color:var(--mu)}
-.tip{margin:10px 0 0;font-size:14px;color:var(--mu)}
-.empty{text-align:center;color:var(--mu);padding:12px 0}
-.act{display:flex;gap:8px;margin-top:4px}
-.act button{flex:1;padding:12px;font:600 15px var(--b);border-radius:8px;border:1px solid var(--tx);background:var(--tx);color:var(--bg);cursor:pointer}
+.tip{margin:12px 0 0;font-size:14px;color:var(--mu)}
+.empty{text-align:center;color:var(--mu);padding:18px 0}
+.act{display:flex;gap:8px}
+.act button{flex:1;padding:13px;font:700 15px var(--b);border-radius:12px;cursor:pointer;border:1px solid var(--ac);background:linear-gradient(90deg,var(--ac),var(--rr));color:var(--on)}
 .act button.s{background:transparent;color:var(--tx);border-color:var(--ln)}
-.foot{font-size:12.5px;color:var(--mu);margin-top:14px}
-@media (min-width:900px){
-header .in,main{max-width:1040px}
-main{display:grid;grid-template-columns:340px 1fr;gap:0 16px;align-items:start}
-.pin{grid-column:1;grid-row:1/4;position:sticky;top:12px}
-.tabs{grid-column:2;grid-row:1}.pout{grid-column:2;grid-row:2}.act{grid-column:2;grid-row:3}.foot{grid-column:1/-1}
+.foot{font-size:12.5px;color:var(--mu);margin:0}
+@media (min-width:1000px){
+.app{grid-template-columns:300px 200px minmax(0,1fr);align-items:start;grid-template-areas:"in tabs out" "in tabs act" "foot foot foot"}
+.pin,.tabs{position:sticky;top:14px}
+.tabs{grid-template-columns:1fr}
+.tabs button{flex-direction:row;align-items:center;gap:10px;padding:12px;font-size:15px}
+.tabs button i{width:20px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
-<header><div class="in"><h1>FH6<br><span>Tuner</span></h1>
-<div class="seg" data-k="mode" aria-label="Modalità"><button data-v="grip">Grip</button><button data-v="drift">Drift</button></div></div></header>
-<main>
+<header class="top"><div class="wrap bar"><div class="brand"><b>FH6</b><span>TUNER</span></div>
+<div class="seg mode" data-k="mode" aria-label="Modalità"><button data-v="grip">Grip</button><button data-v="drift">Drift</button></div></div></header>
+<div class="wrap app">
 <section class="card pin" aria-label="Dati della macchina">
   <div class="grid">
     <label class="f">Punti prestazione<input id="pi" type="number" inputmode="numeric" placeholder="800"></label>
     <label class="f">Cavalli<input id="hp" type="number" inputmode="numeric" placeholder="650"></label>
     <label class="f">Peso (kg)<input id="w" type="number" inputmode="numeric" placeholder="1450"></label>
-    <label class="f">Peso anteriore (%)<input id="fp" type="number" inputmode="decimal" placeholder="52"></label>
+    <label class="f">Peso ant. (%)<input id="fp" type="number" inputmode="decimal" placeholder="52"></label>
   </div>
   <div class="q">Trazione</div>
   <div class="seg" data-k="drv"><button data-v="RWD">Posteriore</button><button data-v="FWD">Anteriore</button><button data-v="AWD">Integrale</button></div>
@@ -94,10 +99,10 @@ main{display:grid;grid-template-columns:340px 1fr;gap:0 16px;align-items:start}
   <div class="split" aria-hidden="true"><div class="f" id="sf">52%</div><div class="r" id="sr">48%</div></div>
 </section>
 <nav class="tabs" id="tabs" role="tablist" aria-label="Sezioni della messa a punto"></nav>
-<section class="card pout"><div id="rg"></div><div id="res"></div></section>
+<section class="card pout"><h2 id="ttl"></h2><div id="rg"></div><div id="res"></div></section>
 <div class="act"><button id="cp">Copia tutto l’assetto</button><button class="s" id="rs">Azzera</button></div>
-<p class="foot">Le sezioni sono quelle del menu di messa a punto di Forza Horizon 6. Il gioco non pubblica formule ufficiali: molle, barre, ammortizzatori, altezza, deportanza e rapporto finale usano il metodo della community (percentuale di peso × (massimo − minimo) + minimo). Il resto sono valori di partenza da affinare in pista. In modalità drift fondo e stile vengono ignorati.</p>
-</main>
+<p class="foot">Le sezioni sono quelle del menu di messa a punto di Forza Horizon 6. Il gioco non pubblica formule ufficiali: molle, barre, ammortizzatori, altezza, deportanza e rapporto finale usano il metodo della community (percentuale di peso × (massimo − minimo) + minimo). Il resto sono valori di partenza da affinare in pista. In drift fondo e stile vengono ignorati.</p>
+</div>
 <script>
 (function(){
 var S={mode:"grip",drv:"RWD",surf:"road",style:"balanced",tab:0},V={},KEY="fh6tuner3",BASE=["pi","hp","w","fp"];
@@ -158,6 +163,7 @@ function lines(it){return it.L.map(function(l){
 
 function render(){
   document.body.classList.toggle("drift",S.mode==="drift");
+  $("ttl").textContent=TABS[S.tab].n;
   var fp=num("fp");if(fp>0&&fp<100){$("sf").textContent=r0(fp)+"%";$("sf").style.width=clamp(fp,15,85)+"%";$("sr").textContent=r0(100-fp)+"%"}
   var T=calc(),el=$("res");
   if(!T){el.innerHTML='<p class="empty">Compila punti prestazione, cavalli, peso e peso anteriore per vedere i valori.</p>';return}
@@ -181,7 +187,7 @@ function copy(t,btn){var done=function(){var s=btn.textContent;btn.textContent="
   try{navigator.clipboard.writeText(t).then(done,function(){fb(t,done)})}catch(e){fb(t,done)}}
 function fb(t,done){var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();try{document.execCommand("copy");done()}catch(e){}document.body.removeChild(a)}
 
-TABS.forEach(function(x,i){var b=document.createElement("button");b.textContent=x.n;b.setAttribute("role","tab");b.addEventListener("click",function(){S.tab=i;sync();save();renderRg();render()});$("tabs").appendChild(b)});
+TABS.forEach(function(x,i){var b=document.createElement("button");b.innerHTML="<i>"+("0"+(i+1)).slice(-2)+"</i><span>"+x.n+"</span>";b.setAttribute("role","tab");b.addEventListener("click",function(){S.tab=i;sync();save();renderRg();render()});$("tabs").appendChild(b)});
 document.querySelectorAll(".seg button").forEach(function(b){b.addEventListener("click",function(){S[b.parentNode.dataset.k]=b.dataset.v;sync();save();render()})});
 BASE.forEach(function(k){$(k).addEventListener("input",function(){V[k]=$(k).value;save();render()})});
 $("cp").onclick=function(){var T=calc();if(T)copy(summary(T),this)};
