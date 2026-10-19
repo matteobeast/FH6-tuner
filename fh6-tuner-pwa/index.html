@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FH6 Tuner</title>
+<meta name="theme-color" content="#0b0e13">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="icon" href="icon-192.png" type="image/png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@700;800&family=Saira:wght@400;600&display=swap">
+<style>
+:root{--bg:#eceff3;--sf:#fff;--tx:#0f1419;--mu:#5b6573;--ln:#d8dde3;--fr:#1f6bff;--rr:#f0480f;--ac:#ffd400;--act:#0f1419;
+--d:"Saira Condensed","Arial Narrow",Impact,sans-serif;--b:"Saira",system-ui,-apple-system,"Segoe UI",sans-serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b0e13;--sf:#151a22;--tx:#f2f4f7;--mu:#97a1af;--ln:#252c37;--fr:#5b9bff;--rr:#ff7a45;--act:#ffd400;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0b0e13;--sf:#151a22;--tx:#f2f4f7;--mu:#97a1af;--ln:#252c37;--fr:#5b9bff;--rr:#ff7a45;--act:#ffd400;color-scheme:dark}
+body.drift{--ac:#ff2d95}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:400 16px/1.5 var(--b)}
+header{background:#0b0e13;color:#fff;padding:22px 16px 46px;clip-path:polygon(0 0,100% 0,100% 74%,0 100%);position:relative}
+header::after{content:"";position:absolute;left:0;right:0;bottom:0;height:100%;background:linear-gradient(168deg,transparent 80%,var(--ac) 80%,var(--ac) 84%,transparent 84%);pointer-events:none}
+header .in{max-width:640px;margin:0 auto;display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
+h1{font:italic 800 46px/.9 var(--d);margin:0;text-transform:uppercase}
+h1 span{color:var(--ac)}
+.seg{display:flex;gap:6px}
+.seg button{flex:1;padding:10px 6px;font:600 15px var(--b);color:var(--tx);background:var(--bg);border:1px solid var(--ln);border-radius:8px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--act);color:var(--bg);border-color:var(--act)}
+body:not(.drift) .seg button[aria-pressed="true"]{color:#fff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) body:not(.drift) .seg button[aria-pressed="true"]{color:#0b0e13}}
+header .seg{min-width:170px}
+header .seg button{background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.25);font:italic 800 20px/1 var(--d);text-transform:uppercase}
+header .seg button[aria-pressed="true"]{background:var(--ac)!important;border-color:var(--ac);color:#0b0e13!important}
+main{max-width:640px;margin:-14px auto 0;padding:0 16px 48px}
+.card{background:var(--sf);border:1px solid var(--ln);border-radius:12px;padding:16px;margin-bottom:12px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+label.f{display:block;font-size:13px;color:var(--mu)}
+label.f input{display:block;width:100%;margin-top:3px;padding:8px 10px;font:700 24px var(--d);color:var(--tx);background:var(--bg);border:1px solid var(--ln);border-radius:8px}
+label.f.s input{font-size:19px;padding:6px 10px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+.q{margin:12px 0 4px;font-size:13px;color:var(--mu)}
+.split{display:flex;height:26px;border-radius:6px;overflow:hidden;font:700 16px/26px var(--d);color:#fff;margin-top:12px}
+.split div{padding:0 8px;white-space:nowrap;transition:width .25s}
+.split .f{background:var(--fr)}.split .r{background:var(--rr);flex:1;text-align:right}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding:2px 0 10px;margin:0 -2px;scrollbar-width:none}
+.tabs button{flex:none;padding:9px 14px;font:italic 700 18px/1 var(--d);text-transform:uppercase;color:var(--tx);background:var(--sf);border:1px solid var(--ln);border-radius:8px;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--tx);color:var(--bg);border-color:var(--tx)}
+.it{padding:12px 0;border-top:1px solid var(--ln)}.it:first-child{border:0;padding-top:0}
+.it .n{font:italic 700 20px/1.1 var(--d);text-transform:uppercase}
+.it small{display:block;color:var(--mu);font-size:12.5px;margin-bottom:4px}
+.ln{display:grid;grid-template-columns:38px 1fr 92px;align-items:center;gap:8px;margin-top:6px}
+.k{font-size:12.5px;font-weight:600}.k.a{color:var(--fr)}.k.p{color:var(--rr)}
+.tr{height:8px;background:var(--ln);border-radius:4px;position:relative}
+.tr i{position:absolute;left:0;top:0;bottom:0;border-radius:4px}
+.k.a~.tr i{background:var(--fr)}.k.p~.tr i{background:var(--rr)}
+.ln b{font:italic 800 24px/1 var(--d);text-align:right}
+.rg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;padding-bottom:12px;border-bottom:1px dashed var(--ln)}
+.rg p{grid-column:1/-1;margin:0;font-size:13px;color:var(--mu)}
+.tip{margin:10px 0 0;font-size:14px;color:var(--mu)}
+.empty{text-align:center;color:var(--mu);padding:12px 0}
+.act{display:flex;gap:8px;margin-top:4px}
+.act button{flex:1;padding:12px;font:600 15px var(--b);border-radius:8px;border:1px solid var(--tx);background:var(--tx);color:var(--bg);cursor:pointer}
+.act button.s{background:transparent;color:var(--tx);border-color:var(--ln)}
+.foot{font-size:12.5px;color:var(--mu);margin-top:14px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header><div class="in"><h1>FH6<br><span>Tuner</span></h1>
+<div class="seg" data-k="mode" aria-label="Modalità"><button data-v="grip">Grip</button><button data-v="drift">Drift</button></div></div></header>
+<main>
+<section class="card" aria-label="Dati della macchina">
+  <div class="grid">
+    <label class="f">Punti prestazione<input id="pi" type="number" inputmode="numeric" placeholder="800"></label>
+    <label class="f">Cavalli<input id="hp" type="number" inputmode="numeric" placeholder="650"></label>
+    <label class="f">Peso (kg)<input id="w" type="number" inputmode="numeric" placeholder="1450"></label>
+    <label class="f">Peso anteriore (%)<input id="fp" type="number" inputmode="decimal" placeholder="52"></label>
+  </div>
+  <div class="q">Trazione</div>
+  <div class="seg" data-k="drv"><button data-v="RWD">Posteriore</button><button data-v="FWD">Anteriore</button><button data-v="AWD">Integrale</button></div>
+  <div class="q">Fondo</div>
+  <div class="seg" data-k="surf"><button data-v="road">Asfalto</button><button data-v="dirt">Sterrato</button></div>
+  <div class="q">Stile di guida</div>
+  <div class="seg" data-k="style"><button data-v="stable">Stabile</button><button data-v="balanced">Bilanciata</button><button data-v="sharp">Reattiva</button></div>
+  <div class="split" aria-hidden="true"><div class="f" id="sf">52%</div><div class="r" id="sr">48%</div></div>
+</section>
+<nav class="tabs" id="tabs" role="tablist" aria-label="Sezioni della messa a punto"></nav>
+<section class="card"><div id="rg"></div><div id="res"></div></section>
+<div class="act"><button id="cp">Copia tutto l’assetto</button><button class="s" id="rs">Azzera</button></div>
+<p class="foot">Le sezioni sono quelle del menu di messa a punto di Forza Horizon 6. Il gioco non pubblica formule ufficiali: molle, barre, ammortizzatori, altezza, deportanza e rapporto finale usano il metodo della community (percentuale di peso × (massimo − minimo) + minimo). Il resto sono valori di partenza da affinare in pista. In modalità drift fondo e stile vengono ignorati.</p>
+</main>
+<script>
+(function(){
+var S={mode:"grip",drv:"RWD",surf:"road",style:"balanced",tab:0},V={},KEY="fh6tuner3",BASE=["pi","hp","w","fp"];
+var TABS=[{n:"Pneumatici",g:[]},{n:"Rapporti",g:[["fdmin","Rapporto finale min"],["fdmax","Rapporto finale max"]]},{n:"Allineamento",g:[]},
+{n:"Barre",g:[["amin","Barre min"],["amax","Barre max"]]},
+{n:"Molle",g:[["sfmin","Molle ant. min"],["sfmax","Molle ant. max"],["srmin","Molle post. min"],["srmax","Molle post. max"],["hmin","Altezza min"],["hmax","Altezza max"]]},
+{n:"Ammortizzatori",g:[["dmin","Smorzamento min"],["dmax","Smorzamento max"]]},{n:"Aerodinamica",g:[["xmin","Deportanza min"],["xmax","Deportanza max"]]},{n:"Freni",g:[]},{n:"Differenziale",g:[]}];
+var $=function(i){return document.getElementById(i)};
+var clamp=function(x,a,b){return Math.min(b,Math.max(a,x))},r0=function(x){return Math.round(x)},r1=function(x){return (Math.round(x*10)/10).toFixed(1)},r2=function(x){return (Math.round(x*100)/100).toFixed(2)};
+var num=function(i){var v=parseFloat(String(V[i]).replace(",","."));return isFinite(v)?v:null};
+function save(){try{localStorage.setItem(KEY,JSON.stringify({S:S,V:V}))}catch(e){}}
+function load(){try{var d=JSON.parse(localStorage.getItem(KEY)||"null");if(d){S=Object.assign(S,d.S||{});V=d.V||{}}}catch(e){}BASE.forEach(function(k){if(V[k]!=null)$(k).value=V[k]})}
+
+function calc(){
+  var pi=num("pi"),hp=num("hp"),w=num("w"),fp=num("fp");
+  if(!(pi>0&&hp>0&&w>0&&fp>0&&fp<100))return null;
+  var dr=S.mode==="drift",d=S.drv,dirt=S.surf==="dirt"&&!dr,st=S.style,pw=hp/w*1000,F=fp/100,B=1-F;
+  var sm=dr?1:{stable:.94,balanced:1,sharp:1.08}[st],sd=dirt?.6:1,c=function(x){return clamp(x,0,1)};
+  var R=function(a,b){var x=num(a),y=num(b);return x!=null&&y!=null&&y>x?[x,y]:null};
+  var show=function(r,f,dec){return r?(r[0]+f*(r[1]-r[0])).toFixed(dec):r0(f*100)+"% barra"};
+  var pair=function(n,sub,rF,rR,fa,fb,dec){return{n:n,sub:sub,L:[{k:"Ant.",f:fa,t:show(rF,fa,dec)},{k:"Post.",f:fb,t:show(rR,fb,dec)}]}};
+  var vp=function(n,sub,a,b){return{n:n,sub:sub,L:[{k:"Ant.",t:a},{k:"Post.",t:b}]}};
+  var one=function(n,sub,t){return{n:n,sub:sub,L:[{k:"",t:t}]}};
+  var pb=dirt?1.5:2,hv=w>1800?.08:0,press=dr?[1.9,2.4]:[pb+(fp-50)*.01+hv,pb-(fp-50)*.01+hv];
+  var cam=dr?[-5,-1]:dirt?[-.5,-.3]:[-1.2-(d==="FWD"?.3:0)-(st==="sharp"?.2:0),-.8-(st==="stable"?.2:0)];
+  var toe=dr?[-.5,.1]:[st==="sharp"?-.1:0,dirt?.1:(st==="stable"?.2:st==="sharp"?0:.1)];
+  var cas=dr?7:dirt?5:(st==="stable"?6.5:st==="sharp"?5.5:6);
+  var df={RWD:[1.12,.88],FWD:[.82,1.18],AWD:[1,1]}[d],sa={stable:[1.06,.94],balanced:[1,1],sharp:[.94,1.06]}[st];
+  var sp=dr?[.85,.35]:[c(F*sm*sd),c(B*sm*sd*(d==="RWD"?1.04:1))];
+  var arb=dr?[.5,.25]:[c(F*df[0]*sa[0]*sd),c(B*df[1]*sa[1]*sd)];
+  var dk=(dirt?.8:1)*(st==="sharp"?1.05:1),reb=dr?[.55,.35]:[c(F*dk),c(B*dk)],bmp=[reb[0]*.6,reb[1]*.6];
+  var rh=dr?[0,.08]:dirt?[.7,.7]:[.02,.04];
+  var ab=dr?[0,0]:dirt?[50,50]:{stable:[60,70],balanced:[45,55],sharp:[30,40]}[st],adj=dr?0:(pi>800?10:0)-(pw<250?15:0),ax=[c((ab[0]+adj)/100),c((ab[1]+adj)/100)];
+  var gp=dr?72:pw>650?38:pw>350?50:62,gt=dr?"Rapporto finale corto: tieni il motore in 2ª e 3ª, vicino al limitatore.":pw>650?"Potenza alta: allunga il rapporto finale.":pw>350?"Rapporto finale a metà barra. Regola finché l’ultima marcia tocca il limitatore a fine rettilineo.":"Poca potenza per il peso: accorcia il rapporto finale.";
+  var bal=dr?clamp(fp-8,38,52):clamp(fp+3+(st==="stable"?2:st==="sharp"?-1:0),47,62),bp=dr||st!=="stable"?100:105;
+  var dec=dr?100:st==="stable"?12:st==="sharp"?30:20,dd=dirt?-8:0,pwr=pw,diff;
+  if(d==="RWD")diff=[["Accelerazione",dr?100:clamp(78-pwr*.045+dd,35,80)],["Decelerazione",dec]];
+  else if(d==="FWD")diff=[["Accelerazione",clamp(45-pwr*.02+dd,18,50)],["Decelerazione",5]];
+  else diff=[["Ant. accelerazione",dr?0:15],["Ant. decelerazione",0],["Post. accelerazione",dr?100:clamp(80-pwr*.04+dd,45,85)],["Post. decelerazione",dec],["Ripartizione centrale (post.)",dr?100:st==="stable"?62:st==="sharp"?72:68]];
+  var T=[
+   {i:[vp("Pressione","a caldo, in bar",r2(press[0]),r2(press[1]))]},
+   {i:[{n:"Rapporto finale",sub:"basso = più velocità massima, alto = più accelerazione",L:[{k:"",f:gp/100,t:show(R("fdmin","fdmax"),gp/100,2)}]}],tip:gt},
+   {i:[vp("Campanatura","",r1(cam[0])+"°",r1(cam[1])+"°"),vp("Convergenza","negativo = aperta",r1(toe[0])+"°",r1(toe[1])+"°"),one("Incidenza anteriore","",r1(cas)+"°")]},
+   {i:[pair("Rigidità","",R("amin","amax"),R("amin","amax"),arb[0],arb[1],1)]},
+   {i:[pair("Molle","",R("sfmin","sfmax"),R("srmin","srmax"),sp[0],sp[1],1),pair("Altezza da terra","la più bassa che non tocca il suolo",R("hmin","hmax"),R("hmin","hmax"),rh[0],rh[1],1)]},
+   {i:[pair("Estensione","",R("dmin","dmax"),R("dmin","dmax"),reb[0],reb[1],1),pair("Compressione","circa 60% dell’estensione",R("dmin","dmax"),R("dmin","dmax"),bmp[0],bmp[1],1)]},
+   {i:[pair("Deportanza","solo se l’auto ha aerodinamica regolabile",R("xmin","xmax"),R("xmin","xmax"),ax[0],ax[1],0)]},
+   {i:[one("Bilanciamento","% sull’anteriore",r0(bal)+"%"),one("Pressione","",bp+"%")]},
+   {i:diff.map(function(x){return one(x[0],"",r0(x[1])+"%")})}];
+  if(dr&&d==="FWD")T[8].tip="Con trazione anteriore il drift non è praticabile: serve uno swap a posteriore o integrale.";
+  else if(dr&&pw<300)T[8].tip="Sotto i 300 CV/t è difficile tenere l’angolo.";
+  return T;
+}
+
+function lines(it){return it.L.map(function(l){
+  var cl=l.k==="Ant."?"a":l.k==="Post."?"p":"";
+  return '<div class="ln"><span class="k '+cl+'">'+l.k+'</span><div class="tr">'+(l.f!=null?'<i style="width:'+r0(clamp(l.f,0,1)*100)+'%"></i>':'')+'</div><b>'+l.t+'</b></div>'}).join("")}
+
+function render(){
+  document.body.classList.toggle("drift",S.mode==="drift");
+  var fp=num("fp");if(fp>0&&fp<100){$("sf").textContent=r0(fp)+"%";$("sf").style.width=clamp(fp,15,85)+"%";$("sr").textContent=r0(100-fp)+"%"}
+  var T=calc(),el=$("res");
+  if(!T){el.innerHTML='<p class="empty">Compila punti prestazione, cavalli, peso e peso anteriore per vedere i valori.</p>';return}
+  var t=T[S.tab],h=t.i.map(function(it){return '<div class="it"><div class="n">'+it.n+'</div>'+(it.sub?'<small>'+it.sub+'</small>':'')+lines(it)+'</div>'}).join("");
+  if(t.tip)h+='<p class="tip">'+t.tip+'</p>';
+  el.innerHTML=h;
+}
+function renderRg(){
+  var g=TABS[S.tab].g,el=$("rg");
+  if(!g.length){el.innerHTML="";return}
+  el.innerHTML='<div class="rg"><p>Inserisci minimo e massimo che vedi nel gioco per questo slider: ottieni il valore esatto. Senza, vedi la posizione sulla barra.</p></div>';
+  g.forEach(function(x){var l=document.createElement("label");l.className="f s";l.textContent=x[1];var i=document.createElement("input");i.type="number";i.inputMode="decimal";i.step="any";i.value=V[x[0]]||"";
+    i.addEventListener("input",function(){V[x[0]]=i.value;save();render()});l.appendChild(i);el.firstChild.appendChild(l)});
+}
+function sync(){document.querySelectorAll(".seg").forEach(function(g){var k=g.dataset.k;g.querySelectorAll("button").forEach(function(b){b.setAttribute("aria-pressed",String(S[k]===b.dataset.v))})});
+  document.querySelectorAll("#tabs button").forEach(function(b,i){b.setAttribute("aria-selected",String(i===S.tab))})}
+function summary(T){return "FH6 Tuner · "+V.pi+" PI · "+V.hp+" CV · "+V.w+" kg · "+V.fp+"% ant. · "+S.drv+(S.mode==="drift"?" · Drift":"")+"\n"+T.map(function(t,i){
+  return TABS[i].n+": "+t.i.map(function(it){return it.n+" "+it.L.map(function(l){return (l.k?l.k+" ":"")+l.t}).join(" / ")}).join("; ")}).join("\n")}
+function copy(t,btn){var done=function(){var s=btn.textContent;btn.textContent="Copiato";setTimeout(function(){btn.textContent=s},1400)};
+  try{navigator.clipboard.writeText(t).then(done,function(){fb(t,done)})}catch(e){fb(t,done)}}
+function fb(t,done){var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();try{document.execCommand("copy");done()}catch(e){}document.body.removeChild(a)}
+
+TABS.forEach(function(x,i){var b=document.createElement("button");b.textContent=x.n;b.setAttribute("role","tab");b.addEventListener("click",function(){S.tab=i;sync();save();renderRg();render()});$("tabs").appendChild(b)});
+document.querySelectorAll(".seg button").forEach(function(b){b.addEventListener("click",function(){S[b.parentNode.dataset.k]=b.dataset.v;sync();save();render()})});
+BASE.forEach(function(k){$(k).addEventListener("input",function(){V[k]=$(k).value;save();render()})});
+$("cp").onclick=function(){var T=calc();if(T)copy(summary(T),this)};
+$("rs").onclick=function(){V={};BASE.forEach(function(k){$(k).value=""});save();renderRg();render()};
+load();sync();renderRg();render();
+})();
+</script>
+<script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){})})}</script>
+</body>
+</html>
