@@ -45,8 +45,8 @@ input:focus-visible,button:focus-visible{outline:2px solid var(--ac);outline-off
 .split{display:flex;height:26px;border-radius:6px;overflow:hidden;font:700 16px/26px var(--d);color:#fff;margin-top:12px}
 .split div{padding:0 8px;white-space:nowrap;transition:width .25s}
 .split .f{background:var(--fr)}.split .r{background:var(--rr);flex:1;text-align:right}
-.tabs{display:flex;gap:6px;overflow-x:auto;padding:2px 0 10px;margin:0 -2px;scrollbar-width:none}
-.tabs button{flex:none;padding:9px 14px;font:italic 700 18px/1 var(--d);text-transform:uppercase;color:var(--tx);background:var(--sf);border:1px solid var(--ln);border-radius:8px;cursor:pointer}
+.tabs{display:grid;grid-template-columns:repeat(auto-fit,minmax(104px,1fr));gap:6px;padding:2px 0 10px}
+.tabs button{min-width:0;overflow-wrap:anywhere;padding:10px 6px;font:italic 700 17px/1.1 var(--d);text-transform:uppercase;color:var(--tx);background:var(--sf);border:1px solid var(--ln);border-radius:8px;cursor:pointer}
 .tabs button[aria-selected="true"]{background:var(--tx);color:var(--bg);border-color:var(--tx)}
 .it{padding:12px 0;border-top:1px solid var(--ln)}.it:first-child{border:0;padding-top:0}
 .it .n{font:italic 700 20px/1.1 var(--d);text-transform:uppercase}
@@ -65,6 +65,12 @@ input:focus-visible,button:focus-visible{outline:2px solid var(--ac);outline-off
 .act button{flex:1;padding:12px;font:600 15px var(--b);border-radius:8px;border:1px solid var(--tx);background:var(--tx);color:var(--bg);cursor:pointer}
 .act button.s{background:transparent;color:var(--tx);border-color:var(--ln)}
 .foot{font-size:12.5px;color:var(--mu);margin-top:14px}
+@media (min-width:900px){
+header .in,main{max-width:1040px}
+main{display:grid;grid-template-columns:340px 1fr;gap:0 16px;align-items:start}
+.pin{grid-column:1;grid-row:1/4;position:sticky;top:12px}
+.tabs{grid-column:2;grid-row:1}.pout{grid-column:2;grid-row:2}.act{grid-column:2;grid-row:3}.foot{grid-column:1/-1}
+}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -72,7 +78,7 @@ input:focus-visible,button:focus-visible{outline:2px solid var(--ac);outline-off
 <header><div class="in"><h1>FH6<br><span>Tuner</span></h1>
 <div class="seg" data-k="mode" aria-label="Modalità"><button data-v="grip">Grip</button><button data-v="drift">Drift</button></div></div></header>
 <main>
-<section class="card" aria-label="Dati della macchina">
+<section class="card pin" aria-label="Dati della macchina">
   <div class="grid">
     <label class="f">Punti prestazione<input id="pi" type="number" inputmode="numeric" placeholder="800"></label>
     <label class="f">Cavalli<input id="hp" type="number" inputmode="numeric" placeholder="650"></label>
@@ -88,7 +94,7 @@ input:focus-visible,button:focus-visible{outline:2px solid var(--ac);outline-off
   <div class="split" aria-hidden="true"><div class="f" id="sf">52%</div><div class="r" id="sr">48%</div></div>
 </section>
 <nav class="tabs" id="tabs" role="tablist" aria-label="Sezioni della messa a punto"></nav>
-<section class="card"><div id="rg"></div><div id="res"></div></section>
+<section class="card pout"><div id="rg"></div><div id="res"></div></section>
 <div class="act"><button id="cp">Copia tutto l’assetto</button><button class="s" id="rs">Azzera</button></div>
 <p class="foot">Le sezioni sono quelle del menu di messa a punto di Forza Horizon 6. Il gioco non pubblica formule ufficiali: molle, barre, ammortizzatori, altezza, deportanza e rapporto finale usano il metodo della community (percentuale di peso × (massimo − minimo) + minimo). Il resto sono valori di partenza da affinare in pista. In modalità drift fondo e stile vengono ignorati.</p>
 </main>
@@ -111,8 +117,8 @@ function calc(){
   var dr=S.mode==="drift",d=S.drv,dirt=S.surf==="dirt"&&!dr,st=S.style,pw=hp/w*1000,F=fp/100,B=1-F;
   var sm=dr?1:{stable:.94,balanced:1,sharp:1.08}[st],sd=dirt?.6:1,c=function(x){return clamp(x,0,1)};
   var R=function(a,b){var x=num(a),y=num(b);return x!=null&&y!=null&&y>x?[x,y]:null};
-  var show=function(r,f,dec){return r?(r[0]+f*(r[1]-r[0])).toFixed(dec):r0(f*100)+"% barra"};
-  var pair=function(n,sub,rF,rR,fa,fb,dec){return{n:n,sub:sub,L:[{k:"Ant.",f:fa,t:show(rF,fa,dec)},{k:"Post.",f:fb,t:show(rR,fb,dec)}]}};
+  var show=function(r,f,dec){return r?(r[0]+f*(r[1]-r[0])).toFixed(dec):"—"};
+  var pair=function(n,sub,rF,rR,fa,fb,dec){return{n:n,sub:sub,L:[{k:"Ant.",f:rF?fa:null,t:show(rF,fa,dec)},{k:"Post.",f:rR?fb:null,t:show(rR,fb,dec)}]}};
   var vp=function(n,sub,a,b){return{n:n,sub:sub,L:[{k:"Ant.",t:a},{k:"Post.",t:b}]}};
   var one=function(n,sub,t){return{n:n,sub:sub,L:[{k:"",t:t}]}};
   var pb=dirt?1.5:2,hv=w>1800?.08:0,press=dr?[1.9,2.4]:[pb+(fp-50)*.01+hv,pb-(fp-50)*.01+hv];
@@ -133,7 +139,7 @@ function calc(){
   else diff=[["Ant. accelerazione",dr?0:15],["Ant. decelerazione",0],["Post. accelerazione",dr?100:clamp(80-pwr*.04+dd,45,85)],["Post. decelerazione",dec],["Ripartizione centrale (post.)",dr?100:st==="stable"?62:st==="sharp"?72:68]];
   var T=[
    {i:[vp("Pressione","a caldo, in bar",r2(press[0]),r2(press[1]))]},
-   {i:[{n:"Rapporto finale",sub:"basso = più velocità massima, alto = più accelerazione",L:[{k:"",f:gp/100,t:show(R("fdmin","fdmax"),gp/100,2)}]}],tip:gt},
+   {i:[{n:"Rapporto finale",sub:"basso = più velocità massima, alto = più accelerazione",L:[{k:"",f:R("fdmin","fdmax")?gp/100:null,t:show(R("fdmin","fdmax"),gp/100,2)}]}],tip:gt},
    {i:[vp("Campanatura","",r1(cam[0])+"°",r1(cam[1])+"°"),vp("Convergenza","negativo = aperta",r1(toe[0])+"°",r1(toe[1])+"°"),one("Incidenza anteriore","",r1(cas)+"°")]},
    {i:[pair("Rigidità","",R("amin","amax"),R("amin","amax"),arb[0],arb[1],1)]},
    {i:[pair("Molle","",R("sfmin","sfmax"),R("srmin","srmax"),sp[0],sp[1],1),pair("Altezza da terra","la più bassa che non tocca il suolo",R("hmin","hmax"),R("hmin","hmax"),rh[0],rh[1],1)]},
@@ -156,13 +162,14 @@ function render(){
   var T=calc(),el=$("res");
   if(!T){el.innerHTML='<p class="empty">Compila punti prestazione, cavalli, peso e peso anteriore per vedere i valori.</p>';return}
   var t=T[S.tab],h=t.i.map(function(it){return '<div class="it"><div class="n">'+it.n+'</div>'+(it.sub?'<small>'+it.sub+'</small>':'')+lines(it)+'</div>'}).join("");
+  if(h.indexOf("<b>—</b>")>=0)h+='<p class="tip">Inserisci minimo e massimo qui sopra per vedere il valore preciso da impostare.</p>';
   if(t.tip)h+='<p class="tip">'+t.tip+'</p>';
   el.innerHTML=h;
 }
 function renderRg(){
   var g=TABS[S.tab].g,el=$("rg");
   if(!g.length){el.innerHTML="";return}
-  el.innerHTML='<div class="rg"><p>Inserisci minimo e massimo che vedi nel gioco per questo slider: ottieni il valore esatto. Senza, vedi la posizione sulla barra.</p></div>';
+  el.innerHTML='<div class="rg"><p>Inserisci il minimo e il massimo che vedi nel gioco per questo slider: da lì ottieni il valore preciso da impostare.</p></div>';
   g.forEach(function(x){var l=document.createElement("label");l.className="f s";l.textContent=x[1];var i=document.createElement("input");i.type="number";i.inputMode="decimal";i.step="any";i.value=V[x[0]]||"";
     i.addEventListener("input",function(){V[x[0]]=i.value;save();render()});l.appendChild(i);el.firstChild.appendChild(l)});
 }

@@ -1,4 +1,4 @@
-const CACHE = "fh6-tuner-v1";
+const CACHE = "fh6-tuner-v3";
 const FILES = ["./", "index.html", "manifest.json", "icon-192.png", "icon-512.png"];
 
 self.addEventListener("install", (e) => {
