@@ -113,7 +113,7 @@ function robotRule(text, path) {
   return { allowed, delay: Math.max(1500, ...selected.map(g => g.delay)) };
 }
 async function request(url) {
-  const response = await fetch(url, { headers: { 'user-agent': UA, accept: 'text/html,text/plain' }, signal: AbortSignal.timeout(10000), redirect: 'error' });
+  const response = await fetch(url, { headers: { 'user-agent': UA, accept: 'text/html,text/plain' }, signal: AbortSignal.timeout(10000), redirect: 'manual' });
   if (!response.ok) { const e = new Error(`forzagarage: HTTP ${response.status}`); e.status = response.status; throw e; }
   return response.text();
 }
@@ -233,7 +233,7 @@ async function serveModel(req, slug) {
   let upstream;
   try {
     upstream = await fetch(MODEL_ARCHIVE + '/models/' + slug + '.glb', {
-      method:req.method, headers, redirect:'error', signal:AbortSignal.timeout(30000)
+      method:req.method, headers, redirect:'manual', signal:AbortSignal.timeout(30000)
     });
   } catch { return json({error:'Archivio ZimaOS momentaneamente non raggiungibile'},503); }
   if (upstream.status === 404) { await upstream.body?.cancel(); return json({error:'Modello non ancora archiviato'},404); }
