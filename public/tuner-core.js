@@ -63,27 +63,51 @@ return fields.map(f=>{
 }).filter(Boolean);
 }
 
-function upgradePlan(record,mode,target,currentOnly){
-const build=record.build;if(!build?.areas)return {items:[],reason:'I componenti di questa auto non sono ancora disponibili nel database.',exactPI:false};
-const slots=build.areas.flatMap(a=>a.slots||[]), stockPI=Number(record.spec?.pi);
-if(currentOnly)return {items:[],reason:'Mantieni la configurazione attuale: nessuna modifica ai componenti proposta.',exactPI:false};
-if(stockPI>0&&target<=stockPI)return {items:[],reason:target<stockPI?'Il PI richiesto è inferiore a quello di serie. Non è disponibile un calcolo verificato delle modifiche necessarie.':'Obiettivo uguale al PI di serie: mantieni i componenti originali.',exactPI:target===stockPI};
-const preset=(build.presets||[]).find(p=>new RegExp(mode==='drift'?'drift':mode==='dirt'?'rally|dirt|off.?road':'track|race|circuit','i').test(p.title||''));
-let items=[],unresolved=0;
-if(preset){
-for(const slot of slots){const id=preset.picks?.[slot.slot];if(id===undefined)continue;const option=slot.opts.find(o=>o.id===id);if(!option){unresolved++;continue}if(slot.opts[slot.stockIdx]?.id===id)continue;items.push({slot:slot.slot,label:slotNames[slot.slot]||slot.label,tier:option.tier,price:option.price||0,id:option.id,source:'preset'});}
-return {items,preset:preset.title,cost:preset.cost,unresolved,reason:'Preset reale '+(mode==='drift'?'drift':mode==='dirt'?'sterrato':'pista')+' del catalogo. Il PI finale del preset non è pubblicato: non certifica il raggiungimento di '+target+' PI.',exactPI:false};
+
+const classes=[{id:'D',min:100,max:400},{id:'C',min:401,max:500},{id:'B',min:501,max:600},{id:'A',min:601,max:700},{id:'S1',min:701,max:800},{id:'S2',min:801,max:900},{id:'R',min:901,max:998},{id:'X',min:999,max:999}];
+function classForPI(pi){return classes.find(c=>Number(pi)>=c.min&&Number(pi)<=c.max)?.id||'—'}
+function upgradePlan(record,mode,target,currentOnly,options={}){
+ const result={items:[],exactPI:false,steps:[],warnings:[]};
+ if(currentOnly)return {...result,reason:'Mantieni i tuoi componenti: qui modifichi soltanto la messa a punto.'};
+ const stockPI=Number(record.spec?.pi),targetClass=classes.find(c=>c.id===options.targetClass)||classes.find(c=>c.max===target);
+ const cap=targetClass?.max||Number(target),gap=cap-stockPI,high=cap>=800;
+ result.targetClass=targetClass?.id||classForPI(cap);result.cap=cap;
+ if(stockPI>cap)return {...result,blocked:true,reason:'Di serie questa auto è già '+classForPI(stockPI)+' '+stockPI+', oltre il limite '+cap+'. Non posso verificare una preparazione per questa classe: scegli una classe superiore o un’altra auto.'};
+ if(stockPI===cap)return {...result,atCap:true,exactPI:true,reason:'Di serie è già al limite della classe '+result.targetClass+'. Parti dai componenti originali: qualsiasi upgrade va verificato per non superare '+cap+' PP.'};
+ const slots=record.build?.areas?.flatMap(a=>a.slots||[])||[];
+ if(!slots.length)return {...result,reason:'Il catalogo dei componenti di questa auto non è disponibile. Nessuna lista inventata.'};
+ const drive=options.drive||record.spec?.drivetrain||'RWD',dirt=mode==='dirt',drift=mode==='drift',stable=options.style==='stable';
+ const get=key=>slots.find(s=>s.slot===key);
+ const choose=(key,patterns)=>{
+  const slot=get(key);if(!slot)return null;
+  const choices=slot.opts.filter(o=>!o.isStock&&o.id!==slot.opts[slot.stockIdx]?.id&&(!o.mfr||!options.make||o.mfr.toLowerCase()===options.make.toLowerCase()));
+  for(const pattern of patterns){const matches=choices.filter(o=>pattern.test(o.tier||'')).sort((a,b)=>(a.level||0)-(b.level||0)||(a.price||0)-(b.price||0)||a.id-b.id);if(matches[0])return matches[0]}
+  return null;
+ };
+ const add=(key,patterns,phase,why,optional=false)=>{
+  const option=choose(key,patterns);if(!option)return;
+  result.items.push({slot:key,label:slotNames[key]||get(key).label,tier:option.tier,price:Number(option.price)||0,id:option.id,source:'class-plan',phase,why,optional});
+ };
+ add('TireCompound',drift?[/Drift/i]:dirt?[/Rally/i,/Off.?road/i]:high?[/^Semi.Slick/i,/^Slick Race/i,/Sport/i]:[/Sport/i,/Street/i],1,drift?'Mescola dedicata al controllo della derapata.':dirt?'Priorità alla trazione sui fondi sconnessi.':'Priorità al grip in curva; controlla quanto PI assorbono le gomme.');
+ add('SpringDamper',drift?[/Drift/i]:dirt?[/Rally/i]:[/Race/i],1,dirt?'Escursione e regolazioni adatte allo sterrato.':drift?'Angolo di sterzo e assetto dedicati al drift.':'Sblocca molle, altezza, geometria e ammortizzatori.');
+ add('Differential',drift?[/Drift/i,/Race/i]:dirt?[/Rally/i,/Off.?road/i,/Race/i]:[/Race/i],1,'Permette di regolare bloccaggio e trazione in uscita.');
+ for(const key of ['AntiSwayFront','AntiSwayRear'])add(key,[/Race/i],2,stable?'Bilancia gli assi per un comportamento più prevedibile.':'Permette di correggere sottosterzo e sovrasterzo.');
+ add('Transmission',drift?[/Drift.*4 Speed/i,/Race Transmission$/i]:[/Race Transmission$/i,/Sport/i],2,'Rapporti regolabili per il percorso scelto; evita marce in più se non servono.');
+ add('Brakes',[/Race/i,/Sport/i],2,'Più controllo e possibilità di regolare la frenata.',gap<50);
+ add('WeightReduction',high?[/Race/i,/Sport/i]:[/Sport/i,/Street/i],2,'Riduce la massa: confronta il beneficio con il PI richiesto.',true);
+ if(!drift&&high){add('RearWing',[/Race/i],2,dirt?'Stabilità nei tratti veloci, da confrontare con la velocità massima.':'Appoggio nelle curve veloci, a costo di resistenza aerodinamica.',true);if(!stable)add('FrontBumper',[/Race/i],2,'Bilancia il carico anteriore se monti l’aerodinamica regolabile.',true)}
+ const axle=drive==='FWD'?'TireWidthFront':'TireWidthRear';
+ add(axle,[/Upgraded/i],2,drive==='FWD'?'Valuta più impronta sulle ruote anteriori motrici.':'Valuta più impronta sulle ruote posteriori per scaricare la potenza.',true);
+ const grades=gap>180?[/Race/i,/Sport/i]:gap>70?[/Sport/i,/Street/i,/Race/i]:[/Street/i,/Sport/i];
+ for(const key of ['Intake','Exhaust','Flywheel'])add(key,grades,3,'Solo se rimangono PP: monta un livello alla volta e controlla il contatore.',true);
+ if(gap>100)for(const key of ['Camshaft','SingleTurbo'])add(key,grades,3,'Alternativa per aggiungere potenza. Fermati prima di oltrepassare il limite; verifica la compatibilità con il motore montato.',true);
+ result.cost=result.items.filter(i=>!i.optional).reduce((sum,i)=>sum+i.price,0);
+ result.steps=['Monta prima gomme, sospensioni e differenziale. Controlla i PP dopo ogni pezzo.','Completa telaio e trasmissione solo finché resti nella classe. Gli elementi facoltativi sono alternative.','Usa i PP rimasti per la potenza, un upgrade alla volta. Se superi il limite, riduci prima il livello degli upgrade facoltativi.','Inserisci PP, CV, peso e distribuzione effettivi per calcolare l’assetto dopo il montaggio.'];
+ if(drive!==record.spec?.drivetrain)result.warnings.push('Hai scelto '+drive+' al posto di '+record.spec?.drivetrain+': la conversione e la compatibilità dei pezzi vanno verificate nel gioco. Il catalogo non identifica con certezza il kit di conversione.');
+ if(gap>200)result.warnings.push('Il salto dalla classe di serie è ampio: questa auto potrebbe non essere competitiva o raggiungere il limite scelto. Valuta anche un’auto che nasce più vicina alla classe desiderata.');
+ if(gap<30)result.warnings.push('Restano solo '+gap+' PP prima del limite: non montare tutta la lista. Confronta singolarmente i benefici dei pezzi.');
+ result.reason='Piano per '+result.targetClass+' · limite '+cap+' PP. Priorità e livelli sono consigliati per l’uso scelto; il PI finale delle combinazioni non è disponibile, quindi il raggiungimento del limite e la competitività non sono certificati.';
+ return result;
 }
-const wanted=new Set(['Brakes','SpringDamper','AntiSwayFront','AntiSwayRear','Transmission','Differential','TireCompound']);
-for(const slot of slots){
-if(!wanted.has(slot.slot))continue;
-const candidates=slot.opts.filter(o=>o.id!==slot.opts[slot.stockIdx]?.id&&!o.isStock);
-let option=candidates.find(o=>new RegExp(mode==='drift'?'Drift':mode==='dirt'?'Rally|Off.?road':'Race','i').test(o.tier));
-if(!option&&mode==='dirt'&&slot.slot!=='TireCompound')option=candidates.find(o=>/Race/i.test(o.tier));
-if(!option&&slot.slot==='TireCompound'&&mode!=='dirt')option=candidates.find(o=>/Sport|Semi.Slick/i.test(o.tier));if(!option)continue;
-items.push({slot:slot.slot,label:slotNames[slot.slot]||slot.label,tier:option.tier,price:option.price||0,id:option.id,source:'suggested'});
-}
-return {items,reason:'Componenti disponibili per questo uso. Manca il PI delle combinazioni: raggiungimento di '+target+' PI non verificabile.',exactPI:false};
-}
-root.TunerCore={tune,upgradePlan,sectionNames,slotNames};
+root.TunerCore={tune,upgradePlan,sectionNames,slotNames,classes,classForPI};
 })(globalThis);
