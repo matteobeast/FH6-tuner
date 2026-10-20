@@ -128,7 +128,7 @@ function renderSheet(){
   $('plan-title').textContent=plan.blocked?'Classe non verificabile per questa auto':'Componenti consigliati · '+targetClass.id;
   $('parts-source').textContent='Parti dalla configurazione originale. Monta e verifica un pezzo alla volta.';
   $('pi-warning').textContent=plan.reason;
-  $('build-warnings').innerHTML=plan.warnings.map(w=>'<p class="notice">'+esc(w)+'</p>').join('');
+  $('build-warnings').innerHTML=plan.warnings.length?'<details class="plan-check"><summary>Da verificare per questa auto · '+plan.warnings.length+'</summary><ul>'+plan.warnings.map(w=>'<li>'+esc(w)+'</li>').join('')+'</ul></details>':'';
   $('parts-cost').textContent=plan.cost?'Pezzi prioritari: ≈ '+Number(plan.cost).toLocaleString('it-IT')+' CR · facoltativi esclusi':'';
   const stages=[['Grip e controllo','Prima stabilisci una base adatta al terreno.'],['Telaio e trasmissione','Scegli in base ai PP rimasti.'],['Potenza con i PP residui','Alternative progressive: non montare automaticamente tutta la lista.']];
   $('parts').innerHTML=stages.map(([title,desc],idx)=>{const items=plan.items.filter(i=>i.phase===idx+1);if(!items.length)return '';return '<section class="plan-stage"><header><h3>'+String(idx+1).padStart(2,'0')+' · '+title+'</h3><p>'+desc+'</p></header>'+items.map(it=>'<div class="build-item"><div><strong>'+esc(it.label)+(it.optional?'<span class="optional">Facoltativo</span>':'')+'</strong><span class="tier">'+esc(translatedTier(it.tier))+'</span><p>'+esc(it.why)+'</p></div><aside>'+Number(it.price).toLocaleString('it-IT')+' CR</aside></div>').join('')+'</section>'}).join('');
