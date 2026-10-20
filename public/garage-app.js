@@ -169,12 +169,11 @@ function upgradeAsset(value){
 }
 function renderUpgradeCards(){
  const phaseNames={1:'Grip e controllo',2:'Telaio e trasmissione',3:'Potenza'};
- const source=(record?.details||[]).find(d=>d.url?.endsWith('/garage/'))?.url;
  $('parts').innerHTML=plan.items.map(it=>{
   const on=includedUpgrade(it),url=upgradeAsset(it.img),fallback=upgradeAsset(it.icon);
   return '<article class="upgrade-card'+(on?' is-included':'')+'" data-phase="'+it.phase+'" data-upgrade-id="'+it.id+'"><div class="upgrade-art"><span class="upgrade-phase">'+phaseNames[it.phase]+'</span>'+
    (url||fallback?'<img data-upgrade-img src="'+esc(url||fallback)+'" data-fallback="'+esc(url!==fallback?fallback:'')+'" alt="'+esc(it.label+' · '+translatedTier(it.tier))+'" width="256" height="128" loading="lazy" decoding="async" referrerpolicy="no-referrer">':'')+
-   '<span class="upgrade-image-missing" '+(url||fallback?'hidden':'')+'>Immagine non disponibile</span></div><div class="upgrade-content"><div class="upgrade-meta"><span>'+(it.optional?'Facoltativo':'Priorità')+'</span><span>'+Number(it.price).toLocaleString('it-IT')+' CR</span></div><h3>'+esc(it.label)+'</h3><p class="upgrade-tier">'+esc(translatedTier(it.tier))+'</p><details class="upgrade-details"><summary>Perché questo pezzo <span aria-hidden="true">+</span></summary><p>'+esc(it.why)+'</p>'+(source?'<a href="'+esc(source)+'" target="_blank" rel="noopener noreferrer">Vedi il catalogo dell’auto ↗</a>':'')+'</details><label class="upgrade-toggle"><input type="checkbox" data-include="'+esc(it.slot)+'" aria-label="Includi '+esc(it.label)+' nel piano" '+(on?'checked':'')+'><span>'+(on?'Nel tuo piano':'Aggiungi al piano')+'</span></label></div></article>';
+   '<span class="upgrade-image-missing" '+(url||fallback?'hidden':'')+'>Immagine non disponibile</span></div><div class="upgrade-content"><div class="upgrade-meta"><span>'+(it.optional?'Facoltativo':'Priorità')+'</span><span>'+Number(it.price).toLocaleString('it-IT')+' CR</span></div><h3>'+esc(it.label)+'</h3><p class="upgrade-tier">'+esc(translatedTier(it.tier))+'</p><details class="upgrade-details"><summary>Perché questo pezzo <span aria-hidden="true">+</span></summary><p>'+esc(it.why)+'</p>'+'</details><label class="upgrade-toggle"><input type="checkbox" data-include="'+esc(it.slot)+'" aria-label="Includi '+esc(it.label)+' nel piano" '+(on?'checked':'')+'><span>'+(on?'Nel tuo piano':'Aggiungi al piano')+'</span></label></div></article>';
  }).join('');
  document.querySelectorAll('#parts img[data-upgrade-img]').forEach(img=>{
   img.addEventListener('error',()=>{if(img.dataset.fallback){const src=img.dataset.fallback;delete img.dataset.fallback;img.src=src}else{img.hidden=true;img.nextElementSibling.hidden=false}});
