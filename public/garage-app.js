@@ -9,7 +9,7 @@ if(['track','dirt','drift'].includes(params.get('mode')))mode=params.get('mode')
 if(['stable','balanced','sharp'].includes(params.get('style')))style=params.get('style');
 $('style').value=style;
 if(/^\d{3}$/.test(params.get('pi')||''))$('target').value=params.get('pi');
-if(params.get('type')==='current')$('pi-type').value='current';
+if(params.get('type')==='target')$('pi-type').value='target';
 if(params.get('units')==='imperial')$('units').value='imperial';
 function notify(text){$('toast').textContent=text;$('toast').hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').hidden=true,2600)}
 const brandLogos={"Abarth":"ABA.webp","Acura":"ACU.webp","Alfa Romeo":"ALF.webp","Alumicraft":"AC.webp","AMG Transport Dynamics":"AMG.webp","Apollo":"APO.webp","Ariel":"ARI.webp","Aston Martin":"AST.webp","Audi":"AUD.webp","Austin-Healey":"AH.webp","Autozam":"AZM.webp","BAC":"BAC.webp","Bentley":"BEN.webp","BMW":"BMW.webp","Buick":"BUI.webp","Cadillac":"CAD.webp","Can-Am":"CAN.webp","Casey Currie Motorsports":"CCM.webp","Chevrolet":"CHE.webp","Datsun":"DAT.webp","DeBerti":"DEB.webp","DeLorean":"DEL.webp","Dodge":"DOD.webp","Ferrari":"FER.webp","Ford":"FOR.webp","Formula Drift":"FD.webp","Funco Motorsports":"FUN.webp","GMC":"GMC.webp","Gordon Murray Automotive":"GMA.webp","GR":"GR.webp","Hennessey":"HEN.webp","Holden":"HOL.webp","Honda":"HON.webp","HSV":"HSV.webp","Hyundai":"HYU.webp","Jaguar":"JAG.webp","Jeep":"JEE.webp","Jimco":"JIM.webp","Koenigsegg":"KOE.webp","KTM":"KTM.webp","Lamborghini":"LAM.webp","Lancia":"LAN.webp","Land Rover":"LR.webp","Lexus":"LEX.webp","Lincoln":"LIN.webp","Lotus":"LOT.webp","Lucid":"LUC.webp","Maserati":"MAS.webp","Mazda":"MAZ.webp","McLaren":"MCL.webp","Mercedes-AMG":"MA.webp","Mercedes-Benz":"MER.webp","Meyers":"MEY.webp","MG":"MG.webp","MINI":"MIN.webp","Mitsubishi":"MIT.webp","Nissan":"NIS.webp","Noble":"NOB.webp","Opel":"OPE.webp","Pagani":"PAG.webp","Peel":"PEE.webp","Penhall":"PEN.webp","Peugeot":"PEU.webp","Plymouth":"PLY.webp","Polaris":"POL.webp","Pontiac":"PON.webp","Porsche":"POR.webp","Radical":"RAD.webp","Ram":"RAM.webp","Reliant":"REL.webp","Renault":"REN.webp","Rimac":"RIM.webp","RIVIAN":"RIV.webp","RJ Anderson":"RJ.webp","Saleen":"SAL.webp","Schuppan":null,"Shelby":"SHE.webp","SIERRA Cars":"SIE.webp","SRT":"SRT.webp","Subaru":"SUB.webp","Toyota":"TOY.webp","TVR":"TVR.webp","Ultima":"ULT.webp","Volkswagen":"VW.webp","Volvo":"VOL.webp","Wuling":"WUL.webp","Zenvo":"ZEN.webp"};
@@ -36,7 +36,7 @@ $('gallery').querySelectorAll('img').forEach(img=>img.addEventListener('error',(
 function showCatalog(){
 requestId++;modelId++;clearTimeout(retryTimer);selected=null;record=null;$('car-model').removeAttribute('src');$('detail').hidden=true;$('catalog').hidden=false;history.replaceState(null,'',location.pathname);brands();gallery();window.scrollTo({top:0,behavior:'instant'});
 }
-function syncURL(){if(!selected)return;const q=new URLSearchParams({car:selected.s,pi:$('target').value,mode,drive:driveChoice||'',style,type:$('pi-type').value,units:$('units').value,...($('mounted-front').value?{front:$('mounted-front').value}:{}),...($('mounted-weight').value?{weight:$('mounted-weight').value}:{})});history.replaceState(null,'','?'+q.toString())}
+function syncURL(){if(!selected)return;const q=new URLSearchParams({car:selected.s,pi:$('target').value,mode,drive:driveChoice||'',style,type:$('pi-type').value,units:$('units').value,...($('mounted-front').value?{front:$('mounted-front').value}:{}),...($('mounted-weight').value?{weight:$('mounted-weight').value}:{}),...($('mounted-power').value?{power:$('mounted-power').value}:{})});history.replaceState(null,'','?'+q.toString())}
 function setView(on){
 view3d=!!on&&modelReady;$('car-model').hidden=!view3d;$('hero-image').hidden=view3d;$('toggle-view').textContent=view3d?'Mostra foto':'Mostra 3D';$('view-label').textContent=view3d?'MODELLO 3D / TRASCINA PER RUOTARE':'ANTEPRIMA AUTO';
 }
@@ -75,7 +75,15 @@ record=d;driveChoice=driveChoice||record.spec?.drivetrain||'RWD';$('drive').valu
 }catch(e){if(id!==requestId)return;$('data-state').hidden=true;$('data-error').hidden=false;$('data-error').querySelector('span').textContent=e.name==='TimeoutError'?'Il catalogo sta impiegando troppo tempo. Riprova.':e.message;}
 }
 function selectCar(c){
-selected=c;brand=c.k;record=null;driveChoice=c.s===params.get('car')&&['FWD','RWD','AWD'].includes(params.get('drive'))?params.get('drive'):'';$('drive').disabled=true;$('drive').value=driveChoice||'RWD';$('mounted-front').value=c.s===params.get('car')?(params.get('front')||''):'';$('mounted-weight').value=c.s===params.get('car')?(params.get('weight')||''):'';modelReady=false;view3d=false;modelId++;clearTimeout(retryTimer);
+selected=c;brand=c.k;record=null;
+let saved={};try{saved=JSON.parse(localStorage.getItem('fh6-current-'+c.s)||'{}')}catch{}
+const linked=c.s===params.get('car'),pick=(key,fallback='')=>linked&&params.has(key)?params.get(key):(saved[key]??fallback);
+driveChoice=['FWD','RWD','AWD'].includes(pick('drive'))?pick('drive'):'';
+$('drive').disabled=true;$('drive').value=driveChoice||'RWD';
+$('pi-type').value=pick('type','current');$('target').value=pick('pi',c.p);
+$('mounted-front').value=pick('front');$('mounted-weight').value=pick('weight');$('mounted-power').value=pick('power');
+mode=pick('mode',mode);style=pick('style',style);$('style').value=style;
+modelReady=false;view3d=false;modelId++;clearTimeout(retryTimer);
 $('car-model').removeAttribute('src');$('car-model').hidden=true;$('hero-image').hidden=false;$('hero-image').src=c.h;$('hero-image').alt=c.k+' '+c.m;
 $('toggle-view').hidden=true;$('view-label').textContent='ANTEPRIMA AUTO';$('model-note').textContent='Controllo del modello 3D…';
 $('catalog').hidden=true;$('detail').hidden=false;$('car-brand').textContent=c.k+' / GARAGE';$('car-name').textContent=c.m;$('car-year').textContent=c.y+' · '+c.c+' '+c.p+' PI di serie';
@@ -85,21 +93,34 @@ function syncModes(){document.querySelectorAll('#mode button').forEach(b=>b.setA
 function translatedTier(s){return String(s||'').replaceAll('Chassis Reinforcement / Roll Cage','rinforzo telaio / roll-bar').replaceAll('Front Anti-roll Bars','barre anteriori').replaceAll('Rear Anti-roll Bars','barre posteriori').replaceAll('Pistons / Compression','pistoni / compressione').replaceAll('Cams and Valves','albero a camme e valvole').replaceAll('Spring and Dampers','molle e ammortizzatori').replaceAll('Tire Compound','mescola gomme').replaceAll('Weight Reduction','riduzione peso').replaceAll('Front Bumper','paraurti anteriore').replaceAll('Rear Wing','alettone posteriore').replaceAll('Oil / Cooling','raffreddamento').replaceAll('Fuel System','alimentazione').replaceAll('Engine Block','blocco motore').replaceAll('Ignition','accensione').replaceAll('Intake','aspirazione').replaceAll('Exhaust','scarico').replaceAll('Valves','valvole').replaceAll('Flywheel','volano').replaceAll('Brakes','freni').replaceAll('Clutch','frizione').replaceAll('Driveline','albero trasmissione').replaceAll('Transmission','cambio').replaceAll('Differential','differenziale').replaceAll('Diff','differenziale').replaceAll('Stock','Serie').replaceAll('Street','Stradale').replaceAll('Race','Gara')}
 const modeLabels={track:'Pista',dirt:'Sterrato',drift:'Drift'},styleLabels={stable:'Stabile',balanced:'Bilanciata',sharp:'Reattiva'};
 const requirements={tires:'Pressioni gomme',gearing:'Cambio regolabile; le singole marce restano ai valori di serie',alignment:'Sospensioni regolabili',bars:'Barre antirollio regolabili',springs:'Sospensioni regolabili adatte al fondo',damping:'Sospensioni regolabili adatte al fondo',aero:'Elementi aerodinamici regolabili',brake:'Freni regolabili',diff:'Differenziale regolabile per la trazione selezionata'};
+function rememberConfig(){
+ if(!selected)return;
+ try{localStorage.setItem('fh6-current-'+selected.s,JSON.stringify({type:$('pi-type').value,pi:$('target').value,power:$('mounted-power').value,weight:$('mounted-weight').value,front:$('mounted-front').value,drive:driveChoice,mode,style}))}catch{}
+}
 function renderSheet(){
-syncModes();syncURL();if(!record)return;
-const target=Number($('target').value);
-if(!Number.isInteger(target)||target<100||target>999){$('pi-warning').textContent='Inserisci un PI intero tra 100 e 999.';$('parts').replaceChildren();$('tunings').replaceChildren();$('copy').disabled=true;return}
+syncModes();syncURL();rememberConfig();
+const current=$('pi-type').value==='current';
+$('pp-label').textContent=current?'Punti prestazione attuali · PP / PI':'Obiettivo · PP / PI';
+$('mounted-data').hidden=!current;
+const target=Number($('target').value),frontValue=Number($('mounted-front').value),weightValue=Number($('mounted-weight').value),powerValue=Number($('mounted-power').value);
+$('rear-weight').textContent=frontValue>=10&&frontValue<=90?'Posteriore: '+Number((100-frontValue).toFixed(1)).toLocaleString('it-IT')+'%':'Posteriore: —';
+if(!record)return;
+rows=[];plan=null;$('tunings').replaceChildren();$('parts').replaceChildren();$('copy').disabled=true;$('parts-cost').textContent='';$('parts-source').textContent='';$('pi-warning').textContent='';$('baseline').textContent='';$('sheet-summary').textContent='';$('limits-status').textContent='In attesa dei dati';
+let error='';
+if(!Number.isInteger(target)||target<100||target>999)error='Inserisci PP / PI interi tra 100 e 999.';
+else if(current&&(!powerValue||!weightValue||!frontValue))error='Inserisci potenza attuale, peso totale e distribuzione anteriore per calcolare la messa a punto della tua configurazione.';
+else if(current&&(!Number.isFinite(powerValue)||powerValue<1||powerValue>5000||!Number.isFinite(frontValue)||frontValue<10||frontValue>90||!Number.isFinite(weightValue)||weightValue<200||weightValue>10000))error='Controlla i dati: potenza 1–5.000 CV, peso 200–10.000 kg e distribuzione anteriore 10–90%.';
+if(error){$('config-note').textContent=error;return}
 $('copy').disabled=false;
-const frontValue=Number($('mounted-front').value),weightValue=Number($('mounted-weight').value);
-if(($('mounted-front').value&&(!Number.isFinite(frontValue)||frontValue<10||frontValue>90))||($('mounted-weight').value&&(!Number.isFinite(weightValue)||weightValue<200||weightValue>10000))){$('config-note').textContent='Inserisci una distribuzione anteriore tra 10 e 90% e un peso tra 200 e 10.000 kg.';$('tunings').replaceChildren();rows=[];$('copy').disabled=true;return;}
-$('config-note').textContent=driveChoice!==record.spec?.drivetrain?'Conversione '+driveChoice+': conferma peso e distribuzione dopo le modifiche. I limiti di catalogo possono cambiare; controllali nel gioco.':'Usa componenti regolabili per sbloccare i rispettivi cursori nel gioco.';
-rows=C.tune(record,mode,$('units').value==='metric',{drive:driveChoice,style,frontPercent:frontValue||undefined,weight:weightValue||undefined});plan=C.upgradePlan(record,mode,target,$('pi-type').value==='current');
+$('config-note').textContent=(current?'Mantieni i componenti montati. ':'')+(driveChoice!==record.spec?.drivetrain?'Conversione '+driveChoice+': i limiti di catalogo possono cambiare; controllali nel gioco.':'Usa componenti regolabili per sbloccare i rispettivi cursori nel gioco.');
+rows=C.tune(record,mode,$('units').value==='metric',{drive:driveChoice,style,frontPercent:current?frontValue:undefined,weight:current?weightValue:undefined,powerCV:current?powerValue:undefined});
+plan=C.upgradePlan(record,mode,target,current);
 if(driveChoice!==record.spec?.drivetrain){plan.items=plan.items.filter(it=>it.slot!=='Drivetrain');plan.reason+=' La trazione '+driveChoice+' è quella selezionata: il preset non verifica la conversione né il suo PI.';}
-$('parts-source').textContent=plan.preset?'Preset catalogato: '+plan.preset:'Selezione dalla disponibilità reale di questa auto';
+$('parts-source').textContent=current?'Configurazione attuale · nessun componente da sostituire':plan.preset?'Preset catalogato: '+plan.preset:'Selezione dalla disponibilità reale di questa auto';
 $('parts-cost').textContent=plan.cost?'Costo indicativo: ≈ '+Number(plan.cost).toLocaleString('it-IT')+' CR':'';
 $('pi-warning').textContent=plan.reason+(plan.unresolved?' '+plan.unresolved+' componenti del preset non sono risolti: la lista non è completa.':'');
 $('parts').innerHTML=plan.items.map(it=>'<div class="part"><small>'+esc(it.label)+'</small><strong>'+esc(translatedTier(it.tier))+'</strong><em>'+Number(it.price).toLocaleString('it-IT')+' CR'+'</em></div>').join('');
-$('baseline').textContent='Base da provare: '+modeLabels[mode]+' · '+driveChoice+' · '+styleLabels[style]+'. '+($('mounted-front').value||$('mounted-weight').value?'Calcolo con i dati montati che hai inserito.':'Calcolo con peso e distribuzione di serie.')+' Il PI da solo non determina i dati dopo gli upgrade.';
+$('baseline').textContent='Base consigliata: '+modeLabels[mode]+' · '+driveChoice+' · '+styleLabels[style]+'. '+(current?target+' PP / PI · '+powerValue+' CV · '+weightValue+' kg · '+frontValue+'% ant. / '+Number((100-frontValue).toFixed(1))+'% post. Rapporto peso/potenza: '+(weightValue/powerValue).toFixed(2)+' kg/CV. Mantieni la tua configurazione.':'Calcolo con i dati di serie; il PI obiettivo non determina potenza o peso dopo gli upgrade.')+' Valori iniziali da affinare in prova: pneumatici, componenti montati e limiti effettivi possono cambiare il risultato.';
 $('tune-context').textContent=modeLabels[mode]+' / '+driveChoice+' / '+styleLabels[style];
 $('limits-status').textContent=rows.length+' cursori · '+driveChoice;
 $('tunings').innerHTML=Object.entries(C.sectionNames).map(([key,label],idx)=>{
@@ -115,7 +136,7 @@ $('more').onclick=()=>{limit+=60;gallery()};
 $('back').onclick=showCatalog;$('home').onclick=e=>{e.preventDefault();brand='';showCatalog()};
 $('retry').onclick=()=>{if(selected)loadRecord(selected)};
 $('mode').onclick=e=>{const b=e.target.closest('[data-mode]');if(b){mode=b.dataset.mode;renderSheet()}};
-$('drive').onchange=()=>{driveChoice=$('drive').value;renderSheet()};$('style').onchange=()=>{style=$('style').value;renderSheet()};$('mounted-front').oninput=renderSheet;$('mounted-weight').oninput=renderSheet;
+$('drive').onchange=()=>{driveChoice=$('drive').value;renderSheet()};$('style').onchange=()=>{style=$('style').value;renderSheet()};$('mounted-power').oninput=renderSheet;$('mounted-front').oninput=renderSheet;$('mounted-weight').oninput=renderSheet;
 $('target').oninput=renderSheet;$('pi-type').onchange=renderSheet;$('units').onchange=renderSheet;
 async function copyText(text){try{await navigator.clipboard.writeText(text);notify('Copiato negli appunti')}catch{const a=document.createElement('textarea');a.value=text;document.body.append(a);a.select();const ok=document.execCommand('copy');a.remove();notify(ok?'Copiato negli appunti':'Copia non disponibile in questo browser')}}
 $('share').onclick=()=>{syncURL();copyText(location.href)};

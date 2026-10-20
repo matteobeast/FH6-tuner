@@ -18,6 +18,8 @@ const style=options.style||'balanced',bias=style==='stable'?.06:style==='sharp'?
 const fp=Number(options.frontPercent||record.spec?.fp||50),front=clamp(fp/100,.1,.9);
 const stockWeight=Number(record.spec?.w)*(/^lb/.test(record.spec?.wu||'')?.45359237:1);
 const weightFactor=options.weight&&stockWeight>0?clamp(options.weight/stockWeight,.5,2):1;
+const powerRatio=Number(options.powerCV)>0&&Number(options.weight)>0?options.powerCV/options.weight:null;
+const powerLoad=powerRatio===null?0:clamp((powerRatio-.25)*40,-6,12);
 const fields=(record.fields||[]).filter(f=>!/^(front|rear)_(accel|decel)$|^center_(balance|diff)$/.test(f.a?.key||''));
 const diffSource=(record.fields||[]).filter(f=>/^(front|rear)_(accel|decel)$|^center_(balance|diff)$/.test(f.a?.key||''));
 const keys=drive==='AWD'?['front_accel','front_decel','rear_accel','rear_decel','center_balance']:drive==='FWD'?['front_accel','front_decel']:['rear_accel','rear_decel'];
@@ -34,7 +36,7 @@ return fields.map(f=>{
  const mix=x=>min+clamp(x,0,1)*(max-min),frontAx=key.startsWith('front_');
  const axle=frontAx?front:1-front,sign=frontAx?1:-1;
  const traction=(drive==='FWD'?-.07:drive==='RWD'?.035:0)*sign;
- if(/tire_pressure/.test(key)){raw=f.u==='psi'?(dirt?26:dr?(frontAx?27.6:34.8):29)+(drive==='RWD'&&!frontAx?-.5:0):raw;kind='suggested';}
+ if(/tire_pressure/.test(key)){raw=f.u==='psi'?(dirt?26:dr?(frontAx?27.6:34.8):29)+(powerRatio!==null&&!frontAx&&!dirt&&!dr?powerLoad*.04:0)+(drive==='RWD'&&!frontAx?-.5:0):raw;kind='suggested';}
  else if(/camber/.test(key)){raw=dirt?(frontAx?-.8:-.5):dr?(frontAx?-5:-1):(frontAx?-1.5:-.8);kind='suggested';}
  else if(/toe/.test(key)){raw=dr?(frontAx?-.5:.1):frontAx?0:(style==='stable'?.15:style==='sharp'?0:.1);kind='suggested';}
  else if(key==='caster'){raw=dr?7:dirt?5.5:6;kind='suggested';}
@@ -43,7 +45,7 @@ return fields.map(f=>{
  else if(/ride_height/.test(key)){raw=mix(dirt?(frontAx?.78:.82):dr?(frontAx?0:.08):(frontAx?.03:.06));kind='suggested';}
  else if(/rebound|bump/.test(key)){raw=mix((dr?(frontAx?.55:.35):dirt?axle*.65:axle)*(/bump/.test(key)?(dirt?.45:.6):1)+bias*sign*.25);kind='suggested';}
  else if(/downforce/.test(key)){raw=mix(dr?0:dirt?(frontAx?.4:.55):(frontAx?.55:.65));kind='suggested';}
- else if(key==='final_drive'){raw=mix(dr?.72:dirt?.62:.5);kind='suggested';}
+ else if(key==='final_drive'){raw=mix(dr?.72:dirt?.62:(.5-powerLoad*.006));kind='suggested';}
  else if(key==='brake_balance'){raw=dr?clamp(fp-8,38,52):clamp(fp+(dirt?5:3),47,62);kind='suggested';}
  else if(key==='brake_pressure'){raw=dirt?95:100;kind='suggested';}
  else if(/accel|decel|center/.test(key)){
@@ -51,6 +53,7 @@ return fields.map(f=>{
   if(/center/.test(key))percent=(dr?85:dirt?60:68)+(style==='stable'?-5:style==='sharp'?5:0);
   else if(/decel/.test(key))percent=(dr?(frontAx?10:75):dirt?(frontAx?8:15):(frontAx?6:18))+(style==='stable'?5:style==='sharp'?-3:0);
   else percent=dr?(drive==='FWD'?50:frontAx?15:95):dirt?(frontAx?30:50):(frontAx?22:65);
+  if(/accel/.test(key)&&!dr)percent+=powerLoad*(frontAx?.35:.7);
   raw=max<=1?percent/100:percent;kind='suggested';
  }
  if(raw===null)return null;raw=clamp(raw,min,max);
@@ -63,7 +66,7 @@ return fields.map(f=>{
 function upgradePlan(record,mode,target,currentOnly){
 const build=record.build;if(!build?.areas)return {items:[],reason:'I componenti di questa auto non sono ancora disponibili nel database.',exactPI:false};
 const slots=build.areas.flatMap(a=>a.slots||[]), stockPI=Number(record.spec?.pi);
-if(currentOnly)return {items:[],reason:'Hai indicato il PI attuale: nessuna modifica ai componenti proposta.',exactPI:false};
+if(currentOnly)return {items:[],reason:'Mantieni la configurazione attuale: nessuna modifica ai componenti proposta.',exactPI:false};
 if(stockPI>0&&target<=stockPI)return {items:[],reason:target<stockPI?'Il PI richiesto è inferiore a quello di serie. Non è disponibile un calcolo verificato delle modifiche necessarie.':'Obiettivo uguale al PI di serie: mantieni i componenti originali.',exactPI:target===stockPI};
 const preset=(build.presets||[]).find(p=>new RegExp(mode==='drift'?'drift':mode==='dirt'?'rally|dirt|off.?road':'track|race|circuit','i').test(p.title||''));
 let items=[],unresolved=0;
