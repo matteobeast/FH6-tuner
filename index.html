@@ -1,114 +1,19 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>FH6 Tuner</title>
-<meta name="theme-color" content="#0b0c10">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" href="icon-192.png">
-<link rel="icon" href="icon-192.png" type="image/png">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,500;0,600;0,700;1,700&family=Barlow:wght@400;500;600;700&display=swap">
-<style>
-:root{--bg:#eef0f4;--sf:#fff;--ln:#d9dde5;--tx:#12141a;--mu:#5c6472;--fr:#0a8fc0;--rr:#d6275f;--ac:#e08a00;--on:#12141a;
---d:"Chakra Petch",ui-monospace,"Segoe UI",sans-serif;--b:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;
-box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b0c10;--sf:#14161c;--ln:#262932;--tx:#eef0f5;--mu:#8f96a6;--fr:#38d0ff;--rr:#ff5d8f;--ac:#ffb020;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#0b0c10;--sf:#14161c;--ln:#262932;--tx:#eef0f5;--mu:#8f96a6;--fr:#38d0ff;--rr:#ff5d8f;--ac:#ffb020;color-scheme:dark}
-body.drift{--ac:#b36bff}
-*,*::before,*::after{box-sizing:border-box}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
-body{margin:0;color:var(--tx);font:400 16px/1.5 var(--b);background:radial-gradient(90% 38% at 50% 0,color-mix(in srgb,var(--ac) 18%,transparent),transparent 70%),var(--bg);background-attachment:fixed;min-height:100vh}
-.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
-.top{position:relative;padding:14px 0}
-.top::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:linear-gradient(90deg,transparent,var(--ac) 30%,var(--rr) 70%,transparent);box-shadow:0 0 18px var(--ac)}
-.bar{display:flex;align-items:center;justify-content:space-between;gap:12px}
-.brand{display:flex;align-items:baseline;gap:10px;font-family:var(--d)}
-.brand b{font-size:32px;font-weight:700;font-style:italic;line-height:1;background:linear-gradient(90deg,var(--ac),var(--rr));-webkit-background-clip:text;background-clip:text;color:transparent}
-.brand span{font-size:13px;letter-spacing:.35em;color:var(--mu);font-weight:600}
-.seg{display:flex;gap:6px}
-.seg button{flex:1;padding:10px 8px;font:600 15px var(--b);color:var(--tx);background:transparent;border:1px solid var(--ln);border-radius:10px;cursor:pointer}
-.seg button[aria-pressed="true"]{background:var(--ac);color:var(--on);border-color:var(--ac);font-weight:700}
-.mode{min-width:150px}.mode button{font:700 15px var(--d);letter-spacing:.08em;text-transform:uppercase}
-.app{display:grid;gap:14px;padding:18px 0 40px;grid-template-columns:minmax(0,1fr);grid-template-areas:"in" "tabs" "out" "act" "foot"}
-.pin{grid-area:in}.tabs{grid-area:tabs}.pout{grid-area:out}.act{grid-area:act}.foot{grid-area:foot}
-.card{background:var(--sf);border:1px solid var(--ln);border-radius:16px;padding:16px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-label.f{display:block;font-size:11.5px;color:var(--mu);letter-spacing:.06em;text-transform:uppercase}
-label.f input{display:block;width:100%;margin-top:4px;padding:8px 10px;font:700 24px var(--d);color:var(--tx);background:var(--bg);border:1px solid var(--ln);border-radius:10px;font-variant-numeric:tabular-nums;text-transform:none;letter-spacing:0}
-label.f input:focus{border-color:var(--ac);box-shadow:0 0 0 3px color-mix(in srgb,var(--ac) 25%,transparent);outline:0}
-label.f.s input{font-size:18px;padding:6px 10px}
-button:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
-.q{margin:14px 0 6px;font-size:11.5px;color:var(--mu);letter-spacing:.06em;text-transform:uppercase}
-.split{display:flex;height:22px;border-radius:99px;overflow:hidden;margin-top:16px;font:700 12px/22px var(--d);color:#0b0c10}
-.split div{white-space:nowrap;transition:width .25s}.split .f{background:var(--fr);padding-left:10px}.split .r{background:var(--rr);flex:1;text-align:right;padding-right:10px}
-.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
-.tabs button{display:flex;flex-direction:column;align-items:flex-start;gap:2px;min-width:0;padding:8px 10px;font:600 clamp(11.5px,3.3vw,14px)/1.15 var(--d);color:var(--tx);background:var(--sf);border:1px solid var(--ln);border-radius:12px;cursor:pointer;text-align:left}
-.tabs button i{font-style:normal;font-size:11px;color:var(--mu);letter-spacing:.1em}
-.tabs button[aria-selected="true"]{border-color:var(--ac);box-shadow:inset 0 0 0 1px var(--ac);background:color-mix(in srgb,var(--ac) 12%,var(--sf))}
-.tabs button[aria-selected="true"] i{color:var(--ac)}
-.pout h2{font:700 24px/1 var(--d);margin:0 0 14px}
-.it{padding:14px 0;border-top:1px solid var(--ln)}.it:first-child{border:0;padding-top:0}
-.it .n{font:700 17px/1.2 var(--d)}
-.it small{display:block;color:var(--mu);font-size:13px}
-.ln{display:grid;grid-template-columns:40px 1fr 96px;align-items:center;gap:12px;margin-top:10px}
-.k{font:600 12px var(--d);letter-spacing:.06em;text-transform:uppercase;color:var(--mu)}.k.a{color:var(--fr)}.k.p{color:var(--rr)}
-.tr{--c:var(--ac);height:8px;border-radius:4px;background:var(--bg);border:1px solid var(--ln);position:relative}
-.tr::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 calc(10% - 1px),var(--ln) calc(10% - 1px) 10%)}
-.k.a~.tr{--c:var(--fr)}.k.p~.tr{--c:var(--rr)}
-.tr i{position:absolute;left:0;top:0;bottom:0;border-radius:4px;background:linear-gradient(90deg,transparent,var(--c))}
-.tr i::after{content:"";position:absolute;right:-7px;top:50%;width:14px;height:14px;margin-top:-7px;border-radius:50%;background:var(--c);box-shadow:0 0 0 3px var(--sf),0 0 14px var(--c)}
-.ln b{font:700 26px/1 var(--d);text-align:right;font-variant-numeric:tabular-nums}
-.rg{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px;margin-bottom:14px;border:1px dashed var(--ln);border-radius:12px}
-.rg p{grid-column:1/-1;margin:0;font-size:13px;color:var(--mu)}
-.tip{margin:12px 0 0;font-size:14px;color:var(--mu)}
-.empty{text-align:center;color:var(--mu);padding:18px 0}
-.act{display:flex;gap:8px}
-.act button{flex:1;padding:13px;font:700 15px var(--b);border-radius:12px;cursor:pointer;border:1px solid var(--ac);background:linear-gradient(90deg,var(--ac),var(--rr));color:var(--on)}
-.act button.s{background:transparent;color:var(--tx);border-color:var(--ln)}
-.foot{font-size:12.5px;color:var(--mu);margin:0}
-@media (min-width:1000px){
-.app{grid-template-columns:300px 200px minmax(0,1fr);align-items:start;grid-template-areas:"in tabs out" "in tabs act" "foot foot foot"}
-.pin,.tabs{position:sticky;top:14px}
-.tabs{grid-template-columns:1fr}
-.tabs button{flex-direction:row;align-items:center;gap:10px;padding:12px;font-size:15px}
-.tabs button i{width:20px}
-}
-.lk{display:inline-block;margin-top:6px;font-size:12.5px;color:var(--ac);text-decoration:none}
-@media (prefers-reduced-motion:reduce){*{transition:none!important}}
-</style>
-</head>
-<body>
-<header class="top"><div class="wrap bar"><div class="brand"><b>FH6</b><span>TUNER</span></div>
-<div class="seg mode" data-k="mode" aria-label="Modalità"><button data-v="grip">Grip</button><button data-v="drift">Drift</button></div></div></header>
-<div class="wrap app">
-<section class="card pin" aria-label="Dati della macchina">
-  <div style="margin-bottom:10px"><label class="f">Auto<input id="cn" list="gl" type="text" placeholder="Cerca l’auto, es. GR86" autocomplete="off" style="font-size:18px"></label><datalist id="gl"></datalist><a class="lk" href="https://forzagarage.com/cars/" target="_blank" rel="noopener">Apri su forzagarage ↗</a><p class="tip" id="cs" style="margin:6px 0 0"></p></div>
-  <div class="grid">
-    <label class="f">Punti prestazione<input id="pi" type="number" inputmode="numeric" placeholder="800"></label>
-    <label class="f">Cavalli<input id="hp" type="number" inputmode="numeric" placeholder="650"></label>
-    <label class="f">Peso (kg)<input id="w" type="number" inputmode="numeric" placeholder="1450"></label>
-    <label class="f">Peso ant. (%)<input id="fp" type="number" inputmode="decimal" placeholder="52"></label>
-  </div>
-  <div class="q">Trazione</div>
-  <div class="seg" data-k="drv"><button data-v="RWD">Posteriore</button><button data-v="FWD">Anteriore</button><button data-v="AWD">Integrale</button></div>
-  <div class="q">Fondo</div>
-  <div class="seg" data-k="surf"><button data-v="road">Asfalto</button><button data-v="dirt">Sterrato</button></div>
-  <div class="q">Stile di guida</div>
-  <div class="seg" data-k="style"><button data-v="stable">Stabile</button><button data-v="balanced">Bilanciata</button><button data-v="sharp">Reattiva</button></div>
-  <div class="q">Unità del gioco</div>
-  <div class="seg" data-k="unit"><button data-v="metric">Metriche</button><button data-v="imp">Imperiali</button></div>
-  <div class="split" aria-hidden="true"><div class="f" id="sf">52%</div><div class="r" id="sr">48%</div></div>
-</section>
-<nav class="tabs" id="tabs" role="tablist" aria-label="Sezioni della messa a punto"></nav>
-<section class="card pout"><h2 id="ttl"></h2><div id="rg"></div><div id="res"></div></section>
-<div class="act"><button id="cp">Copia tutto l’assetto</button><button class="s" id="rs">Azzera</button></div>
-<p class="foot">Le sezioni sono quelle del menu di messa a punto di Forza Horizon 6. Il gioco non pubblica formule ufficiali: molle, barre, ammortizzatori, altezza, deportanza e rapporto finale usano il metodo della community (percentuale di peso × (massimo − minimo) + minimo). Il resto sono valori di partenza da affinare in pista. In drift fondo e stile vengono ignorati.</p>
-</div>
-<script>
-(function(){
+<!doctype html>
+<html lang="it" data-theme="dark"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>FH6 Tuner — Il tuo assetto, una curva alla volta</title><meta name="theme-color" content="#101012"><meta name="description" content="Configura, confronta e affina il tuo assetto per Forza Horizon 6."><link rel="manifest" href="manifest.json"><link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png"><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet"><style>:root{color-scheme:dark;--bg:#101012;--sf:#19191c;--in:#121214;--ln:#303035;--tx:#f3f1ed;--mu:#aaa9b0;--ac:#ff653c;--on:#111;--fr:#9bdacb;--rr:#c6b2fc;--b:'Barlow',system-ui,sans-serif;--d:'Barlow Condensed',Impact,sans-serif}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 var(--b)}button,input,select,textarea{font:inherit}button,a,input,select,summary{touch-action:manipulation}button{cursor:pointer;color:var(--tx);background:transparent;border:1px solid var(--ln);padding:9px 14px;min-height:42px;border-radius:5px}button:disabled{opacity:.45;cursor:not-allowed}button:hover{border-color:var(--mu)}a{color:var(--ac);text-underline-offset:4px}input,select,textarea{color:var(--tx);background:var(--in);border:1px solid var(--ln);min-width:0;border-radius:5px}button:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid var(--ac);outline-offset:4px}input:focus,textarea:focus{outline:2px solid var(--ac);outline-offset:1px}button.primary{background:var(--ac);color:var(--on);border-color:var(--ac);font-weight:700}body.drift{--ac:#bf9cff}[hidden]{display:none!important}.wrap{max-width:1440px;margin:auto;padding:0 32px}.top{border-bottom:1px solid var(--ln)}.bar{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:78px}.brand{text-decoration:none;color:var(--tx);font:800 28px var(--d);letter-spacing:.04em;white-space:nowrap}.brand span{color:var(--ac)}.brand small{font:500 10px var(--b);letter-spacing:.17em;display:block;color:var(--mu)}.topnav{display:flex;gap:24px}.topnav a{font-size:12px;letter-spacing:.08em;color:var(--mu);text-decoration:none}.topnav a:first-child{color:var(--tx)}.catalog{font-size:12px;color:var(--mu)}.catalog::before{content:'●';color:var(--ac);padding-right:8px}.seg{display:flex;gap:4px}.seg button{flex:1;font-size:13px;font-weight:600;padding:9px 8px;white-space:nowrap}.seg button[aria-pressed=true]{color:var(--on);background:var(--ac);border-color:var(--ac)}.mode{width:164px}.mode button{font:700 16px var(--d);letter-spacing:.08em}.crumb{font-size:11px;letter-spacing:.08em;color:var(--mu);padding:22px 0}.crumb span{color:var(--tx)}.herohead{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:24px}.eyebrow{font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ac)}h1{font:700 clamp(36px,4.5vw,64px)/1.05 var(--d);margin:9px 0 8px;max-width:980px;overflow-wrap:anywhere}.subhead{margin:0;color:var(--mu);font-size:14px}.garagebadge{font-size:10px;letter-spacing:.08em;padding:7px 10px;border:1px solid var(--ln);white-space:nowrap;color:var(--mu)}.stagegrid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:20px}.stage{min-height:300px;background:radial-gradient(ellipse at 50% 45%,#262629 0,#18181b 65%);border:1px solid var(--ln);border-radius:9px;overflow:hidden;position:relative;display:flex;flex-direction:column}.stagebar{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;gap:12px}.stagebar .seg{width:175px}.stagebar .seg button{font-size:12px;padding:5px 12px;min-height:34px}.stagebar .seg button[aria-pressed=true]{background:#ededeb;color:#141416;border-color:#ededeb}.stage-label{font-size:10px;letter-spacing:.12em;color:#bbb}.schematic{height:220px;width:100%;display:block}.carbody{fill:#34343a;stroke:#aaa9b4;stroke-width:1.5}.carwindow{fill:#17171d;stroke:#676774}.part{stroke:var(--ac);fill:none;stroke-width:3;opacity:.4}.stage[data-section='0'] .tires,.stage[data-section='2'] .tires,.stage[data-section='8'] .drive,.stage[data-section='3'] .suspension,.stage[data-section='4'] .suspension,.stage[data-section='5'] .suspension,.stage[data-section='6'] .aero,.stage[data-section='7'] .tires{opacity:1;stroke-width:5}.stagetext{fill:#c8c5cf;font:12px var(--b)}.stagefoot{padding:10px 20px 16px;display:flex;justify-content:space-between;gap:14px;color:#b8b7bd;font-size:12px;margin-top:auto}.stagefoot b{color:var(--ac);font-weight:500}.stage model-viewer{display:block;width:100%;height:240px}.model-empty{min-height:220px;display:grid;align-content:center;justify-items:center;padding:20px;text-align:center}.model-empty strong{font:600 26px var(--d)}.model-empty p{font-size:13px;color:var(--mu);max-width:350px}.model-note{font-size:12px;color:var(--mu);padding:0 20px 12px;margin:0}.specpanel{border:1px solid var(--ln);border-radius:9px;background:var(--sf);padding:20px}.sectionhead{display:flex;align-items:center;justify-content:space-between;gap:10px}.sectionhead h2{font:600 17px var(--d);letter-spacing:.06em;text-transform:uppercase;margin:0}.muted{color:var(--mu)}.specrow{display:flex;justify-content:space-between;align-items:baseline;padding:12px 0;border-bottom:1px solid var(--ln);font-size:13px}.specrow strong{font:600 24px var(--d);font-variant-numeric:tabular-nums}.specrow small{font:400 12px var(--b);color:var(--mu);padding-left:4px}.split{display:flex;height:6px;overflow:hidden;background:var(--ln);margin-top:18px}.split div{color:transparent;font-size:0}.split .f{background:var(--fr);width:52%}.split .r{background:var(--rr);flex:1}.splitlabels{display:flex;justify-content:space-between;color:var(--mu);font-size:11px;padding-top:6px}.spechint{font-size:12px;color:var(--mu);margin:16px 0 0}.workspace-title{display:flex;gap:18px;align-items:center;border-bottom:1px solid var(--ln);padding:27px 0 17px;margin-bottom:20px}.workspace-title h2{font:600 23px var(--d);margin:0}.workspace-title span{color:var(--mu);font-size:12px}.workspace-title .step{background:var(--ac);color:var(--on);font:700 14px var(--d);padding:4px 8px}.app{display:grid;grid-template-columns:286px 178px minmax(0,1fr);gap:18px;align-items:start}.card{background:var(--sf);border:1px solid var(--ln);border-radius:9px;padding:20px}.pin h2{font:600 20px var(--d);margin:0 0 15px}.pin .caption{color:var(--mu);font-size:12px;margin:-7px 0 16px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.f{display:block;color:var(--mu);font-size:11px;letter-spacing:.045em}.f input{display:block;width:100%;padding:9px 10px;margin-top:5px;font:600 24px var(--d);font-variant-numeric:tabular-nums;min-height:44px}.f.s input{font-size:18px}.searchinput{margin-bottom:14px}.searchinput input{font:500 15px var(--b);padding:12px;width:100%}.searchinput label{font-size:11px;color:var(--mu);display:block;margin-bottom:6px}.q{margin:20px 0 7px;font-size:11px;letter-spacing:.08em;color:var(--mu);text-transform:uppercase}.tip{font-size:13px;color:var(--mu);line-height:1.6;margin:14px 0 0}.lk{display:inline-block;color:var(--mu);font-size:11px;margin-top:8px}.tabs{display:flex;flex-direction:column;gap:5px}.tabs button{display:flex;align-items:center;gap:11px;text-align:left;border-color:transparent;border-radius:5px;padding:11px 10px;font:500 15px var(--b);min-width:0}.tabs button i{font-style:normal;color:var(--mu);font:500 11px var(--b)}.tabs button[aria-selected=true]{background:var(--sf);border-color:var(--ln);border-left:3px solid var(--ac);padding-left:8px;color:var(--ac)}.tabs button[aria-selected=true] i{color:var(--ac)}.results-stack{min-width:0}.pout{padding:24px}.outputhead{display:flex;justify-content:space-between;align-items:start;gap:12px;border-bottom:1px solid var(--ln);padding-bottom:18px;margin-bottom:20px}.pout h2{font:600 31px/1 var(--d);margin:7px 0}.outputhead .eyebrow{color:var(--mu);font-size:10px}.baseline{color:var(--mu);font-size:10px;padding:5px 7px;border:1px solid var(--ln);white-space:nowrap}.it{border-bottom:1px solid var(--ln);padding:18px 0}.it:first-child{padding-top:0}.it:last-of-type{border-bottom:0}.it .n{font:500 18px var(--b)}.it small{color:var(--mu);font-size:12px;display:block;margin-top:3px}.ln{display:grid;grid-template-columns:45px minmax(10px,1fr) minmax(80px,auto);align-items:center;gap:16px;margin-top:14px}.k{font-size:11px;color:var(--mu)}.k.a{color:var(--fr)}.k.p{color:var(--rr)}.ln b{font:600 36px/1 var(--d);text-align:right;font-variant-numeric:tabular-nums}.tr{height:4px;background:var(--ln);position:relative}.tr i{position:absolute;inset:0 auto 0 0;background:var(--ac);max-width:100%}.k.a~.tr i{background:var(--fr)}.k.p~.tr i{background:var(--rr)}.empty{padding:18px 0 22px;max-width:420px}.empty-number{font:500 36px var(--d);color:var(--ac)}.empty h3{font:600 28px var(--d);margin:9px 0}.empty p{font-size:14px;color:var(--mu)}.limits{margin-bottom:22px;border:1px solid var(--ln);border-radius:6px}.limits summary{cursor:pointer;padding:12px 14px;font-size:13px}.limits summary span{float:right;font-size:11px;color:var(--mu);margin-top:2px}.rg{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 14px 14px}.rg p{grid-column:1/-1;font-size:12px;color:var(--mu);margin:0 0 5px}.act{display:flex;gap:8px;margin-top:16px}.act button{flex:1;font-size:13px}.act #cp{background:var(--ac);color:var(--on);border-color:var(--ac);font-weight:700}.helper{padding:16px 18px;margin-top:16px;border-left:2px solid var(--ac);background:var(--sf);font-size:13px}.helper strong{display:block;font-weight:600;margin-bottom:6px}.helper p{margin:0;color:var(--mu)}.sessions{border-top:1px solid var(--ln);padding-top:28px;margin-top:30px}.sessions h2{font:600 26px var(--d);margin:0}.sessions .subhead{font-size:13px}.sessiontools{display:flex;gap:10px;margin:18px 0;flex-wrap:wrap}.sessiontools input{padding:10px 12px;flex:1;min-width:190px}.sessiontools button{font-size:13px}.snapshots{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}.snapshot{padding:18px;border:1px solid var(--ln);border-radius:8px;background:var(--sf)}.snapshot h3{font:600 22px var(--d);margin:0 0 6px;overflow-wrap:anywhere}.snapshot p{font-size:12px;color:var(--mu);margin:5px 0;overflow-wrap:anywhere}.snapshot button{font-size:12px;margin-top:12px}.snapshot .snapshot-actions{display:flex;gap:8px}.snapshot textarea{width:100%;margin-top:12px;padding:8px;font-size:13px;resize:vertical}.toast{font-size:13px;color:var(--ac);margin:8px 0;min-height:20px}.foot{border-top:1px solid var(--ln);margin:30px 0 0;padding:22px 0 30px;display:grid;grid-template-columns:150px 1fr;gap:30px;color:var(--mu);font-size:12px}.foot strong{color:var(--tx);font:600 17px var(--d)}.foot p{margin:0;max-width:850px}.skip{position:absolute;left:12px;top:-100px;background:var(--sf);padding:10px;z-index:10}.skip:focus{top:12px}@media(min-width:1150px){.pin,.tabs{position:sticky;top:18px}}@media(max-width:1100px){.wrap{padding:0 20px}.app{grid-template-columns:255px minmax(0,1fr)}.tabs{grid-column:1/-1;grid-row:1;display:grid;grid-template-columns:repeat(5,1fr)}.tabs button{font-size:12px;gap:7px;padding:9px 7px}.tabs button[aria-selected=true]{padding-left:5px}.stagegrid{grid-template-columns:minmax(0,1fr) 280px}.topnav{display:none}}@media(max-width:700px){.wrap{padding:0 16px}.bar{min-height:70px;gap:12px}.catalog{display:none}.brand{font-size:25px}.brand small{font-size:9px}.mode{width:140px}.crumb{padding:18px 0}.herohead{align-items:start}.garagebadge{display:none}h1{font-size:42px}.stagegrid{grid-template-columns:1fr;gap:12px}.stage{min-height:270px}.stagebar{padding:13px 14px}.stagebar .stage-label{font-size:9px}.stagefoot{padding:10px 14px}.schematic{height:180px}.specpanel{padding:15px}.stats{display:grid;grid-template-columns:1fr 1fr;gap:0 22px}.specrow{padding:8px 0}.spechint{margin-top:10px}.app{display:flex;flex-direction:column;gap:14px}.pin,.tabs,.results-stack{width:100%}.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;order:1}.pin{order:0}.results-stack{order:2}.tabs button{font-size:12px;padding:10px 6px;gap:6px}.pin .grid{grid-template-columns:repeat(4,1fr);gap:8px}.f input{font-size:21px;padding:8px}.pin .q{margin-top:14px}.pout{padding:18px}.act{flex-wrap:wrap}.act button{min-width:130px}.foot{grid-template-columns:1fr;gap:10px}.workspace-title{padding-top:22px}.workspace-title span:last-child{display:none}.limits summary span{float:none;margin-left:8px}.ln{gap:10px}.ln b{font-size:32px}.sessiontools input{min-width:100%}.sessiontools button{flex:1}}@media(max-width:390px){.pin .grid{grid-template-columns:1fr 1fr}.stagebar{flex-wrap:wrap}.stage-label{max-width:110px}.tabs button{font-size:11px}.stagefoot{font-size:11px}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+.compare-table{width:100%;border-collapse:collapse;font-size:13px;table-layout:fixed}.compare-table th,.compare-table td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--ln);overflow-wrap:anywhere}#comparison{margin-top:20px}#comparison p{font-size:13px;color:var(--mu)}#comparison h3{font:600 23px var(--d)}</style></head><body>
+<a class="skip" href="#workbench">Vai alle regolazioni</a><header class="top"><div class="wrap bar"><a class="brand" href="#">FH6<span> / </span>TUNER<small>ENGINEER YOUR DRIVE</small></a><nav class="topnav" aria-label="Navigazione"><a href="#workbench">MESSA A PUNTO</a><a href="#sessions">I MIEI ASSETTI</a></nav><div class="catalog" id="catalog-count">Caricamento catalogo</div><div class="seg mode" data-k="mode" aria-label="Modalità"><button data-v="grip" aria-pressed="true">GRIP</button><button data-v="drift" aria-pressed="false">DRIFT</button></div></div></header>
+<main class="wrap"><div class="crumb">GARAGE &nbsp; / &nbsp; <span>LA TUA OFFICINA</span></div><div class="herohead"><div><div class="eyebrow" id="hero-eyebrow">FORZA HORIZON 6 · SETUP WORKSHOP</div><h1 id="hero-title">Ogni curva conta.</h1><p class="subhead" id="hero-sub">Scegli la macchina. Trova il tuo equilibrio.</p></div><span class="garagebadge">ASSETTO DI PARTENZA · DA PROVARE</span></div>
+<div class="stagegrid"><section class="stage" id="stage" data-section="0" aria-label="Visualizzazione auto"><div class="stagebar"><span class="stage-label" id="stage-label">VISTA TECNICA · SCHEMA INDICATIVO</span><div class="seg" aria-label="Vista auto"><button id="view-schema" aria-pressed="true">Schema</button><button id="view-model" aria-pressed="false">Modello 3D</button></div></div>
+<div id="schema-panel"><svg class="schematic" viewBox="0 0 760 225" role="img" aria-label="Schema generico dell’auto dall’alto, con gruppi meccanici evidenziati"><defs><pattern id="stage-grid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" fill="none" stroke="#43434c" stroke-opacity=".25"/></pattern></defs><rect width="760" height="225" fill="url(#stage-grid)"/><ellipse cx="383" cy="117" rx="245" ry="82" fill="#101013" opacity=".4"/><path d="M183 90Q177 67 211 61L267 52Q287 38 341 35L429 37Q476 41 501 52L560 60Q589 65 593 83L593 143Q587 161 560 166L498 174Q464 189 419 190L328 188Q286 185 266 174L210 166Q180 160 183 142Z" class="carbody"/><path d="M285 58L342 48Q403 44 447 51L486 65L490 159L445 176Q385 184 326 173L284 160Q306 112 285 58Z" class="carwindow"/><path d="M325 61L431 56L455 70L455 157L428 168L328 163Z" fill="#333339" stroke="#73737b"/><path d="M255 64L264 173M487 62L489 164M204 78L253 74M205 151L252 155" stroke="#72727c" fill="none"/><path d="M198 89V133M574 86V139" stroke="#bfc3bc" stroke-width="5"/><g fill="#0e0e11" stroke="#63636b"><rect x="233" y="45" width="54" height="19" rx="4"/><rect x="233" y="167" width="54" height="19" rx="4"/><rect x="490" y="44" width="54" height="19" rx="4"/><rect x="490" y="168" width="54" height="19" rx="4"/></g><g class="part tires"><path d="M239 45H281M239 186H281M495 44H538M495 187H538"/></g><g class="part suspension"><path d="M260 73V160M516 75V159M242 84H278M242 149H278M499 83H533M499 149H533"/></g><g class="part drive"><path d="M260 115H515M260 70V164M516 70V164"/><circle cx="516" cy="115" r="10"/></g><g class="part aero"><path d="M177 91V140M602 74V153"/></g><path d="M119 114H163M112 114L121 109M112 114L121 119M620 114H665" stroke="#8d8b96" fill="none"/><text x="47" y="119" class="stagetext">ANTERIORE</text><text x="672" y="119" class="stagetext">POST.</text></svg></div>
+<div id="model-panel" hidden><div class="model-empty" id="model-empty"><strong>Il modello della tua auto, in automatico.</strong><p>Scegli un’auto dal catalogo: il modello viene aperto dal tuo archivio appena disponibile.</p><button id="choose-model" class="primary">Carica modello alternativo</button></div><model-viewer id="car-model" hidden camera-controls touch-action="pan-y" shadow-intensity="1" exposure="1" camera-orbit="45deg 65deg 80%" field-of-view="32deg" alt="Modello 3D associato alla tua auto"></model-viewer><p id="model-status" class="model-note" role="status"></p></div><div class="stagefoot"><span id="stage-focus">Focus: <b>Pneumatici</b></span><span><button id="replace-model" hidden style="font-size:11px;min-height:28px;padding:3px 8px">Cambia modello</button><span id="stage-caption">Geometria illustrativa, non specifica dell’auto</span></span></div><input type="file" id="model-file" accept=".glb" hidden></section>
+<aside class="specpanel" aria-label="Riepilogo configurazione"><div class="sectionhead"><h2>La tua configurazione</h2><span class="eyebrow" id="mode-badge">GRIP</span></div><div class="stats"><div class="specrow"><span>Punti prestazione</span><strong id="stat-pi">—</strong></div><div class="specrow"><span>Potenza</span><strong id="stat-hp">—</strong></div><div class="specrow"><span>Peso</span><strong id="stat-w">—</strong></div><div class="specrow"><span>Trazione</span><strong id="stat-drive">RWD</strong></div></div><div class="split" aria-hidden="true"><div class="f" id="sf">52%</div><div class="r" id="sr">48%</div></div><div class="splitlabels"><span id="balance-front">Anteriore —</span><span id="balance-rear">Posteriore —</span></div><p class="spechint">Aggiorna i dati dopo gli upgrade: peso, potenza e limiti degli slider possono cambiare.</p></aside></div>
+<div class="workspace-title" id="workbench"><span class="step">01 → 09</span><h2>Costruisci il tuo assetto</h2><span>Configura · Prova · Affina</span></div><div class="app"><section class="card pin" aria-label="Dati della macchina"><h2>Macchina & obiettivo</h2><p class="caption">Dati della configurazione montata nel gioco.</p><div class="searchinput"><label for="cn">CERCA NEL TUO GARAGE</label><input id="cn" list="gl" type="text" placeholder="Marca, modello o anno…" autocomplete="off"><datalist id="gl"></datalist><a class="lk" id="source-link" href="https://forzagarage.com/cars/" target="_blank" rel="noopener">Catalogo forzagarage ↗</a><p class="tip" id="cs" role="status"></p></div>
+<div class="grid"><label class="f">PI<input id="pi" type="number" inputmode="numeric" min="100" max="999" placeholder="800"></label><label class="f">CAVALLI<input id="hp" type="number" inputmode="decimal" min="1" placeholder="650"></label><label class="f">PESO · KG<input id="w" type="number" inputmode="decimal" min="1" placeholder="1450"></label><label class="f">ANTERIORE · %<input id="fp" type="number" inputmode="decimal" min="1" max="99" placeholder="52"></label></div>
+<div class="q">Trazione</div><div class="seg" data-k="drv" aria-label="Trazione"><button data-v="RWD" aria-pressed="true">RWD</button><button data-v="FWD" aria-pressed="false">FWD</button><button data-v="AWD" aria-pressed="false">AWD</button></div><div class="q">Fondo</div><div class="seg" data-k="surf" aria-label="Fondo"><button data-v="road" aria-pressed="true">Asfalto</button><button data-v="dirt" aria-pressed="false">Sterrato</button></div><div class="q">Come vuoi sentirla?</div><div class="seg" data-k="style" aria-label="Stile di guida"><button data-v="stable" aria-pressed="false">Stabile</button><button data-v="balanced" aria-pressed="true">Bilanciata</button><button data-v="sharp" aria-pressed="false">Reattiva</button></div><div class="q">Unità degli slider nel gioco</div><div class="seg" data-k="unit" aria-label="Unità degli slider"><button data-v="metric" aria-pressed="true">Metriche</button><button data-v="imp" aria-pressed="false">Imperiali</button></div><p class="tip" id="unit-note">Peso della macchina sempre in kg.</p></section>
+<nav class="tabs" id="tabs" role="tablist" aria-label="Sezioni della messa a punto"></nav><div class="results-stack"><section class="card pout" id="tuning-output" role="tabpanel" aria-labelledby="section-0"><div class="outputhead"><div><div class="eyebrow">MESSA A PUNTO / <span id="section-number">01</span></div><h2 id="ttl">Pneumatici</h2></div><span class="baseline">BASE DA PROVARE</span></div><div id="rg"></div><div id="res"></div></section><div class="act"><button id="cp">Copia tutto l’assetto</button><button class="s" id="rs">Azzera campi</button></div><aside class="helper"><strong id="help-title">Prima prova: gomme a temperatura</strong><p id="help-copy">Fai qualche giro nelle stesse condizioni. Controlla la pressione a caldo e modifica una variabile alla volta.</p></aside></div></div>
+<section class="sessions" id="sessions" aria-labelledby="sessions-title"><h2 id="sessions-title">I tuoi assetti. Le tue prove.</h2><p class="subhead">Salva una versione prima di cambiare qualcosa. Aggiungi le sensazioni dopo il giro.</p><div class="sessiontools"><input id="setup-name" aria-label="Nome assetto" placeholder="Nome assetto · es. Grip asfalto v1" maxlength="80"><button id="save-setup" class="primary">Salva versione</button><button id="export-setups">Esporta backup</button><button id="import-setups">Importa backup</button><input id="backup-file" type="file" accept=".json,application/json" hidden></div><p class="toast" id="session-status" role="status"></p><div id="snapshots" class="snapshots"></div></section>
+<footer class="foot"><strong>FH6 / TUNER<br><span class="muted">Build. Drive. Refine.</span></strong><p>Valori di partenza da affinare in pista, non formule ufficiali del gioco. Molle, barre, ammortizzatori, altezza, deportanza e rapporto finale mantengono il metodo della versione precedente. Il modello 3D è una vista estetica: non simula il comportamento dell’assetto. In drift fondo e stile vengono ignorati. Gli assetti restano in questo browser: usa il backup per conservarli. I modelli automatici provengono dal tuo archivio Cloudflare.</p></footer></main>
+<script>(function(){
 var S={mode:"grip",drv:"RWD",surf:"road",style:"balanced",unit:"metric",tab:0},V={},KEY="fh6tuner3",BASE=["cn","pi","hp","w","fp"],GK="fh6garage",G={},CM={},CARS=[],UN={metric:{s:"kgf/mm",h:"cm"},imp:{s:"lb/in",h:"in"}};
 var TABS=[{n:"Pneumatici",g:[]},{n:"Rapporti",g:[["fdmin","Rapporto finale min"],["fdmax","Rapporto finale max"]]},{n:"Allineamento",g:[]},
 {n:"Barre",g:[["afmin","Barra ant. min"],["afmax","Barra ant. max"],["armin","Barra post. min"],["armax","Barra post. max"]]},
@@ -167,62 +72,200 @@ function calc(){
   T[8].tip=(T[8].tip?T[8].tip+" ":"")+"Serve il differenziale da gara"+(dr?" (nel drift, quello Drift)":"")+".";
   return T;
 }
-
 function lines(it){return it.L.map(function(l){
   var cl=l.k==="Ant."?"a":l.k==="Post."?"p":"";
   return '<div class="ln"><span class="k '+cl+'">'+l.k+'</span><div class="tr">'+(l.f!=null?'<i style="width:'+r0(clamp(l.f,0,1)*100)+'%"></i>':'')+'</div><b>'+l.t+'</b></div>'}).join("")}
-
 function render(){
   document.body.classList.toggle("drift",S.mode==="drift");
   $("ttl").textContent=TABS[S.tab].n;
   var fp=num("fp");if(fp>0&&fp<100){$("sf").textContent=r0(fp)+"%";$("sf").style.width=clamp(fp,15,85)+"%";$("sr").textContent=r0(100-fp)+"%"}
   var T=calc(),el=$("res");
-  if(!T){el.innerHTML='<p class="empty">Compila punti prestazione, cavalli, peso e peso anteriore per vedere i valori.</p>';return}
+  window.dispatchEvent(new CustomEvent('tuner:render',{detail:{S:Object.assign({},S),V:Object.assign({},V),ready:!!T}}));
+  if(!T){el.innerHTML='<div class="empty"><span class="empty-number">01 /</span><h3>Parti dalla tua macchina.</h3><p>Scegli un’auto dal catalogo oppure inserisci PI, cavalli, peso e distribuzione. Qui appariranno i valori da provare in pista.</p></div>';return}
   var t=T[S.tab],h=t.i.map(function(it){return '<div class="it"><div class="n">'+it.n+'</div>'+(it.sub?'<small>'+it.sub+'</small>':'')+lines(it)+'</div>'}).join("");
-  if(h.indexOf("<b>—</b>")>=0)h+='<p class="tip">Inserisci minimo e massimo qui sopra per vedere il valore preciso da impostare.</p>';
+  if(h.indexOf("<b>—</b>")>=0)h+='<p class="tip">Inserisci minimo e massimo per vedere il valore preciso da impostare.</p>';
   if(t.tip)h+='<p class="tip">'+t.tip+'</p>';
   el.innerHTML=h;
 }
 function renderRg(){
   var g=TABS[S.tab].g,el=$("rg");
   if(!g.length){el.innerHTML="";return}
-  el.innerHTML='<div class="rg"><p>Nel gioco porta lo slider tutto a sinistra e poi tutto a destra, e scrivi i due valori. Li salvo con il nome dell’auto: la prossima volta sono già pronti.</p></div>';
+  el.innerHTML='<details class="limits"><summary>Limiti degli slider <span>Controlla o modifica</span></summary><div class="rg"><p>Usa i limiti della configurazione montata nel gioco. I dati del catalogo possono riferirsi all’auto di serie.</p></div></details>';
   g.forEach(function(x){var l=document.createElement("label");l.className="f s";l.textContent=x[1]+(/^s[fr]/.test(x[0])?" ("+UN[S.unit].s+")":/^h/.test(x[0])?" ("+UN[S.unit].h+")":"");var i=document.createElement("input");i.type="number";i.inputMode="decimal";i.step="any";i.value=V[x[0]]||"";
-    i.addEventListener("input",function(){V[x[0]]=i.value;save();render()});l.appendChild(i);el.firstChild.appendChild(l)});
+    i.addEventListener("input",function(){V[x[0]]=i.value;save();render()});l.appendChild(i);el.querySelector('.rg').appendChild(l)});
+  if(g.some(function(x){return !V[x[0]]}))el.querySelector('details').open=true;
 }
-function sync(){document.querySelectorAll(".seg").forEach(function(g){var k=g.dataset.k;g.querySelectorAll("button").forEach(function(b){b.setAttribute("aria-pressed",String(S[k]===b.dataset.v))})});
+function sync(){document.querySelectorAll(".seg[data-k]").forEach(function(g){var k=g.dataset.k;g.querySelectorAll("button").forEach(function(b){b.setAttribute("aria-pressed",String(S[k]===b.dataset.v))})});
   document.querySelectorAll("#tabs button").forEach(function(b,i){b.setAttribute("aria-selected",String(i===S.tab))})}
 function summary(T){return "FH6 Tuner · "+V.pi+" PI · "+V.hp+" CV · "+V.w+" kg · "+V.fp+"% ant. · "+S.drv+(S.mode==="drift"?" · Drift":"")+"\n"+T.map(function(t,i){
   return TABS[i].n+": "+t.i.map(function(it){return it.n+" "+it.L.map(function(l){return (l.k?l.k+" ":"")+l.t}).join(" / ")}).join("; ")}).join("\n")}
 function copy(t,btn){var done=function(){var s=btn.textContent;btn.textContent="Copiato";setTimeout(function(){btn.textContent=s},1400)};
   try{navigator.clipboard.writeText(t).then(done,function(){fb(t,done)})}catch(e){fb(t,done)}}
 function fb(t,done){var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();try{document.execCommand("copy");done()}catch(e){}document.body.removeChild(a)}
-
-TABS.forEach(function(x,i){var b=document.createElement("button");b.innerHTML="<i>"+("0"+(i+1)).slice(-2)+"</i><span>"+x.n+"</span>";b.setAttribute("role","tab");b.addEventListener("click",function(){S.tab=i;sync();save();renderRg();render()});$("tabs").appendChild(b)});
-document.querySelectorAll(".seg button").forEach(function(b){b.addEventListener("click",function(){S[b.parentNode.dataset.k]=b.dataset.v;sync();save();renderRg();render()})});
-BASE.forEach(function(k){$(k).addEventListener("input",function(){V[k]=$(k).value;save();render()})});
+TABS.forEach(function(x,i){var b=document.createElement("button");b.innerHTML="<i>"+("0"+(i+1)).slice(-2)+"</i><span>"+x.n+"</span>";b.setAttribute("role","tab");b.setAttribute('aria-controls','tuning-output');b.id='section-'+i;b.addEventListener("click",function(){S.tab=i;sync();save();renderRg();render()});$("tabs").appendChild(b)});
+document.querySelectorAll(".seg[data-k] button").forEach(function(b){b.addEventListener("click",function(){var key=b.parentNode.dataset.k;if(key==="unit"&&S.unit!==b.dataset.v){Object.keys(V).forEach(function(id){var factor=/^s[fr](min|max)$/.test(id)?0.0178579:/^h[fr](min|max)$/.test(id)?2.54:/^x[fr](min|max)$/.test(id)?0.453592:1;var value=num(id);if(value!=null&&factor!==1)V[id]=String(Math.round(value*(b.dataset.v==="metric"?factor:1/factor)*1000)/1000)})}S[key]=b.dataset.v;sync();save();renderRg();render()})});
+BASE.forEach(function(k){$(k).addEventListener("input",function(){if(k==="cn"){requestId++;loadingName="";V[k]=$(k).value;try{localStorage.setItem(KEY,JSON.stringify({S:S,V:V}))}catch(e){}render();return}V[k]=$(k).value;save();render()})});
+$("cn").addEventListener("input",function(){if(CM[(V.cn||"").trim()])gpick()});
 $("cn").addEventListener("change",function(){gpick();gstore(true)});
 $("cp").onclick=function(){var T=calc();if(T)copy(summary(T),this)};
-$("rs").onclick=function(){V={};BASE.forEach(function(k){$(k).value=""});save();renderRg();render()};
+$("rs").onclick=function(){requestId++;V={};BASE.forEach(function(k){$(k).value=""});$("cs").textContent='';save();renderRg();render()};
 function gload(){try{G=JSON.parse(localStorage.getItem(GK)||"{}")||{}}catch(e){G={}}}
 function gopts(){var l=$("gl"),seen={};l.innerHTML="";Object.keys(G).concat(Object.keys(CM)).forEach(function(k){if(seen[k])return;seen[k]=1;var o=document.createElement("option");o.value=k;l.appendChild(o)})}
 function gstore(f){var n=(V.cn||"").trim();if(!n)return;if(f!==true&&!CM[n]&&!G[n])return;var v=Object.assign({},V);delete v.cn;G[n]={V:v,S:{drv:S.drv,surf:S.surf,style:S.style,mode:S.mode,unit:S.unit}};try{localStorage.setItem(GK,JSON.stringify(G))}catch(e){}gopts()}
-function gpick(){var n=(V.cn||"").trim(),g=G[n];
-  if(g){V=Object.assign({cn:V.cn},g.V);S=Object.assign(S,g.S);BASE.forEach(function(k){$(k).value=V[k]||""});sync();save();renderRg();render();$("cs").textContent="Dati salvati caricati.";return}
-  if(CM[n])climits(CM[n])}
+function gpick(){var n=(V.cn||"").trim(),g=G[n];if(n&&loadingName===n)return;requestId++;
+  if(g&&Object.keys(g.V||{}).some(function(k){return String(g.V[k]??"").trim()!==""})){V=Object.assign({cn:V.cn},g.V);S=Object.assign(S,g.S);BASE.forEach(function(k){$(k).value=V[k]||""});sync();save();renderRg();render();$("cs").textContent="Dati salvati caricati.";return}
+  if(CM[n]){V={cn:n};BASE.forEach(function(k){$(k).value=V[k]||''});renderRg();render();climits(CM[n])}}
 var FM={"final drive":"fd","front spring":"sf","rear spring":"sr","front ride height":"hf","rear ride height":"hr","front":"af","rear":"ar","front bump":"bf","rear bump":"br","front rebound":"rf","rear rebound":"rr","front downforce":"xf","rear downforce":"xr"};
 function cv(u,x){if(S.unit!=="metric")return x;return u==="in"?x*2.54:u==="lb/in"?x*0.0178579:u==="lb"?x*0.453592:x}
-function climits(c){var st=$("cs");st.textContent="Leggo i limiti da forzagarage…";if(c.d){S.drv=c.d;sync()}
+var requestId=0,loadingName="";
+function climits(c){loadingName=(V.cn||"").trim();var token=++requestId,unit=S.unit,st=$("cs");st.textContent="Caricamento dati dell’auto…";if(c.d){S.drv=c.d;sync()}
   fetch("/api/car?slug="+encodeURIComponent(c.s)).then(function(r){return r.ok?r.json():Promise.reject()}).then(function(d){
+    if(token!==requestId)return;loadingName="";
     var k=0;(d.fields||[]).forEach(function(f){var id=FM[String(f.l).toLowerCase()];if(!id)return;var a=cv(f.u,f.min*f.k),b=cv(f.u,f.max*f.k),t;if(a>b){t=a;a=b;b=t}V[id+"min"]=String(Math.round(a*1000)/1000);V[id+"max"]=String(Math.round(b*1000)/1000);k++});
     var sp=d.spec||{},got=[];function put(id,x,lo,hi,lab){if(x>=lo&&x<=hi){V[id]=String(Math.round(x*10)/10);$(id).value=V[id];got.push(lab+" "+V[id])}}
     put("pi",sp.pi,100,999,"PI");put("hp",sp.hp,20,3000,"CV");if(sp.w)put("w",/^lb/.test(sp.wu||"")?sp.w*0.453592:sp.w,300,5000,"kg");put("fp",sp.fp,30,70,"ant. %");
-    st.textContent=(k?"Limiti caricati ("+k+" slider). ":"Nessun limite trovato: inseriscili a mano. ")+(got.length?"Letti: "+got.join(", ")+". Controllali.":"Inserisci PI, cavalli, peso e peso anteriore.");
-    save();renderRg();render()}).catch(function(){st.textContent="Non riesco a leggere i limiti online: inseriscili a mano."})}
-function cload(){fetch("/api/cars").then(function(r){return r.ok?r.json():Promise.reject()}).then(function(d){CARS=d.cars||[];CM={};CARS.forEach(function(x){var l=x.n+(x.d?" · "+x.d+(x.c?" "+x.c:""):"");if(CM[l])l+=" ("+x.s+")";CM[l]=x});gopts()}).catch(function(){})}
+    st.textContent=(k?"Limiti caricati: "+k+" slider. ":"Limiti da inserire manualmente. ")+(got.length?"Dati di catalogo: verifica che corrispondano alle modifiche montate.":"Completa i dati della tua configurazione.");
+    save();renderRg();render();window.dispatchEvent(new CustomEvent("tuner:car",{detail:{slug:c.s,model:d.model||null}}))}).catch(function(){if(token===requestId){loadingName="";st.textContent="Dati online non disponibili. Puoi inserire tutti i valori manualmente."}})}
+function cload(){fetch("/api/cars").then(function(r){return r.ok?r.json():Promise.reject()}).then(function(d){CARS=d.cars||[];CM={};CARS.forEach(function(x){var l=x.n+(x.d?" · "+x.d+(x.c?" "+x.c:""):"");if(CM[l])l+=" ("+x.s+")";CM[l]=x});gopts();if(CM[(V.cn||'').trim()]&&!calc())gpick();window.dispatchEvent(new CustomEvent('tuner:catalog',{detail:CARS.length}))}).catch(function(){window.dispatchEvent(new CustomEvent('tuner:catalog',{detail:0}))})}
+window.FH6={lookup:function(){return CM[(V.cn||"").trim()]||null},snapshot:function(){return {S:Object.assign({},S),V:Object.assign({},V),T:calc(),text:calc()?summary(calc()):''}},restore:function(d){requestId++;S=Object.assign(S,d.S);V=Object.assign({},d.V);BASE.forEach(function(k){$(k).value=V[k]||''});sync();save();renderRg();render()}};
 gload();load();gopts();sync();renderRg();render();cload();
 })();
-</script>
-<script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){})})}</script>
-</body>
-</html>
+</script><script>(function(){
+const $=id=>document.getElementById(id),names=['Pneumatici','Rapporti','Allineamento','Barre','Molle','Ammortizzatori','Aerodinamica','Freni','Differenziale'];
+const hints=['Controlla la pressione a caldo dopo qualche giro nelle stesse condizioni. Cambia una variabile alla volta.','Prova il rapporto finale sul rettilineo più lungo. Confronta anche l’uscita dalle curve.','Controlla temperature interna, centrale ed esterna delle gomme durante una curva.','Prova una curva lunga a velocità costante. Confronta le sensazioni modificando un solo asse.','Verifica i limiti delle sospensioni montate e che l’auto non tocchi il suolo.','Prova lo stesso tratto sconnesso. Cambia estensione e compressione separatamente.','Confronta un curvone veloce e un rettilineo: cerca il compromesso tra grip e velocità.','Usa lo stesso riferimento di frenata. Annota bloccaggi e instabilità.','Distingui il comportamento in rilascio da quello quando acceleri. Prova le due fasi separatamente.'];
+let activeName='',modelToken=0,modelURL=null,libraryPromise=null,dbPromise=null;
+function update(d){
+ const v=d.V,s=d.S,cn=String(v.cn||'').trim();
+ $('hero-title').textContent=cn?cn.split(' · ')[0]:'Ogni curva conta.';
+ $('hero-eyebrow').textContent='FORZA HORIZON 6 · '+s.mode.toUpperCase()+' WORKSHOP';
+ $('hero-sub').textContent=cn?'La tua macchina. Il tuo stile. Un assetto da affinare.':'Scegli la macchina. Trova il tuo equilibrio.';
+ for(const [id,label] of [['pi','PI'],['hp','CV'],['w','kg']]){const el=$('stat-'+id);el.textContent=v[id]||'—';const unit=document.createElement('small');unit.textContent=label;el.append(unit)}
+ $('stat-drive').textContent=s.drv;$('mode-badge').textContent=s.mode.toUpperCase();
+ const f=Number(v.fp),ok=f>0&&f<100;
+ $('balance-front').textContent='Anteriore '+(ok?f+'%':'—');$('balance-rear').textContent='Posteriore '+(ok?Math.round((100-f)*10)/10+'%':'—');
+ if(!ok)$('sf').style.width='50%';
+ $('stage').dataset.section=s.tab;$('stage-focus').textContent='Focus: '+names[s.tab];
+ $('section-number').textContent=String(s.tab+1).padStart(2,'0');$('tuning-output').setAttribute('aria-labelledby','section-'+s.tab);
+ $('help-title').textContent='Prova in pista · '+names[s.tab];$('help-copy').textContent=hints[s.tab];
+ $('cp').disabled=!d.ready;$('save-setup').disabled=!d.ready;
+ $('unit-note').textContent=s.unit==='imp'?'Peso sempre in kg. Verifica i limiti degli slider in unità imperiali.':'Peso della macchina sempre in kg.';
+ if(cn!==activeName){activeName=cn;resetModel();loadStoredModel(true)}
+}
+window.addEventListener('tuner:render',e=>update(e.detail));
+window.addEventListener('tuner:catalog',e=>{$('catalog-count').textContent=e.detail?e.detail+' auto nel catalogo':'Catalogo offline · dati manuali'});
+window.addEventListener('tuner:car',()=>loadStoredModel(true));
+window.addEventListener('tuner:catalog',()=>loadStoredModel(true));
+document.querySelectorAll('#tabs button').forEach((b,i)=>b.addEventListener('keydown',e=>{if(['ArrowDown','ArrowUp','ArrowLeft','ArrowRight','Home','End'].includes(e.key)){e.preventDefault();const n=e.key==='Home'?0:e.key==='End'?8:(i+(['ArrowDown','ArrowRight'].includes(e.key)?1:8))%9;$('tabs').children[n].focus();$('tabs').children[n].click()}}));
+update({...window.FH6.snapshot(),ready:!!window.FH6.snapshot().T});
+function modelDB(){if(!dbPromise)dbPromise=new Promise((resolve,reject)=>{const r=indexedDB.open('fh6-models',1);r.onupgradeneeded=()=>r.result.createObjectStore('models');r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)});return dbPromise}
+async function modelGet(key){const db=await modelDB();return new Promise((resolve,reject)=>{const r=db.transaction('models').objectStore('models').get(key);r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)})}
+async function modelPut(key,file){const db=await modelDB();return new Promise((resolve,reject)=>{const tx=db.transaction('models','readwrite');tx.objectStore('models').put(file,key);tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error)})}
+function library(){
+ if(customElements.get('model-viewer'))return Promise.resolve();
+ if(!libraryPromise)libraryPromise=new Promise((resolve,reject)=>{
+ const script=document.createElement('script');script.type='module';script.src='https://cdn.jsdelivr.net/npm/@google/model-viewer@4.0.0/dist/model-viewer.min.js';
+ const timer=setTimeout(()=>{libraryPromise=null;reject(Error('Visualizzatore 3D non disponibile. Controlla la connessione e riprova.'))},20000);
+ script.onerror=()=>{clearTimeout(timer);libraryPromise=null;reject(Error('Impossibile caricare il visualizzatore 3D. La messa a punto resta disponibile.'))};
+ script.onload=()=>customElements.whenDefined('model-viewer').then(()=>{clearTimeout(timer);resolve()});document.head.append(script)});
+ return libraryPromise;
+}
+function resetModel(){modelToken++;$('car-model').removeAttribute('src');$('car-model').hidden=true;$('model-empty').hidden=false;$('replace-model').hidden=true;$('model-status').textContent='';if(modelURL){URL.revokeObjectURL(modelURL);modelURL=null}}
+async function showModel(file,token){await library();if(token!==modelToken)return;if(modelURL)URL.revokeObjectURL(modelURL);modelURL=URL.createObjectURL(file);$('car-model').setAttribute('src',modelURL);$('car-model').setAttribute('alt','Modello associato a '+activeName);$('car-model').hidden=false;$('model-empty').hidden=true;$('replace-model').hidden=false;$('model-status').textContent='Caricamento di '+file.name+'…'}
+async function loadStoredModel(auto=false){
+ const token=++modelToken,key=activeName;
+ if(!key){$('model-status').textContent='Scegli prima la tua auto.';return}
+ let status='Modello non ancora archiviato: la raccolta automatica è progressiva.';
+ const car=window.FH6.lookup();
+ if(car){
+  try{
+   const url='/api/model?slug='+encodeURIComponent(car.s);
+   const response=await fetch(url,{method:'HEAD',cache:'no-store'});
+   if(response.ok){
+    await library();if(token!==modelToken||key!==activeName)return;
+    if(modelURL){URL.revokeObjectURL(modelURL);modelURL=null}
+    $('car-model').setAttribute('src',url);$('car-model').setAttribute('alt','Modello 3D di '+key);
+    $('car-model').hidden=false;$('model-empty').hidden=true;$('replace-model').hidden=false;
+    $('model-status').textContent='Caricamento del modello dal tuo archivio…';
+    if(auto)view(true);
+    return;
+   }
+   if(response.status===503)status='Archivio ZimaOS momentaneamente non raggiungibile. Riprova tra poco.';
+  }catch(e){status='Archivio modelli momentaneamente non raggiungibile.'}
+ }
+ try{
+  const file=await modelGet(key);
+  if(file&&token===modelToken){await showModel(file,token);if(auto&&token===modelToken)view(true);return}
+ }catch(e){}
+ if(token===modelToken)$('model-status').textContent=status;
+}
+
+function view(model){$('schema-panel').hidden=model;$('model-panel').hidden=!model;$('view-schema').setAttribute('aria-pressed',String(!model));$('view-model').setAttribute('aria-pressed',String(model));$('stage-label').textContent=model?'MODELLO 3D · ROTAZIONE E ZOOM':'VISTA TECNICA · SCHEMA INDICATIVO';$('stage-caption').hidden=model;$('replace-model').hidden=!model||$('car-model').hidden;if(model&&!$('car-model').getAttribute('src'))loadStoredModel()}
+$('view-schema').onclick=()=>view(false);$('view-model').onclick=()=>view(true);
+function chooseModel(){if(!activeName){$('model-status').textContent='Scegli o nomina prima la tua auto.';return}$('model-file').click()}
+$('choose-model').onclick=chooseModel;$('replace-model').onclick=chooseModel;
+$('car-model').addEventListener('load',()=>{$('model-status').textContent='Trascina per ruotare · scorri o pizzica per lo zoom. Vista estetica, senza simulazione fisica.'});
+$('car-model').addEventListener('error',()=>{$('model-status').textContent='Modello non visualizzabile. Prova un GLB completo di geometrie e texture.';$('model-empty').hidden=false;$('car-model').hidden=true});
+$('model-file').onchange=async function(){
+ const file=this.files[0];this.value='';if(!file)return;const key=activeName;
+ try{
+ if(!key)throw Error('Scegli prima la tua auto.');
+ if(!/\.glb$/i.test(file.name)||file.size>40*1024*1024)throw Error('Usa un file .glb fino a 40 MB.');
+ const buf=await file.arrayBuffer(),data=new DataView(buf);
+ if(buf.byteLength<24||data.getUint32(0,true)!==0x46546c67||data.getUint32(4,true)!==2||data.getUint32(12,true)>buf.byteLength-20)throw Error('Il file non è un GLB 2 valido.');
+ const gltf=JSON.parse(new TextDecoder().decode(new Uint8Array(buf,20,data.getUint32(12,true))).trim());
+ if([...(gltf.buffers||[]),...(gltf.images||[])].some(x=>x.uri&&!x.uri.startsWith('data:')))throw Error('Usa un GLB autonomo, con risorse incluse nel file.');
+ if(key!==activeName)return;resetModel();const token=++modelToken;await showModel(file,token);
+ try{await modelPut(key,file)}catch(e){$('model-status').textContent='Modello aperto, ma non salvato: spazio del browser non disponibile.'}
+ }catch(e){$('model-status').textContent=e.message}
+};
+const KEY='fh6-setup-versions-v1';let versions=[],compare=[];
+function valid(x){if(!x||typeof x.name!=='string'||x.name.length>80||typeof x.id!=='string'||!x.S||!x.V)return false;const s=x.S;return ['grip','drift'].includes(s.mode)&&['RWD','FWD','AWD'].includes(s.drv)&&['road','dirt'].includes(s.surf)&&['stable','balanced','sharp'].includes(s.style)&&['metric','imp'].includes(s.unit)&&Number.isInteger(s.tab)&&s.tab>=0&&s.tab<9&&Object.values(x.V).every(v=>typeof v==='string'||typeof v==='number')}
+try{const d=JSON.parse(localStorage.getItem(KEY)||'[]');if(Array.isArray(d))versions=d.filter(valid)}catch(e){}
+function persist(){try{localStorage.setItem(KEY,JSON.stringify(versions));return true}catch(e){$('session-status').textContent='Spazio del browser esaurito: esporta un backup.';return false}}
+function text(tag,value){const el=document.createElement(tag);el.textContent=value;return el}
+const compareBox=document.createElement('div');compareBox.id='comparison';$('sessions').append(compareBox);
+function cards(){
+ $('snapshots').replaceChildren();
+ if(!versions.length){$('snapshots').append(text('p','Nessuna versione salvata. Il prossimo giro può essere il tuo riferimento.'));return}
+ versions.forEach(v=>{
+ const card=document.createElement('article');card.className='snapshot';
+ card.append(text('h3',v.name),text('p',String(v.V.cn||'Auto personalizzata').split(' · ')[0]),text('p',v.S.mode.toUpperCase()+' · '+v.S.drv+' · '+v.V.pi+' PI · '+v.V.hp+' CV · '+v.V.w+' kg'));
+ const note=document.createElement('textarea');note.rows=2;note.maxLength=1500;note.placeholder='Pista, tempo sul giro, sensazioni…';note.setAttribute('aria-label','Note di prova: '+v.name);note.value=v.note||'';note.onchange=()=>{v.note=note.value;persist()};card.append(note);
+ const buttons=document.createElement('div');buttons.className='snapshot-actions';
+ const load=text('button','Carica assetto');load.onclick=()=>{window.FH6.restore(v);$('session-status').textContent='Caricato: '+v.name};
+ const diff=text('button','Confronta');diff.setAttribute('aria-pressed',String(compare.includes(v.id)));diff.onclick=()=>{compare=compare.includes(v.id)?compare.filter(id=>id!==v.id):compare.concat(v.id).slice(-2);cards();compareView()};
+ buttons.append(load,diff);card.append(buttons);$('snapshots').append(card)
+ });
+}
+function compareView(){
+ compareBox.replaceChildren();if(compare.length<2){if(compare.length)compareBox.append(text('p','Seleziona un secondo assetto per confrontare i valori.'));return}
+ const a=versions.find(v=>v.id===compare[0]),b=versions.find(v=>v.id===compare[1]);if(!a||!b)return;
+ compareBox.append(text('h3',a.name+' / '+b.name));const table=document.createElement('table');table.className='compare-table';
+ const head=document.createElement('tr');['Parametro',a.name,b.name].forEach(x=>head.append(text('th',x)));table.append(head);
+ const labels={pi:'PI',hp:'Potenza · CV',w:'Peso · kg',fp:'Peso anteriore · %'};
+ for(const k of ['pi','hp','w','fp']){const tr=document.createElement('tr');tr.append(text('td',labels[k]),text('td',a.V[k]||'—'),text('td',b.V[k]||'—'));table.append(tr)}
+ for(const [key,label] of [['mode','Modalità'],['drv','Trazione'],['surf','Fondo'],['style','Stile'],['unit','Unità']]){const tr=document.createElement('tr');tr.append(text('td',label),text('td',a.S[key]),text('td',b.S[key]));table.append(tr)}
+ const translations={grip:'Grip',drift:'Drift',road:'Asfalto',dirt:'Sterrato',balanced:'Bilanciata',stable:'Stabile',sharp:'Reattiva',metric:'Metriche',imp:'Imperiali'};
+ for(const cell of table.querySelectorAll('td'))if(translations[cell.textContent])cell.textContent=translations[cell.textContent];
+ if(a.results&&b.results&&a.S.unit===b.S.unit){
+ const flat=arr=>{const out=new Map();if(!Array.isArray(arr))return out;arr.forEach((tab,i)=>{if(!Array.isArray(tab.i))return;tab.i.forEach(it=>{if(!Array.isArray(it.L))return;it.L.forEach(l=>out.set(names[i]+' · '+it.n+(l.k?' · '+l.k:''),String(l.t)))})});return out};
+ const aa=flat(a.results),bb=flat(b.results);let changes=0;
+ for(const [key,value] of aa){if(value===bb.get(key))continue;const tr=document.createElement('tr');tr.append(text('td',key),text('td',value),text('td',bb.get(key)||'—'));table.append(tr);changes++}
+ compareBox.append(text('p',changes?changes+' valori suggeriti diversi.':'Valori suggeriti identici per queste due versioni.'));
+ }else if(a.S.unit!==b.S.unit)compareBox.append(text('p','Unità diverse: carica gli assetti nella stessa unità per confrontare gli slider.'));
+ compareBox.append(table);compareBox.append(text('p','Gli input sono sempre visibili. Per le nuove versioni vengono mostrate anche le differenze nei suggerimenti.'));
+}
+$('save-setup').onclick=()=>{
+ const d=window.FH6.snapshot();if(!d.T)return;
+ if(versions.length>=40){$('session-status').textContent='Sono già presenti 40 versioni: esporta il backup per conservarle.';return}
+ const name=$('setup-name').value.trim()||(d.S.mode==='grip'?'Grip':'Drift')+' · '+new Date().toLocaleString('it-IT'),v={id:crypto.randomUUID(),name,S:d.S,V:d.V,results:d.T,note:'',created:Date.now()};
+ versions.unshift(v);if(!persist()){versions.shift();return}$('setup-name').value='';cards();$('session-status').textContent='Versione salvata: '+name;
+};
+function download(value,name){const url=URL.createObjectURL(new Blob([value],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),10000)}
+$('export-setups').onclick=()=>{download(JSON.stringify({version:1,exportedAt:new Date().toISOString(),setups:versions},null,2),'fh6-assetti-'+new Date().toISOString().slice(0,10)+'.json');$('session-status').textContent='Backup esportato. I modelli 3D non sono inclusi.'};
+$('import-setups').onclick=()=>$('backup-file').click();
+$('backup-file').onchange=async function(){const f=this.files[0];this.value='';if(!f)return;try{if(f.size>1024*1024)throw Error('Backup troppo grande: massimo 1 MB.');const d=JSON.parse(await f.text());if(d.version!==1||!Array.isArray(d.setups)||!d.setups.every(valid))throw Error('Il file non è un backup assetti valido.');const merged=new Map(versions.map(v=>[v.id,v]));for(const v of d.setups)if(!merged.has(v.id))merged.set(v.id,v);if(merged.size>40)throw Error('Superato il limite di 40 versioni.');const old=versions;versions=[...merged.values()];if(!persist()){versions=old;return}cards();$('session-status').textContent='Backup importato: '+versions.length+' versioni disponibili.'}catch(e){$('session-status').textContent=e.message}};
+cards();
+setInterval(()=>{if(!document.hidden&&activeName&&window.FH6.lookup()&&!$('car-model').getAttribute('src'))loadStoredModel(true)},60000);
+if('serviceWorker' in navigator&&location.hostname!=='localhost'&&location.hostname!=='127.0.0.1')window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').then(r=>r.update()).catch(()=>{}));
+})();</script></body></html>

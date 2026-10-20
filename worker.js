@@ -223,12 +223,41 @@ async function crawl(env) {
     throw e;
   } finally { running = false; }
 }
+const MODEL_ARCHIVE = 'https://modelli.sev4s3d.it';
+async function serveModel(req, slug) {
+  if (!/^[a-z0-9-]{3,120}$/.test(slug)) return json({ error: 'Auto non valida' }, 400);
+  const headers = new Headers();
+  for (const name of ['range','if-range','if-none-match','if-modified-since']) {
+    const value = req.headers.get(name); if (value) headers.set(name,value);
+  }
+  let upstream;
+  try {
+    upstream = await fetch(MODEL_ARCHIVE + '/models/' + slug + '.glb', {
+      method:req.method, headers, redirect:'error', signal:AbortSignal.timeout(30000)
+    });
+  } catch { return json({error:'Archivio ZimaOS momentaneamente non raggiungibile'},503); }
+  if (upstream.status === 404) { await upstream.body?.cancel(); return json({error:'Modello non ancora archiviato'},404); }
+  if (![200,206,304,416].includes(upstream.status)) {
+    await upstream.body?.cancel(); return json({error:'Archivio ZimaOS momentaneamente non disponibile'},503);
+  }
+  const output = new Headers({'x-content-type-options':'nosniff'});
+  for (const name of ['content-type','content-length','content-range','accept-ranges','etag','last-modified']) {
+    const value=upstream.headers.get(name); if(value) output.set(name,value);
+  }
+  if ([200,206].includes(upstream.status)) output.set('content-type','model/gltf-binary');
+  output.set('cache-control',upstream.status===416?'no-store':'public, max-age=3600');
+  const empty=req.method==='HEAD'||upstream.status===304;
+  if(empty) await upstream.body?.cancel();
+  return new Response(empty?null:upstream.body,{status:upstream.status,headers:output});
+}
+
 export default {
   async fetch(req, env) {
     const u = new URL(req.url);
     if (!u.pathname.startsWith('/api/')) return env.ASSETS.fetch(req);
-    if (req.method !== 'GET') return json({ error: 'Metodo non consentito' }, 405);
+    if (req.method !== 'GET' && !(u.pathname === '/api/model' && req.method === 'HEAD')) return json({ error: 'Metodo non consentito' }, 405);
     try {
+      if (u.pathname === '/api/model') return await serveModel(req,u.searchParams.get('slug')||'');
       if (u.pathname === '/api/cars') return json({ cars: await getCars(env) }, 200, 3600);
       if (u.pathname === '/api/status') {
         if (!env.DB) return json({ database: false, error: 'KV DB non collegato', salvate: 0, totale: 0, fallite: 0, ultimo: null }, 503);
@@ -264,4 +293,4 @@ export default {
   async scheduled(event, env, ctx) { ctx.waitUntil(crawl(env)); },
 };
 
-export { parseList, parseFields, parseSpec, parseDetails, robotRule, readCar, crawl };
+export { parseList, parseFields, parseSpec, parseDetails, robotRule, readCar, crawl, serveModel };
