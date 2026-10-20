@@ -1,7 +1,7 @@
 // FH6 Tuner — archivio progressivo. Mantiene le risposte API usate dalla PWA.
 const BASE = 'https://forzagarage.com';
 const UA = 'FH6-Tuner/2.0';
-const VERSION = 3;
+const VERSION = 5;
 const BATCH = 6;
 const DAY = 86400000;
 const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -162,6 +162,37 @@ async function getCars(env, read) {
     return list;
   } catch (e) { if (saved?.length) return saved; throw e; }
 }
+
+function embedded(html, id) {
+  for (const m of html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)) {
+    if (attrs(m[1]).id === id) { try { return JSON.parse(m[2]); } catch { return null; } }
+  }
+  return null;
+}
+function enrichSpec(pages, fallback, details) {
+  const entries = details ? details.flatMap(p=>p.specs) : pages.flatMap(p=>parseDetails(p.html).specs);
+  const find = (...labels) => { for(const label of labels) { const row=entries.find(r=>r.label.toLowerCase().trim()===label); if(row)return row.value; } return ''; };
+  const first = s => { const m=s.match(/-?[\d,]+(?:\.\d+)?/);return m ? Number(m[0].replace(/,/g,'')) : null; };
+  const spec={...fallback}, hp=first(find('power')), weight=find('curb weight','weight'), fp=first(find('front weight','weight distribution (front %)'));
+  if(hp>0) spec.hp=hp;
+  if(weight&&first(weight)>0){spec.w=first(weight);spec.wu=/\bkg\b/i.test(weight)?'kg':'lb';}
+  if(fp>0&&fp<100) spec.fp=fp;
+  const drv=find('drive type','layout').match(/\b(FWD|RWD|AWD)\b/);if(drv)spec.drivetrain=drv[1];
+  const pi=first(find('performance index'));if(pi>0)spec.pi=pi;
+  const gears=first(find('gears'));if(gears>0)spec.gears=gears;
+  return spec;
+}
+async function getGarage(env, slug) {
+  let rec=await dbGet(env,'car:'+slug);
+  if(rec?.buildDataVersion===1) return rec;
+  const read=reader(await robots());
+  const cars=await getCars(env,read);
+  if(!cars.some(c=>c.s===slug)) return null;
+  rec=await readCar(slug,read,rec);
+  if(env.DB) await saveCar(env,slug,rec);
+  return rec;
+}
+
 async function readCar(slug, read, previous) {
   const paths = [`/cars/${slug}/garage/`, `/cars/${slug}/`];
   const pages = [], errors = [];
@@ -170,12 +201,14 @@ async function readCar(slug, read, previous) {
     catch (e) { if ([403, 429, 503].includes(e.status)) throw e; errors.push({ path, error: e.message }); }
   }
   const fields = [...new Map(pages.flatMap(p => parseFields(p.html)).map(f => [JSON.stringify([f.l, f.u, f.a.axle, f.a.side]), f])).values()];
-  const spec = Object.assign({}, ...pages.map(p => parseSpec(strip(p.html))));
+  const texts = pages.map(p=>strip(p.html));
   const details = pages.map(p => ({ url: BASE + p.path, ...parseDetails(p.html) }));
+  const spec = enrichSpec(pages, Object.assign({}, ...texts.map(parseSpec)), details);
+  const build = pages.map(p=>embedded(p.html,'build-data')).find(x=>Array.isArray(x?.areas)) || previous?.build || null;
   if (!fields.length && !Object.keys(spec).length && !details.some(p => p.specs.length || p.options.length)) throw new Error('Nessun dato riconosciuto: verificare la struttura del sito');
-  const text = pages.map(p => strip(p.html)).join(' '), i = text.search(/specifications/i);
+  const text = texts.join(' '), i = text.search(/specifications/i);
   return {
-    ...previous, v: VERSION, t: Date.now(), slug,
+    ...previous, v: VERSION, t: Date.now(), slug, build, buildDataVersion: build ? 1 : 0,
     fields: fields.length ? fields : previous?.fields || [],
     spec: { ...previous?.spec, ...spec },
     snip: i >= 0 ? text.slice(i, i + 1200) : previous?.snip || '',
@@ -193,7 +226,7 @@ async function crawl(env) {
   running = true;
   let st;
   try {
-    st = await dbGet(env, 'crawl:v3') || { cursor: 0, fail: {} };
+    st = await dbGet(env, 'crawl:v5') || { cursor: 0, fail: {} };
     const read = reader(await robots()), cars = await getCars(env, read);
     const known = new Map((await inventory(env)).map(k => [k.name.slice(4), k.metadata]));
     let attempted = 0, visited = 0;
@@ -217,9 +250,9 @@ async function crawl(env) {
       }
     }
     st.t = Date.now(); st.attempted = attempted;
-    await dbPut(env, 'crawl:v3', st);
+    await dbPut(env, 'crawl:v5', st);
   } catch (e) {
-    if (st) { st.error = e.message; st.t = Date.now(); await dbPut(env, 'crawl:v3', st); }
+    if (st) { st.error = e.message; st.t = Date.now(); await dbPut(env, 'crawl:v5', st); }
     throw e;
   } finally { running = false; }
 }
@@ -258,10 +291,16 @@ export default {
     if (req.method !== 'GET' && !(u.pathname === '/api/model' && req.method === 'HEAD')) return json({ error: 'Metodo non consentito' }, 405);
     try {
       if (u.pathname === '/api/model') return await serveModel(req,u.searchParams.get('slug')||'');
+      if (u.pathname === '/api/garage') {
+        const slug=u.searchParams.get('slug')||'';
+        if(!/^[a-z0-9-]{3,120}$/.test(slug)) return json({error:'Auto non valida'},400);
+        const rec=await getGarage(env,slug);
+        return rec ? json(rec,200,3600) : json({error:'Auto non presente in catalogo'},404);
+      }
       if (u.pathname === '/api/cars') return json({ cars: await getCars(env) }, 200, 3600);
       if (u.pathname === '/api/status') {
         if (!env.DB) return json({ database: false, error: 'KV DB non collegato', salvate: 0, totale: 0, fallite: 0, ultimo: null }, 503);
-        const [keys, cars, st] = await Promise.all([inventory(env), dbGet(env, 'cars'), dbGet(env, 'crawl:v3')]);
+        const [keys, cars, st] = await Promise.all([inventory(env), dbGet(env, 'cars'), dbGet(env, 'crawl:v5')]);
         const current = new Set((cars || []).map(c => c.s));
         const saved = keys.filter(k => current.has(k.name.slice(4)));
         const complete = saved.filter(k => k.metadata?.v === VERSION && k.metadata.complete).length;
@@ -293,4 +332,4 @@ export default {
   async scheduled(event, env, ctx) { ctx.waitUntil(crawl(env)); },
 };
 
-export { parseList, parseFields, parseSpec, parseDetails, robotRule, readCar, crawl, serveModel };
+export { parseList, parseFields, parseSpec, parseDetails, robotRule, readCar, crawl, serveModel, embedded, enrichSpec, getGarage };

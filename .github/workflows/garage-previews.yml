@@ -1,0 +1,30 @@
+name: Restore verified garage previews
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/garage-images.json'
+      - '.github/workflows/garage-previews.yml'
+      - 'scripts/restore-garage-images.mjs'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: garage-previews
+  cancel-in-progress: false
+jobs:
+  restore:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Restore and verify release images
+        run: node scripts/restore-garage-images.mjs
+      - name: Commit verified previews
+        run: |
+          git add public/images
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Add all 622 verified garage previews"
+          git push origin HEAD:main

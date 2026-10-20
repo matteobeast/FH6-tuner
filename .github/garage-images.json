@@ -1,0 +1,3112 @@
+[
+  {
+    "path": "public/images/abarth-695-biposto-2016.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FIA_695Abarth_16.webp",
+    "sha": "3a786e3fdef4c0974508feab71b0785f15a331a3"
+  },
+  {
+    "path": "public/images/abarth-fiat-131-1980.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FIA_131AbarthStradale_80.webp",
+    "sha": "040cc11c320a9941d19432c4394e748b1e7babb5"
+  },
+  {
+    "path": "public/images/abarth-595-esseesse-1968.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FIA_595SS_68.webp",
+    "sha": "338bc6ff76e74499617fadf64ccf8d965d48abeb"
+  },
+  {
+    "path": "public/images/acura-integra-a-spec-2023.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/ACU_Integra_23.webp",
+    "sha": "aa4c545ae3bf81a73dad1078a8aa3008eff276d8"
+  },
+  {
+    "path": "public/images/acura-nsx-type-s-2022.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/ACU_NSXTypeS_22.webp",
+    "sha": "d40d74301158a60887324d9483a67eda42157d21"
+  },
+  {
+    "path": "public/images/acura-rsx-type-s-2002.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/ACU_RSXTypeS_02.webp",
+    "sha": "dea53ee320b1e81cb29d8dc3b04a4fce52fba52d"
+  },
+  {
+    "path": "public/images/acura-integra-type-r-2001.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/ACU_IntegraR_01.webp",
+    "sha": "10891e9e3d52ac22ea4194c6e5573cbae6ac05f2"
+  },
+  {
+    "path": "public/images/alfa-romeo-giulia-quadrifoglio-2016.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/ALF_Giulia_16.webp",
+    "sha": "babca9bdd85012e8d34496f5d2e6e347091faa68"
+  },
+  {
+    "path": "public/images/alfa-romeo-4c-2014.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/ALF_4C_14.webp",
+    "sha": "36306d0d20cebf2b42090831c72e7fb63f33ddda"
+  },
+  {
+    "path": "public/images/alfa-romeo-8c-competizione-2008.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/ALF_8C_08.webp",
+    "sha": "823f2ac4c767d5128911cf4828031ececfbfd789"
+  },
+  {
+    "path": "public/images/alfa-romeo-155-q4-1992.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/ALF_155_92.webp",
+    "sha": "4e2358fb716ec0899ed02660a5831660f4391ade"
+  },
+  {
+    "path": "public/images/alfa-romeo-33-stradale-1968.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/ALF_33Stradale_68.webp",
+    "sha": "e2bfd6e629008a5c22b908f6b5231da7f456a2d7"
+  },
+  {
+    "path": "public/images/alfa-romeo-giulia-sprint-gta-stradale-1965.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/ALF_GTA_65.webp",
+    "sha": "e1471d328460be33c7291b79a30c80ba76d836a7"
+  },
+  {
+    "path": "public/images/alfa-romeo-giulia-tz2-1965.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/ALF_GiuliaTZ2_65.webp",
+    "sha": "6315cc6f4d889ab9c7007cb38f1370fd1a3f3958"
+  },
+  {
+    "path": "public/images/alumicraft-6165-trick-truck-2021.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/AC_6165_Class6100_21.webp",
+    "sha": "cf8ceb1b38fd1b3c7133f877a08b7032e84f57ac"
+  },
+  {
+    "path": "public/images/alumicraft-122-class-1-buggy-2020.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/AC_122_Class1_20.webp",
+    "sha": "fb575684d981a66622040002bf4a1b1fb3aff31f"
+  },
+  {
+    "path": "public/images/alumicraft-class-10-race-car-2015.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/AC_Class10_15.webp",
+    "sha": "296bd8e1fd77e23bee79b70987d7c09002078acd"
+  },
+  {
+    "path": "public/images/amg-transport-dynamics-m12s-warthog-cst-2015.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/343_Warthog_15.webp",
+    "sha": "96cb88becae9479c617bb17660184a3022afeec8"
+  },
+  {
+    "path": "public/images/apollo-intensa-emozione-2018.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/APO_Intensa_18.webp",
+    "sha": "28cc7dc791d827d94821c4c91c1f61255cdfc981"
+  },
+  {
+    "path": "public/images/ariel-nomad-2016.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/ARI_Nomad_16.webp",
+    "sha": "24abf00f7a377f9f84dbbdf6c624a713e2811880"
+  },
+  {
+    "path": "public/images/ariel-atom-500-v8-2013.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/ARI_Atom_13.webp",
+    "sha": "d558be8b07e205324d9cff43e6a0d4e14f4e16dd"
+  },
+  {
+    "path": "public/images/aston-martin-valkyrie-2023.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/AST_Valkyrie_23.webp",
+    "sha": "80f20c850c7325c0ef5c069349e95ad715a80879"
+  },
+  {
+    "path": "public/images/aston-martin-valkyrie-amr-pro-2022.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/AST_ValkyrieAMRPro_22.webp",
+    "sha": "2b0bdd1b9da4ce531c11c408655894f6608cc7fb"
+  },
+  {
+    "path": "public/images/aston-martin-valhalla-concept-car-2021.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/AST_Valhalla_21.webp",
+    "sha": "13cc5efc987e8c05ac9d823f61278772c6b95406"
+  },
+  {
+    "path": "public/images/aston-martin-dbs-superleggera-2019.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/AST_DBSSuperleggera_19.webp",
+    "sha": "3d3df55229789bc64bd84253734da3a1092ae951"
+  },
+  {
+    "path": "public/images/aston-martin-dbx-2019.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/AST_DBX_19.webp",
+    "sha": "9f43281f4f2513eea8fef50127506f36f793be38"
+  },
+  {
+    "path": "public/images/aston-martin-vulcan-amr-pro-2019.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/AST_VulcanAMRPro_19.webp",
+    "sha": "378df5f905a0eac2f79fd81748c155de0f836883"
+  },
+  {
+    "path": "public/images/aston-martin-vantage-2018.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/AST_Vantage_18.webp",
+    "sha": "cb5ae50e34a064a534601b48498883d5829d9c2a"
+  },
+  {
+    "path": "public/images/aston-martin-db11-2017.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/AST_DB11_17.webp",
+    "sha": "f4e1d50cdadbbb3b13cdad39e1e1670c278d7838"
+  },
+  {
+    "path": "public/images/aston-martin-vulcan-2016.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/AST_Vulcan_16.webp",
+    "sha": "1d5025addfd32288588b63d35586bcb62bed6ea8"
+  },
+  {
+    "path": "public/images/aston-martin-db5-1964.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/AST_DB5Vantage_64.webp",
+    "sha": "6a79eb7a1bffc0f78560ba6832efe148fbc75eb5"
+  },
+  {
+    "path": "public/images/audi-r8-coup-v10-gt-rwd-2023.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/AUD_R8GT_23.webp",
+    "sha": "f227479fed744cd1bbfc5867de9c3cc51a8678a5"
+  },
+  {
+    "path": "public/images/audi-rs-6-avant-2021.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/AUD_RS6Avant_21.webp",
+    "sha": "bde06cd15511d0da7f5f8ac15164370ba4a8ed6c"
+  },
+  {
+    "path": "public/images/audi-rs-7-sportback-2021.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/AUD_RS7_21.webp",
+    "sha": "5904f42f20ab2e2a777ad220f82d53e2346f8fee"
+  },
+  {
+    "path": "public/images/audi-r8-v10-performance-2020.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/AUD_R8_20.webp",
+    "sha": "e174d16a73027f9845d74a7c0ec3a437ea76b072"
+  },
+  {
+    "path": "public/images/audi-rs-3-sedan-2020.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/AUD_RS3Sedan_20.webp",
+    "sha": "01a86450dfc00b0f4734917292ee07b7fd98c296"
+  },
+  {
+    "path": "public/images/audi-rs-4-avant-2018.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/AUD_RS4Avant_18.webp",
+    "sha": "b99803398fd76422bdd966bb4e07be641f8c79d8"
+  },
+  {
+    "path": "public/images/audi-rs-e-tron-gt-2018.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/AUD_Etron_18.webp",
+    "sha": "88b8f5e8ba7364cb5ccf04813dedd2be24ff2142"
+  },
+  {
+    "path": "public/images/audi-r8-v10-plus-2016.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/AUD_R8V10Plus_16.webp",
+    "sha": "ae64a7b49437f649dacbcf823e28e850c5daa5c2"
+  },
+  {
+    "path": "public/images/audi-rs-6-avant-2015.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/AUD_RS6_15.webp",
+    "sha": "6d1848686f6cb6c60b759e4caed37150d98efb5a"
+  },
+  {
+    "path": "public/images/audi-s1-2015.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/AUD_S1_15.webp",
+    "sha": "ca062277d3ca904abb6bae36375ae61b24387888"
+  },
+  {
+    "path": "public/images/audi-r8-coup-v10-plus-5-2-fsi-quattro-2013.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/AUD_R8Plus_13.webp",
+    "sha": "5e334e4f12e78903a6b4646c6474e1f1c50f8212"
+  },
+  {
+    "path": "public/images/audi-rs-4-avant-2013.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/AUD_RS4Avant_13.webp",
+    "sha": "477b1c162d2e2e7b07dfbc2f84a817388933bc95"
+  },
+  {
+    "path": "public/images/audi-rs-7-sportback-2013.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/AUD_RS7_13.webp",
+    "sha": "343ce0fca33a360fbcfff022355d0a890e6cf417"
+  },
+  {
+    "path": "public/images/audi-rs-3-sportback-2011.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/AUD_RS3_11.webp",
+    "sha": "b7f6122ab3f50a2364e107e22420179f254b573d"
+  },
+  {
+    "path": "public/images/audi-rs-5-coup-2011.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/AUD_RS5_11.webp",
+    "sha": "ee8e71b281ad7ab306b5fbcd8fcd59f521d9c1d2"
+  },
+  {
+    "path": "public/images/audi-tt-rs-coup-2010.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/AUD_TTRS_10.webp",
+    "sha": "c2bb533970cfcb1fe8900b59be6880f8b784a990"
+  },
+  {
+    "path": "public/images/audi-r8-lms-2009.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/AUD_R8LMS_09.webp",
+    "sha": "4a3fe8d222bbc034e03c659c99b95b0a533ec93f"
+  },
+  {
+    "path": "public/images/audi-rs-6-2009.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/AUD_RS6_09.webp",
+    "sha": "8e657360d4711f32c898602898eae7027e44316f"
+  },
+  {
+    "path": "public/images/audi-rs-4-2006.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/AUD_RS4_06.webp",
+    "sha": "15238fe11aac9769fa1b5917d4ead90d96db7eec"
+  },
+  {
+    "path": "public/images/audi-rs-6-2003.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/AUD_RS6_03.webp",
+    "sha": "180b2d7b1c99e0b061aee22dd4f97f883c8e828f"
+  },
+  {
+    "path": "public/images/audi-rs-4-avant-2001.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/AUD_RS4_01.webp",
+    "sha": "50bdec390cd6df49ca22fb39b1e9413010e2d267"
+  },
+  {
+    "path": "public/images/audi-2-audi-sport-quattro-s1-1986.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/AUD_2_SportQuattro_86.webp",
+    "sha": "30c37ad78ab75b9cf6f814489aa04bc933d913a0"
+  },
+  {
+    "path": "public/images/audi-sport-quattro-1983.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/AUD_SportQuattro_83.webp",
+    "sha": "59f9ad593e683404adb3ddcffa927bcee47dc6c3"
+  },
+  {
+    "path": "public/images/austin-healey-3000-mkiii-1965.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/AH_3000_65.webp",
+    "sha": "1b3e467c2d96e428747018d77c85b13816afdb17"
+  },
+  {
+    "path": "public/images/autozam-az-1-1993.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/AZM_AZ1_93.webp",
+    "sha": "3923dadf0236ec61001b915119b777ae315fd6e6"
+  },
+  {
+    "path": "public/images/bac-mono-2014.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/BAC_Mono_14.webp",
+    "sha": "81cf83ae93efb4c0a096bebcd9b1486530e2c514"
+  },
+  {
+    "path": "public/images/bentley-continental-gt-convertible-2021.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/BEN_ContinentalGTC_21.webp",
+    "sha": "66a9a9f8966b5fafc120bda3bd14eb4160822860"
+  },
+  {
+    "path": "public/images/bentley-bentayga-2016.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/BEN_Bentayga_16.webp",
+    "sha": "03bd922d3721fddb90cef5ab842c511fd357d066"
+  },
+  {
+    "path": "public/images/bmw-x6-m-competition-2024.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/BMW_X6M_24.webp",
+    "sha": "5e4ee35c26dc93066956fa492f86bf3287bfa623"
+  },
+  {
+    "path": "public/images/bmw-m2-2023.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/BMW_M2_23.webp",
+    "sha": "db4232dc0b71a961672fc8889477845b156a420f"
+  },
+  {
+    "path": "public/images/bmw-m2-forza-edition-2023.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/BMW_M2FE_23.webp",
+    "sha": "778df148f24c9612e5f2292128e5177b34021067"
+  },
+  {
+    "path": "public/images/bmw-m5-cs-2022.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/BMW_M5CS_22.webp",
+    "sha": "4363bc5a03c1bd6f37b640b6e1af3c205bca6657"
+  },
+  {
+    "path": "public/images/bmw-ix-xdrive50-2022.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/BMW_iX_22.webp",
+    "sha": "c1545ee2bb7ece80dbda8f49c8b9fcc602e22a8b"
+  },
+  {
+    "path": "public/images/bmw-m4-competition-coup-2021.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/BMW_M4_21.webp",
+    "sha": "066bd68365230d98e65b801c2b9882f1f4c3c096"
+  },
+  {
+    "path": "public/images/bmw-m4-competition-coup-welcome-pack-2021.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/BMW_M4WP_21.webp",
+    "sha": "99e66ffb9d741a5e8c0b89a0b10d565d7bd1394b"
+  },
+  {
+    "path": "public/images/bmw-m2-competition-coup-2020.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/BMW_M2Comp_20.webp",
+    "sha": "57f277c531d1dc0a89974d08de4b69c9730c953d"
+  },
+  {
+    "path": "public/images/bmw-m8-competition-coup-2020.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/BMW_M8_20.webp",
+    "sha": "6162a45068f7b5dada330580c69df047aa4fe353"
+  },
+  {
+    "path": "public/images/bmw-z4-roadster-2019.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/BMW_Z4_19.webp",
+    "sha": "37351faa5ac1698d93f6f3a542ebd11399736c94"
+  },
+  {
+    "path": "public/images/bmw-m4-gts-2016.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/BMW_M4GTS_16.webp",
+    "sha": "ee1087ae971107bc4c06bb3f89d29701abf6ad4c"
+  },
+  {
+    "path": "public/images/bmw-i8-2015.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/BMW_i8_15.webp",
+    "sha": "9487913f93331fc8a03cedf5f36256556957a7a0"
+  },
+  {
+    "path": "public/images/bmw-m4-coup-2014.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/BMW_M4_14.webp",
+    "sha": "c20e03bd631816d65d18935cf381fcb6a544afb9"
+  },
+  {
+    "path": "public/images/bmw-m5-2012.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/BMW_M5_12.webp",
+    "sha": "046b9ccf3ac3ecb20cea684ac5d50f24a7b0c6af"
+  },
+  {
+    "path": "public/images/bmw-x5-m-2011.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/BMW_X5M_11.webp",
+    "sha": "0fe116bd9b3f5740d0cd8cb3ce9b0079d497db4c"
+  },
+  {
+    "path": "public/images/bmw-m3-gts-2010.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/BMW_M3GTS_10.webp",
+    "sha": "bc30a3484764c69220c7ced79094dddd23b69114"
+  },
+  {
+    "path": "public/images/bmw-m5-2009.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/BMW_M5_09.webp",
+    "sha": "d646e0a75d5580c36213f2b94ad05289e3f90873"
+  },
+  {
+    "path": "public/images/bmw-m3-2008.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/BMW_M3E92_08.webp",
+    "sha": "37df07b409154a150cfddb6510a3cd61758df810"
+  },
+  {
+    "path": "public/images/bmw-z4-m-coup-2008.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/BMW_Z4MCoupe_08.webp",
+    "sha": "c60add2b10310f2bba8993bc8406254b9d9b44e0"
+  },
+  {
+    "path": "public/images/bmw-m3-2005.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/BMW_E46M3_05.webp",
+    "sha": "acd0e0bae829d6d44ffd07c01736b09eba7d6379"
+  },
+  {
+    "path": "public/images/bmw-m5-2003.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/BMW_M5E39_03.webp",
+    "sha": "80b26aecbc45e1cd590d011000dbf25816004cb8"
+  },
+  {
+    "path": "public/images/bmw-m3-1997.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/BMW_E36M3_97.webp",
+    "sha": "605c6b2f00f5f7e8aa4f550193c69a9b0626432c"
+  },
+  {
+    "path": "public/images/bmw-850csi-1996.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/BMW_850CSi_96.webp",
+    "sha": "cdd3e56ade8c3209bb43813bb23feb31acf505f2"
+  },
+  {
+    "path": "public/images/bmw-m5-1995.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/BMW_M5_95.webp",
+    "sha": "e597055b3049aecbd156b0dba1c2fc2606e4a02b"
+  },
+  {
+    "path": "public/images/bmw-m3-1988.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/BMW_M3_88.webp",
+    "sha": "3c94910765983a1ded286ca1fb3864171d4cf898"
+  },
+  {
+    "path": "public/images/bmw-m5-1988.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/BMW_M5E28_88.webp",
+    "sha": "bd77f3bb3abc4c442c080bf13790e85e5e6b151e"
+  },
+  {
+    "path": "public/images/bmw-m1-1981.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/BMW_M1_81.webp",
+    "sha": "ac154aa87b6bc8db1d387a3b832a6271a65548d6"
+  },
+  {
+    "path": "public/images/bmw-2002-turbo-1973.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/BMW_2002Turbo_73.webp",
+    "sha": "afae145238d184100b74e484cc0bbfe383347c42"
+  },
+  {
+    "path": "public/images/bmw-isetta-300-export-1962.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/BMW_Isetta_62.webp",
+    "sha": "af17338fc45abe372306afc922d7f85a0ebcd1e4"
+  },
+  {
+    "path": "public/images/buick-regal-gnx-1987.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/BUI_RegalGNX_87.webp",
+    "sha": "d8d5d407f932f4ed6065c6ba52329b409e24b6d0"
+  },
+  {
+    "path": "public/images/cadillac-ct4-v-blackwing-2022.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/CAD_CT4VBlackwing_22.webp",
+    "sha": "45539c58cd05975f19262fac13dd3761f0042502"
+  },
+  {
+    "path": "public/images/cadillac-ct5-v-blackwing-2022.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/CAD_CT5VBlackwing_22.webp",
+    "sha": "68e7d32565850bddd516ae5b988da0bc1a02a543"
+  },
+  {
+    "path": "public/images/cadillac-ats-v-2016.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/CAD_ATSV_16.webp",
+    "sha": "06dd1a19894d687f6d1dea37e1967fa9091b3b6f"
+  },
+  {
+    "path": "public/images/cadillac-cts-v-sedan-2016.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/CAD_CTSVSedan_16.webp",
+    "sha": "eecfdd2b4b16d5795b0d21fe1bf3375f330e1bcf"
+  },
+  {
+    "path": "public/images/cadillac-xts-limousine-2013.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/CAD_XTSLimo_13.webp",
+    "sha": "4d2470837cd52140aec36f9b7f663e7e685aff10"
+  },
+  {
+    "path": "public/images/can-am-maverick-x-rs-turbo-r-2018.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/CAN_Maverick_18.webp",
+    "sha": "fe4e38cea7c0e99c04c2e9ae496487a64a253bdc"
+  },
+  {
+    "path": "public/images/casey-currie-motorsports-4402-ultra-4-trophy-jeep-2019.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/JEE_4422_Trophy_19.webp",
+    "sha": "97aeaf59d3f70946d544c69e42c60450f9f04356"
+  },
+  {
+    "path": "public/images/chevrolet-corvette-e-ray-2023.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/CHE_CorvetteERay_23.webp",
+    "sha": "e13e7c87d8532f16b549f1255801f698e50fb42e"
+  },
+  {
+    "path": "public/images/chevrolet-corvette-z06-2023.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/CHE_CorvetteZ06_23.webp",
+    "sha": "2503ae12518dd47dbd3c7a35719b29f10a80d8fd"
+  },
+  {
+    "path": "public/images/chevrolet-corvette-stingray-coupe-2020.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/CHE_Corvette_20.webp",
+    "sha": "b84c7b6bfd253ab57a8f85b840037049a5f4f5ed"
+  },
+  {
+    "path": "public/images/chevrolet-silverado-lt-trail-boss-2020.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/CHE_SilveradoLTZ71_20.webp",
+    "sha": "c7b3424bca5bf7bcf3b7d3724b7039442f13f7a2"
+  },
+  {
+    "path": "public/images/chevrolet-corvette-zr1-2019.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/CHE_CorvetteZR1_19.webp",
+    "sha": "7e0aaeab2193bbb9d9d952dd0da140666fa675ee"
+  },
+  {
+    "path": "public/images/chevrolet-camaro-zl1-1le-2018.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/CHE_Camaro1LE_18.webp",
+    "sha": "4c5990d2494ae89a2d788d5211bcc32262c43dec"
+  },
+  {
+    "path": "public/images/chevrolet-camaro-zl1-2017.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/CHE_CamaroZL1_17.webp",
+    "sha": "3815f75dba765e5c7852e5a2ed44030e83d857fc"
+  },
+  {
+    "path": "public/images/chevrolet-camaro-z-28-2015.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/CHE_CamaroZ28_15.webp",
+    "sha": "6f18413ad2aad2fb855d78616b0748d253865351"
+  },
+  {
+    "path": "public/images/chevrolet-corvette-z06-2015.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/CHE_CorvetteZ06_15.webp",
+    "sha": "839bb25660f31522f3638ad761e0964760444ffa"
+  },
+  {
+    "path": "public/images/chevrolet-corvette-zr1-2009.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/CHE_CorvetteZR1_09.webp",
+    "sha": "7aa1be70e01c114b027687d6f4649dd5f4110e28"
+  },
+  {
+    "path": "public/images/chevrolet-corvette-z06-2002.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/CHE_CorvetteZ06_02.webp",
+    "sha": "af274105f33414b4d224cd92ba386343a80369c6"
+  },
+  {
+    "path": "public/images/chevrolet-impala-super-sport-1996.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/CHE_ImpalaSS_96.webp",
+    "sha": "f7c43c91f6cd119d7bbba61c59b269c2da899ab0"
+  },
+  {
+    "path": "public/images/chevrolet-corvette-zr-1-1995.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/CHE_CorvetteZR1_95.webp",
+    "sha": "cd96e8a4bee754baed5161c733dd3682d1ab1f8d"
+  },
+  {
+    "path": "public/images/chevrolet-monte-carlo-super-sport-1988.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/CHE_MonteCarlo_88.webp",
+    "sha": "0c4c85c449ce3b665064fc04b06eeb8320714c3a"
+  },
+  {
+    "path": "public/images/chevrolet-camaro-z28-1979.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/CHE_CamaroZ28_79.webp",
+    "sha": "6e5a037308bcf4d0bd780f1ae4f25b0e469d54ca"
+  },
+  {
+    "path": "public/images/chevrolet-k-10-custom-1973.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/CHE_CKPickup_73.webp",
+    "sha": "0273acad255b5dc82b0518bfc3032a5f80516649"
+  },
+  {
+    "path": "public/images/chevrolet-camaro-z28-1970.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/CHE_CamaroZ28_70.webp",
+    "sha": "dfa9969a039785cbb575194e4bf534c072b48569"
+  },
+  {
+    "path": "public/images/chevrolet-chevelle-super-sport-454-1970.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/CHE_Chevelle_70.webp",
+    "sha": "ea085ea84fad284b592e4e8dab7d6a32373a0a86"
+  },
+  {
+    "path": "public/images/chevrolet-corvette-zr-1-1970.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/CHE_CorvetteZR1_70.webp",
+    "sha": "366875e22bc0b5d1ccc89bf52164d1aec20ad4a5"
+  },
+  {
+    "path": "public/images/chevrolet-el-camino-super-sport-454-1970.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/CHE_ElCaminoSS_70.webp",
+    "sha": "4afdcff971facb570e94e2fa78ba562adf4e9860"
+  },
+  {
+    "path": "public/images/chevrolet-camaro-super-sport-coupe-1969.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/CHE_CamaroSS_69.webp",
+    "sha": "0e5de17f9881093c26beafc42e106556e67f4b77"
+  },
+  {
+    "path": "public/images/chevrolet-nova-super-sport-396-1969.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/CHE_NovaSS_69.webp",
+    "sha": "93ccf4d9bde98f917e0d7fd3003d57e248251f93"
+  },
+  {
+    "path": "public/images/chevrolet-corvette-stingray-427-1967.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/CHE_CorvetteStingray_67.webp",
+    "sha": "edd0db61ea0b040f84c7ce51054fbedb5a793f7d"
+  },
+  {
+    "path": "public/images/chevrolet-impala-super-sport-409-1964.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/CHE_ImpalaSS_64.webp",
+    "sha": "fe850c03147c050cef05a4cb1a8145bdcd9ac89e"
+  },
+  {
+    "path": "public/images/chevrolet-corvette-1960.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/CHE_Corvette_60.webp",
+    "sha": "27302cd1b235381c248eec7dcbb435840d49b1da"
+  },
+  {
+    "path": "public/images/chevrolet-bel-air-1957.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/CHE_BelAir_57.webp",
+    "sha": "8ea39020dfa35b384edf1d41867c3ccb2378824c"
+  },
+  {
+    "path": "public/images/chevrolet-150-utility-sedan-1955.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/CHE_150UtilitySedan_55.webp",
+    "sha": "3841fccd6a8bf94fae17d4077cd5133141f850c5"
+  },
+  {
+    "path": "public/images/chevrolet-corvette-1953.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/CHE_Corvette_53.webp",
+    "sha": "3e67502484e86883fb74ec03969e1f54a7ac1d2e"
+  },
+  {
+    "path": "public/images/datsun-269-attacking-the-clock-racing-240z-all-carbon-hill-climb-beast-1972.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/DAT_269_240Z_72.webp",
+    "sha": "e0cdc915dd4ae2a21d5f628d07dde0dc7211c402"
+  },
+  {
+    "path": "public/images/datsun-510-1970.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/NIS_510_70.webp",
+    "sha": "020042fa139d831098561cd46c6053e2d7bbf85c"
+  },
+  {
+    "path": "public/images/datsun-2000-roadster-1969.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/DAT_2000_69.webp",
+    "sha": "f4d01e68512493b098be218ed31f917a7a0f4bc1"
+  },
+  {
+    "path": "public/images/deberti-ford-super-duty-f-250-lariat-transformer-2019.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_F250Deberti_19.webp",
+    "sha": "0371184ce076d34734a8217ca5cb67d1a008e846"
+  },
+  {
+    "path": "public/images/deberti-toyota-tacoma-trd-the-performance-truck-2019.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/TOY_TacomaDeberti_19.webp",
+    "sha": "9c0899d1d0ffafc24704c0012442215ae2f87c65"
+  },
+  {
+    "path": "public/images/deberti-chevrolet-silverado-1500-drift-truck-2018.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/CHE_DebertiDriftTruck_18.webp",
+    "sha": "601e2641dfeb20557778d253efe32ed21981dd1e"
+  },
+  {
+    "path": "public/images/deberti-jeep-wrangler-unlimited-2013.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/JEE_DebertiWrangler_13.webp",
+    "sha": "2cc30a62dd119bd8cac73e8c1ab81a85b03eff4f"
+  },
+  {
+    "path": "public/images/delorean-dmc-12-1982.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/DEL_DMC12_82.webp",
+    "sha": "b5e3d93cdea5bda64739ff4e08d7a26c8be2489e"
+  },
+  {
+    "path": "public/images/dodge-challenger-srt-super-stock-2022.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/DOD_ChallengerSRT_22.webp",
+    "sha": "99f8230920a9993043f6b5bbf2cfd09a23f5ef4f"
+  },
+  {
+    "path": "public/images/dodge-durango-srt-hellcat-2021.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/DOD_DurangoHellcat_21.webp",
+    "sha": "003e6be7f70d1b1c910a7d2aed88c434adcc94d4"
+  },
+  {
+    "path": "public/images/dodge-challenger-srt-demon-2018.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/DOD_Demon_18.webp",
+    "sha": "d4eb1afce4fe9d0e9dd1952556f66a3e7a5ffc13"
+  },
+  {
+    "path": "public/images/dodge-viper-acr-2016.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/DOD_ViperACR_16.webp",
+    "sha": "cf08c027f11ff51fad6678f98c8138b33a6186fd"
+  },
+  {
+    "path": "public/images/dodge-challenger-srt-hellcat-2015.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/DOD_ChallengerHellcat_15.webp",
+    "sha": "b3c1198586f89fd6cb05b5928f4cdfa663f73783"
+  },
+  {
+    "path": "public/images/dodge-charger-srt-hellcat-2015.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/DOD_ChargerSRTHellcat_15.webp",
+    "sha": "97405f67390a84748a9dc8c912faa0cc82946fd3"
+  },
+  {
+    "path": "public/images/dodge-viper-srt-10-acr-2008.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/DOD_ViperSRT10ACR_08.webp",
+    "sha": "8b3fbd4d266827ff38abf81dfd44725bf2ae2329"
+  },
+  {
+    "path": "public/images/dodge-ram-srt-10-2006.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/DOD_RamSRT10_06.webp",
+    "sha": "518d1cb64d36b1486ea7cc45da686174b2812ec9"
+  },
+  {
+    "path": "public/images/dodge-viper-gts-acr-1999.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/DOD_ViperGTSACR_99.webp",
+    "sha": "2a4b5622fad23d248ff8e633afd342f6ae63ccb2"
+  },
+  {
+    "path": "public/images/dodge-viper-gts-acr-forza-edition-1999.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/DOD_ViperGTSACRFE_99.webp",
+    "sha": "b71f5ae36ca123cb9f0f92c51b113cb41d5de4c7"
+  },
+  {
+    "path": "public/images/dodge-challenger-r-t-1970.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/DOD_ChallengerHemi_70.webp",
+    "sha": "ac857be98f8de513de2177b38ca9f932cc64bd30"
+  },
+  {
+    "path": "public/images/dodge-coronet-super-bee-1970.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/DOD_SuperBee_70.webp",
+    "sha": "fb94ee4d043061a037bc449cdb55eb0dfff8b8dc"
+  },
+  {
+    "path": "public/images/dodge-charger-daytona-hemi-1969.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/DOD_ChargerDaytona_69.webp",
+    "sha": "34ea0d4165fa1c3ac7d3ec5a4b1eabaeda445960"
+  },
+  {
+    "path": "public/images/dodge-charger-r-t-1969.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/DOD_ChargerRT_69.webp",
+    "sha": "9d4678048b2e7f5c2a0316d964724f4beb5ddcd7"
+  },
+  {
+    "path": "public/images/dodge-dart-hemi-super-stock-1968.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/DOD_Dart_68.webp",
+    "sha": "fa268e09b7167c0462a6b39e1fc148691fdd709e"
+  },
+  {
+    "path": "public/images/ferrari-296-gtb-2022.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FER_296GTB_22.webp",
+    "sha": "84ca855d2175abb8934b85b3e3aadb88abed3d6e"
+  },
+  {
+    "path": "public/images/ferrari-roma-2021.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FER_Roma_21.webp",
+    "sha": "a7d09c2c91ede1404570fa4dd8a217bfe870880d"
+  },
+  {
+    "path": "public/images/ferrari-f8-tributo-2020.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FER_F8Tributo_20.webp",
+    "sha": "65a8c8217caf118bf7dc93037ce1f042db4f184f"
+  },
+  {
+    "path": "public/images/ferrari-sf90-stradale-2020.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FER_SF90Stradale_20.webp",
+    "sha": "5d7f110821c9a1d500013e815e6399047f8e7844"
+  },
+  {
+    "path": "public/images/ferrari-488-pista-2019.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FER_488Pista_19.webp",
+    "sha": "5ff532de9c08f974434fb2379eb788392dd84c2a"
+  },
+  {
+    "path": "public/images/ferrari-monza-sp2-2019.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FER_MonzaSP2_19.webp",
+    "sha": "b09261940fedcfbe7b1aea299248f10b0f49aee1"
+  },
+  {
+    "path": "public/images/ferrari-812-superfast-2018.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FER_812Superfast_18.webp",
+    "sha": "6922f9179dcc2574fbf1a91e436a4123d700c801"
+  },
+  {
+    "path": "public/images/ferrari-fxx-k-evo-2018.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FER_FXXKEvo_18.webp",
+    "sha": "3ba0526922891f1ef2dffd941a83c8a39688ac71"
+  },
+  {
+    "path": "public/images/ferrari-fxx-k-evo-welcome-pack-2018.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FER_FXXKEvoWP_18.webp",
+    "sha": "35058e1b7e86a358786121e338e23bb2de0f200b"
+  },
+  {
+    "path": "public/images/ferrari-portofino-2018.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FER_Portofino_18.webp",
+    "sha": "3be44ea1b23ad0929a22fe5f9c7881f682adf28c"
+  },
+  {
+    "path": "public/images/ferrari-j50-2017.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FER_J50_17.webp",
+    "sha": "26aeedecab4e943c14a7c703e7618f65dfcae30c"
+  },
+  {
+    "path": "public/images/ferrari-j50-preorder-car-2017.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FER_J50PO_17.webp",
+    "sha": "ca2a660e979036d6a285188ee05aa3d30caa98eb"
+  },
+  {
+    "path": "public/images/ferrari-488-gtb-2016.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FER_488GTB_16.webp",
+    "sha": "b690194648cccbd2d38875a077e0f0aeeb0784be"
+  },
+  {
+    "path": "public/images/ferrari-fxx-k-2016.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FER_FXXK_16.webp",
+    "sha": "e74d62ae155208fc926165677d97c85b0ed7b7a4"
+  },
+  {
+    "path": "public/images/ferrari-458-speciale-2015.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FER_458Speciale_15.webp",
+    "sha": "235b1399fa4def231b623d88b4ddf828d4f6c5ad"
+  },
+  {
+    "path": "public/images/ferrari-f12tdf-2015.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FER_F12tdf_15.webp",
+    "sha": "f22278a0f6549f3800c3ae3dcf0f6bffb24d999e"
+  },
+  {
+    "path": "public/images/ferrari-laferrari-2013.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FER_LaFerrari_13.webp",
+    "sha": "a4c47c921a039607ab44e15579b93712cee4e530"
+  },
+  {
+    "path": "public/images/ferrari-599xx-evolution-2012.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FER_599XXEvolution_12.webp",
+    "sha": "2ace3280397563abcb0d67f29145a06819f03b3f"
+  },
+  {
+    "path": "public/images/ferrari-458-italia-2010.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FER_F142_10.webp",
+    "sha": "68295c7f90b1b9fef8d621e78590075418a3fe20"
+  },
+  {
+    "path": "public/images/ferrari-599xx-2010.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FER_599XX_10.webp",
+    "sha": "95fdaac000a646641af4665686e7e5bdcf7f615e"
+  },
+  {
+    "path": "public/images/ferrari-430-scuderia-2007.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FER_F430Scuderia_07.webp",
+    "sha": "de0ffe728aeef30f87bda46c96a10bc7ac2c209a"
+  },
+  {
+    "path": "public/images/ferrari-fxx-2005.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FER_FXX_05.webp",
+    "sha": "5444d13e1a7a3332066fc89a5f5247e90fc4fcbc"
+  },
+  {
+    "path": "public/images/ferrari-enzo-ferrari-2002.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FER_Enzo_02.webp",
+    "sha": "6820cbd46cd9d23282c00f1c0cfb6f20f2ed91ba"
+  },
+  {
+    "path": "public/images/ferrari-f50-gt-1996.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FER_F50GT_96.webp",
+    "sha": "5f22e3ea37585c7663573509515b132f3c2056a4"
+  },
+  {
+    "path": "public/images/ferrari-f50-1995.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FER_F50_95.webp",
+    "sha": "b67ac8e03fae3656debe9cc02b5457cdf52396ee"
+  },
+  {
+    "path": "public/images/ferrari-f355-berlinetta-1994.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FER_355Berlinetta_94.webp",
+    "sha": "94e2dc53ff204b809480fd56d0ba71caa0456cf7"
+  },
+  {
+    "path": "public/images/ferrari-512-tr-1991.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FER_512TR_91.webp",
+    "sha": "1e6c189ddafe713f4bf67713bcc2531ec792c9ca"
+  },
+  {
+    "path": "public/images/ferrari-f40-competizione-1989.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FER_F40Competizione_89.webp",
+    "sha": "2d093f7ad13b533b0699fec9c937b64fb4a9ab08"
+  },
+  {
+    "path": "public/images/ferrari-f40-1987.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FER_F40_87.webp",
+    "sha": "d1ca4d527d4921b497885e2377669fabccd98bcc"
+  },
+  {
+    "path": "public/images/ferrari-288-gto-1984.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FER_GTO_84.webp",
+    "sha": "7a9a44ff0b95c1c863a2389aa3873c8363495c25"
+  },
+  {
+    "path": "public/images/ferrari-512-s-1970.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FER_512S_70.webp",
+    "sha": "5739bf99635a536b61051cbfcf2a992976513e44"
+  },
+  {
+    "path": "public/images/ferrari-dino-246-gt-1969.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FER_Dino246_69.webp",
+    "sha": "caf5d2b9ac993f47f3b2ba11ac0ff5f316460643"
+  },
+  {
+    "path": "public/images/ferrari-24-ferrari-spa-330-p4-1967.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FER_24_330P4_67.webp",
+    "sha": "3a10af4a70cb51ef0c08d7857dad49a097c07eae"
+  },
+  {
+    "path": "public/images/ferrari-250-gto-1964.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FER_250GTO_64.webp",
+    "sha": "0eb2cbbac255b919cbab790a249bf788b185a8d5"
+  },
+  {
+    "path": "public/images/ferrari-250-gt-berlinetta-lusso-1963.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FER_250GTLusso_63.webp",
+    "sha": "c305fff2108897ceeb94de20637c212da83829f3"
+  },
+  {
+    "path": "public/images/ford-mustang-dark-horse-2024.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_MustangDarkHorse_24.webp",
+    "sha": "329848c6a38f1fefb61152749e91805c26746003"
+  },
+  {
+    "path": "public/images/ford-mustang-gt-2024.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_MustangGT_24.webp",
+    "sha": "92919db07f6e80d02eb21d7a3c89ebac8316ba28"
+  },
+  {
+    "path": "public/images/ford-f-150-raptor-r-2023.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_F150RaptorR_23.webp",
+    "sha": "73fa0edfcbb0914097375059eb421ab28ddde069"
+  },
+  {
+    "path": "public/images/ford-f-150-raptor-r-welcome-pack-2023.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_F150RaptorRWP_23.webp",
+    "sha": "b3cac427dc5974a4ec87cab9fc59c96c149264dd"
+  },
+  {
+    "path": "public/images/ford-fiesta-st-2023.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_FiestaST_23.webp",
+    "sha": "88842fe81f644e7e0968b702f4f4043faef51d71"
+  },
+  {
+    "path": "public/images/ford-bronco-raptor-2022.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_BroncoRaptor_22.webp",
+    "sha": "6bf1bf2d9692c8ab8c284f5157c4a1dad8c07634"
+  },
+  {
+    "path": "public/images/ford-f-150-lightning-2022.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_F150Lightning_22.webp",
+    "sha": "e7f6172f7ea50279153117c4bd1284c92856d455"
+  },
+  {
+    "path": "public/images/ford-focus-st-2022.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_FocusST_22.webp",
+    "sha": "fa8d3000f54216737329127da6ab19a17dd5bc4e"
+  },
+  {
+    "path": "public/images/ford-supervan-4-2022.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_4_ElectricSupervan_22.webp",
+    "sha": "3c04bf6c28a549d0ed8f9ffe6ee006df64d14743"
+  },
+  {
+    "path": "public/images/ford-2069-ford-performance-bronco-r-2020.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_2069_BroncoR_20.webp",
+    "sha": "c0ef09fc757fa578912e233a214e138df49a8f3a"
+  },
+  {
+    "path": "public/images/ford-mustang-shelby-gt500-2020.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_MustangGT500_20.webp",
+    "sha": "123dc45c5758285df6a684705e51ae7feb6d77d5"
+  },
+  {
+    "path": "public/images/ford-super-duty-f-450-drw-platinum-2020.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_F450DRW_20.webp",
+    "sha": "2679aa7eee76d047bb739deea98ddabb14aafdee"
+  },
+  {
+    "path": "public/images/ford-super-duty-f-450-drw-platinum-forza-edition-2020.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_F450DRWFE_20.webp",
+    "sha": "77f70e46385d776f00588c06a1073a89ef6c8250"
+  },
+  {
+    "path": "public/images/ford-mustang-rtr-spec-5-2018.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_MustangRTRSpec5_18.webp",
+    "sha": "e31ec29aff72ebeedbba97bff3d0293fc1debf0e"
+  },
+  {
+    "path": "public/images/ford-14-rahal-letterman-lanigan-racing-fiesta-2017.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_14_FiestaGRC_17.webp",
+    "sha": "91c19d6b86e3833ff6a777c44693646335b1f3f1"
+  },
+  {
+    "path": "public/images/ford-25-brocky-ultra4-bronco-rtr-2017.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_25_Ultra4Bronco_17.webp",
+    "sha": "d71ec606dd192dd28280c78bd7c43562df6781f8"
+  },
+  {
+    "path": "public/images/ford-focus-rs-2017.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_FocusRS_17.webp",
+    "sha": "1b0edf2dfe9fece47cfd0a47a34be31b01677e80"
+  },
+  {
+    "path": "public/images/ford-m-sport-fiesta-rs-2017.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_MSportFiesta_17.webp",
+    "sha": "9037522ae1cf792d24a37e87c61865bd683188f5"
+  },
+  {
+    "path": "public/images/ford-gt-2016.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_Phoenix_16.webp",
+    "sha": "7ddefe8adecc24101368c68b3ae7a9bbe4b8a6d7"
+  },
+  {
+    "path": "public/images/ford-mustang-shelby-gt350r-2016.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_ShelbyGT350R_16.webp",
+    "sha": "d6f0039de339a8b2fe632e9f47e1c1f8d869c215"
+  },
+  {
+    "path": "public/images/ford-fpv-limited-edition-pursuit-ute-2015.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_PursuitUte_15.webp",
+    "sha": "c6202f52c4f8f999b5b6806a499047777f8a2c5e"
+  },
+  {
+    "path": "public/images/ford-11-rockstar-f-150-trophy-truck-2014.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_11_F150TrophyTruck_14.webp",
+    "sha": "34d544b5b22a652bf6198aa85a55729e858dad70"
+  },
+  {
+    "path": "public/images/ford-ranger-t6-rally-raid-2014.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_RangerT6_14.webp",
+    "sha": "16601454229f49c24fe469836d24e11928ae0cef"
+  },
+  {
+    "path": "public/images/ford-mustang-shelby-gt500-2013.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_MustangGT500_13.webp",
+    "sha": "41e38b014d4348c161f45904db52ff26d2996230"
+  },
+  {
+    "path": "public/images/ford-transit-supersportvan-2011.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_TransitSSV_11.webp",
+    "sha": "68b54393ffbf000b7b4fd5cce743a9cf657845a1"
+  },
+  {
+    "path": "public/images/ford-crown-victoria-police-interceptor-2010.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_CrownVictoria_10.webp",
+    "sha": "9e08677df120e680556762044b01eb5d554c2bce"
+  },
+  {
+    "path": "public/images/ford-focus-rs-2009.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_FocusRS_09.webp",
+    "sha": "85ef5d7440e1dc0320f80d69e079ae4ff6eb0036"
+  },
+  {
+    "path": "public/images/ford-gt-2005.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_GT_05.webp",
+    "sha": "8747dc9a2af7fc0ce0fc3efa960bb9943396241d"
+  },
+  {
+    "path": "public/images/ford-f-150-svt-lightning-2003.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_SVTLightning_03.webp",
+    "sha": "558092a60101d17edde34ec078792b2a4ab11e36"
+  },
+  {
+    "path": "public/images/ford-focus-rs-2003.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_FocusRS_03.webp",
+    "sha": "c2e279601284d2ad11d3038e14e29bd65aca61fa"
+  },
+  {
+    "path": "public/images/ford-4-ford-focus-rs-2001.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_4_FocusWRC_01.webp",
+    "sha": "5fbd5a161690d01feb604d0a22067330f1709e14"
+  },
+  {
+    "path": "public/images/ford-mustang-svt-cobra-r-2000.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_MustangCobraR_00.webp",
+    "sha": "e8dfc0c54950750e0117cf138fcc2ea759fd1f16"
+  },
+  {
+    "path": "public/images/ford-racing-puma-1999.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_RacingPuma_99.webp",
+    "sha": "14aa3d9d96ffa555092c1328f90fe4dcc6ad0604"
+  },
+  {
+    "path": "public/images/ford-supervan-3-1994.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_Supervan3_94.webp",
+    "sha": "fb78b30e3e85a44c7f623551dcbce60a255219d0"
+  },
+  {
+    "path": "public/images/ford-mustang-svt-cobra-r-1993.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_MustangSVTCobraR_93.webp",
+    "sha": "2f64e5d56695c832b4385aec6873bc4738454c4b"
+  },
+  {
+    "path": "public/images/ford-escort-rs-cosworth-1992.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_EscortRSCosworth_92.webp",
+    "sha": "4280c5e179a1aa5d518c4abc527004379334dd03"
+  },
+  {
+    "path": "public/images/ford-rs200-evolution-1987.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_RS200Evolution_87.webp",
+    "sha": "e0fed44ce216c356887d0692c1697d7346769c03"
+  },
+  {
+    "path": "public/images/ford-sierra-cosworth-rs500-1987.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_RS500_87.webp",
+    "sha": "154f69618cfea70cde9f5d168b96dd72f11ab3f4"
+  },
+  {
+    "path": "public/images/ford-f-150-xlt-lariat-1983.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_F150_83.webp",
+    "sha": "acca4cb7fae21dc1b56cc276896057bf249bcf69"
+  },
+  {
+    "path": "public/images/ford-f-150-xlt-lariat-forza-edition-1983.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_F150FE_83.webp",
+    "sha": "7e72ead421d7f3389fb1d195c8301151a6705ddc"
+  },
+  {
+    "path": "public/images/ford-5-escort-rs1800-mkii-1977.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_5_EscortMk2_77.webp",
+    "sha": "0f9210c06309990e774a6c329b88433b8d5fffe1"
+  },
+  {
+    "path": "public/images/ford-capri-rs3100-1974.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_Capri_74.webp",
+    "sha": "8dee16109a3456e884b350a484637a7d81b79336"
+  },
+  {
+    "path": "public/images/ford-xb-falcon-gt-1973.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_XBFalconGT_73.webp",
+    "sha": "dd354f25ee68edaeac23a50188dafc189913f6e4"
+  },
+  {
+    "path": "public/images/ford-mustang-boss-302-1969.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_MustangBoss302_69.webp",
+    "sha": "bdfd61fb6bfa30a6bc6aeec2a000a34a12b1cad2"
+  },
+  {
+    "path": "public/images/ford-mustang-gt-2-2-fastback-1968.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_MustangGT390_68.webp",
+    "sha": "645538b099d99249fc3474228b0db7ce85c2c011"
+  },
+  {
+    "path": "public/images/ford-mustang-gt-2-2-fastback-forza-edition-1968.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_MustangGT390FE_68.webp",
+    "sha": "1e988f6b35ee0ad8709a6ad8a86a436d1bdf8267"
+  },
+  {
+    "path": "public/images/ford-2-gt40-mk-ii-1966.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_2_GT40_66.webp",
+    "sha": "940f53c3d32e2e07662428bc0a6d86a4c307d974"
+  },
+  {
+    "path": "public/images/ford-mustang-gt-coupe-1965.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_Mustang_65.webp",
+    "sha": "3393886077f1f601da4dc79b305239a8a44e6aa1"
+  },
+  {
+    "path": "public/images/ford-de-luxe-five-window-coupe-1932.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_Coupe_32.webp",
+    "sha": "030b229ad24ea318e97beeb309150faa0c8122d6"
+  },
+  {
+    "path": "public/images/formula-drift-64-forsberg-racing-nissan-z-2023.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/NIS_64_ZFD_23.webp",
+    "sha": "590bfb7a0f6418e73f0bed36154e368ddc914f81"
+  },
+  {
+    "path": "public/images/formula-drift-151-toyota-gr-supra-2020.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/TOY_151_SupraGRFD_20.webp",
+    "sha": "a1ff1b6cdddc34d8d56ce2a9b5352a69ed15d8c1"
+  },
+  {
+    "path": "public/images/formula-drift-91-bmw-m2-2020.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/BMW_91_M2FD_20.webp",
+    "sha": "8d8135b297e7b9b644b8e8f4aeb2a8522f8963d3"
+  },
+  {
+    "path": "public/images/formula-drift-411-toyota-corolla-hatchback-2019.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/TOY_411_CorollaFD_19.webp",
+    "sha": "63a6699f2848d37e4be3792f788ba44d82e5ffb3"
+  },
+  {
+    "path": "public/images/formula-drift-99-mazda-rx-8-2019.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MAZ_99_RX8FD_19.webp",
+    "sha": "ced06faf374a8ffaa8d41688b33b2a6b76402645"
+  },
+  {
+    "path": "public/images/formula-drift-117-599-gtb-fiorano-2018.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FER_117_599FD_18.webp",
+    "sha": "cda89adb5625f6601a759d1050bc35f3f3f36058"
+  },
+  {
+    "path": "public/images/formula-drift-530-hsv-maloo-gen-f-2016.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/HOL_530_MalooFD_16.webp",
+    "sha": "f937e72e328519d0715429ab7a0bfacfaf7a96f4"
+  },
+  {
+    "path": "public/images/formula-drift-13-ford-mustang-2015.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FOR_13_MustangFD_15.webp",
+    "sha": "4742deebfbd58640391dfb68f1d2af6385e84566"
+  },
+  {
+    "path": "public/images/formula-drift-777-chevrolet-corvette-2013.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/CHE_777_CorvetteFD_13.webp",
+    "sha": "aba38e453559045aa92f2ea5a38464522149e397"
+  },
+  {
+    "path": "public/images/formula-drift-43-dodge-viper-srt-10-acr-2006.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/DOD_43_ViperFD_06.webp",
+    "sha": "82fdae42b2a9300829ca9605e79a09ab48448ef4"
+  },
+  {
+    "path": "public/images/formula-drift-777-nissan-240sx-1997.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/NIS_777_240SXFD_97.webp",
+    "sha": "07dd01547a2dbdab953d7e71593277ddc30f4e48"
+  },
+  {
+    "path": "public/images/formula-drift-34-toyota-supra-mkiv-1995.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/TOY_34_SupraMkIV_95.webp",
+    "sha": "47cfe04f58cf42a0504dde8dc2397adb19f55a45"
+  },
+  {
+    "path": "public/images/formula-drift-98-bmw-325i-1989.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/BMW_98_325iFD_89.webp",
+    "sha": "16b952000d5e5a5b83f5cbc62402db4ce2113a4f"
+  },
+  {
+    "path": "public/images/funco-motorsports-f9-2018.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/FUN_F9_18.webp",
+    "sha": "76a1cf0a02a374c135e2d8d4c254db465d3b23ff"
+  },
+  {
+    "path": "public/images/gmc-hummer-ev-pickup-2022.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/GMC_HummerEV_22.webp",
+    "sha": "27a240336082d2cd9b2f8b89a67a909d67c85a69"
+  },
+  {
+    "path": "public/images/gmc-typhoon-1993.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/GMC_Typhoon_93.webp",
+    "sha": "bff3614796cad50c018c88a91916377d6a006e97"
+  },
+  {
+    "path": "public/images/gmc-syclone-1992.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/GMC_Syclone_92.webp",
+    "sha": "a4894f7f9a293c2c721c7d1a02877e85a7aa157a"
+  },
+  {
+    "path": "public/images/gmc-jimmy-1970.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/GMC_Jimmy_70.webp",
+    "sha": "ca2c73a729099575e2557da13abaeb4804762ace"
+  },
+  {
+    "path": "public/images/gordon-murray-automotive-t-50-2022.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/GMA_T50_22.webp",
+    "sha": "3ca663f101fdbde8a4635503270ba34777c5a61b"
+  },
+  {
+    "path": "public/images/gr-gt-prototype-2026.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/TOY_Scallop_26.webp",
+    "sha": "e51fb88607408817ca081db3d11de1526f20ed4b"
+  },
+  {
+    "path": "public/images/gr-gt-prototype-2026-2.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/TOY_ScallopID_26.webp",
+    "sha": "5c4b52094dee071304cb64e81b3fe5937033723e"
+  },
+  {
+    "path": "public/images/hennessey-venom-f5-2021.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/HEN_VenomF5_21.webp",
+    "sha": "61788e45e24e352b56b2e837ea433bacbe75f0dd"
+  },
+  {
+    "path": "public/images/hennessey-ford-f-150-velociraptor-6x6-2018.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/HEN_Velociraptor6x6_18.webp",
+    "sha": "6d71ad41708e5405d57040e28e49ae6660804991"
+  },
+  {
+    "path": "public/images/hennessey-venom-gt-2012.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/HEN_VenomGT_12.webp",
+    "sha": "4b6b6882f605e77974b80c4b7a9b3010798f5e55"
+  },
+  {
+    "path": "public/images/holden-torana-a9x-1977.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/HOL_Torana_77.webp",
+    "sha": "fcb4c30de40e57a1b4d8937ed851a3c765597d91"
+  },
+  {
+    "path": "public/images/honda-civic-type-r-2023.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/HON_CivicTypeR_23.webp",
+    "sha": "e48c8197d1a602f0c91603f28648e65b217ef747"
+  },
+  {
+    "path": "public/images/honda-e-2022.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/HON_e_22.webp",
+    "sha": "6bbcead3093e4fbda29af6ac7a3be2e6f32a5a9b"
+  },
+  {
+    "path": "public/images/honda-civic-type-r-2018.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/HON_CivicTypeR_18.webp",
+    "sha": "bf2275ae9436be0ace333338da9e2c9c8327c010"
+  },
+  {
+    "path": "public/images/honda-civic-type-r-2015.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/HON_CivicTypeR_15.webp",
+    "sha": "016ba548e16aa5a16ff6040b5c74a7396c46eef4"
+  },
+  {
+    "path": "public/images/honda-ridgeline-baja-trophy-truck-2015.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/HON_TrophyTruck_15.webp",
+    "sha": "e6872011229d44bf49ae3701d43b89da9e6dc8fd"
+  },
+  {
+    "path": "public/images/honda-civic-type-r-2008.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/HON_CivicTypeR_08.webp",
+    "sha": "521c18c91ca63c5dafb58a876030340ad88d14ee"
+  },
+  {
+    "path": "public/images/honda-civic-type-r-2007.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/HON_CivicTypeR_07.webp",
+    "sha": "55400a41e96cca99df944ab071b190b727a29bd3"
+  },
+  {
+    "path": "public/images/honda-nsx-r-2005.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/HON_NSXR_05.webp",
+    "sha": "1d5d6cdd6bfcf8503786d11bba75ecd5e1b27206"
+  },
+  {
+    "path": "public/images/honda-nsx-r-gt-2005.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/HON_NSXRGT_05.webp",
+    "sha": "07ec2599fcb33433c1f706eeb4fc9cb2f7268128"
+  },
+  {
+    "path": "public/images/honda-52-evasive-motorsports-s2000-wtac-2004.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/HON_52_S2000WTA_04.webp",
+    "sha": "3f9e5e37eeca9ae288c0393ae299bef807bb0556"
+  },
+  {
+    "path": "public/images/honda-civic-type-r-2004.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/HON_CivicR_04.webp",
+    "sha": "666cb469412d0d42543385680bedc2a150cf1512"
+  },
+  {
+    "path": "public/images/honda-s2000-2003.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/HON_S2000_03.webp",
+    "sha": "1b6811ac85a0d75c9bf2cc3b621cfcdfc4b2ccb4"
+  },
+  {
+    "path": "public/images/honda-s2000-touge-edition-2003.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/HON_S2000TG_03.webp",
+    "sha": "a93af695edf33351440136de59c60af70fc4714c"
+  },
+  {
+    "path": "public/images/honda-33-integra-wtac-2001.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/HON_33_IntegraWTA_01.webp",
+    "sha": "a0b0a59bd9d8df5d164dcd7b446baa38411caded"
+  },
+  {
+    "path": "public/images/honda-civic-type-r-1997.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/HON_CivicTypeR_97.webp",
+    "sha": "2689e423620c7efa0d7d600c65f9b171d3f2c163"
+  },
+  {
+    "path": "public/images/honda-acty-1994.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/HON_Acty_94.webp",
+    "sha": "eba86b7426d927ae897df742a8302a86d78d50f2"
+  },
+  {
+    "path": "public/images/honda-acty-rakuraku-express-1994.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/HON_Acty_Jobs_94.webp",
+    "sha": "410e79d84154502bcc5c249a90b16e773a8be9cf"
+  },
+  {
+    "path": "public/images/honda-prelude-si-1994.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/HON_Prelude_94.webp",
+    "sha": "24851b62fb419b18fc45aad744101915af909a07"
+  },
+  {
+    "path": "public/images/honda-21-hardrace-jdmyard-civic-wtac-1992.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/HON_21_CivicWTA_92.webp",
+    "sha": "81a51c0447c05af5c1307889457dba6da209a0cb"
+  },
+  {
+    "path": "public/images/honda-nsx-r-1992.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/HON_NSXR_92.webp",
+    "sha": "a7ec3853706b0bd6e5ae1dde5986df92361aa5f2"
+  },
+  {
+    "path": "public/images/honda-beat-1991.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/HON_Beat_91.webp",
+    "sha": "9f17e8e07d8c757c5a62507a34a70e76fb768041"
+  },
+  {
+    "path": "public/images/honda-cr-x-sir-1991.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/HON_CRXsi_91.webp",
+    "sha": "161e6946d5e4b1ae4d4b1867a3626db6a43f54e5"
+  },
+  {
+    "path": "public/images/honda-19-101-motorsport-crx-wtac-1990.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/HON_19_CRXWTA_90.webp",
+    "sha": "b6e4da0a956830f2dcaaccf3ea45f50dbca4ef14"
+  },
+  {
+    "path": "public/images/honda-civic-si-1986.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/HON_CivicSi_86.webp",
+    "sha": "dd4a23d96c5ce594b0e230e04485109df144a55d"
+  },
+  {
+    "path": "public/images/honda-city-e-ii-1984.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/HON_City_84.webp",
+    "sha": "8a3b6ba1683952227c4d4e6a8aa821b6bbc1c899"
+  },
+  {
+    "path": "public/images/honda-civic-crx-mugen-1984.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/HON_CRXMugen_84.webp",
+    "sha": "73328462976a7418c9f86e3f1618107beaa595c2"
+  },
+  {
+    "path": "public/images/honda-civic-rs-1974.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/HON_CivicRS_74.webp",
+    "sha": "177700bcba3109e5eccdb6df9a410754084f2a4f"
+  },
+  {
+    "path": "public/images/honda-s800-1970.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/HON_S800_70.webp",
+    "sha": "4a19adcfc4d7e5e776f4f1d1ae1ff8f63add1531"
+  },
+  {
+    "path": "public/images/hsv-limited-edition-gen-f-gts-maloo-2016.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/HOL_HSVGTSMaloo_16.webp",
+    "sha": "8e5646c871d842e15f5205bfab4a58499939ca5b"
+  },
+  {
+    "path": "public/images/hsv-gen-f-gts-2014.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/HOL_HSVGTS_14.webp",
+    "sha": "3d7d5abc954c759e633fbfc3c667d717eb289a78"
+  },
+  {
+    "path": "public/images/hyundai-ioniq-5-n-2023.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/HYU_Ioniq5N_23.webp",
+    "sha": "b8fabfe64231a485743ff832d64c0715996c18fe"
+  },
+  {
+    "path": "public/images/hyundai-n-vision-74-2022.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/HYU_NVision74_22.webp",
+    "sha": "322c420dec55ef6b4b1f55c0be7dac489a8e9485"
+  },
+  {
+    "path": "public/images/hyundai-i20-n-2022.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/HYU_i20N_22.webp",
+    "sha": "0435fb1fc22a1f484e4f5b738e7bbc7a59c04a26"
+  },
+  {
+    "path": "public/images/hyundai-i30-n-2020.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/HYU_i30N_20.webp",
+    "sha": "600dd9909df77848e43a370c24692ddc7c2184a6"
+  },
+  {
+    "path": "public/images/hyundai-veloster-n-2019.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/HYU_VelosterN_19.webp",
+    "sha": "750127a57418962207237a96867bc7238ae2bcf4"
+  },
+  {
+    "path": "public/images/jaguar-c-x75-2010.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/JAG_CX75_10.webp",
+    "sha": "879c3edb3367699e37e0005224fa302a0b692138"
+  },
+  {
+    "path": "public/images/jaguar-xj220-1993.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/JAG_XJ220_93.webp",
+    "sha": "f5b4f13119f721fadd5df724875cbbd09499be46"
+  },
+  {
+    "path": "public/images/jaguar-xj220s-twr-1993.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/JAG_XJ220S_93.webp",
+    "sha": "de44e95a91f040400d36d6d2d8a716e36c548f32"
+  },
+  {
+    "path": "public/images/jaguar-sport-xjr-15-1991.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/JAG_XJR15_91.webp",
+    "sha": "c7e8a8942d74ea190fdd10a5a9f81b7789b17a43"
+  },
+  {
+    "path": "public/images/jaguar-lightweight-e-type-1964.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/JAG_EtypeLightweight_64.webp",
+    "sha": "20129496daab4f014ded66729a55c69cc6c63995"
+  },
+  {
+    "path": "public/images/jaguar-e-type-1961.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/JAG_Etype_61.webp",
+    "sha": "eb53223b06a33569fb9a4097404a669cebfb2aab"
+  },
+  {
+    "path": "public/images/jaguar-d-type-1956.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/JAG_DType_56.webp",
+    "sha": "caf72a6583bc725582c85e395430d331b4233b8e"
+  },
+  {
+    "path": "public/images/jeep-jt-2020.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/JEE_Gladiator_20.webp",
+    "sha": "68fc6608ff566d80590c481cb4f52254b7f2b952"
+  },
+  {
+    "path": "public/images/jeep-grand-cherokee-trackhawk-2018.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/JEE_Trackhawk_18.webp",
+    "sha": "9ecbc93520cfa30abd3111b9531bc4de9cb3c12a"
+  },
+  {
+    "path": "public/images/jeep-trailcat-2017.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/JEE_Trailcat_17.webp",
+    "sha": "bcd3dc55eb39cec9ea81ff96a6d813bbbcf94f1a"
+  },
+  {
+    "path": "public/images/jeep-wrangler-rubicon-2012.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/JEE_Wrangler_12.webp",
+    "sha": "e768818ee70e3fa019199b039c5edaad3e085f00"
+  },
+  {
+    "path": "public/images/jimco-179-hammerhead-class-1-2019.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/JIM_HammerHeadBuggy_19.webp",
+    "sha": "c24349697dcf48d6e68299f2464147662b4843a9"
+  },
+  {
+    "path": "public/images/jimco-240-fastball-racing-class-6100-spec-trophy-truck-2019.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/JIM_TrophyTruck_19.webp",
+    "sha": "56981418d1148cfa23c8603edbcb144e74630b79"
+  },
+  {
+    "path": "public/images/koenigsegg-gemera-2024.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/KOE_Gemera_24.webp",
+    "sha": "79e1e24a8285f019a170d187d281d489cf7b59ea"
+  },
+  {
+    "path": "public/images/koenigsegg-jesko-2020.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/KOE_Jesko_20.webp",
+    "sha": "096f94f2669e8bba4a7d4b627577237220810913"
+  },
+  {
+    "path": "public/images/koenigsegg-agera-rs-2017.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/KOE_AgeraRS_17.webp",
+    "sha": "6f7674cf86b4760320c7aabaadacab7f84ffe529"
+  },
+  {
+    "path": "public/images/koenigsegg-regera-2016.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/KOE_Regera_16.webp",
+    "sha": "f7a6699e50fa1232be39d42159c62a9463eff111"
+  },
+  {
+    "path": "public/images/koenigsegg-one-1-2015.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/KOE_One_15.webp",
+    "sha": "35d7490b98499f29f7e9a793b9cd8a78bed61d8a"
+  },
+  {
+    "path": "public/images/koenigsegg-agera-2011.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/KOE_Agera_11.webp",
+    "sha": "1d35cf62d5191098afd522e1d3a2974ccbd1a7c9"
+  },
+  {
+    "path": "public/images/koenigsegg-ccgt-2008.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/KOE_CCGT_08.webp",
+    "sha": "a4ba313620318a6bda9d00b3f19c4b5f01e79d5d"
+  },
+  {
+    "path": "public/images/ktm-x-bow-gt4-2018.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/KTM_XBowGT4_18.webp",
+    "sha": "74514a70a6c3ecb14f8724eda8b525e933206257"
+  },
+  {
+    "path": "public/images/lamborghini-revuelto-2024.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/LAM_Revuelto_24.webp",
+    "sha": "c4214c4dd1c3ea6ecef0099f9aeb92de9fe7a48b"
+  },
+  {
+    "path": "public/images/lamborghini-countach-lpi-800-4-2023.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/LAM_Countach_23.webp",
+    "sha": "dda2769eb41b7aa602d41d36bbaec40b4df3469e"
+  },
+  {
+    "path": "public/images/lamborghini-hurac-n-sterrato-2023.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/LAM_HuracanSterrato_23.webp",
+    "sha": "763f4e4543191d8253559fcda1cc512ba36473c7"
+  },
+  {
+    "path": "public/images/lamborghini-hurac-n-tecnica-2023.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/LAM_HuracanTecnica_23.webp",
+    "sha": "7f134599e7e084b7cb3a86ea3d266b19d1239e6b"
+  },
+  {
+    "path": "public/images/lamborghini-aventador-lp-780-4-ultimae-2022.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/LAM_AventadorUltimae_22.webp",
+    "sha": "23700dd2a8ef8c5b601b46514a1ec7eaed641d10"
+  },
+  {
+    "path": "public/images/lamborghini-essenza-scv12-2021.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/LAM_63_Essenza_21.webp",
+    "sha": "a5cfc7a4cdab5e27ff91662011c28df66cc072d9"
+  },
+  {
+    "path": "public/images/lamborghini-hurac-n-sto-2021.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/LAM_HuracanSTO_21.webp",
+    "sha": "349db7c55c98f12b3d1afe598a5be84a5f7e3e10"
+  },
+  {
+    "path": "public/images/lamborghini-si-n-roadster-2021.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/LAM_SianRoadster_21.webp",
+    "sha": "b2b210575c3700e05736a07a4b1dc8b9a5f2b3ce"
+  },
+  {
+    "path": "public/images/lamborghini-hurac-n-evo-2020.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/LAM_HuracanEVO_20.webp",
+    "sha": "806cc405f79ab0a0bb374fcbcd676d6034e51c65"
+  },
+  {
+    "path": "public/images/lamborghini-aventador-svj-2019.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/LAM_AventadorSVJ_19.webp",
+    "sha": "b46746270ee4600c423c1e00cd0bc3f213be21a0"
+  },
+  {
+    "path": "public/images/lamborghini-urus-2019.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/LAM_Urus_19.webp",
+    "sha": "9e52de81df1ee4ac65884422c7843fef86119422"
+  },
+  {
+    "path": "public/images/lamborghini-centenario-lp-770-4-2017.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/LAM_Bellissima_17.webp",
+    "sha": "af6393707380b5bcdc42f7a0c22698293f06b116"
+  },
+  {
+    "path": "public/images/lamborghini-hurac-n-lp-610-4-2015.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/LAM_Huracan_15.webp",
+    "sha": "295108c4f45146428cfc9acc7ff333294452424d"
+  },
+  {
+    "path": "public/images/lamborghini-veneno-2013.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/LAM_Veneno_13.webp",
+    "sha": "d1fa3a4082e4fd4d9175e140650d48b8ee47a660"
+  },
+  {
+    "path": "public/images/lamborghini-aventador-lp700-4-2012.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/LAM_LP7004_12.webp",
+    "sha": "322b1fedcddcb79601401ba096d5fac5bc5b7bd9"
+  },
+  {
+    "path": "public/images/lamborghini-gallardo-lp570-4-spyder-performante-2012.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/LAM_GallardoLP570Spyder_12.webp",
+    "sha": "683e1b4fe121dfad7a6e3dce01de12b834c02cb8"
+  },
+  {
+    "path": "public/images/lamborghini-sesto-elemento-2011.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/LAM_SestoElemento_11.webp",
+    "sha": "c4ea8f011880635285837b0fedcfad559e03b124"
+  },
+  {
+    "path": "public/images/lamborghini-murci-lago-lp-670-4-sv-2010.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/LAM_LP6704SV_10.webp",
+    "sha": "9ece9f6e2d778d5306db17d626d958dcc3abc2dc"
+  },
+  {
+    "path": "public/images/lamborghini-diablo-gtr-1999.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/LAM_DiabloGTR_99.webp",
+    "sha": "3d36a549efa2f4515af2331c8c13104aad7f4d41"
+  },
+  {
+    "path": "public/images/lamborghini-diablo-sv-1997.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/LAM_DiabloSV_97.webp",
+    "sha": "98c001398381a9ecc6154c708630fc8a685c1eb3"
+  },
+  {
+    "path": "public/images/lamborghini-countach-lp5000-qv-1988.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/LAM_Countach_88.webp",
+    "sha": "b80a72a1e446c0a88c20860ee888b1b470a7ca59"
+  },
+  {
+    "path": "public/images/lamborghini-miura-p400-1967.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/LAM_MiuraP400_67.webp",
+    "sha": "1edbd2c870cff91df780f8997f10e0714b9e257b"
+  },
+  {
+    "path": "public/images/lancia-delta-hf-integrale-evo-1992.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/LAN_Delta_92.webp",
+    "sha": "92eb4ae88aef9ad62e58c8e2234ea48083727bc5"
+  },
+  {
+    "path": "public/images/lancia-delta-s4-1986.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/LAN_DeltaS4_86.webp",
+    "sha": "aa68a288d470c2bb1c3e4fd72a55a0d5395782e4"
+  },
+  {
+    "path": "public/images/lancia-stratos-hf-stradale-1974.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/LAN_Stratos_74.webp",
+    "sha": "8de716529361e738d5601f7a2e94045c57c20ea3"
+  },
+  {
+    "path": "public/images/land-rover-defender-110-x-2020.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/LR_Defender_20.webp",
+    "sha": "1f31844883dfb945f929c296dd03c4ff270e5f0e"
+  },
+  {
+    "path": "public/images/land-rover-range-rover-sport-svr-2015.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/LR_RangeRoverSVR_15.webp",
+    "sha": "19614c15fdf529605202823d45db991939989aee"
+  },
+  {
+    "path": "public/images/lexus-lc-500-2021.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/LEX_LC500_21.webp",
+    "sha": "cc45d01a6cbece7fa1e07a5ee344582c0081de9f"
+  },
+  {
+    "path": "public/images/lexus-rc-f-2015.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/LEX_RCF_15.webp",
+    "sha": "f3f9a84af1a298aa8eda6f2cb9d376e148d68f38"
+  },
+  {
+    "path": "public/images/lexus-lfa-2010.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/LEX_LFA_10.webp",
+    "sha": "1d41b8fcd43337b4d46df4deb60eb0e310d3cdc9"
+  },
+  {
+    "path": "public/images/lexus-lfa-forza-edition-2010.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/LEX_LFAFE_10.webp",
+    "sha": "1e7567c6bdbbb664c9010bab433544efdcd31a66"
+  },
+  {
+    "path": "public/images/lincoln-continental-1962.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/LIN_Continental_62.webp",
+    "sha": "8c202df87691b84354f3cbd664e6050d8dc9cc75"
+  },
+  {
+    "path": "public/images/lotus-emira-2023.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/LOT_Emira_23.webp",
+    "sha": "99fac46dc9cfaf0208f66b7d96a7c67be63bd43d"
+  },
+  {
+    "path": "public/images/lotus-evija-2020.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/LOT_Evija_20.webp",
+    "sha": "50b9918d53e4a2266431c0720dd59d5f8625b6ef"
+  },
+  {
+    "path": "public/images/lotus-evija-forza-edition-2020.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/LOT_EvijaFE_20.webp",
+    "sha": "b1608965eac583b34f096a9b3cb3777d39e3fa9e"
+  },
+  {
+    "path": "public/images/lotus-exige-cup-430-2018.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/LOT_ExigeCup430_18.webp",
+    "sha": "94f3b73d5d8be86fa6ae4152b841ef63ebc67d0a"
+  },
+  {
+    "path": "public/images/lotus-scura-motorsports-exige-wtac-2018.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/LOT_00_ExigeWTA_18.webp",
+    "sha": "87da980e72753a3e2c37fabb3e6004a2f54f0d88"
+  },
+  {
+    "path": "public/images/lotus-elise-series-1-sport-190-1999.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/LOT_Elise_99.webp",
+    "sha": "af40a73efd7716b8cd55de11bf32a24272bce0fb"
+  },
+  {
+    "path": "public/images/lotus-elise-gt1-1997.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/LOT_EliseGT1_97.webp",
+    "sha": "fecd1844597c3513f7b865373c4ef91d8eebb938"
+  },
+  {
+    "path": "public/images/lucid-air-sapphire-2023.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/LUC_Air_23.webp",
+    "sha": "33f2a64589e4dc048670628d9989b17352c389cf"
+  },
+  {
+    "path": "public/images/maserati-mc20-2022.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MAS_MC20_22.webp",
+    "sha": "d1fd9d5b3f1e34e3693ed9a51b79f5f7abcd6267"
+  },
+  {
+    "path": "public/images/maserati-mc12-versione-corsa-2006.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MAS_MC12Corsa_06.webp",
+    "sha": "8c002d1cf459c01c6b0102e1cefbc26ea5647b1a"
+  },
+  {
+    "path": "public/images/maserati-mc12-2004.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MAS_MC12_04.webp",
+    "sha": "cf3c205e479eb03974decd1d39d0a2d2cc3fc880"
+  },
+  {
+    "path": "public/images/maserati-ghibli-cup-1997.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MAS_Ghibli_97.webp",
+    "sha": "eae401083faf80838bcfac68732977c0e0c3a71b"
+  },
+  {
+    "path": "public/images/mazda-mx-5-miata-rf-2022.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MAZ_MX5RF_22.webp",
+    "sha": "1456af30e958b5a325eca334e2013fb86a3f20e2"
+  },
+  {
+    "path": "public/images/mazda-mx-5-cup-2017.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MAZ_00_MX5Cup_17.webp",
+    "sha": "3964f94c126f6ffb27572ff8f0a6d5bfd7e80eb1"
+  },
+  {
+    "path": "public/images/mazda-mx-5-2016.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MAZ_MX5_16.webp",
+    "sha": "14aba544148141386b83aaf6b00dc3381fad3841"
+  },
+  {
+    "path": "public/images/mazda-mx-5-2013.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MAZ_MX5_13.webp",
+    "sha": "0ffbe2d6c064285008a2dadc9bc5e2e7467d1ebc"
+  },
+  {
+    "path": "public/images/mazda-rx-8-r3-2011.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MAZ_RX8R3_11.webp",
+    "sha": "c759741de7116ec2e483a167024059751d16ca7f"
+  },
+  {
+    "path": "public/images/mazda-mazdaspeed-3-2010.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MAZ_Mazdaspeed3_10.webp",
+    "sha": "503ab838cd909570739ceb7b283ae9920184ed46"
+  },
+  {
+    "path": "public/images/mazda-furai-2008.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MAZ_Furai_08.webp",
+    "sha": "93a8aeb9d9801b31615061308604a78979e8c20d"
+  },
+  {
+    "path": "public/images/mazda-mazdaspeed-mx-5-2005.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MAZ_MX5_05.webp",
+    "sha": "b99aa8a1102853978d94930b7e1a79a3644a6266"
+  },
+  {
+    "path": "public/images/mazda-mx-5-miata-1994.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MAZ_Miata_94.webp",
+    "sha": "2ff60edc38ad470e453bed7108e2b5be3b626b2d"
+  },
+  {
+    "path": "public/images/mazda-mx-5-miata-forza-edition-1994.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MAZ_MiataFE_94.webp",
+    "sha": "48b3501475db30975797da569b064009e947a2d6"
+  },
+  {
+    "path": "public/images/mazda-rx-7-type-r-1992.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MAZ_RX7_92.webp",
+    "sha": "459ade6d18f9cde784b6001181b55d314872f987"
+  },
+  {
+    "path": "public/images/mazda-55-mazda-787b-1991.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MAZ_55_787B_91.webp",
+    "sha": "038a7a21e938882228e0606094a224cda910843b"
+  },
+  {
+    "path": "public/images/mazda-savanna-rx-7-1990.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MAZ_RX7_90.webp",
+    "sha": "6d04e17e2313bb21f3e52c3edae1b9198b55696e"
+  },
+  {
+    "path": "public/images/mazda-rx-7-gsl-se-1985.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MAZ_RX7_85.webp",
+    "sha": "130e01d1f92b8907f1bc71a1386b3167aef5c406"
+  },
+  {
+    "path": "public/images/mazda-123-mad-mike-808-wagon-fursty-1974.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MAZ_123_808Wagon_74.webp",
+    "sha": "671c20bc7fb383250855fab9ca3fe39c868182c0"
+  },
+  {
+    "path": "public/images/mazda-rx-3-1973.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MAZ_RX3_73.webp",
+    "sha": "881c100087d1afaadeef6233a22c34f7f93d555b"
+  },
+  {
+    "path": "public/images/mazda-rx-3-forza-edition-1973.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MAZ_RX3FE_73.webp",
+    "sha": "8b9103e8ec41ad9404bccc8408f6789b995392d3"
+  },
+  {
+    "path": "public/images/mazda-cosmo-110s-series-ii-1972.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MAZ_Cosmo_72.webp",
+    "sha": "48f427474e71afa5c1dccbdd81c635542d6ec2b0"
+  },
+  {
+    "path": "public/images/mclaren-artura-2023.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MCL_Artura_23.webp",
+    "sha": "350e39cbab360596cfd6ff50fd6103e061a44f38"
+  },
+  {
+    "path": "public/images/mclaren-620r-2021.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MCL_620R_21.webp",
+    "sha": "483278650f1a3a1cc7003099c85d8361346c6da2"
+  },
+  {
+    "path": "public/images/mclaren-765lt-coup-2021.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MCL_765LT_21.webp",
+    "sha": "40b5c380b730dc05012cf617b841959f212d89dd"
+  },
+  {
+    "path": "public/images/mclaren-sabre-2021.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MCL_Sabre_21.webp",
+    "sha": "40f4c4faa1f773b314a87d3c3ea08f0b02eced2f"
+  },
+  {
+    "path": "public/images/mclaren-600lt-coup-2019.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MCL_600LT_19.webp",
+    "sha": "fd92ff8e8c6b3b5f41479f8add30abfdbbec4fc9"
+  },
+  {
+    "path": "public/images/mclaren-speedtail-2019.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MCL_Speedtail_19.webp",
+    "sha": "7e0fb4acead706e73575f647bf2e3ad240f00c3a"
+  },
+  {
+    "path": "public/images/mclaren-570s-coup-2016.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MCL_570S_16.webp",
+    "sha": "526e6781d0bba16bb69ecaaf836311d78d0f9d14"
+  },
+  {
+    "path": "public/images/mclaren-650s-spider-2014.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MCL_650SSpider_14.webp",
+    "sha": "62e38f6517230565dc3e2566fa0dd3c4bea913cd"
+  },
+  {
+    "path": "public/images/mclaren-p1-2013.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MCL_P1_13.webp",
+    "sha": "3d181ab7c9795c571789b67a7633a921dac5b486"
+  },
+  {
+    "path": "public/images/mclaren-12c-coup-2011.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MCL_MP412C_11.webp",
+    "sha": "8ea20a7bfed77a31d021a75183089a35f0786129"
+  },
+  {
+    "path": "public/images/mclaren-f1-gt-1997.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MCL_F1GT_97.webp",
+    "sha": "093a808b47114caf4454552ee64bf5b51d90df0f"
+  },
+  {
+    "path": "public/images/mclaren-f1-1993.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MCL_F1_93.webp",
+    "sha": "2cc082abf3d5120b378f1c69135472e909a0dcbd"
+  },
+  {
+    "path": "public/images/mercedes-amg-sl-63-2022.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MER_SL63AMG_22.webp",
+    "sha": "6e9173bcbfc3199daccb7c6065ebc5e6747f349d"
+  },
+  {
+    "path": "public/images/mercedes-amg-gt-black-series-2021.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MER_GTBlackSeries_21.webp",
+    "sha": "a70f289232050a57512bcbba66e796af9ac6623b"
+  },
+  {
+    "path": "public/images/mercedes-amg-gt-black-series-welcome-pack-2021.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MER_GTBlackSeriesWP_21.webp",
+    "sha": "733ec987b9d25971a0fc805cbc7c1eb680a19331"
+  },
+  {
+    "path": "public/images/mercedes-amg-mercedes-amg-one-2021.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MER_AMGOne_21.webp",
+    "sha": "c6c02ef2a9be18e026acf33745ba5d4147c92603"
+  },
+  {
+    "path": "public/images/mercedes-amg-slc-43-final-edition-2020.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MER_SLC43AMG_20.webp",
+    "sha": "5b9b59bcb6178d36889ed8ed001343f214676316"
+  },
+  {
+    "path": "public/images/mercedes-amg-e-63-s-2018.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MER_E63SAMG_18.webp",
+    "sha": "5a63d9bfb67b799257a05d872cd9d401ae0533e9"
+  },
+  {
+    "path": "public/images/mercedes-amg-gt-4-door-coup-2018.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MER_AMGGT4_18.webp",
+    "sha": "79ecb1f8d1bc3a2a080dc5b14363a0ef192d1a1e"
+  },
+  {
+    "path": "public/images/mercedes-amg-gt-r-2017.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MER_AMGGTR_17.webp",
+    "sha": "7e2521e68b5fb54743faae5bcc535bda1944d5f6"
+  },
+  {
+    "path": "public/images/mercedes-amg-c-63-s-coup-2016.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MER_C63AMGCoupe_16.webp",
+    "sha": "76b8fb3011040928dc30f1b20c6fc012a1130760"
+  },
+  {
+    "path": "public/images/mercedes-amg-gt-s-2015.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MER_AMGGT_15.webp",
+    "sha": "82b9ccb3a5bf55de6e7e6e0cd0bed8573c109108"
+  },
+  {
+    "path": "public/images/mercedes-benz-x-class-2018.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MER_XClass_18.webp",
+    "sha": "f51c1b3f0aea97fadc45ac7c625104c69bbf68e8"
+  },
+  {
+    "path": "public/images/mercedes-benz-unimog-u5023-2017.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MER_Unimog_17.webp",
+    "sha": "7ae167329ac674f79d459bb2fb7f2eb7c7082fa0"
+  },
+  {
+    "path": "public/images/mercedes-benz-g-63-amg-6x6-2014.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MER_G63AMG6x6_14.webp",
+    "sha": "5e01486c17f4220c7a9d78efb3191d7998a9a57f"
+  },
+  {
+    "path": "public/images/mercedes-benz-a-45-amg-2013.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MER_A45AMG_13.webp",
+    "sha": "711e6322a6349f90c37f82e203a35d2f8576a0a6"
+  },
+  {
+    "path": "public/images/mercedes-benz-g-65-amg-2013.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MER_G65AMG_13.webp",
+    "sha": "b7e920bb30b1d120b78db7736f3fba252d30a11a"
+  },
+  {
+    "path": "public/images/mercedes-benz-c-63-amg-coup-black-series-2012.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MER_C63AMG_12.webp",
+    "sha": "5d5735bf8abce570776a03c5f3be962d5741bd35"
+  },
+  {
+    "path": "public/images/mercedes-benz-sl-65-amg-black-series-2009.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MER_SL65AMG_09.webp",
+    "sha": "c7171e88cc7355614644db165ee26c27180d36a0"
+  },
+  {
+    "path": "public/images/mercedes-benz-amg-clk-gtr-1998.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MER_CLKGTR_98.webp",
+    "sha": "44d6c3ce8ba189953e838d6257d0aac237dfcfc5"
+  },
+  {
+    "path": "public/images/mercedes-benz-190-e-2-5-16-evolution-ii-1990.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MER_190E_90.webp",
+    "sha": "7bbe98692fc44a76e55f2264bc1acfe37763fab8"
+  },
+  {
+    "path": "public/images/mercedes-benz-190-e-2-5-16-evolution-ii-forza-edition-1990.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MER_190EFE_90.webp",
+    "sha": "7468126deaa4f9f1bf6c5f8ee255a61d01b09e57"
+  },
+  {
+    "path": "public/images/mercedes-benz-amg-hammer-coupe-1987.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MER_AMGHammer_87.webp",
+    "sha": "ea4800b99446e4449cd07041e8fefc1fae62d093"
+  },
+  {
+    "path": "public/images/mercedes-benz-300-slr-1955.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MER_300SLR_55.webp",
+    "sha": "bcbff96ace91e0dd2fb6ecc48e8548aa981cd2ec"
+  },
+  {
+    "path": "public/images/mercedes-benz-300-sl-coup-1954.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MER_300SL_54.webp",
+    "sha": "5582ade07069c1d84c1cacf748f1c0bddc711091"
+  },
+  {
+    "path": "public/images/meyers-manx-2-0-2023.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MEY_Manx_23.webp",
+    "sha": "71b5a378b991d45424f8ef98e23ce89b9d53df2d"
+  },
+  {
+    "path": "public/images/meyers-manx-1971.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MEY_Manx_71.webp",
+    "sha": "cad2472b30997cc5e63b485a8400d447c230e57a"
+  },
+  {
+    "path": "public/images/mg-metro-6r4-1986.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MG_Metro6R4_86.webp",
+    "sha": "f3db166a0785bd66105bde7ebe0c368556ad2ca4"
+  },
+  {
+    "path": "public/images/mini-john-cooper-works-gp-2021.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MIN_JCWGP_21.webp",
+    "sha": "40dc0f64a482be61b95449bc9fcd1b1ba08016f7"
+  },
+  {
+    "path": "public/images/mini-x-raid-john-cooper-works-buggy-2018.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MIN_JCWBuggy_18.webp",
+    "sha": "8fbb65bc6a6aee432ef0338fdd17bbc51dc25f89"
+  },
+  {
+    "path": "public/images/mini-john-cooper-works-gp-2013.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MIN_JCWGP_13.webp",
+    "sha": "d9188997b8fc91c1bc9a9ed329cc8ce2ebfe725a"
+  },
+  {
+    "path": "public/images/mini-x-raid-all4-racing-countryman-2013.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MIN_XRaidCountryman_13.webp",
+    "sha": "26b9f4fe0222e6170ca02a6e146cd3215132583c"
+  },
+  {
+    "path": "public/images/mini-cooper-s-1965.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MIN_CooperS_65.webp",
+    "sha": "2cd720884292d2da6a7cf786ae154db3cbd25ca1"
+  },
+  {
+    "path": "public/images/mitsubishi-lancer-evolution-x-gsr-2008.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MIT_LancerEvoXGSR_08.webp",
+    "sha": "49ed4b947319d0256643aed4c1832a3469b7284c"
+  },
+  {
+    "path": "public/images/mitsubishi-lancer-evolution-ix-mr-2006.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MIT_LancerEvoIXMR_06.webp",
+    "sha": "a40ecb357631e084312cfc7ef6902e25b9ff29f2"
+  },
+  {
+    "path": "public/images/mitsubishi-1-sierra-sierra-enterprises-lancer-evolution-time-attack-2005.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MIT_1_EvoTA_05.webp",
+    "sha": "bf20c15d4d32f08a31aa299baec7de61b7e64b42"
+  },
+  {
+    "path": "public/images/mitsubishi-lancer-evolution-viii-mr-2004.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MIT_LancerEvoVIIIMR_04.webp",
+    "sha": "7e22ee17b70e38f7ecdb02198df1cf9de239aa54"
+  },
+  {
+    "path": "public/images/mitsubishi-lancer-evolution-viii-mr-welcome-pack-2004.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MIT_LancerEvoVIIIMRWP_04.webp",
+    "sha": "715bf6386eff3f52d8b569f350142c6661b0629a"
+  },
+  {
+    "path": "public/images/mitsubishi-lancer-evolution-vi-gsr-tm-edition-2001.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MIT_LancerEvoVITME_01.webp",
+    "sha": "0854427554d08838175d5f0b5808dad952a4945b"
+  },
+  {
+    "path": "public/images/mitsubishi-gto-1997.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MIT_GTO_97.webp",
+    "sha": "efb2f708a63d69c600a153726b09d465104d9456"
+  },
+  {
+    "path": "public/images/mitsubishi-montero-evolution-1997.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MIT_PajeroEvo_97.webp",
+    "sha": "53336e4127864ec37115dbe0081422cfb5e47431"
+  },
+  {
+    "path": "public/images/mitsubishi-eclipse-gsx-1995.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MIT_EclipseGSX_95.webp",
+    "sha": "51ab1e7a6ae3fabba070db6b7e52f6f57b43df8b"
+  },
+  {
+    "path": "public/images/mitsubishi-lancer-evolution-iii-gsr-1995.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MIT_LancerEvoIII_95.webp",
+    "sha": "01f24b28aa8e18acad94f1fd689c9c996135c592"
+  },
+  {
+    "path": "public/images/mitsubishi-montero-exceed-2800-td-1995.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MIT_Pajero_95.webp",
+    "sha": "0f37561e5dcc81bd8c7caba3e1772eb0a2feba9f"
+  },
+  {
+    "path": "public/images/mitsubishi-galant-vr-4-1992.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MIT_GalantVR4_92.webp",
+    "sha": "4ff4dba2cfadd0e5f6003edfa8cd695cf35d4ca5"
+  },
+  {
+    "path": "public/images/mitsubishi-269-attacking-the-clock-racing-minicab-time-attack-1990.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/MIT_269_Minicab_90.webp",
+    "sha": "0ca0cf6dd3864af392fe87f1285fd7181ebfee92"
+  },
+  {
+    "path": "public/images/nissan-gt-r-nismo-2024.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/NIS_GTRNISMO_24.webp",
+    "sha": "70d1d0b41b775098e68fdb72a2f9e4b8277d3840"
+  },
+  {
+    "path": "public/images/nissan-gt-r-nismo-initial-drive-2024.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/NIS_GTRNISMOID_24.webp",
+    "sha": "053efb0863665d31d8ae8a5a3792d977aca6f6e4"
+  },
+  {
+    "path": "public/images/nissan-z-nismo-2024.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/NIS_ZNismo_24.webp",
+    "sha": "f18da2bb6620f1f66a707a53504e0d5e079e3e13"
+  },
+  {
+    "path": "public/images/nissan-370z-nismo-2019.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/NIS_370ZNismo_19.webp",
+    "sha": "7c0f6d01b69c3477fb1e6e73f4e19fd36dacd0e8"
+  },
+  {
+    "path": "public/images/nissan-gt-r-nismo-r35-2019.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/NIS_GTRNismo_19.webp",
+    "sha": "f185e3ff558baeee4f5ce4cfcd63aa87195b0873"
+  },
+  {
+    "path": "public/images/nissan-gt-r-r35-2017.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/NIS_GTR_17.webp",
+    "sha": "d691572558f8a9d8e2133e130f77a42987334d82"
+  },
+  {
+    "path": "public/images/nissan-gt-r-black-edition-r35-2012.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/NIS_GTR_12.webp",
+    "sha": "e1ce5c04eaf72a172b81a75216936fa6e8f2bcda"
+  },
+  {
+    "path": "public/images/nissan-gt-r-black-edition-r35-touge-edition-2012.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/NIS_GTRTG_12.webp",
+    "sha": "152dc5ff4bf9932d3475a272b6bd03080b1f02d4"
+  },
+  {
+    "path": "public/images/nissan-gt-r-black-edition-r35-forza-edition-2012.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/NIS_GTRFE_12.webp",
+    "sha": "2dd0428996b5522e41cc455985e7d88d683d2f7b"
+  },
+  {
+    "path": "public/images/nissan-370z-2010.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/NIS_370Z_10.webp",
+    "sha": "06dfb67880c92e203b723d5f3b81f24dc1b46bc4"
+  },
+  {
+    "path": "public/images/nissan-fairlady-z-2003.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/NIS_FairladyZ_03.webp",
+    "sha": "bf084b431e773f662233267e4efafcf2fa349e68"
+  },
+  {
+    "path": "public/images/nissan-silvia-spec-r-2002.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/NIS_SilviaSpecR_02.webp",
+    "sha": "0a0f28371cfe8073864096af0a0773bb460982b3"
+  },
+  {
+    "path": "public/images/nissan-36-dream-project-s15-silvia-wtac-2000.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/NIS_36_SilviaWTA_00.webp",
+    "sha": "e3e6718c005c8cb7fde3203a9f9a811f71060b94"
+  },
+  {
+    "path": "public/images/nissan-skyline-gt-r-v-spec-ii-2000.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/NIS_SkylineGTRVSpecII_00.webp",
+    "sha": "35ad986543b9b3a5ace4fa1b417582e0ce647177"
+  },
+  {
+    "path": "public/images/nissan-23-pennzoil-nismo-skyline-gt-r-1998.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/NIS_23_Skyline_98.webp",
+    "sha": "62f6215e2a61d87a2063e13c0750e0f38b489d0c"
+  },
+  {
+    "path": "public/images/nissan-r390-gt1-1998.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/NIS_R390_98.webp",
+    "sha": "18be0cf6ddfade71fd61f24c4f9b5921f7001988"
+  },
+  {
+    "path": "public/images/nissan-silvia-k-s-aero-1998.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/NIS_SilviaKs_98.webp",
+    "sha": "55a5d534a071503d1b8fae499ba592cf9d24299f"
+  },
+  {
+    "path": "public/images/nissan-skyline-gt-r-40th-anniversary-1998.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/NIS_SkylineAutech_98.webp",
+    "sha": "99b27edf1276b592b6136ab8c8748dd853334ddb"
+  },
+  {
+    "path": "public/images/nissan-skyline-gt-r-v-spec-1997.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/NIS_SkylineGTR_97.webp",
+    "sha": "4b2b92d8b97a6ffb7fcae0264d9b530dfa365546"
+  },
+  {
+    "path": "public/images/nissan-stagea-rs-four-v-1997.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/NIS_Stagea_97.webp",
+    "sha": "2103fa1b9e05b1635629bfd53f84eef681f93513"
+  },
+  {
+    "path": "public/images/nissan-gloria-gran-turismo-1995.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/NIS_Gloria_95.webp",
+    "sha": "8260306cadbcfcbc087cc532bf5b9aea5e6a43b7"
+  },
+  {
+    "path": "public/images/nissan-nismo-gt-r-lm-1995.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/NIS_GTRLM_95.webp",
+    "sha": "b29d779267ea107f0f5f6578bc174853942992c5"
+  },
+  {
+    "path": "public/images/nissan-240sx-1994.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/NIS_240SX_94.webp",
+    "sha": "5ebbf0aee8e167177db81eb1788b729ecb3e4e6b"
+  },
+  {
+    "path": "public/images/nissan-fairlady-z-version-s-twin-turbo-1994.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/NIS_FairladyZvSTwinTurbo_94.webp",
+    "sha": "ebfea6fa3c1d39f93deb5908ea683a2313ed7a2b"
+  },
+  {
+    "path": "public/images/nissan-silvia-k-s-1994.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/NIS_SilviaKs_94.webp",
+    "sha": "badb8070daa60b87f140d7c883ad455f5da987a8"
+  },
+  {
+    "path": "public/images/nissan-32-skyline-wtac-xtreme-gtr-1993.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/NIS_32_SkylineWTA_93.webp",
+    "sha": "589fe1391007eb525a4b25425e697279ecc8e291"
+  },
+  {
+    "path": "public/images/nissan-skyline-gt-r-1992.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/NIS_SkylineGTR_92.webp",
+    "sha": "7a18f62609fa88c855bb137e9942f614b0d5685e"
+  },
+  {
+    "path": "public/images/nissan-figaro-1991.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/NIS_Figaro_91.webp",
+    "sha": "1ba61b5913e91f843255efd8ee95affcb01c3d5e"
+  },
+  {
+    "path": "public/images/nissan-12-skyline-gt-r-bnr32-gr-a-jtc-1990.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/NIS_12_SkylineGTR_90.webp",
+    "sha": "2ba7d0b9c55f5f21e9703dafed7bfd086c18598d"
+  },
+  {
+    "path": "public/images/nissan-pulsar-gti-r-1990.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/NIS_PulsarGTIR_90.webp",
+    "sha": "a39ac2ff62502f75d3392173685043ebfd584211"
+  },
+  {
+    "path": "public/images/nissan-pao-1989.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/NIS_Pao_89.webp",
+    "sha": "9c576dbb223ee07b50e2d58e7e1753c3aaf166bf"
+  },
+  {
+    "path": "public/images/nissan-s-cargo-1989.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/NIS_SCargo_89.webp",
+    "sha": "e1075b8ab578a1eaa7f948fa3c579f14772dfe0c"
+  },
+  {
+    "path": "public/images/nissan-s-cargo-forza-edition-1989.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/NIS_SCargoFE_89.webp",
+    "sha": "6c5990ed9800037272862bdbbddca30dcf7a281e"
+  },
+  {
+    "path": "public/images/nissan-silvia-k-s-1989.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/NIS_SilviaKs_89.webp",
+    "sha": "10b3fdbde38256969c70b9e47acc1c0a35b190f8"
+  },
+  {
+    "path": "public/images/nissan-be-1-1987.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/NIS_BE1_87.webp",
+    "sha": "6efb6c4994f8b75f6097d18e98bc9a14ab84d3a2"
+  },
+  {
+    "path": "public/images/nissan-skyline-gts-r-1987.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/NIS_SkylineGTSR_87.webp",
+    "sha": "1dacd1a1994be429b83f4b9854be78c2f37636dd"
+  },
+  {
+    "path": "public/images/nissan-safari-turbo-1985.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/NIS_Safari_85.webp",
+    "sha": "147d56a69e88675f646454ca16dd63f3547d726c"
+  },
+  {
+    "path": "public/images/nissan-11-tomica-skyline-turbo-super-silhouette-1984.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/NIS_11_Skyline_84.webp",
+    "sha": "e8e35da8d1def91462b8d607427c00d3ff99eb81"
+  },
+  {
+    "path": "public/images/nissan-skyline-h-t-2000gt-r-1973.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/NIS_SkylineGTR_73.webp",
+    "sha": "a99a273f6664e3dd4bdb3c02a586da8218ce4326"
+  },
+  {
+    "path": "public/images/nissan-skyline-2000gt-r-1971.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/NIS_Skyline2000GTR_71.webp",
+    "sha": "78a8ab8610b360a4273e51f6914baa0802fb3e07"
+  },
+  {
+    "path": "public/images/nissan-fairlady-z-432-1969.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/NIS_Fairlady432Z_69.webp",
+    "sha": "779ec30c4d3eb6db20c7f5c510d5d0ce729a0347"
+  },
+  {
+    "path": "public/images/noble-m600-2010.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/NOB_M600_10.webp",
+    "sha": "eb5d6530c8d6b8f7815317e7c6660c8ec37e864a"
+  },
+  {
+    "path": "public/images/opel-manta-400-1984.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/OPE_Manta400_84.webp",
+    "sha": "009139cd1bb21e1c5615bbde410f562817019774"
+  },
+  {
+    "path": "public/images/pagani-huayra-r-2022.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/PAG_HuayraR_22.webp",
+    "sha": "8d85fdb3976c257b61815a9f9935f671e560f2d1"
+  },
+  {
+    "path": "public/images/pagani-huayra-bc-coupe-2016.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/PAG_Huayra_16.webp",
+    "sha": "7b1ee039abddbc1c36b613dda7a448c658ed366c"
+  },
+  {
+    "path": "public/images/pagani-zonda-r-2010.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/PAG_ZondaR_10.webp",
+    "sha": "44119ac5cfc5bd27c148f04500a0c9546c8000fe"
+  },
+  {
+    "path": "public/images/pagani-zonda-cinque-roadster-2009.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/PAG_ZondaCinque_09.webp",
+    "sha": "ca9ea732eb33e6a3a3e91be372929601cf80d988"
+  },
+  {
+    "path": "public/images/peel-p50-1962.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/PEE_P50_62.webp",
+    "sha": "96d9fce8136b0173c526b9d89923c8380021936c"
+  },
+  {
+    "path": "public/images/peel-p50-trolli-edition-1962.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/PEE_P50Trolli_62.webp",
+    "sha": "2b6aabfb701b09997f82628a4974e8d091ea9d4e"
+  },
+  {
+    "path": "public/images/penhall-the-cholla-2011.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/PEN_Cholla_11.webp",
+    "sha": "f6cdd08f94b535d8c05a9c8ec085f275c8648263"
+  },
+  {
+    "path": "public/images/peugeot-207-super-2000-2007.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/PEU_207Super2000_07.webp",
+    "sha": "abe98d091b5f273be28fda4f6518ffb71a2d909e"
+  },
+  {
+    "path": "public/images/peugeot-205-rallye-1991.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/PEU_205Rallye_91.webp",
+    "sha": "59bd2c890ea5955094ae2610cd7fa97ab592fda8"
+  },
+  {
+    "path": "public/images/peugeot-205-turbo-16-1984.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/PEU_205T16_84.webp",
+    "sha": "e158a85a12ab895a70cd9ca7a06ac3eae45009c5"
+  },
+  {
+    "path": "public/images/plymouth-cuda-426-hemi-1971.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/CHR_Cuda426_71.webp",
+    "sha": "6d9cc9b9bcc796e098eb7e61e796513d2fa3dd02"
+  },
+  {
+    "path": "public/images/plymouth-barracuda-formula-s-1968.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/PLY_Barracuda_68.webp",
+    "sha": "f8d6a5bec8c34772171ddd652d45e6a01d046cc6"
+  },
+  {
+    "path": "public/images/plymouth-fury-1958.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/PLY_Fury_58.webp",
+    "sha": "7fb1cb9feaa43e20b9ae9ed0097d16c04882c00a"
+  },
+  {
+    "path": "public/images/polaris-rzr-pro-xp-factory-racing-limited-edition-2021.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/POL_51_RZRDakar_21.webp",
+    "sha": "d1d1779acdbec5742119067a28af7e66729fa31c"
+  },
+  {
+    "path": "public/images/polaris-rzr-pro-xp-ultimate-2021.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/POL_RZRProXP_21.webp",
+    "sha": "2fbd750776f620f9d882f515da3abc4da1132cc1"
+  },
+  {
+    "path": "public/images/pontiac-firebird-trans-am-gta-1987.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/PON_TransAmGTA_87.webp",
+    "sha": "357565d0ba26bc4735a8f749474595f861299a8e"
+  },
+  {
+    "path": "public/images/pontiac-firebird-trans-am-1977.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/PON_FirebirdTransAm_77.webp",
+    "sha": "5758337549bcb84c775440b0803a4b4e49b34966"
+  },
+  {
+    "path": "public/images/porsche-911-gt3-rs-2023.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/POR_911GT3RS_23.webp",
+    "sha": "84c6e7cc6ee3e76f5c08c584c7b1e1972a1a8e7e"
+  },
+  {
+    "path": "public/images/porsche-911-rallye-2023.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/POR_911Dakar_23.webp",
+    "sha": "bb0403c99de1ff06c65e84728035036a114f2edf"
+  },
+  {
+    "path": "public/images/porsche-911-turbo-s-2023.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/POR_911TurboS_23.webp",
+    "sha": "b6364ee81fdbe5c6a65e7e1287bebc97ddeee423"
+  },
+  {
+    "path": "public/images/porsche-718-cayman-gt4-rs-2022.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/POR_718CaymanGT4RS_22.webp",
+    "sha": "b32aebbff33d0e0d83a3cc1095392e33b1e2e822"
+  },
+  {
+    "path": "public/images/porsche-mission-r-2022.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/POR_MissionR_22.webp",
+    "sha": "aa3e6ec53fdae9fb680412d966b24c1e8f3c4faa"
+  },
+  {
+    "path": "public/images/porsche-911-gt3-2021.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/POR_911GT3_21.webp",
+    "sha": "b5dc2c879a7fb86e7574904fdedbd04c61cb9a51"
+  },
+  {
+    "path": "public/images/porsche-taycan-turbo-s-2020.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/POR_TaycanTurboS_20.webp",
+    "sha": "fea28eecb210480f022856569ab74da85e6e0a01"
+  },
+  {
+    "path": "public/images/porsche-70-porsche-motorsport-935-2019.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/POR_70_935_19.webp",
+    "sha": "be0f6a0fb1970f449ac419f6387c78c2048ec54e"
+  },
+  {
+    "path": "public/images/porsche-911-carrera-s-2019.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/POR_992_19.webp",
+    "sha": "cf6833bd713c90e5a7fe3f3ba3870cb2a0b75753"
+  },
+  {
+    "path": "public/images/porsche-718-cayman-gts-2018.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/POR_718CaymanGTS_18.webp",
+    "sha": "7e8c3c73d5be4c03580eaaa4cb72e049c11e73c7"
+  },
+  {
+    "path": "public/images/porsche-911-gt3-rs-2018.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/POR_911GT3RS_18.webp",
+    "sha": "03c7b3ede058c2e15a735a97adece13fb63aef29"
+  },
+  {
+    "path": "public/images/porsche-cayenne-turbo-2018.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/POR_Cayenne_18.webp",
+    "sha": "4ea29a3a805cadb645c076140bcfee15c4820d60"
+  },
+  {
+    "path": "public/images/porsche-macan-lpr-rally-raid-2018.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/POR_00_MacanRR_18.webp",
+    "sha": "ac940dd317c3d843c7b8f1201e326f358bf4b308"
+  },
+  {
+    "path": "public/images/porsche-911-gt2-rs-2017.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/POR_Raymond_17.webp",
+    "sha": "f77a10c567962244b4b283e4884c300abfc6a322"
+  },
+  {
+    "path": "public/images/porsche-918-spyder-2014.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/POR_918Spyder_14.webp",
+    "sha": "07dabfa3223218b6b61320603c0354adb582cbad"
+  },
+  {
+    "path": "public/images/porsche-911-gt3-rs-4-0-2012.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/POR_911GT3RS_12.webp",
+    "sha": "d6960cfdb0024a6955b6eb7cc5a9ca656be6a580"
+  },
+  {
+    "path": "public/images/porsche-cayman-gt3-wtac-2005.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/POR_00_CaymanWTA_05.webp",
+    "sha": "e54b83a95cdb536ee71b26501c80b12ede7ca31b"
+  },
+  {
+    "path": "public/images/porsche-911-gt3-2004.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/POR_996GT3_04.webp",
+    "sha": "2c0928db20f4fcda0c9753d39bd30e4d0df38a06"
+  },
+  {
+    "path": "public/images/porsche-carrera-gt-2003.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/POR_CarreraGT_03.webp",
+    "sha": "97266276baf146efdd2b90f6390f91d5b29716c1"
+  },
+  {
+    "path": "public/images/porsche-911-gt1-strassenversion-1998.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/POR_996GT1_98.webp",
+    "sha": "b3cee1c2f676c12e1f39e207769c6330e496d789"
+  },
+  {
+    "path": "public/images/porsche-911-gt2-1995.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/POR_911GT2_95.webp",
+    "sha": "e24158e34eebafe26b19c3f33261f8c4292c1cc9"
+  },
+  {
+    "path": "public/images/porsche-911-gt2-initial-drive-1995.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/POR_911GT2ID_95.webp",
+    "sha": "c3a56506f9b2e9d3f6be78e4469f8f20abc9a2d6"
+  },
+  {
+    "path": "public/images/porsche-911-turbo-s-leichtbau-1993.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/POR_911TurboS_93.webp",
+    "sha": "33ea8859a19646a5df387adec58a98ee4b6a68dc"
+  },
+  {
+    "path": "public/images/porsche-928-gts-1993.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/POR_928GTS_93.webp",
+    "sha": "704689b0c536e4541cba1b7adbb3356d15dea22f"
+  },
+  {
+    "path": "public/images/porsche-968-turbo-s-1993.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/POR_968TurboS_93.webp",
+    "sha": "d4667bd1c7f8e2b3b68e88874b1c04e50895830f"
+  },
+  {
+    "path": "public/images/porsche-944-turbo-1989.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/POR_944Turbo_89.webp",
+    "sha": "261c298007c7087cd9ac0e29a8af1f5d3dc4807d"
+  },
+  {
+    "path": "public/images/porsche-959-1987.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/POR_959_87.webp",
+    "sha": "599522ccc71cd93884f42abb00ee969a5f7934d6"
+  },
+  {
+    "path": "public/images/porsche-185-959-prodrive-rally-raid-1986.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/POR_186_959_86.webp",
+    "sha": "35f64784673b2a850e8a9d274a6d0e9fd3ef19a8"
+  },
+  {
+    "path": "public/images/porsche-911-turbo-3-3-1982.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/POR_911Turbo_82.webp",
+    "sha": "6ae849a591dcd45d7af08529ab23203417df09e4"
+  },
+  {
+    "path": "public/images/porsche-911-carrera-rs-1973.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/POR_CarreraRS_73.webp",
+    "sha": "36a724b31b4b20490671d4c3e948a91f490e0b2d"
+  },
+  {
+    "path": "public/images/porsche-3-917-lh-1970.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/POR_3_917LH_70.webp",
+    "sha": "36593ad6a5ad72a514842a4b2616b31b43d1f4c0"
+  },
+  {
+    "path": "public/images/porsche-3-917-lh-forza-edition-1970.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/POR_3_917LHFE_70.webp",
+    "sha": "c91aa61ec68a1a6a160dc46cc5ff5ab3bdc75ce2"
+  },
+  {
+    "path": "public/images/radical-rxc-turbo-2015.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/RAD_RXC_15.webp",
+    "sha": "e3b367c1e2a2cc39c948c6f2ee63f40883b968d3"
+  },
+  {
+    "path": "public/images/ram-1500-trx-2024.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/RAM_TRX_24.webp",
+    "sha": "73662c33b95fc11bec70f118189833a9cab675c1"
+  },
+  {
+    "path": "public/images/reliant-supervan-iii-1972.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/REL_SupervanIII_72.webp",
+    "sha": "77866e3527594250c40502f67a6c07471cdc6d39"
+  },
+  {
+    "path": "public/images/renault-megane-r-s-2018.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/REN_MeganeRS_18.webp",
+    "sha": "6751888461f67cf764c49c3414f7864414351034"
+  },
+  {
+    "path": "public/images/renault-megane-rs-250-2010.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/REN_MeganeRS250_10.webp",
+    "sha": "4cbea2005ca11dea4d4a1c66f92ae9faf85fd721"
+  },
+  {
+    "path": "public/images/renault-m-gane-r26-r-2008.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/REN_MeganeR26R_08.webp",
+    "sha": "b57a9b29d3354c6349c07c82965025a7f995a4df"
+  },
+  {
+    "path": "public/images/renault-clio-williams-1993.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/REN_ClioWilliams_93.webp",
+    "sha": "38e2349a1cb6ce751790a636e358073c7258892f"
+  },
+  {
+    "path": "public/images/renault-5-turbo-1980.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/REN_5Turbo_80.webp",
+    "sha": "6e528618a3ceabdc152e57f843580aff7b048fec"
+  },
+  {
+    "path": "public/images/renault-8-gordini-1967.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/REN_8Gordini_67.webp",
+    "sha": "e3834a64766e3e5f8bc22583f6ce40bf8d38fef9"
+  },
+  {
+    "path": "public/images/rimac-nevera-2021.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/RIM_Nevera_21.webp",
+    "sha": "00d3c14231f0aa1d02b02a0c6062d567c47c221f"
+  },
+  {
+    "path": "public/images/rivian-r1t-2022.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/RIV_R1T_22.webp",
+    "sha": "213f18f95988bcb48f1055a274fd3c1110987a2f"
+  },
+  {
+    "path": "public/images/rj-anderson-37-polaris-rzr-pro-4-truck-2020.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/RJ_37_Pro4_20.webp",
+    "sha": "a08aabd0b11068bdfee6f30055ca00bd4d12dee5"
+  },
+  {
+    "path": "public/images/rj-anderson-37-polaris-rzr-pro-2-truck-2016.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/RJ_37_Pro2Truck_16.webp",
+    "sha": "7093a02a6ad857010225ce7963a33b6b388b6470"
+  },
+  {
+    "path": "public/images/saleen-s7-lm-2017.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/SAL_S7LM_17.webp",
+    "sha": "8fdd34d704fb1ed9230973de9857210a70848d97"
+  },
+  {
+    "path": "public/images/schuppan-962cr-1993.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/POR_962CRS_93.webp",
+    "sha": "4cecf8d8164b9c9ca76d47e754dd3773b0e1adc4"
+  },
+  {
+    "path": "public/images/shelby-cobra-427-s-c-1965.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/SHE_Cobra427_65.webp",
+    "sha": "a8c50d9d374456f685369cb515b66506414a94e1"
+  },
+  {
+    "path": "public/images/shelby-cobra-daytona-coupe-1965.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/SHE_CobraDaytona_65.webp",
+    "sha": "7a25f6e80122f955db4bb107caa6194e2e1e1615"
+  },
+  {
+    "path": "public/images/sierra-cars-700r-2021.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/SIE_00_700R_21.webp",
+    "sha": "1ce61a0e6b88fa770da51694d19b23304d27c128"
+  },
+  {
+    "path": "public/images/sierra-cars-rx3-2021.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/SIE_00_RX3_21.webp",
+    "sha": "5fac98374883bbbce41bbf7ae9dadef16909e6f3"
+  },
+  {
+    "path": "public/images/sierra-cars-23-yokohama-alpha-2020.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/SIE_23_Alpha_20.webp",
+    "sha": "e11dcdce8f6730409fe088acfef059572fee0702"
+  },
+  {
+    "path": "public/images/srt-viper-gts-2013.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/VIP_Viper_13.webp",
+    "sha": "eb501a7c3cd0e7adae4fb8e332ac0532382784cb"
+  },
+  {
+    "path": "public/images/subaru-brz-2022.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/SUB_BRZ_22.webp",
+    "sha": "6044f81712c59e1086611bfb05a1057e85d55d9b"
+  },
+  {
+    "path": "public/images/subaru-brz-forza-edition-2022.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/SUB_BRZFE_22.webp",
+    "sha": "e53ad0cd63fdb4e4354a5084ff06b85e23e0f1b4"
+  },
+  {
+    "path": "public/images/subaru-wrx-2022.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/SUB_WRX_22.webp",
+    "sha": "1387ef08be9f0499106718a50a3483abeac3de6c"
+  },
+  {
+    "path": "public/images/subaru-sti-s209-2019.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/SUB_WRXSTiS209_19.webp",
+    "sha": "f8ec8f22e51e1272b8b5679f71e4bf41444518db"
+  },
+  {
+    "path": "public/images/subaru-wrx-sti-arx-supercar-2018.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/SUB_00_VT18X_18.webp",
+    "sha": "c7039fd2df7eea3636ea7564c33d6d73f0c57f93"
+  },
+  {
+    "path": "public/images/subaru-wrx-sti-2015.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/SUB_WRXSTI_15.webp",
+    "sha": "427de4474f29f9dc242fe056eef3e62acf94e6b5"
+  },
+  {
+    "path": "public/images/subaru-brz-2013.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/SUB_BRZ_13.webp",
+    "sha": "f8086a08a3ba63051956e1256777f4eacb9c36bb"
+  },
+  {
+    "path": "public/images/subaru-wrx-sti-2011.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/SUB_WRXSTi_11.webp",
+    "sha": "e87375142646f5929665a5cc957369dcc25c5100"
+  },
+  {
+    "path": "public/images/subaru-impreza-wrx-sti-2008.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/SUB_WRXSTi_08.webp",
+    "sha": "c8406e99d3b63dcc52c768d6ac2656a1dfd44c9c"
+  },
+  {
+    "path": "public/images/subaru-impreza-wrx-sti-2005.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/SUB_WRXSTi_05.webp",
+    "sha": "d20dedaa533092d8ec7026cb011fc3fe855fec76"
+  },
+  {
+    "path": "public/images/subaru-legacy-b4-2-0-gt-2005.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/SUB_LegacyB4GT_05.webp",
+    "sha": "d07f603f37424335aa748205aea38e435f8a6b26"
+  },
+  {
+    "path": "public/images/subaru-impreza-wrx-sti-2004.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/SUB_WRXSTi_04.webp",
+    "sha": "77d6d609835c07debf57955d8cea619c70872e35"
+  },
+  {
+    "path": "public/images/subaru-impreza-22b-sti-version-1998.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/SUB_Impreza22b_98.webp",
+    "sha": "75800662815b8cf8bf00bc2c65b62f1ec0f4ca97"
+  },
+  {
+    "path": "public/images/subaru-impreza-22b-sti-version-touge-edition-1998.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/SUB_Impreza22BTG_98.webp",
+    "sha": "dc26cbe32a30e822afed16bed19f01caf57f2e9d"
+  },
+  {
+    "path": "public/images/subaru-svx-1996.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/SUB_SVX_96.webp",
+    "sha": "8e07ac5528baf9f1979dd9578d583eef346d88f1"
+  },
+  {
+    "path": "public/images/subaru-vivio-rx-r-1994.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/SUB_VivioRXR_94.webp",
+    "sha": "b0b1d4eb59eb81a3d6b06181872760ab4b8e96ff"
+  },
+  {
+    "path": "public/images/subaru-vivio-rx-r-forza-edition-1994.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/SUB_VivioRXRFE_94.webp",
+    "sha": "47978174511c9790c3d3568993992e34a08ae1ef"
+  },
+  {
+    "path": "public/images/subaru-legacy-rs-1990.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/SUB_LegacyRS_90.webp",
+    "sha": "253089792e2ac217bb55334b1b469692ea93fd9c"
+  },
+  {
+    "path": "public/images/subaru-brat-gl-1981.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/SUB_BRAT_81.webp",
+    "sha": "1e2b64c619814615143e1a675326dfa7ac913b74"
+  },
+  {
+    "path": "public/images/toyota-land-cruiser-2025.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/TOY_LandCruiser_25.webp",
+    "sha": "6188619ac97bd41c39dd53785ad5efc12f5b239a"
+  },
+  {
+    "path": "public/images/toyota-camry-trd-2023.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/TOY_CamryTRD_23.webp",
+    "sha": "4bd80b5393b9366bdf2e0b21589d0ee7a812c8af"
+  },
+  {
+    "path": "public/images/toyota-gr-corolla-2023.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/TOY_GRCorolla_23.webp",
+    "sha": "f6f3d701b04fb4c08a542c7e09cf1bbde015134b"
+  },
+  {
+    "path": "public/images/toyota-gr86-2022.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/TOY_GR86_22.webp",
+    "sha": "79f9bf15f74af11447460c9c47a1554c2e648864"
+  },
+  {
+    "path": "public/images/toyota-gr-yaris-2021.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/TOY_YarisGR_21.webp",
+    "sha": "d81cec06ad74ece06bf4ba90e38a8166c024e17c"
+  },
+  {
+    "path": "public/images/toyota-gr-supra-2020.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/TOY_SupraGR_20.webp",
+    "sha": "706b49ae2840d01630c6c57759f0250aad690d9d"
+  },
+  {
+    "path": "public/images/toyota-4runner-trd-pro-2019.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/TOY_4RunnerTRDPro_19.webp",
+    "sha": "8c246990eeaf8076c511a04dc79e0bf7d3ebda87"
+  },
+  {
+    "path": "public/images/toyota-tacoma-trd-pro-2019.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/TOY_TacomaTRDPro_19.webp",
+    "sha": "b02d9cd6ffd6f75c5f4191a2638092d44dc25ba4"
+  },
+  {
+    "path": "public/images/toyota-tacoma-trd-pro-forza-edition-2019.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/TOY_TacomaTRDProFE_19.webp",
+    "sha": "db18a9368f0974b832377416858ee5aeb9f7e0ad"
+  },
+  {
+    "path": "public/images/toyota-jpn-taxi-2017.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/TOY_JPNTaxi_17.webp",
+    "sha": "3d1afcfd5500adf64f8ed6296ee9ab00de82ff5f"
+  },
+  {
+    "path": "public/images/toyota-land-cruiser-arctic-trucks-at37-2016.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/TOY_LandCruiserArctic_16.webp",
+    "sha": "c684fe88e15c201fb80df4e9a2e30edee3e73754"
+  },
+  {
+    "path": "public/images/toyota-86-2013.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/TOY_GT86_13.webp",
+    "sha": "8842128c2e95b2333732a8d0415f88e7bf54419f"
+  },
+  {
+    "path": "public/images/toyota-86-stories-2013.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/TOY_GT86_Stories_13.webp",
+    "sha": "4714fcdc3d3e436fff9485d65490c658ecefb47c"
+  },
+  {
+    "path": "public/images/toyota-crown-super-deluxe-taxi-2005.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/TOY_CrownTaxi_05.webp",
+    "sha": "eaeacea55c79d461c964657a81982778a2daad0f"
+  },
+  {
+    "path": "public/images/toyota-celica-sport-specialty-ii-2003.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/TOY_CelicaSSI_03.webp",
+    "sha": "98b65ec810646746b90bf2a791321ace640cb5bd"
+  },
+  {
+    "path": "public/images/toyota-altezza-rs200-z-edition-1999.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/TOY_Altezza_99.webp",
+    "sha": "d69ee07750aee3bb4f3cc3d10dd291e2513f155c"
+  },
+  {
+    "path": "public/images/toyota-supra-rz-1998.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/TOY_SupraRZ_98.webp",
+    "sha": "6fed31088b93558b410a6d45f51891528c1465d4"
+  },
+  {
+    "path": "public/images/toyota-chaser-2-5-tourer-v-1997.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/TOY_Chaser_97.webp",
+    "sha": "63c1b34178cd1b79438d2543f12eb08e4ba7efd5"
+  },
+  {
+    "path": "public/images/toyota-soarer-2-5-gt-t-1997.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/TOY_Soarer_97.webp",
+    "sha": "8fd4dd600372c9c8763f6c64ea6070e0cdd83902"
+  },
+  {
+    "path": "public/images/toyota-starlet-glanza-v-1996.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/TOY_StarletGlanza_96.webp",
+    "sha": "d26b29511679a241a43ae258310e48d910896b2e"
+  },
+  {
+    "path": "public/images/toyota-j-j-motorsport-supra-wtac-1995.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/TOY_00_SupraWTA_95.webp",
+    "sha": "178c63422b2b8582b81d645e02de5c211992385c"
+  },
+  {
+    "path": "public/images/toyota-mr2-gt-1995.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/TOY_MR2GT_95.webp",
+    "sha": "fa0ffec593cb4be4c386dd4ed1911bdca88c0109"
+  },
+  {
+    "path": "public/images/toyota-celica-gt-four-st205-1994.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/TOY_CelicaST205_94.webp",
+    "sha": "42262d6a9caca08d53be6f07dabc3f1937d18c0d"
+  },
+  {
+    "path": "public/images/toyota-1-t100-baja-truck-1993.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/TOY_1_BajaTruck_93.webp",
+    "sha": "e2e19dd830b3b1691bd3b7427975bd4d9fa3e7df"
+  },
+  {
+    "path": "public/images/toyota-supra-2-0-gt-1992.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/TOY_Supra20GT_92.webp",
+    "sha": "189f090ee1580e1e4a5408269099862ebe3f6464"
+  },
+  {
+    "path": "public/images/toyota-chaser-gt-twin-turbo-1991.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/TOY_ChaserGT_91.webp",
+    "sha": "03f8d31575019d3aa51307273d3ce55b0f602f95"
+  },
+  {
+    "path": "public/images/toyota-sera-1991.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/TOY_Sera_91.webp",
+    "sha": "89d70cec6d5089778ca01e9fbd1dc2a56356dec0"
+  },
+  {
+    "path": "public/images/toyota-celica-gt-four-rc-st185-1990.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/TOY_CelicaST185_90.webp",
+    "sha": "f163a48edba54b56e3ef46c6d33ada6afed354e6"
+  },
+  {
+    "path": "public/images/toyota-mr2-sc-1989.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/TOY_MR2SC_89.webp",
+    "sha": "82fa745f0d9d6ea6b5e6338500828b0971e146ac"
+  },
+  {
+    "path": "public/images/toyota-sprinter-trueno-gt-apex-1985.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/TOY_Sprinter_85.webp",
+    "sha": "167c8afdc04a2031239088c5af8a8f93f23a3495"
+  },
+  {
+    "path": "public/images/toyota-sprinter-trueno-gt-apex-touge-edition-1985.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/TOY_SprinterTG_85.webp",
+    "sha": "5f135d7bed4afbe854639de06142147d35db3916"
+  },
+  {
+    "path": "public/images/toyota-sprinter-trueno-gt-apex-forza-edition-1985.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/TOY_SprinterFE_85.webp",
+    "sha": "d51249d8bcee4a9a72838ebd2bd5ddaf809ef848"
+  },
+  {
+    "path": "public/images/toyota-fj40-1975.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/TOY_FJ40_75.webp",
+    "sha": "a366e3db477cd0673bf78e5d873cb442a99a409a"
+  },
+  {
+    "path": "public/images/toyota-corolla-sr5-1973.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/TOY_CorollaSR5_73.webp",
+    "sha": "97867ec4d721497cb9b7d1b81ce5ebcda5b8fdb2"
+  },
+  {
+    "path": "public/images/toyota-2000gt-1969.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/TOY_2000GT_69.webp",
+    "sha": "169a0c1a979caedf2cfddb4cdd0b03e8b40f4576"
+  },
+  {
+    "path": "public/images/toyota-sports-800-1965.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/TOY_Sports800_65.webp",
+    "sha": "60d86bacbaf2e7fe88193ab470eb827d4f1db047"
+  },
+  {
+    "path": "public/images/toyota-sports-800-fanta-edition-1965.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/TOY_Sports800Fanta_65.webp",
+    "sha": "8b218689719df85be3d6030a0efd1205345e7a60"
+  },
+  {
+    "path": "public/images/tvr-griffith-2018.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/TVR_Griffith_18.webp",
+    "sha": "8bfa0a81c111341f0277b51970b5707a29618997"
+  },
+  {
+    "path": "public/images/tvr-sagaris-2005.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/TVR_Sagaris_05.webp",
+    "sha": "8b4b7e485075b8708b7718e8283bf2821319e85a"
+  },
+  {
+    "path": "public/images/tvr-cerbera-speed-12-1998.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/TVR_Cerbera_98.webp",
+    "sha": "ecfbafc2dd199ac81df79cf21d50d17b27e6e2eb"
+  },
+  {
+    "path": "public/images/ultima-evolution-coupe-1020-2015.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/ULT_EvolutionCoupe_15.webp",
+    "sha": "558ff68ee98d3220ba1b3a88abe797c97691bc79"
+  },
+  {
+    "path": "public/images/volkswagen-golf-r-2022.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/VW_GolfR_22.webp",
+    "sha": "602c9d50dda8b5a5de6bfd6359b69f6089ee9e42"
+  },
+  {
+    "path": "public/images/volkswagen-golf-r-2019.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/VW_GolfR_19.webp",
+    "sha": "70aa800b6907b1e38dfee1a7b06b2576764e9ff6"
+  },
+  {
+    "path": "public/images/volkswagen-34-andretti-rally-cross-beetle-2017.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/VW_34_BeetleGRC_17.webp",
+    "sha": "39ee0bf57c584a799d3133ee43599a92dd331dcc"
+  },
+  {
+    "path": "public/images/volkswagen-golf-r-2014.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/VW_GolfR_14.webp",
+    "sha": "f663c37b1173a75dc9966ed5f1329dcda8e87213"
+  },
+  {
+    "path": "public/images/volkswagen-scirocco-r-2011.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/VW_SciroccoR_11.webp",
+    "sha": "77b5f5b9bef9c708f172b354c808cf735bf7d1ac"
+  },
+  {
+    "path": "public/images/volkswagen-golf-r-2010.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/VW_GolfR_10.webp",
+    "sha": "6cd77811750ec19d9384eab3f8b195d03e056964"
+  },
+  {
+    "path": "public/images/volkswagen-corrado-vr6-1995.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/VW_Corrado_95.webp",
+    "sha": "395e5c859fd3348ac9917eba32b4f6af6cc96f53"
+  },
+  {
+    "path": "public/images/volkswagen-golf-gti-16v-mk2-1992.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/VW_GolfGTi16vMk2_92.webp",
+    "sha": "acc912e6a0283cedb3f42ae4f14accfa96871ec2"
+  },
+  {
+    "path": "public/images/volkswagen-rallye-golf-1989.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/VW_GolfRallye_89.webp",
+    "sha": "6067d4eacb46f692fabe7fed7d684a5c8a630302"
+  },
+  {
+    "path": "public/images/volkswagen-golf-gti-1983.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/VW_GolfGTI_83.webp",
+    "sha": "e20b8b50f96da9846c80966d977a3258a9c9d507"
+  },
+  {
+    "path": "public/images/volkswagen-pickup-lx-1982.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/VW_Caddy_82.webp",
+    "sha": "f5695ac15cd59803c93cbbd64d0b20299ae5606f"
+  },
+  {
+    "path": "public/images/volkswagen-class-5-1600-baja-bug-1969.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/VW_Class5Bug_69.webp",
+    "sha": "15252fccdbecefd78cb1aff5df3c5817fcce2aa2"
+  },
+  {
+    "path": "public/images/volkswagen-beetle-1966.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/VW_Beetle_66.webp",
+    "sha": "2e9e81fe91fdc0a1f2be5962938941851b5c81bd"
+  },
+  {
+    "path": "public/images/volkswagen-type-2-de-luxe-1963.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/VW_Type2_63.webp",
+    "sha": "cdc864f7c58e148d6cc85edde60101348cbe46b9"
+  },
+  {
+    "path": "public/images/volvo-242-turbo-evolution-1983.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/VOL_242Turbo_83.webp",
+    "sha": "2f56a54d436f2bf16b417b63763439b4ff68ff95"
+  },
+  {
+    "path": "public/images/wuling-hongguang-mini-ev-2022.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/WUL_MiniEV_22.webp",
+    "sha": "6f9c5ac857789f166ec2bc96a560c60009734561"
+  },
+  {
+    "path": "public/images/wuling-sunshine-s-2020.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/WUL_HongguangS_20.webp",
+    "sha": "4d1711339f8ef0b231e9806234b8b605e34dd6f8"
+  },
+  {
+    "path": "public/images/wuling-sunshine-s-forza-edition-2020.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/WUL_HongguangSFE_20.webp",
+    "sha": "0ab6eef60e10d2b2aafd02ac801f2d8e3a121a6d"
+  },
+  {
+    "path": "public/images/zenvo-tsr-s-2019.webp",
+    "url": "https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/heros/ZEN_TSRS_19.webp",
+    "sha": "0fde4c1a87befc4260ea04210ee73c93bab1f7b4"
+  }
+]
