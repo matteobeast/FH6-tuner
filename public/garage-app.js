@@ -3,7 +3,7 @@
 'use strict';
 const $=id=>document.getElementById(id),C=globalThis.TunerCore,cars=JSON.parse($('catalogue').textContent);
 const esc=s=>String(s??'').replace(/[&<>"']/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]));
-let brand='',query='',catalogClass='',limit=60,selected=null,record=null,rows=[],plan=null,requestId=0,modelId=0,view3d=false,modelReady=false,libraryPromise=null,retryTimer=null,mode='track',driveChoice='',style='balanced',initialConfig=true,toastTimer;
+let brand='',query='',catalogClass='',limit=60,selected=null,record=null,rows=[],plan=null,requestId=0,modelId=0,view3d=false,modelReady=false,libraryPromise=null,retryTimer=null,mode='track',driveChoice='',style='balanced',initialConfig=true,toastTimer,upgradeChoices={},activeUpgradePhase='all',sharedPartsApplied=false;
 const params=new URLSearchParams(location.search);
 if(['track','dirt','drift'].includes(params.get('mode')))mode=params.get('mode');
 if(['stable','balanced','sharp'].includes(params.get('style')))style=params.get('style');
@@ -29,7 +29,7 @@ logoFallbacks();
 function logoFallbacks(){ $('brands').querySelectorAll('img[data-brand-logo]').forEach(img=>{const fallback=()=>{img.hidden=true;img.parentNode.querySelector('.brand-initials').hidden=false;};img.addEventListener('error',fallback,{once:true});if(img.complete&&!img.naturalWidth)fallback();}); }
 function gallery(){
 const results=cars.filter(c=>(!brand||c.k===brand)&&(!catalogClass||c.c===catalogClass)&&(!query||((c.k+' '+c.m+' '+c.y).toLowerCase().includes(query))));
-$('catalog-title').textContent=brand||'Scegli la tua auto.';
+$('catalog-title').textContent=brand||'La tua prossima messa a punto.';
 $('gallery-count').textContent=results.length+' AUTO'+(brand?' / '+brand.toUpperCase():' / TUTTE LE MARCHE');
 $('gallery').innerHTML=results.slice(0,limit).map((c,i)=>'<button class="car" data-car="'+esc(c.s)+'" aria-label="'+esc(c.k+' '+c.m+' '+c.y)+'"><div class="photo"><img src="'+esc(c.h)+'" alt="'+esc(c.k+' '+c.m)+'" loading="'+(i<8?'eager':'lazy')+'" decoding="async" referrerpolicy="no-referrer"><span class="badge">'+esc(c.c)+' · '+esc(c.p)+' PI</span></div><div class="cardtext"><small>'+esc(c.k)+'</small><h3>'+esc(c.m)+'</h3><span class="year">'+esc(c.y)+' / FORZA HORIZON 6</span></div></button>').join('')||'<div class="empty">Nessuna auto trovata. Prova un altro nome o scegli Tutte le marche.</div>';
 $('more').hidden=results.length<=limit;
@@ -38,7 +38,7 @@ $('gallery').querySelectorAll('img').forEach(img=>img.addEventListener('error',(
 function showCatalog(){
 requestId++;modelId++;clearTimeout(retryTimer);selected=null;record=null;$('car-model').removeAttribute('src');$('detail').hidden=true;$('catalog').hidden=false;history.replaceState(null,'',location.pathname);brands();gallery();window.scrollTo({top:0,behavior:'instant'});
 }
-function syncURL(){if(!selected)return;const q=new URLSearchParams({car:selected.s,pi:$('target').value,mode,class:$('target-class').value,drive:driveChoice||'',style,type:$('pi-type').value,units:$('units').value,...($('mounted-front').value?{front:$('mounted-front').value}:{}),...($('mounted-weight').value?{weight:$('mounted-weight').value}:{}),...($('mounted-power').value?{power:$('mounted-power').value}:{})});history.replaceState(null,'','?'+q.toString())}
+function syncURL(){if(!selected)return;const q=new URLSearchParams({car:selected.s,pi:$('target').value,mode,class:$('target-class').value,drive:driveChoice||'',style,type:$('pi-type').value,units:$('units').value,...($('mounted-front').value?{front:$('mounted-front').value}:{}),...($('mounted-weight').value?{weight:$('mounted-weight').value}:{}),...($('mounted-power').value?{power:$('mounted-power').value}:{})});if($('pi-type').value==='target'&&plan)q.set('parts',plan.items.filter(includedUpgrade).map(it=>it.slot).join(','));history.replaceState(null,'','?'+q.toString())}
 function setView(on){
 view3d=!!on&&modelReady;$('car-model').hidden=!view3d;$('hero-image').hidden=view3d;$('toggle-view').textContent=view3d?'Mostra foto':'Mostra 3D';$('view-label').textContent=view3d?'MODELLO 3D / TRASCINA PER RUOTARE':'ANTEPRIMA AUTO';
 }
@@ -83,7 +83,7 @@ record=d;driveChoice=driveChoice||record.spec?.drivetrain||'RWD';$('drive').valu
 }catch(e){if(id!==requestId)return;$('data-state').hidden=true;$('data-error').hidden=false;$('data-error').querySelector('span').textContent=e.name==='TimeoutError'?'Il catalogo sta impiegando troppo tempo. Riprova.':e.message;}
 }
 function selectCar(c){
-selected=c;brand=c.k;record=null;
+selected=c;brand=c.k;record=null;plan=null;rows=[];activeUpgradePhase='all';try{upgradeChoices=JSON.parse(localStorage.getItem('fh6-upgrade-plan-'+c.s)||'{}')}catch{upgradeChoices={}}
 let saved={};try{saved=JSON.parse(localStorage.getItem('fh6-current-'+c.s)||'{}')}catch{}
 const linked=initialConfig&&c.s===params.get('car');initialConfig=false;const pick=(key,fallback='')=>linked&&params.has(key)?params.get(key):(saved[key]??fallback);
 driveChoice=['FWD','RWD','AWD'].includes(pick('drive'))?pick('drive'):'';
@@ -93,7 +93,7 @@ $('target-class').value=C.classes.some(cl=>cl.id===pick('class'))?pick('class'):
 $('mounted-front').value=pick('front');$('mounted-weight').value=pick('weight');$('mounted-power').value=pick('power');
 mode=pick('mode',mode);style=pick('style',style);$('style').value=style;
 modelReady=false;view3d=false;modelId++;clearTimeout(retryTimer);
-$('car-model').removeAttribute('src');$('car-model').hidden=true;$('hero-image').hidden=false;$('hero-image').src=c.h;$('hero-image').alt=c.k+' '+c.m;
+$('car-model').removeAttribute('src');$('car-model').hidden=true;$('hero-image').hidden=false;$('hero-image').src=c.h;$('detail-thumb').src=c.h;$('detail-thumb').hidden=false;$('hero-image').alt=c.k+' '+c.m;
 $('toggle-view').hidden=true;$('view-label').textContent='ANTEPRIMA AUTO';$('model-note').textContent='Controllo del modello 3D…';
 $('catalog').hidden=true;$('detail').hidden=false;$('car-brand').textContent=c.k+' / GARAGE';$('car-name').textContent=c.m;$('car-year').textContent=c.y+' · '+c.c+' '+c.p+' PI di serie';
 brands();syncModes();syncURL();loadRecord(c);loadModel(c,modelId);window.scrollTo({top:0,behavior:'instant'});
@@ -113,7 +113,7 @@ function renderSheet(){
  $('class-limit').innerHTML='<small>LIMITE DELLA CLASSE</small><output>'+targetClass.id+' · '+targetClass.max+' PP</output>';
  $('drive-label').textContent=current?'Trazione montata':'Trazione desiderata';
  $('components').hidden=current;$('settings').hidden=!current;
- $('result-title').textContent=current?'La tua messa a punto':'Il tuo piano per '+targetClass.id;
+ $('result-title').textContent=current?'La tua messa a punto':'La tua preparazione '+targetClass.id;
  $('copy').textContent=current?'Copia tutti i valori':'Copia il piano';
  const target=Number($('target').value),frontValue=Number($('mounted-front').value),weightValue=Number($('mounted-weight').value),powerValue=Number($('mounted-power').value);
  $('rear-weight').textContent=frontValue>=10&&frontValue<=90?'Posteriore: '+Number((100-frontValue).toFixed(1)).toLocaleString('it-IT')+'%':'Posteriore: —';
@@ -124,17 +124,17 @@ function renderSheet(){
  if(!current){
   $('config-note').textContent='Scegli la classe e segui le priorità del piano qui sotto.';
   plan=C.upgradePlan(record,mode,targetClass.max,false,{targetClass:targetClass.id,drive:driveChoice,style,make:selected.k});
+  if(!sharedPartsApplied&&params.get('car')===selected.s&&params.has('parts')){const picks=new Set(params.get('parts').split(','));for(const it of plan.items)upgradeChoices[upgradeKey(it)]=picks.has(it.slot);saveUpgradeChoices();sharedPartsApplied=true;}
   $('baseline').textContent='Obiettivo '+targetClass.id+' · '+targetClass.max+' PP — '+modeLabels[mode]+' · '+driveChoice+' · '+styleLabels[style]+'. Di serie: '+selected.c+' '+record.spec.pi+' PP.';
-  $('plan-title').textContent=plan.blocked?'Classe non verificabile per questa auto':'Componenti consigliati · '+targetClass.id;
-  $('parts-source').textContent='Parti dalla configurazione originale. Monta e verifica un pezzo alla volta.';
+  $('plan-title').textContent=plan.blocked?'Classe non verificabile per questa auto':'Upgrade per la tua '+targetClass.id;
+  $('parts-source').textContent='Scegli i pezzi per la tua preparazione. Immagini e livelli dal catalogo dell’auto.';
   $('pi-warning').textContent=plan.reason;
   $('build-warnings').innerHTML=plan.warnings.length?'<details class="plan-check"><summary>Da verificare per questa auto · '+plan.warnings.length+'</summary><ul>'+plan.warnings.map(w=>'<li>'+esc(w)+'</li>').join('')+'</ul></details>':'';
   $('parts-cost').textContent=plan.cost?'Pezzi prioritari: ≈ '+Number(plan.cost).toLocaleString('it-IT')+' CR · facoltativi esclusi':'';
-  const stages=[['Grip e controllo','Prima stabilisci una base adatta al terreno.'],['Telaio e trasmissione','Scegli in base ai PP rimasti.'],['Potenza con i PP residui','Alternative progressive: non montare automaticamente tutta la lista.']];
-  $('parts').innerHTML=stages.map(([title,desc],idx)=>{const items=plan.items.filter(i=>i.phase===idx+1);if(!items.length)return '';return '<section class="plan-stage"><header><h3>'+String(idx+1).padStart(2,'0')+' · '+title+'</h3><p>'+desc+'</p></header>'+items.map(it=>'<div class="build-item"><div><strong>'+esc(it.label)+(it.optional?'<span class="optional">Facoltativo</span>':'')+'</strong><span class="tier">'+esc(translatedTier(it.tier))+'</span><p>'+esc(it.why)+'</p></div><aside>'+Number(it.price).toLocaleString('it-IT')+' CR</aside></div>').join('')+'</section>'}).join('');
-  $('build-steps').hidden=!plan.steps.length;$('build-steps').innerHTML='<h3>Come completare la preparazione</h3><ol>'+plan.steps.map(s=>'<li>'+esc(s)+'</li>').join('')+'</ol>';
+  renderUpgradeCards();
+  $('build-steps').hidden=!plan.steps.length;$('build-steps').innerHTML='<details class="build-guide"><summary>Come completare la preparazione</summary><ol>'+plan.steps.map(s=>'<li>'+esc(s)+'</li>').join('')+'</ol></details>';
   $('build-ready').hidden=!!plan.blocked;
-  $('build-ready').textContent=plan.atCap?'Regola l’auto con i dati di serie':'Ho montato i pezzi: calcola l’assetto';
+  $('build-ready').textContent=plan.atCap?'Regola l’auto di serie':'Passa alla messa a punto';
   $('copy').disabled=false;$('sheet-summary').textContent=selected.k+' '+selected.m+' · Obiettivo '+targetClass.id+' '+targetClass.max+' PP · PI finale da verificare nel gioco';
   return;
  }
@@ -156,6 +156,55 @@ return '<article class="tuning"><span class="num">'+String(idx+1).padStart(2,'0'
 
  $('sheet-summary').textContent=selected.k+' '+selected.m+' · '+C.classForPI(target)+' '+target+' PP attuali · '+modeLabels[mode]+' · '+driveChoice+' · '+styleLabels[style];
 }
+
+function upgradeKey(item){return [$('target-class').value,mode,driveChoice,style,item.slot,item.id].join('|')}
+function includedUpgrade(item){const saved=upgradeChoices[upgradeKey(item)];return typeof saved==='boolean'?saved:!item.optional}
+function saveUpgradeChoices(){try{localStorage.setItem('fh6-upgrade-plan-'+selected.s,JSON.stringify(upgradeChoices))}catch{}}
+function upgradeAsset(value){
+ const host='https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev';
+ if(typeof value!=='string')return '';
+ if(/^\/upgrades\/icons\/[a-zA-Z0-9_./-]+\.webp$/.test(value)&&!value.includes('..'))return host+value;
+ if(value.startsWith(host+'/upgrades/icons/')&&!value.includes('..'))return value;
+ return '';
+}
+function renderUpgradeCards(){
+ const phaseNames={1:'Grip e controllo',2:'Telaio e trasmissione',3:'Potenza'};
+ const source=(record?.details||[]).find(d=>d.url?.endsWith('/garage/'))?.url;
+ $('parts').innerHTML=plan.items.map(it=>{
+  const on=includedUpgrade(it),url=upgradeAsset(it.img),fallback=upgradeAsset(it.icon);
+  return '<article class="upgrade-card'+(on?' is-included':'')+'" data-phase="'+it.phase+'" data-upgrade-id="'+it.id+'"><div class="upgrade-art"><span class="upgrade-phase">'+phaseNames[it.phase]+'</span>'+
+   (url||fallback?'<img data-upgrade-img src="'+esc(url||fallback)+'" data-fallback="'+esc(url!==fallback?fallback:'')+'" alt="'+esc(it.label+' · '+translatedTier(it.tier))+'" width="256" height="128" loading="lazy" decoding="async" referrerpolicy="no-referrer">':'')+
+   '<span class="upgrade-image-missing" '+(url||fallback?'hidden':'')+'>Immagine non disponibile</span></div><div class="upgrade-content"><div class="upgrade-meta"><span>'+(it.optional?'Facoltativo':'Priorità')+'</span><span>'+Number(it.price).toLocaleString('it-IT')+' CR</span></div><h3>'+esc(it.label)+'</h3><p class="upgrade-tier">'+esc(translatedTier(it.tier))+'</p><details class="upgrade-details"><summary>Perché questo pezzo <span aria-hidden="true">+</span></summary><p>'+esc(it.why)+'</p>'+(source?'<a href="'+esc(source)+'" target="_blank" rel="noopener noreferrer">Vedi il catalogo dell’auto ↗</a>':'')+'</details><label class="upgrade-toggle"><input type="checkbox" data-include="'+esc(it.slot)+'" aria-label="Includi '+esc(it.label)+' nel piano" '+(on?'checked':'')+'><span>'+(on?'Nel tuo piano':'Aggiungi al piano')+'</span></label></div></article>';
+ }).join('');
+ document.querySelectorAll('#parts img[data-upgrade-img]').forEach(img=>{
+  img.addEventListener('error',()=>{if(img.dataset.fallback){const src=img.dataset.fallback;delete img.dataset.fallback;img.src=src}else{img.hidden=true;img.nextElementSibling.hidden=false}});
+ });
+ filterUpgradeCards();updateUpgradeSummary();
+}
+function filterUpgradeCards(){
+ document.querySelectorAll('#upgrade-filters button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.phase===activeUpgradePhase)));
+ document.querySelectorAll('#parts .upgrade-card').forEach(card=>card.hidden=activeUpgradePhase!=='all'&&card.dataset.phase!==activeUpgradePhase);
+ $('upgrade-empty').hidden=!plan.items.length||activeUpgradePhase==='all'||plan.items.some(it=>String(it.phase)===activeUpgradePhase);
+}
+function updateUpgradeSummary(){
+ if(!plan)return;const items=plan.items.filter(includedUpgrade),cost=items.reduce((sum,it)=>sum+it.price,0);
+ $('selected-count').textContent=items.length+' '+(items.length===1?'componente':'componenti');
+ $('selected-cost').textContent=cost.toLocaleString('it-IT')+' CR';
+ $('parts-cost').textContent=plan.items.length+' proposte nel catalogo';
+ $('selected-parts').innerHTML=items.length?items.map(it=>'<li><span>'+esc(it.label)+'</span><span>'+Number(it.price).toLocaleString('it-IT')+'</span></li>').join(''):'<li class="basket-empty">Aggiungi i pezzi dalle schede per comporre il tuo piano.</li>';
+ $('clear-plan').disabled=!items.length;
+ syncURL();
+ $('basket-note').textContent=plan.blocked?'Scegli una classe compatibile.':'Costo dei pezzi selezionati. PI, compatibilità dopo conversioni e risultato finale da controllare nel gioco.';
+}
+$('parts').onchange=e=>{
+ const input=e.target.closest('[data-include]');if(!input||!plan)return;
+ const item=plan.items.find(it=>it.slot===input.dataset.include);if(!item)return;
+ upgradeChoices[upgradeKey(item)]=input.checked;saveUpgradeChoices();
+ const card=input.closest('.upgrade-card');card.classList.toggle('is-included',input.checked);input.nextElementSibling.textContent=input.checked?'Nel tuo piano':'Aggiungi al piano';updateUpgradeSummary();
+};
+$('upgrade-filters').onclick=e=>{const button=e.target.closest('[data-phase]');if(button){activeUpgradePhase=button.dataset.phase;filterUpgradeCards()}};
+$('select-priority').onclick=()=>{if(!plan)return;for(const it of plan.items)upgradeChoices[upgradeKey(it)]=!it.optional;saveUpgradeChoices();renderUpgradeCards()};
+$('clear-plan').onclick=()=>{if(!plan)return;for(const it of plan.items)upgradeChoices[upgradeKey(it)]=false;saveUpgradeChoices();renderUpgradeCards()};
 function useStock(){
  if(!record)return;const sp=record.spec||{};
  $('target').value=sp.pi??selected.p;$('mounted-power').value=sp.hp?Math.round(Number(sp.hp)*1.0138697):'';$('mounted-weight').value=sp.w?Math.round(sp.w*(/^lb/.test(sp.wu||'')?.45359237:1)):'';$('mounted-front').value=sp.fp??'';
@@ -180,9 +229,10 @@ $('copy').onclick=()=>{
  if(!plan)return;
  const lines=[selected.k+' '+selected.m+' '+selected.y,$('sheet-summary').textContent,$('baseline').textContent,''];
  if($('pi-type').value==='current')lines.push('MESSA A PUNTO',...rows.map(r=>r.label+': '+r.value+' '+r.unit));
- else lines.push(plan.reason,...plan.warnings,'','COMPONENTI CONSIGLIATI',...plan.items.map(i=>(i.optional?'[Facoltativo] ':'')+i.label+': '+translatedTier(i.tier)+' — '+i.why),'',...plan.steps);
+ else lines.push(plan.reason,...plan.warnings,'','COMPONENTI SELEZIONATI',...plan.items.filter(includedUpgrade).map(i=>(i.optional?'[Facoltativo] ':'')+i.label+': '+translatedTier(i.tier)+' · '+Number(i.price).toLocaleString('it-IT')+' CR — '+i.why),'',...plan.steps);
  lines.push('',location.href);copyText(lines.join('\n'));
 };
+$('detail-thumb').onerror=()=>{$('detail-thumb').hidden=true};
 $('hero-image').onerror=()=>{$('model-note').textContent='Anteprima non disponibile. Controllo il modello 3D.'};
 brands();gallery();syncModes();
 const initial=cars.find(c=>c.s===params.get('car'));if(initial)selectCar(initial);

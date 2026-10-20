@@ -86,7 +86,7 @@ function upgradePlan(record,mode,target,currentOnly,options={}){
  };
  const add=(key,patterns,phase,why,optional=false)=>{
   const option=choose(key,patterns);if(!option)return;
-  result.items.push({slot:key,label:slotNames[key]||get(key).label,tier:option.tier,price:Number(option.price)||0,id:option.id,source:'class-plan',phase,why,optional});
+  result.items.push({slot:key,label:slotNames[key]||get(key).label,tier:option.tier,price:Number(option.price)||0,id:option.id,img:option.img||null,icon:get(key).emblem||get(key).icon||null,source:'class-plan',phase,why,optional});
  };
  add('TireCompound',drift?[/Drift/i]:dirt?[/Rally/i,/Off.?road/i]:high?[/^Semi.Slick/i,/^Slick Race/i,/Sport/i]:[/Sport/i,/Street/i],1,drift?'Mescola dedicata al controllo della derapata.':dirt?'Priorità alla trazione sui fondi sconnessi.':'Priorità al grip in curva; controlla quanto PI assorbono le gomme.');
  add('SpringDamper',drift?[/Drift/i]:dirt?[/Rally/i]:[/Race/i],1,dirt?'Escursione e regolazioni adatte allo sterrato.':drift?'Angolo di sterzo e assetto dedicati al drift.':'Sblocca molle, altezza, geometria e ammortizzatori.');
