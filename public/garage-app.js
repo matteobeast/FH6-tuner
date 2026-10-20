@@ -3,7 +3,7 @@
 'use strict';
 const $=id=>document.getElementById(id),C=globalThis.TunerCore,cars=JSON.parse($('catalogue').textContent);
 const esc=s=>String(s??'').replace(/[&<>"']/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]));
-let brand='',query='',limit=60,selected=null,record=null,rows=[],plan=null,requestId=0,modelId=0,view3d=false,modelReady=false,libraryPromise=null,retryTimer=null,mode='track',driveChoice='',style='balanced',toastTimer;
+let brand='',query='',limit=60,selected=null,record=null,rows=[],plan=null,requestId=0,modelId=0,view3d=false,modelReady=false,libraryPromise=null,retryTimer=null,mode='track',driveChoice='',style='balanced',initialConfig=true,toastTimer;
 const params=new URLSearchParams(location.search);
 if(['track','dirt','drift'].includes(params.get('mode')))mode=params.get('mode');
 if(['stable','balanced','sharp'].includes(params.get('style')))style=params.get('style');
@@ -77,7 +77,7 @@ record=d;driveChoice=driveChoice||record.spec?.drivetrain||'RWD';$('drive').valu
 function selectCar(c){
 selected=c;brand=c.k;record=null;
 let saved={};try{saved=JSON.parse(localStorage.getItem('fh6-current-'+c.s)||'{}')}catch{}
-const linked=c.s===params.get('car'),pick=(key,fallback='')=>linked&&params.has(key)?params.get(key):(saved[key]??fallback);
+const linked=initialConfig&&c.s===params.get('car');initialConfig=false;const pick=(key,fallback='')=>linked&&params.has(key)?params.get(key):(saved[key]??fallback);
 driveChoice=['FWD','RWD','AWD'].includes(pick('drive'))?pick('drive'):'';
 $('drive').disabled=true;$('drive').value=driveChoice||'RWD';
 $('pi-type').value=pick('type','current');$('target').value=pick('pi',c.p);

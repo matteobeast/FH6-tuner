@@ -36,7 +36,7 @@ return fields.map(f=>{
  const mix=x=>min+clamp(x,0,1)*(max-min),frontAx=key.startsWith('front_');
  const axle=frontAx?front:1-front,sign=frontAx?1:-1;
  const traction=(drive==='FWD'?-.07:drive==='RWD'?.035:0)*sign;
- if(/tire_pressure/.test(key)){raw=f.u==='psi'?(dirt?26:dr?(frontAx?27.6:34.8):29)+(powerRatio!==null&&!frontAx&&!dirt&&!dr?powerLoad*.04:0)+(drive==='RWD'&&!frontAx?-.5:0):raw;kind='suggested';}
+ if(/tire_pressure/.test(key)){raw=f.u==='psi'?(dirt?26:dr?(frontAx?27.6:34.8-powerLoad*.08):29)+(powerRatio!==null&&!frontAx&&!dirt&&!dr?powerLoad*.04:0)+(drive==='RWD'&&!frontAx?-.5:0):raw;kind='suggested';}
  else if(/camber/.test(key)){raw=dirt?(frontAx?-.8:-.5):dr?(frontAx?-5:-1):(frontAx?-1.5:-.8);kind='suggested';}
  else if(/toe/.test(key)){raw=dr?(frontAx?-.5:.1):frontAx?0:(style==='stable'?.15:style==='sharp'?0:.1);kind='suggested';}
  else if(key==='caster'){raw=dr?7:dirt?5.5:6;kind='suggested';}
@@ -45,7 +45,7 @@ return fields.map(f=>{
  else if(/ride_height/.test(key)){raw=mix(dirt?(frontAx?.78:.82):dr?(frontAx?0:.08):(frontAx?.03:.06));kind='suggested';}
  else if(/rebound|bump/.test(key)){raw=mix((dr?(frontAx?.55:.35):dirt?axle*.65:axle)*(/bump/.test(key)?(dirt?.45:.6):1)+bias*sign*.25);kind='suggested';}
  else if(/downforce/.test(key)){raw=mix(dr?0:dirt?(frontAx?.4:.55):(frontAx?.55:.65));kind='suggested';}
- else if(key==='final_drive'){raw=mix(dr?.72:dirt?.62:(.5-powerLoad*.006));kind='suggested';}
+ else if(key==='final_drive'){raw=mix(dr?(.72-powerLoad*.004):dirt?(.62-powerLoad*.003):(.5-powerLoad*.006));kind='suggested';}
  else if(key==='brake_balance'){raw=dr?clamp(fp-8,38,52):clamp(fp+(dirt?5:3),47,62);kind='suggested';}
  else if(key==='brake_pressure'){raw=dirt?95:100;kind='suggested';}
  else if(/accel|decel|center/.test(key)){
