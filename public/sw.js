@@ -1,5 +1,5 @@
-const CACHE='fh6-garage-v7-catalogue-20261020';
-const ASSETS=['/','/index.html','/manifest.json','/icon-192.png','/icon-512.png'];
+const CACHE='fh6-garage-v8-driving-20261020';
+const ASSETS=['/','/index.html','/manifest.json','/icon-192.png','/icon-512.png','/tuner-core.js','/garage-app.js'];
 self.addEventListener('install',event=>{event.waitUntil((async()=>{const cache=await caches.open(CACHE);await Promise.all(ASSETS.map(async path=>{try{const response=await fetch(path,{cache:'reload'});if(response.ok)await cache.put(path,response)}catch{}}));await self.skipWaiting()})())});
 self.addEventListener('activate',event=>{event.waitUntil((async()=>{for(const key of await caches.keys())if(key!==CACHE)await caches.delete(key);await self.clients.claim()})())});
 self.addEventListener('fetch',event=>{
