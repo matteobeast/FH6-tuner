@@ -1,4 +1,4 @@
-const CACHE = "fh6-tuner-v5";
+const CACHE = "fh6-tuner-v7";
 const FILES = ["./", "index.html", "manifest.json", "icon-192.png", "icon-512.png"];
 
 self.addEventListener("install", (e) => {
@@ -15,6 +15,7 @@ self.addEventListener("activate", (e) => {
 
 self.addEventListener("fetch", (e) => {
   if (e.request.method !== "GET") return;
+  if (new URL(e.request.url).pathname.startsWith("/api/")) return;
   if (e.request.mode === "navigate") {
     e.respondWith(
       fetch(e.request)

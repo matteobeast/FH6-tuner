@@ -85,7 +85,7 @@ button:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
 <div class="seg mode" data-k="mode" aria-label="Modalità"><button data-v="grip">Grip</button><button data-v="drift">Drift</button></div></div></header>
 <div class="wrap app">
 <section class="card pin" aria-label="Dati della macchina">
-  <div style="margin-bottom:10px"><label class="f">Nome auto<input id="cn" list="gl" type="text" placeholder="es. GR86 2022" autocomplete="off" style="font-size:18px"></label><datalist id="gl"></datalist><a class="lk" href="https://forzagarage.com/cars/" target="_blank" rel="noopener">Cerca l’auto su forzagarage ↗</a></div>
+  <div style="margin-bottom:10px"><label class="f">Auto<input id="cn" list="gl" type="text" placeholder="Cerca l’auto, es. GR86" autocomplete="off" style="font-size:18px"></label><datalist id="gl"></datalist><a class="lk" href="https://forzagarage.com/cars/" target="_blank" rel="noopener">Apri su forzagarage ↗</a><p class="tip" id="cs" style="margin:6px 0 0"></p></div>
   <div class="grid">
     <label class="f">Punti prestazione<input id="pi" type="number" inputmode="numeric" placeholder="800"></label>
     <label class="f">Cavalli<input id="hp" type="number" inputmode="numeric" placeholder="650"></label>
@@ -109,11 +109,12 @@ button:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
 </div>
 <script>
 (function(){
-var S={mode:"grip",drv:"RWD",surf:"road",style:"balanced",unit:"metric",tab:0},V={},KEY="fh6tuner3",BASE=["cn","pi","hp","w","fp"],GK="fh6garage",G={},UN={metric:{s:"kgf/mm",h:"cm"},imp:{s:"lb/in",h:"in"}};
+var S={mode:"grip",drv:"RWD",surf:"road",style:"balanced",unit:"metric",tab:0},V={},KEY="fh6tuner3",BASE=["cn","pi","hp","w","fp"],GK="fh6garage",G={},CM={},CARS=[],UN={metric:{s:"kgf/mm",h:"cm"},imp:{s:"lb/in",h:"in"}};
 var TABS=[{n:"Pneumatici",g:[]},{n:"Rapporti",g:[["fdmin","Rapporto finale min"],["fdmax","Rapporto finale max"]]},{n:"Allineamento",g:[]},
-{n:"Barre",g:[["amin","Barre min"],["amax","Barre max"]]},
-{n:"Molle",g:[["sfmin","Molle ant. min"],["sfmax","Molle ant. max"],["srmin","Molle post. min"],["srmax","Molle post. max"],["hmin","Altezza min"],["hmax","Altezza max"]]},
-{n:"Ammortizzatori",g:[["dmin","Smorzamento min"],["dmax","Smorzamento max"]]},{n:"Aerodinamica",g:[["xmin","Deportanza min"],["xmax","Deportanza max"]]},{n:"Freni",g:[]},{n:"Differenziale",g:[]}];
+{n:"Barre",g:[["afmin","Barra ant. min"],["afmax","Barra ant. max"],["armin","Barra post. min"],["armax","Barra post. max"]]},
+{n:"Molle",g:[["sfmin","Molle ant. min"],["sfmax","Molle ant. max"],["srmin","Molle post. min"],["srmax","Molle post. max"],["hfmin","Altezza ant. min"],["hfmax","Altezza ant. max"],["hrmin","Altezza post. min"],["hrmax","Altezza post. max"]]},
+{n:"Ammortizzatori",g:[["rfmin","Estensione ant. min"],["rfmax","Estensione ant. max"],["rrmin","Estensione post. min"],["rrmax","Estensione post. max"],["bfmin","Compressione ant. min"],["bfmax","Compressione ant. max"],["brmin","Compressione post. min"],["brmax","Compressione post. max"]]},
+{n:"Aerodinamica",g:[["xfmin","Deportanza ant. min"],["xfmax","Deportanza ant. max"],["xrmin","Deportanza post. min"],["xrmax","Deportanza post. max"]]},{n:"Freni",g:[]},{n:"Differenziale",g:[]}];
 var $=function(i){return document.getElementById(i)};
 var clamp=function(x,a,b){return Math.min(b,Math.max(a,x))},r0=function(x){return Math.round(x)},r1=function(x){return (Math.round(x*10)/10).toFixed(1)},r2=function(x){return (Math.round(x*100)/100).toFixed(2)};
 var num=function(i){var v=parseFloat(String(V[i]).replace(",","."));return isFinite(v)?v:null};
@@ -150,10 +151,10 @@ function calc(){
    {i:[vp("Pressione","a caldo, in "+(S.unit==="imp"?"psi":"bar"),S.unit==="imp"?r1(press[0]*14.5038):r2(press[0]),S.unit==="imp"?r1(press[1]*14.5038):r2(press[1]))]},
    {i:[{n:"Rapporto finale",sub:"basso = più velocità massima, alto = più accelerazione",L:[{k:"",f:R("fdmin","fdmax")?gp/100:null,t:show(R("fdmin","fdmax"),gp/100,2)}]}],tip:gt+" Serve la trasmissione da gara"+(dr?" (nel drift, quella Drift a 4 marce)":"")+"."},
    {i:[vp("Campanatura","",r1(cam[0])+"°",r1(cam[1])+"°"),vp("Convergenza","negativo = aperta",r1(toe[0])+"°",r1(toe[1])+"°"),one("Incidenza anteriore","",r1(cas)+"°")]},
-   {i:[pair("Rigidità","",R("amin","amax"),R("amin","amax"),arb[0],arb[1],1)]},
-   {i:[pair("Molle",UN[S.unit].s,R("sfmin","sfmax"),R("srmin","srmax"),sp[0],sp[1],1),pair("Altezza da terra","la più bassa che non tocca il suolo ("+UN[S.unit].h+")",R("hmin","hmax"),R("hmin","hmax"),rh[0],rh[1],1)]},
-   {i:[pair("Estensione","",R("dmin","dmax"),R("dmin","dmax"),reb[0],reb[1],1),pair("Compressione","circa 60% dell’estensione",R("dmin","dmax"),R("dmin","dmax"),bmp[0],bmp[1],1)]},
-   {i:[pair("Deportanza","solo se l’auto ha aerodinamica regolabile",R("xmin","xmax"),R("xmin","xmax"),ax[0],ax[1],0)]},
+   {i:[pair("Rigidità","",R("afmin","afmax"),R("armin","armax"),arb[0],arb[1],1)]},
+   {i:[pair("Molle",UN[S.unit].s,R("sfmin","sfmax"),R("srmin","srmax"),sp[0],sp[1],1),pair("Altezza da terra","la più bassa che non tocca il suolo ("+UN[S.unit].h+")",R("hfmin","hfmax"),R("hrmin","hrmax"),rh[0],rh[1],1)]},
+   {i:[pair("Estensione","",R("rfmin","rfmax"),R("rrmin","rrmax"),reb[0],reb[1],1),pair("Compressione","circa 60% dell’estensione",R("bfmin","bfmax"),R("brmin","brmax"),bmp[0],bmp[1],1)]},
+   {i:[pair("Deportanza","solo se l’auto ha aerodinamica regolabile",R("xfmin","xfmax"),R("xrmin","xrmax"),ax[0],ax[1],0)]},
    {i:[one("Bilanciamento","% sull’anteriore",r0(bal)+"%"),one("Pressione","",bp+"%")]},
    {i:diff.map(function(x){return one(x[0],"",r0(x[1])+"%")})}];
   if(dr&&d==="FWD")T[8].tip="Con trazione anteriore il drift non è praticabile: serve uno swap a posteriore o integrale.";
@@ -200,14 +201,26 @@ function fb(t,done){var a=document.createElement("textarea");a.value=t;document.
 TABS.forEach(function(x,i){var b=document.createElement("button");b.innerHTML="<i>"+("0"+(i+1)).slice(-2)+"</i><span>"+x.n+"</span>";b.setAttribute("role","tab");b.addEventListener("click",function(){S.tab=i;sync();save();renderRg();render()});$("tabs").appendChild(b)});
 document.querySelectorAll(".seg button").forEach(function(b){b.addEventListener("click",function(){S[b.parentNode.dataset.k]=b.dataset.v;sync();save();renderRg();render()})});
 BASE.forEach(function(k){$(k).addEventListener("input",function(){V[k]=$(k).value;save();render()})});
-$("cn").addEventListener("change",gpick);
+$("cn").addEventListener("change",function(){gpick();gstore(true)});
 $("cp").onclick=function(){var T=calc();if(T)copy(summary(T),this)};
 $("rs").onclick=function(){V={};BASE.forEach(function(k){$(k).value=""});save();renderRg();render()};
 function gload(){try{G=JSON.parse(localStorage.getItem(GK)||"{}")||{}}catch(e){G={}}}
-function gopts(){var l=$("gl");l.innerHTML="";Object.keys(G).forEach(function(k){var o=document.createElement("option");o.value=k;l.appendChild(o)})}
-function gstore(){var n=(V.cn||"").trim();if(!n)return;var v=Object.assign({},V);delete v.cn;G[n]={V:v,S:{drv:S.drv,surf:S.surf,style:S.style,mode:S.mode,unit:S.unit}};try{localStorage.setItem(GK,JSON.stringify(G))}catch(e){}gopts()}
-function gpick(){var n=(V.cn||"").trim(),g=G[n];if(!g)return;V=Object.assign({cn:V.cn},g.V);S=Object.assign(S,g.S);BASE.forEach(function(k){$(k).value=V[k]||""});sync();save();renderRg();render()}
-gload();load();gopts();sync();renderRg();render();
+function gopts(){var l=$("gl"),seen={};l.innerHTML="";Object.keys(G).concat(Object.keys(CM)).forEach(function(k){if(seen[k])return;seen[k]=1;var o=document.createElement("option");o.value=k;l.appendChild(o)})}
+function gstore(f){var n=(V.cn||"").trim();if(!n)return;if(f!==true&&!CM[n]&&!G[n])return;var v=Object.assign({},V);delete v.cn;G[n]={V:v,S:{drv:S.drv,surf:S.surf,style:S.style,mode:S.mode,unit:S.unit}};try{localStorage.setItem(GK,JSON.stringify(G))}catch(e){}gopts()}
+function gpick(){var n=(V.cn||"").trim(),g=G[n];
+  if(g){V=Object.assign({cn:V.cn},g.V);S=Object.assign(S,g.S);BASE.forEach(function(k){$(k).value=V[k]||""});sync();save();renderRg();render();$("cs").textContent="Dati salvati caricati.";return}
+  if(CM[n])climits(CM[n])}
+var FM={"final drive":"fd","front spring":"sf","rear spring":"sr","front ride height":"hf","rear ride height":"hr","front":"af","rear":"ar","front bump":"bf","rear bump":"br","front rebound":"rf","rear rebound":"rr","front downforce":"xf","rear downforce":"xr"};
+function cv(u,x){if(S.unit!=="metric")return x;return u==="in"?x*2.54:u==="lb/in"?x*0.0178579:u==="lb"?x*0.453592:x}
+function climits(c){var st=$("cs");st.textContent="Leggo i limiti da forzagarage…";if(c.d){S.drv=c.d;sync()}
+  fetch("/api/car?slug="+encodeURIComponent(c.s)).then(function(r){return r.ok?r.json():Promise.reject()}).then(function(d){
+    var k=0;(d.fields||[]).forEach(function(f){var id=FM[String(f.l).toLowerCase()];if(!id)return;var a=cv(f.u,f.min*f.k),b=cv(f.u,f.max*f.k),t;if(a>b){t=a;a=b;b=t}V[id+"min"]=String(Math.round(a*1000)/1000);V[id+"max"]=String(Math.round(b*1000)/1000);k++});
+    var sp=d.spec||{},got=[];function put(id,x,lo,hi,lab){if(x>=lo&&x<=hi){V[id]=String(Math.round(x*10)/10);$(id).value=V[id];got.push(lab+" "+V[id])}}
+    put("pi",sp.pi,100,999,"PI");put("hp",sp.hp,20,3000,"CV");if(sp.w)put("w",/^lb/.test(sp.wu||"")?sp.w*0.453592:sp.w,300,5000,"kg");put("fp",sp.fp,30,70,"ant. %");
+    st.textContent=(k?"Limiti caricati ("+k+" slider). ":"Nessun limite trovato: inseriscili a mano. ")+(got.length?"Letti: "+got.join(", ")+". Controllali.":"Inserisci PI, cavalli, peso e peso anteriore.");
+    save();renderRg();render()}).catch(function(){st.textContent="Non riesco a leggere i limiti online: inseriscili a mano."})}
+function cload(){fetch("/api/cars").then(function(r){return r.ok?r.json():Promise.reject()}).then(function(d){CARS=d.cars||[];CM={};CARS.forEach(function(x){var l=x.n+(x.d?" · "+x.d+(x.c?" "+x.c:""):"");if(CM[l])l+=" ("+x.s+")";CM[l]=x});gopts()}).catch(function(){})}
+gload();load();gopts();sync();renderRg();render();cload();
 })();
 </script>
 <script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){})})}</script>
