@@ -76,6 +76,7 @@ button:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
 .tabs button{flex-direction:row;align-items:center;gap:10px;padding:12px;font-size:15px}
 .tabs button i{width:20px}
 }
+.lk{display:inline-block;margin-top:6px;font-size:12.5px;color:var(--ac);text-decoration:none}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -84,6 +85,7 @@ button:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
 <div class="seg mode" data-k="mode" aria-label="Modalità"><button data-v="grip">Grip</button><button data-v="drift">Drift</button></div></div></header>
 <div class="wrap app">
 <section class="card pin" aria-label="Dati della macchina">
+  <div style="margin-bottom:10px"><label class="f">Nome auto<input id="cn" list="gl" type="text" placeholder="es. GR86 2022" autocomplete="off" style="font-size:18px"></label><datalist id="gl"></datalist><a class="lk" href="https://forzagarage.com/cars/" target="_blank" rel="noopener">Cerca l’auto su forzagarage ↗</a></div>
   <div class="grid">
     <label class="f">Punti prestazione<input id="pi" type="number" inputmode="numeric" placeholder="800"></label>
     <label class="f">Cavalli<input id="hp" type="number" inputmode="numeric" placeholder="650"></label>
@@ -96,6 +98,8 @@ button:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
   <div class="seg" data-k="surf"><button data-v="road">Asfalto</button><button data-v="dirt">Sterrato</button></div>
   <div class="q">Stile di guida</div>
   <div class="seg" data-k="style"><button data-v="stable">Stabile</button><button data-v="balanced">Bilanciata</button><button data-v="sharp">Reattiva</button></div>
+  <div class="q">Unità del gioco</div>
+  <div class="seg" data-k="unit"><button data-v="metric">Metriche</button><button data-v="imp">Imperiali</button></div>
   <div class="split" aria-hidden="true"><div class="f" id="sf">52%</div><div class="r" id="sr">48%</div></div>
 </section>
 <nav class="tabs" id="tabs" role="tablist" aria-label="Sezioni della messa a punto"></nav>
@@ -105,7 +109,7 @@ button:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
 </div>
 <script>
 (function(){
-var S={mode:"grip",drv:"RWD",surf:"road",style:"balanced",tab:0},V={},KEY="fh6tuner3",BASE=["pi","hp","w","fp"];
+var S={mode:"grip",drv:"RWD",surf:"road",style:"balanced",unit:"metric",tab:0},V={},KEY="fh6tuner3",BASE=["cn","pi","hp","w","fp"],GK="fh6garage",G={},UN={metric:{s:"kgf/mm",h:"cm"},imp:{s:"lb/in",h:"in"}};
 var TABS=[{n:"Pneumatici",g:[]},{n:"Rapporti",g:[["fdmin","Rapporto finale min"],["fdmax","Rapporto finale max"]]},{n:"Allineamento",g:[]},
 {n:"Barre",g:[["amin","Barre min"],["amax","Barre max"]]},
 {n:"Molle",g:[["sfmin","Molle ant. min"],["sfmax","Molle ant. max"],["srmin","Molle post. min"],["srmax","Molle post. max"],["hmin","Altezza min"],["hmax","Altezza max"]]},
@@ -113,7 +117,7 @@ var TABS=[{n:"Pneumatici",g:[]},{n:"Rapporti",g:[["fdmin","Rapporto finale min"]
 var $=function(i){return document.getElementById(i)};
 var clamp=function(x,a,b){return Math.min(b,Math.max(a,x))},r0=function(x){return Math.round(x)},r1=function(x){return (Math.round(x*10)/10).toFixed(1)},r2=function(x){return (Math.round(x*100)/100).toFixed(2)};
 var num=function(i){var v=parseFloat(String(V[i]).replace(",","."));return isFinite(v)?v:null};
-function save(){try{localStorage.setItem(KEY,JSON.stringify({S:S,V:V}))}catch(e){}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify({S:S,V:V}))}catch(e){}gstore()}
 function load(){try{var d=JSON.parse(localStorage.getItem(KEY)||"null");if(d){S=Object.assign(S,d.S||{});V=d.V||{}}}catch(e){}BASE.forEach(function(k){if(V[k]!=null)$(k).value=V[k]})}
 
 function calc(){
@@ -143,17 +147,23 @@ function calc(){
   else if(d==="FWD")diff=[["Accelerazione",clamp(45-pwr*.02+dd,18,50)],["Decelerazione",5]];
   else diff=[["Ant. accelerazione",dr?0:15],["Ant. decelerazione",0],["Post. accelerazione",dr?100:clamp(80-pwr*.04+dd,45,85)],["Post. decelerazione",dec],["Ripartizione centrale (post.)",dr?100:st==="stable"?62:st==="sharp"?72:68]];
   var T=[
-   {i:[vp("Pressione","a caldo, in bar",r2(press[0]),r2(press[1]))]},
-   {i:[{n:"Rapporto finale",sub:"basso = più velocità massima, alto = più accelerazione",L:[{k:"",f:R("fdmin","fdmax")?gp/100:null,t:show(R("fdmin","fdmax"),gp/100,2)}]}],tip:gt},
+   {i:[vp("Pressione","a caldo, in "+(S.unit==="imp"?"psi":"bar"),S.unit==="imp"?r1(press[0]*14.5038):r2(press[0]),S.unit==="imp"?r1(press[1]*14.5038):r2(press[1]))]},
+   {i:[{n:"Rapporto finale",sub:"basso = più velocità massima, alto = più accelerazione",L:[{k:"",f:R("fdmin","fdmax")?gp/100:null,t:show(R("fdmin","fdmax"),gp/100,2)}]}],tip:gt+" Serve la trasmissione da gara"+(dr?" (nel drift, quella Drift a 4 marce)":"")+"."},
    {i:[vp("Campanatura","",r1(cam[0])+"°",r1(cam[1])+"°"),vp("Convergenza","negativo = aperta",r1(toe[0])+"°",r1(toe[1])+"°"),one("Incidenza anteriore","",r1(cas)+"°")]},
    {i:[pair("Rigidità","",R("amin","amax"),R("amin","amax"),arb[0],arb[1],1)]},
-   {i:[pair("Molle","",R("sfmin","sfmax"),R("srmin","srmax"),sp[0],sp[1],1),pair("Altezza da terra","la più bassa che non tocca il suolo",R("hmin","hmax"),R("hmin","hmax"),rh[0],rh[1],1)]},
+   {i:[pair("Molle",UN[S.unit].s,R("sfmin","sfmax"),R("srmin","srmax"),sp[0],sp[1],1),pair("Altezza da terra","la più bassa che non tocca il suolo ("+UN[S.unit].h+")",R("hmin","hmax"),R("hmin","hmax"),rh[0],rh[1],1)]},
    {i:[pair("Estensione","",R("dmin","dmax"),R("dmin","dmax"),reb[0],reb[1],1),pair("Compressione","circa 60% dell’estensione",R("dmin","dmax"),R("dmin","dmax"),bmp[0],bmp[1],1)]},
    {i:[pair("Deportanza","solo se l’auto ha aerodinamica regolabile",R("xmin","xmax"),R("xmin","xmax"),ax[0],ax[1],0)]},
    {i:[one("Bilanciamento","% sull’anteriore",r0(bal)+"%"),one("Pressione","",bp+"%")]},
    {i:diff.map(function(x){return one(x[0],"",r0(x[1])+"%")})}];
   if(dr&&d==="FWD")T[8].tip="Con trazione anteriore il drift non è praticabile: serve uno swap a posteriore o integrale.";
   else if(dr&&pw<300)T[8].tip="Sotto i 300 CV/t è difficile tenere l’angolo.";
+  T[0].tip="La pressione ideale dipende dalla mescola delle gomme.";
+  T[3].tip="Si sblocca montando le barre antirollio da gara.";
+  T[4].tip="Si sblocca montando le sospensioni da gara"+(dr?" (nel drift, quelle Drift)":"")+".";
+  T[5].tip=T[4].tip;
+  T[6].tip="La deportanza si regola solo con paraurti o alettone da gara.";
+  T[8].tip=(T[8].tip?T[8].tip+" ":"")+"Serve il differenziale da gara"+(dr?" (nel drift, quello Drift)":"")+".";
   return T;
 }
 
@@ -175,8 +185,8 @@ function render(){
 function renderRg(){
   var g=TABS[S.tab].g,el=$("rg");
   if(!g.length){el.innerHTML="";return}
-  el.innerHTML='<div class="rg"><p>Inserisci il minimo e il massimo che vedi nel gioco per questo slider: da lì ottieni il valore preciso da impostare.</p></div>';
-  g.forEach(function(x){var l=document.createElement("label");l.className="f s";l.textContent=x[1];var i=document.createElement("input");i.type="number";i.inputMode="decimal";i.step="any";i.value=V[x[0]]||"";
+  el.innerHTML='<div class="rg"><p>Nel gioco porta lo slider tutto a sinistra e poi tutto a destra, e scrivi i due valori. Li salvo con il nome dell’auto: la prossima volta sono già pronti.</p></div>';
+  g.forEach(function(x){var l=document.createElement("label");l.className="f s";l.textContent=x[1]+(/^s[fr]/.test(x[0])?" ("+UN[S.unit].s+")":/^h/.test(x[0])?" ("+UN[S.unit].h+")":"");var i=document.createElement("input");i.type="number";i.inputMode="decimal";i.step="any";i.value=V[x[0]]||"";
     i.addEventListener("input",function(){V[x[0]]=i.value;save();render()});l.appendChild(i);el.firstChild.appendChild(l)});
 }
 function sync(){document.querySelectorAll(".seg").forEach(function(g){var k=g.dataset.k;g.querySelectorAll("button").forEach(function(b){b.setAttribute("aria-pressed",String(S[k]===b.dataset.v))})});
@@ -188,11 +198,16 @@ function copy(t,btn){var done=function(){var s=btn.textContent;btn.textContent="
 function fb(t,done){var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();try{document.execCommand("copy");done()}catch(e){}document.body.removeChild(a)}
 
 TABS.forEach(function(x,i){var b=document.createElement("button");b.innerHTML="<i>"+("0"+(i+1)).slice(-2)+"</i><span>"+x.n+"</span>";b.setAttribute("role","tab");b.addEventListener("click",function(){S.tab=i;sync();save();renderRg();render()});$("tabs").appendChild(b)});
-document.querySelectorAll(".seg button").forEach(function(b){b.addEventListener("click",function(){S[b.parentNode.dataset.k]=b.dataset.v;sync();save();render()})});
+document.querySelectorAll(".seg button").forEach(function(b){b.addEventListener("click",function(){S[b.parentNode.dataset.k]=b.dataset.v;sync();save();renderRg();render()})});
 BASE.forEach(function(k){$(k).addEventListener("input",function(){V[k]=$(k).value;save();render()})});
+$("cn").addEventListener("change",gpick);
 $("cp").onclick=function(){var T=calc();if(T)copy(summary(T),this)};
 $("rs").onclick=function(){V={};BASE.forEach(function(k){$(k).value=""});save();renderRg();render()};
-load();sync();renderRg();render();
+function gload(){try{G=JSON.parse(localStorage.getItem(GK)||"{}")||{}}catch(e){G={}}}
+function gopts(){var l=$("gl");l.innerHTML="";Object.keys(G).forEach(function(k){var o=document.createElement("option");o.value=k;l.appendChild(o)})}
+function gstore(){var n=(V.cn||"").trim();if(!n)return;var v=Object.assign({},V);delete v.cn;G[n]={V:v,S:{drv:S.drv,surf:S.surf,style:S.style,mode:S.mode,unit:S.unit}};try{localStorage.setItem(GK,JSON.stringify(G))}catch(e){}gopts()}
+function gpick(){var n=(V.cn||"").trim(),g=G[n];if(!g)return;V=Object.assign({cn:V.cn},g.V);S=Object.assign(S,g.S);BASE.forEach(function(k){$(k).value=V[k]||""});sync();save();renderRg();render()}
+gload();load();gopts();sync();renderRg();render();
 })();
 </script>
 <script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){})})}</script>
