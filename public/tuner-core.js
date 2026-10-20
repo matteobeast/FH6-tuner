@@ -10,7 +10,7 @@ if(/tire_pressure/.test(key))return 'tires';if(/gear_|final_drive/.test(key))ret
 }
 function convert(unit,x,metric){
 if(!metric)return [x,unit];
-if(unit==='psi')return [x/14.5037738,'bar'];if(unit==='lb/in')return [x*0.017857967,'kgf/mm'];if(unit==='in')return [x*2.54,'cm'];if(/^lbs?$/.test(unit))return [x*0.45359237,'kg'];return [x,unit];
+if(unit==='psi')return [x/14.5037738,'bar'];if(unit==='lb/in')return [x*4.4482216152605/25.4,'N/mm'];if(unit==='kgf/mm')return [x*9.80665,'N/mm'];if(unit==='in')return [x*2.54,'cm'];if(/^lbs?$/.test(unit))return [x*0.45359237,'kg'];return [x,unit];
 }
 function tune(record,mode,metric,options={}){
 const dr=mode==='drift',dirt=mode==='dirt',drive=['FWD','RWD','AWD'].includes(options.drive)?options.drive:(record.spec?.drivetrain||'RWD');
