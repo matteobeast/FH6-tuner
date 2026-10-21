@@ -16,9 +16,9 @@ if(params.get('units')==='imperial')$('units').value='imperial';
 function notify(text){$('toast').textContent=text;$('toast').hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').hidden=true,2600)}
 const brandLogos={"Abarth":"ABA.webp","Acura":"ACU.webp","Alfa Romeo":"ALF.webp","Alumicraft":"AC.webp","AMG Transport Dynamics":"AMG.webp","Apollo":"APO.webp","Ariel":"ARI.webp","Aston Martin":"AST.webp","Audi":"AUD.webp","Austin-Healey":"AH.webp","Autozam":"AZM.webp","BAC":"BAC.webp","Bentley":"BEN.webp","BMW":"BMW.webp","Buick":"BUI.webp","Cadillac":"CAD.webp","Can-Am":"CAN.webp","Casey Currie Motorsports":"CCM.webp","Chevrolet":"CHE.webp","Datsun":"DAT.webp","DeBerti":"DEB.webp","DeLorean":"DEL.webp","Dodge":"DOD.webp","Ferrari":"FER.webp","Ford":"FOR.webp","Formula Drift":"FD.webp","Funco Motorsports":"FUN.webp","GMC":"GMC.webp","Gordon Murray Automotive":"GMA.webp","GR":"GR.webp","Hennessey":"HEN.webp","Holden":"HOL.webp","Honda":"HON.webp","HSV":"HSV.webp","Hyundai":"HYU.webp","Jaguar":"JAG.webp","Jeep":"JEE.webp","Jimco":"JIM.webp","Koenigsegg":"KOE.webp","KTM":"KTM.webp","Lamborghini":"LAM.webp","Lancia":"LAN.webp","Land Rover":"LR.webp","Lexus":"LEX.webp","Lincoln":"LIN.webp","Lotus":"LOT.webp","Lucid":"LUC.webp","Maserati":"MAS.webp","Mazda":"MAZ.webp","McLaren":"MCL.webp","Mercedes-AMG":"MA.webp","Mercedes-Benz":"MER.webp","Meyers":"MEY.webp","MG":"MG.webp","MINI":"MIN.webp","Mitsubishi":"MIT.webp","Nissan":"NIS.webp","Noble":"NOB.webp","Opel":"OPE.webp","Pagani":"PAG.webp","Peel":"PEE.webp","Penhall":"PEN.webp","Peugeot":"PEU.webp","Plymouth":"PLY.webp","Polaris":"POL.webp","Pontiac":"PON.webp","Porsche":"POR.webp","Radical":"RAD.webp","Ram":"RAM.webp","Reliant":"REL.webp","Renault":"REN.webp","Rimac":"RIM.webp","RIVIAN":"RIV.webp","RJ Anderson":"RJ.webp","Saleen":"SAL.webp","Schuppan":null,"Shelby":"SHE.webp","SIERRA Cars":"SIE.webp","SRT":"SRT.webp","Subaru":"SUB.webp","Toyota":"TOY.webp","TVR":"TVR.webp","Ultima":"ULT.webp","Volkswagen":"VW.webp","Volvo":"VOL.webp","Wuling":"WUL.webp","Zenvo":"ZEN.webp"};
 function brandMark(name){
- const file=brandLogos[name],initials=name.split(/[\s-]+/).map(w=>w[0]).slice(0,2).join('').toUpperCase();
+ const file=brandLogos[name],logoPath=file?'/brand-assets/logos/'+file:cars.find(c=>c.k===name&&c.logo)?.logo,initials=name.split(/[\s-]+/).map(w=>w[0]).slice(0,2).join('').toUpperCase();
  if(!name)return '<span class="brand-mark brand-all" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M3 3h7v7H3zm11 0h7v7h-7zM3 14h7v7H3zm11 0h7v7h-7z"/></svg></span>';
- return '<span class="brand-mark" aria-hidden="true">'+(file?'<img data-brand-logo src="/brand-assets/logos/'+esc(file)+'" alt="" width="32" height="28" loading="lazy" decoding="async" referrerpolicy="no-referrer">':'')+'<span class="brand-initials" '+(file?'hidden':'title="Logo non disponibile"')+'>'+esc(initials)+'</span></span>';
+ return '<span class="brand-mark" aria-hidden="true">'+(logoPath?'<img data-brand-logo src="'+esc(logoPath)+'" alt="" width="32" height="28" loading="lazy" decoding="async" referrerpolicy="no-referrer">':'')+'<span class="brand-initials" '+(logoPath?'hidden':'title="Logo non disponibile"')+'>'+esc(initials)+'</span></span>';
 }
 
 function brands(){
@@ -27,11 +27,12 @@ $('brands').innerHTML=[['',cars.length],...[...counts].sort((a,b)=>a[0].localeCo
 logoFallbacks();
 }
 function logoFallbacks(){ $('brands').querySelectorAll('img[data-brand-logo]').forEach(img=>{const fallback=()=>{img.hidden=true;img.parentNode.querySelector('.brand-initials').hidden=false;};img.addEventListener('error',fallback,{once:true});if(img.complete&&!img.naturalWidth)fallback();}); }
+function availabilityText(c){return c.release&&Date.now()<Date.parse(c.release+'T14:30:00Z')?' · Disponibile dal '+new Date(c.release+'T14:30:00Z').toLocaleDateString('it-IT'):''}
 function gallery(){
 const results=cars.filter(c=>(!brand||c.k===brand)&&(!catalogClass||c.c===catalogClass)&&(!query||((c.k+' '+c.m+' '+c.y).toLowerCase().includes(query))));
 $('catalog-title').textContent=brand||'La tua prossima messa a punto.';
 $('gallery-count').textContent=results.length+' AUTO'+(brand?' / '+brand.toUpperCase():' / TUTTE LE MARCHE');
-$('gallery').innerHTML=results.slice(0,limit).map((c,i)=>'<button class="car" data-car="'+esc(c.s)+'" aria-label="'+esc(c.k+' '+c.m+' '+c.y)+'"><div class="photo"><img src="'+esc(c.h)+'" alt="'+esc(c.k+' '+c.m)+'" loading="'+(i<8?'eager':'lazy')+'" decoding="async" referrerpolicy="no-referrer"><span class="badge">'+esc(c.c)+' · '+esc(c.p)+' PI</span></div><div class="cardtext"><small>'+esc(c.k)+'</small><h3>'+esc(c.m)+'</h3><span class="year">'+esc(c.y)+' / FORZA HORIZON 6</span></div></button>').join('')||'<div class="empty">Nessuna auto trovata. Prova un altro nome o scegli Tutte le marche.</div>';
+$('gallery').innerHTML=results.slice(0,limit).map((c,i)=>'<button class="car" data-car="'+esc(c.s)+'" aria-label="'+esc(c.k+' '+c.m+' '+c.y)+'"><div class="photo"><img src="'+esc(c.h)+'" alt="'+esc(c.k+' '+c.m)+'" loading="'+(i<8?'eager':'lazy')+'" decoding="async" referrerpolicy="no-referrer"><span class="badge">'+esc(c.c)+' · '+esc(c.p)+' PI</span></div><div class="cardtext"><small>'+esc(c.k)+'</small><h3>'+esc(c.m)+'</h3><span class="year">'+esc(c.y)+esc(availabilityText(c))+' / FORZA HORIZON 6</span></div></button>').join('')||'<div class="empty">Nessuna auto trovata. Prova un altro nome o scegli Tutte le marche.</div>';
 $('more').hidden=results.length<=limit;
 $('gallery').querySelectorAll('img').forEach(img=>img.addEventListener('error',()=>{img.hidden=true;const span=document.createElement('span');span.className='fallbackcar';span.textContent='Anteprima non disponibile';img.parentNode.prepend(span)},{once:true}));
 }
@@ -74,12 +75,12 @@ function stats(){
  $('stock-ratings').innerHTML=[['Speed','Velocità'],['Handling','Tenuta'],['Acceleration','Accelerazione'],['Launch','Partenza'],['Braking','Frenata'],['Offroad','Fuoristrada']].map(([key,label])=>{const v=Number(get(key));return Number.isFinite(v)&&get(key)?'<div><small>'+label+' · '+v.toLocaleString('it-IT')+' / 10</small><meter min="0" max="10" value="'+Math.min(10,Math.max(0,v))+'" aria-label="'+label+'"></meter></div>':''}).join('');
 }
 async function loadRecord(c){
-const id=++requestId;record=null;$('data-state').hidden=false;$('data-error').hidden=true;$('sheet').hidden=true;stats();
+const id=++requestId;record=null;$('data-quality').hidden=true;$('data-state').hidden=false;$('data-error').hidden=true;$('sheet').hidden=true;stats();
 try{
 const r=await fetch('/data/cars/'+encodeURIComponent(c.s)+'.json',{signal:AbortSignal.timeout(15000)});
 if(!r.ok)throw Error(r.status===404?'La scheda dettagliata non è disponibile.':'Il recupero dei dati non è riuscito ('+r.status+').');
-const d=await r.json();if(id!==requestId)return;if(!d.fields?.length)throw Error('I limiti di questa auto non sono ancora disponibili.');
-record=d;driveChoice=driveChoice||record.spec?.drivetrain||'RWD';$('drive').value=driveChoice;$('drive').disabled=false;$('drive-note').textContent='Di serie: '+(record.spec?.drivetrain||'non disponibile')+'. Scegli la trazione effettivamente montata nel gioco.';$('data-state').hidden=true;$('sheet').hidden=false;stats();renderSheet();
+const d=await r.json();if(id!==requestId)return;if(!d.fields?.length&&!d.verifiedFieldsOnly)throw Error('I limiti di questa auto non sono ancora disponibili.');
+record=d;$('data-quality').hidden=!d.qualityNote;$('data-quality').textContent=d.qualityNote||'';driveChoice=driveChoice||record.spec?.drivetrain||'RWD';$('drive').value=driveChoice;$('drive').disabled=false;$('drive-note').textContent='Di serie: '+(record.spec?.drivetrain||'non disponibile')+'. Scegli la trazione effettivamente montata nel gioco.';$('data-state').hidden=true;$('sheet').hidden=false;stats();renderSheet();
 }catch(e){if(id!==requestId)return;$('data-state').hidden=true;$('data-error').hidden=false;$('data-error').querySelector('span').textContent=e.name==='TimeoutError'?'Il catalogo sta impiegando troppo tempo. Riprova.':e.message;}
 }
 function selectCar(c){
@@ -95,7 +96,7 @@ mode=pick('mode',mode);style=pick('style',style);$('style').value=style;
 modelReady=false;view3d=false;modelId++;clearTimeout(retryTimer);
 $('car-model').removeAttribute('src');$('car-model').hidden=true;$('hero-image').hidden=false;$('hero-image').src=c.h;$('detail-thumb').src=c.h;$('detail-thumb').hidden=false;$('hero-image').alt=c.k+' '+c.m;
 $('toggle-view').hidden=true;$('view-label').textContent='ANTEPRIMA AUTO';$('model-note').textContent='Controllo del modello 3D…';
-$('catalog').hidden=true;$('detail').hidden=false;$('car-brand').textContent=c.k+' / GARAGE';$('car-name').textContent=c.m;$('car-year').textContent=c.y+' · '+c.c+' '+c.p+' PI di serie';
+$('catalog').hidden=true;$('detail').hidden=false;$('car-brand').textContent=c.k+' / GARAGE';$('car-name').textContent=c.m;$('car-year').textContent=c.y+' · '+c.c+' '+c.p+' PI di serie'+availabilityText(c);
 brands();syncModes();syncURL();loadRecord(c);loadModel(c,modelId);window.scrollTo({top:0,behavior:'instant'});
 }
 function syncModes(){document.querySelectorAll('#mode button').forEach(b=>b.setAttribute('aria-pressed',String(mode===b.dataset.mode)))}

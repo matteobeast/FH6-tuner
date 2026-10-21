@@ -20,10 +20,12 @@ const stockWeight=Number(record.spec?.w)*(/^lb/.test(record.spec?.wu||'')?.45359
 const weightFactor=options.weight&&stockWeight>0?clamp(options.weight/stockWeight,.5,2):1;
 const powerRatio=Number(options.powerCV)>0&&Number(options.weight)>0?options.powerCV/options.weight:null;
 const powerLoad=powerRatio===null?0:clamp((powerRatio-.25)*40,-6,12);
-const fields=(record.fields||[]).filter(f=>!/^(front|rear)_(accel|decel)$|^center_(balance|diff)$/.test(f.a?.key||''));
-const diffSource=(record.fields||[]).filter(f=>/^(front|rear)_(accel|decel)$|^center_(balance|diff)$/.test(f.a?.key||''));
+const activeFields=record.fieldSets?.[mode]||record.fields||[];
+const fields=activeFields.filter(f=>!/^(front|rear)_(accel|decel)$|^center_(balance|diff)$/.test(f.a?.key||''));
+const diffSource=activeFields.filter(f=>/^(front|rear)_(accel|decel)$|^center_(balance|diff)$/.test(f.a?.key||''));
 const keys=drive==='AWD'?['front_accel','front_decel','rear_accel','rear_decel','center_balance']:drive==='FWD'?['front_accel','front_decel']:['rear_accel','rear_decel'];
 for(const key of keys){
+ if(record.verifiedFieldsOnly&&!diffSource.some(f=>f.a?.key===key))continue;
  const found=diffSource.find(f=>f.a.key===key||(key==='center_balance'&&f.a.key==='center_diff'));
  const template=found||diffSource.find(f=>f.a.key.endsWith(key.split('_')[1]))||diffSource[0];
  if(template)fields.push({...template,l:labels[key],a:{...template.a,key},derived:!found});
