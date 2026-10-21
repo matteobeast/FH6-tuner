@@ -1,3 +1,4 @@
+
 (async function(){
 'use strict';
 const $=id=>document.getElementById(id),C=globalThis.TunerCore,cars=JSON.parse($('catalogue').textContent);
