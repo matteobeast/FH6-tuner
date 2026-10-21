@@ -9,11 +9,6 @@
       "/api/*"
     ]
   },
-  "kv_namespaces": [
-    {
-      "binding": "DB"
-    }
-  ],
   "triggers": {
     "crons": []
   }

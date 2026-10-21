@@ -18,7 +18,7 @@ const brandLogos={"Abarth":"ABA.webp","Acura":"ACU.webp","Alfa Romeo":"ALF.webp"
 function brandMark(name){
  const file=brandLogos[name],initials=name.split(/[\s-]+/).map(w=>w[0]).slice(0,2).join('').toUpperCase();
  if(!name)return '<span class="brand-mark brand-all" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M3 3h7v7H3zm11 0h7v7h-7zM3 14h7v7H3zm11 0h7v7h-7z"/></svg></span>';
- return '<span class="brand-mark" aria-hidden="true">'+(file?'<img data-brand-logo src="https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev/logos/'+esc(file)+'" alt="" width="32" height="28" loading="lazy" decoding="async" referrerpolicy="no-referrer">':'')+'<span class="brand-initials" '+(file?'hidden':'title="Logo non disponibile"')+'>'+esc(initials)+'</span></span>';
+ return '<span class="brand-mark" aria-hidden="true">'+(file?'<img data-brand-logo src="/brand-assets/logos/'+esc(file)+'" alt="" width="32" height="28" loading="lazy" decoding="async" referrerpolicy="no-referrer">':'')+'<span class="brand-initials" '+(file?'hidden':'title="Logo non disponibile"')+'>'+esc(initials)+'</span></span>';
 }
 
 function brands(){
@@ -76,7 +76,7 @@ function stats(){
 async function loadRecord(c){
 const id=++requestId;record=null;$('data-state').hidden=false;$('data-error').hidden=true;$('sheet').hidden=true;stats();
 try{
-const r=await fetch('/api/garage?slug='+encodeURIComponent(c.s),{cache:'no-cache',signal:AbortSignal.timeout(55000)});
+const r=await fetch('/data/cars/'+encodeURIComponent(c.s)+'.json',{signal:AbortSignal.timeout(15000)});
 if(!r.ok)throw Error(r.status===404?'La scheda dettagliata non è disponibile.':'Il recupero dei dati non è riuscito ('+r.status+').');
 const d=await r.json();if(id!==requestId)return;if(!d.fields?.length)throw Error('I limiti di questa auto non sono ancora disponibili.');
 record=d;driveChoice=driveChoice||record.spec?.drivetrain||'RWD';$('drive').value=driveChoice;$('drive').disabled=false;$('drive-note').textContent='Di serie: '+(record.spec?.drivetrain||'non disponibile')+'. Scegli la trazione effettivamente montata nel gioco.';$('data-state').hidden=true;$('sheet').hidden=false;stats();renderSheet();
@@ -161,12 +161,15 @@ function upgradeKey(item){return [$('target-class').value,mode,driveChoice,style
 function includedUpgrade(item){const saved=upgradeChoices[upgradeKey(item)];return typeof saved==='boolean'?saved:!item.optional}
 function saveUpgradeChoices(){try{localStorage.setItem('fh6-upgrade-plan-'+selected.s,JSON.stringify(upgradeChoices))}catch{}}
 function upgradeAsset(value){
- const host='https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev';
  if(typeof value!=='string')return '';
- if(/^\/upgrades\/icons\/[a-zA-Z0-9_./-]+\.webp$/.test(value)&&!value.includes('..'))return host+value;
- if(value.startsWith(host+'/upgrades/icons/')&&!value.includes('..'))return value;
+ let path=value;
+ if(/^https?:/.test(path)){try{path=new URL(path).pathname}catch{return ''}}
+ if(path.includes('..'))return '';
+ if(/^\/brand-assets\/upgrades\/icons\/[a-zA-Z0-9_./-]+\.webp$/.test(path))return path;
+ if(/^\/upgrades\/icons\/[a-zA-Z0-9_./-]+\.webp$/.test(path))return '/brand-assets'+path;
  return '';
 }
+
 function renderUpgradeCards(){
  const phaseNames={1:'Grip e controllo',2:'Telaio e trasmissione',3:'Potenza'};
  $('parts').innerHTML=plan.items.map(it=>{
