@@ -1,2 +1,5 @@
 /data/eventi.json
   Cache-Control: public, max-age=0, must-revalidate
+
+/data/meta.json
+  Cache-Control: public, max-age=0, must-revalidate

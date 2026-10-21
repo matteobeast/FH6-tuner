@@ -43,7 +43,7 @@ export async function loadProfiles(root,previous={}){
   if(!o?.type&&!v?.type)continue;
   try{await fs.access(path.join(root,'public/images',entry.s+'.webp'))}catch{continue}
   const year=o?.year||v?.year||Number(entry.n.slice(0,4)),name=o?.name||entry.n.replace(/^\d+ /,'');
-  profiles[entry.s]={slug:entry.s,name,year,image:'/images/'+entry.s+'.webp',make:o?.make||v?.make||specs.Make,type:o?.type||v?.type,country:o?.country||v?.country||specs.Country,electric:v?.ev??/Electric/i.test(c.snip||''),stock:{pi:entry.p,class:entry.c,hp:c.spec.hp,weight:c.spec.wu==='lb'?c.spec.w*.45359237:c.spec.w,frontPercent:c.spec.fp,drive:c.spec.drivetrain,ratings},source:{url:v?'https://forza6-db.milleni.me/data/cars.js':'https://forza.net/en-GB/fh6cars',captured:o?.checkedAt||'2026-10-21',carId:v?.id||c.build?.carId||Number(specs['Model ID'])}};
+  profiles[entry.s]={slug:entry.s,name,year,image:'/images/'+entry.s+'.webp',make:o?.make||v?.make||specs.Make,type:o?.type||v?.type,country:o?.country||v?.country||specs.Country,electric:v?.ev??/Electric/i.test(c.snip||''),stock:{pi:entry.p,class:entry.c,hp:c.spec.hp,weight:c.spec.wu==='lb'?c.spec.w*.45359237:c.spec.w,frontPercent:c.spec.fp,drive:c.spec.drivetrain,ratings},source:{url:v?'https://forza6-db.milleni.me/data/cars.js':'https://fh6.sev4s3d.it/data/cars/'+entry.s+'.json',captured:o?.checkedAt||'2026-10-21',carId:Number(v?.id)||Number(specs['Model ID'])||Number(c.build?.carId)||null}};
  }
  return profiles;
 }

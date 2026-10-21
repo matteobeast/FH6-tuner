@@ -1,0 +1,41 @@
+name: Weekly meta cars and balance notes
+on:
+  schedule:
+    - cron: '37 17 * * 4'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/weekly-meta.yml'
+      - 'scripts/update-meta.mjs'
+      - 'tests/meta.test.mjs'
+permissions:
+  contents: write
+concurrency:
+  group: weekly-content
+  cancel-in-progress: false
+jobs:
+  meta:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify meta source, patch detection and request limits
+        run: node --test tests/meta.test.mjs
+      - name: Retrieve this week's meta and official balance notes once
+        run: node scripts/update-meta.mjs
+      - name: Validate the candidate snapshot
+        run: |
+          node --check public/meta.js
+          node --test tests/meta.test.mjs
+      - name: Publish changed snapshot
+        run: |
+          git add public/data/meta.json
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Refresh weekly meta cars, tune codes and official patch assessment"
+          git push origin HEAD:main
