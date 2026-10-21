@@ -52,7 +52,7 @@ async function main(){
  assert(records.size===catalogue.length,'Numero schede diverso dal catalogo');
  const assets=new Set(Object.values(logos).filter(Boolean).map(name=>'/logos/'+name));
  for(const car of catalogue){
-  const rec=records.get(car.s);assert(rec?.fields?.length&&rec.build?.areas?.length&&rec.complete,'Scheda incompleta: '+car.s);
+  const rec=records.get(car.s);assert(rec?.fields?.length&&Array.isArray(rec.build?.areas)&&rec.complete,'Scheda incompleta: '+car.s);
   assert(Number(rec.spec?.pi)>0&&Number(rec.spec?.w)>0,'Specifiche mancanti: '+car.s);
   for(const area of rec.build.areas){if(area.icon)assets.add(area.icon);for(const slot of area.slots||[]){if(slot.icon)assets.add(slot.icon);if(slot.emblem)assets.add(slot.emblem);for(const opt of slot.opts||[])if(opt.img)assets.add(opt.img)}}
  }
@@ -71,15 +71,15 @@ async function main(){
  for(const car of catalogue){
   const rec=records.get(car.s);
   for(const area of rec.build.areas){if(area.icon)area.icon=localImage(area.icon);for(const slot of area.slots||[]){if(slot.icon)slot.icon=localImage(slot.icon);if(slot.emblem)slot.emblem=localImage(slot.emblem);for(const opt of slot.opts||[])if(opt.img)opt.img=localImage(opt.img)}}
-  rec.slug=car.s;rec.archiveSource='static';
+  rec.slug=car.s;rec.archiveSource='static';rec.upgradeDataAvailable=rec.build.areas.some(area=>area.slots?.length);
   const bytes=Buffer.from(JSON.stringify(rec)),relative='data/cars/'+car.s+'.json';
   await writeFile(join(PUB,relative),bytes);files.push({slug:car.s,path:relative,bytes:bytes.length,sha256:hash(bytes)});
  }
  const generatedAt=new Date().toISOString();
- const manifest={schema:1,independent:true,generatedAt,total:files.length,complete:files.length,records:files,assets:assetFiles.sort((a,b)=>a.path.localeCompare(b.path))};
+ const manifest={schema:1,independent:true,generatedAt,total:files.length,complete:files.length,upgradeCatalogues:[...records.values()].filter(r=>r.upgradeDataAvailable).length,records:files,assets:assetFiles.sort((a,b)=>a.path.localeCompare(b.path))};
  const carList=catalogue.map(c=>({s:c.s,n:c.y+' '+c.k+' '+c.m,d:records.get(c.s).spec.drivetrain,c:c.c,p:c.p}));
  await writeFile(join(PUB,'data/cars.json'),JSON.stringify({cars:carList}));
- await writeFile(join(PUB,'data/status.json'),JSON.stringify({database:false,storage:'static',independent:true,kvOperations:0,scheduledRefresh:false,salvate:files.length,complete:files.length,daVerificare:0,archiviate:files.length,totale:files.length,fallite:0,ultimo:Date.parse(generatedAt),errore:null,dettagliErrori:{}}));
+ await writeFile(join(PUB,'data/status.json'),JSON.stringify({database:false,storage:'static',independent:true,kvOperations:0,scheduledRefresh:false,componentiDisponibili:[...records.values()].filter(r=>r.upgradeDataAvailable).length,componentiNonDisponibili:[...records.values()].filter(r=>!r.upgradeDataAvailable).length,salvate:files.length,complete:files.length,daVerificare:0,archiviate:files.length,totale:files.length,fallite:0,ultimo:Date.parse(generatedAt),errore:null,dettagliErrori:{}}));
  await writeFile(manifestPath,JSON.stringify(manifest));
  await validateExisting(manifest);console.log('Archivio indipendente pronto: '+files.length+' auto, '+assetFiles.length+' immagini.');
 }
