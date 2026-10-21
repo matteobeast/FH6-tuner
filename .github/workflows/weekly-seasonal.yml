@@ -1,0 +1,42 @@
+name: Weekly seasonal snapshot
+on:
+  schedule:
+    # After the Thursday 14:30 UTC rotation. Friday is a conditional recovery only.
+    - cron: '17 17 * * 4,5'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/weekly-seasonal.yml'
+      - 'scripts/update-seasonal.mjs'
+      - 'tests/seasonal-update.test.mjs'
+permissions:
+  contents: write
+concurrency:
+  group: weekly-seasonal
+  cancel-in-progress: false
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Test parsing, rollover and request limits
+        run: node --test tests/seasonal-update.test.mjs
+      - name: Retrieve this week once
+        run: node scripts/update-seasonal.mjs
+      - name: Validate the published snapshot
+        run: |
+          node --check public/seasonal.js
+          node --test tests/seasonal.test.mjs
+      - name: Publish only changed data
+        run: |
+          git add public/data/eventi.json scripts/seasonal-state.json
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Update verified seasonal events and documented tunes"
+          git push origin HEAD:main

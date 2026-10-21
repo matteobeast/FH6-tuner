@@ -41,21 +41,24 @@ function renderList(){
  const q=$('event-search').value.trim().toLocaleLowerCase('it'),cls=$('class-filter').value;
  const events=data.events.filter(e=>(!cls||e.class===cls)&&(!q||(e.name+' '+e.label+' '+e.requirements.label+' '+e.recommendations.map(r=>data.profiles[r.slug].name).join(' ')).toLocaleLowerCase('it').includes(q)));
  $('event-count').textContent=events.length+' / '+data.events.length;
- $('event-list').innerHTML=events.map(e=>'<button class="event-button" data-event="'+esc(e.id)+'" aria-pressed="'+(e.id===current?.id)+'"><small>'+esc(e.label)+'</small><strong>'+esc(e.name)+'</strong><span>'+esc(e.class)+' · '+e.cap+' PI / '+esc(e.requirements.label)+'</span></button>').join('')||'<p class="empty">Nessuna gara con questi filtri nella settimana indicata.</p>';
+ $('event-list').innerHTML=events.map(e=>'<button class="event-button" data-event="'+esc(e.id)+'" aria-pressed="'+(e.id===current?.id)+'"><small>'+esc(e.label)+'</small><strong>'+esc(e.name)+'</strong><span>'+esc(e.class?e.class+' · '+e.cap+' PI':'Prova speciale')+' / '+esc(e.requirements.label)+'</span></button>').join('')||'<p class="empty">Nessuna gara con questi filtri nella settimana indicata.</p>';
  $('event-list').querySelectorAll('[data-event]').forEach(b=>b.addEventListener('click',()=>selectEvent(b.dataset.event,true)));
 }
 function selectEvent(id,scroll){
- current=data.events.find(e=>e.id===id)||data.events[0];choice=current.recommendations[0];renderList();renderEvent();
+ current=data.events.find(e=>e.id===id)||data.events[0];choice=current.recommendations[0]||null;renderList();renderEvent();
  const url=new URL(location.href);url.searchParams.set('gara',current.id);history.replaceState(null,'',url);
  if(scroll&&matchMedia('(max-width:760px)').matches)$('event-detail').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'instant':'smooth',block:'start'});
 }
 function translatePart(s){return String(s||'Non specificato').replace(/^Offroad$/,'Fuoristrada').replace(/^Rally$/,'Rally').replace(/^Vintage WW$/,'Vintage con fascia bianca').replace(/^Stock$/,'Originale').replace(/AWD Full Aero/,'AWD con aerodinamica completa').replace(/Lightest Rims/,'Cerchi più leggeri').replace(/Purist \+ Asanti AF 134 Rims/,'Originale con cerchi Asanti AF 134')}
 function renderEvent(){
- const e=current,car=data.profiles[choice.slug],s=car.stock,fixed=choice.fixed,expired=Date.now()>=Date.parse(e.endsAt);
+ const e=current,expired=Date.now()>=Date.parse(e.endsAt);
  $('event-type').textContent=e.label.toUpperCase();$('event-name').textContent=e.name;
- $('requirements').innerHTML='<span class="tag class">'+e.class+' · massimo '+e.cap+' PI</span><span class="tag">'+esc(e.requirements.label)+'</span><span class="tag">'+(expired?'Scaduta il ':'Fino al ')+esc(endDate(e.endsAt))+'</span>';
+ $('requirements').innerHTML='<span class="tag class">'+(e.class?e.class+' · massimo '+e.cap+' PI':'Requisiti della prova')+'</span><span class="tag">'+esc(e.requirements.label)+'</span><span class="tag">'+(expired?'Scaduta il ':'Fino al ')+esc(endDate(e.endsAt))+'</span>';
  $('objective').textContent=e.objective;$('routes').innerHTML=(e.routes.length?e.routes:['Percorso della prova']).map((r,i)=>'<span class="route">'+(e.routes.length>1?(i+1)+'. ':'')+esc(r)+'</span>').join('');
  $('reward').textContent=e.reward.replace(/^Car: /,'Auto: ');
+ $('pending-tunes').hidden=!!choice;$('recommendation-content').hidden=!choice;
+ if(!choice){$('pending-tunes').innerHTML='Requisiti ufficiali aggiornati. Nessun assetto documentato e compatibile è ancora disponibile per questa gara. <a href="'+esc(safeURL(e.source.url))+'" target="_blank" rel="noopener noreferrer">Consulta la playlist ufficiale ↗</a>';return}
+ const car=data.profiles[choice.slug],s=car.stock,fixed=choice.fixed;
  $('car-image').src=localImage(car.image);$('car-image').alt=car.year+' '+car.name+' · anteprima di serie';$('car-make').textContent=car.year+' / '+car.make.toUpperCase();$('car-name').textContent=car.name;
  $('stock-line').textContent='Di serie: '+s.class+' '+s.pi+' PI · '+number(s.hp*1.0138697)+' CV · '+number(s.weight)+' kg · '+s.drive;
  $('pick-label').textContent=fixed?'Auto fornita dalla prova':choice===e.recommendations[0]?'Scelta per questa gara':'Alternativa documentata';
@@ -67,7 +70,7 @@ function renderEvent(){
  $('installation').textContent=fixed?'Entra nella prova Rivali: il gioco mette a disposizione la vettura originale. Nessun componente da acquistare.':'Per riprodurre l’assetto documentato, applica il codice '+choice.code+' su questa esatta auto. Il gioco carica la preparazione e propone l’acquisto dei componenti necessari.';
  $('hardware').hidden=fixed;$('hardware').innerHTML=choice.components.map(p=>'<div><small>'+esc(p.label.toUpperCase())+'</small><strong>'+esc(translatePart(p.value))+'</strong></div>').join('');
  $('parts-note').textContent=fixed?'Il poligono corrisponde alla configurazione della prova.':'Componenti esplicitamente pubblicati dall’autore. La fonte non elenca ogni pezzo e livello: la preparazione completa si riproduce tramite il codice, non aggiungendo pezzi stimati.';
- const steps=fixed?['Avvia Rivali mensili: Daikoku Circuit.','Usa la BMW M4 CS fornita dalla prova.','Registra un giro pulito, senza collisioni o riavvolgimenti.']:['Seleziona '+car.year+' '+car.name+' nel tuo garage.','Apri Potenziamenti e messa a punto → Trova assetti.','Cerca il codice '+choice.code+', controlla auto e classe '+e.class+', poi scarica e applica.','Accetta l’acquisto dei componenti proposto dal gioco e verifica il requisito '+e.requirements.label+' prima di entrare in gara.'];
+ const steps=fixed?['Avvia Rivali mensili: '+e.name+'.','Usa '+car.year+' '+car.name+' fornita dalla prova.','Registra un giro pulito, senza collisioni o riavvolgimenti.']:['Seleziona '+car.year+' '+car.name+' nel tuo garage.','Apri Potenziamenti e messa a punto → Trova assetti.','Cerca il codice '+choice.code+', controlla auto e classe '+e.class+', poi scarica e applica.','Accetta l’acquisto dei componenti proposto dal gioco e verifica il requisito '+e.requirements.label+' prima di entrare in gara.'];
  $('install-steps').innerHTML=steps.map(s=>'<li>'+esc(s)+'</li>').join('');
  $('sources').innerHTML='<a href="'+esc(safeURL(e.source.url))+'" target="_blank" rel="noopener noreferrer">Requisiti e percorsi · Forza ufficiale ↗</a><a href="'+esc(safeURL(choice.source))+'" target="_blank" rel="noopener noreferrer">'+(fixed?'Auto della prova · Forza ufficiale':'Assetto e componenti pubblicati · '+esc(choice.author))+' ↗</a><a href="'+esc(safeURL(car.source.url))+'" target="_blank" rel="noopener noreferrer">Specifiche e prestazioni di serie · database di gioco ↗</a>';
  const alts=e.recommendations;
@@ -78,11 +81,11 @@ function renderEvent(){
 async function load(){
  $('load').hidden=false;$('error').hidden=true;
  try{
-  const response=await fetch('/data/eventi.json',{signal:AbortSignal.timeout(15000)});if(!response.ok)throw Error('archive');data=await response.json();
+  const response=await fetch('/data/eventi.json',{cache:'no-cache',signal:AbortSignal.timeout(15000)});if(!response.ok)throw Error('archive');data=await response.json();
   if(!data.events?.length||!data.profiles)throw Error('data');
   $('season-title').textContent='SERIE '+data.seriesNumber+' / '+data.series.toUpperCase()+' / '+data.season.toUpperCase();
-  $('week-dates').textContent=date(data.startsAt)+' — '+date(data.endsAt)+' 2026';
-  $('checked-at').textContent='Fonti controllate il '+date(data.checkedAt+'T12:00:00Z')+' 2026';
+  $('week-dates').textContent=date(data.startsAt)+' — '+date(data.endsAt)+' '+new Date(data.endsAt).getUTCFullYear();
+  $('checked-at').textContent='Fonti controllate il '+date(data.checkedAt+'T12:00:00Z')+' '+data.checkedAt.slice(0,4)+(data.automation?' · aggiornamento settimanale automatico':'');
   const expired=Date.now()>=Date.parse(data.endsAt);$('week-status').textContent=expired?'Settimana archiviata':'Questa settimana';$('week-status').classList.toggle('archived',expired);
   $('expired').hidden=!expired;$('expired').textContent='Questa selezione si riferisce al periodo indicato. Gli eventi settimanali sono scaduti; prima di usare un assetto per una nuova playlist, confronta i requisiti attuali nel gioco. Le prove mensili hanno la propria scadenza.';
   $('workspace').hidden=false;selectEvent(new URLSearchParams(location.search).get('gara'),false);
