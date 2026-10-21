@@ -5,6 +5,7 @@ import { gunzipSync } from 'node:zlib';
 import { createHash } from 'node:crypto';
 import { join } from 'node:path';
 const ROOT=process.cwd(), PUB=join(ROOT,'public'), ORIGIN='https://fh6.sev4s3d.it', MEDIA='https://pub-b1b0dda9cb0644008ffedffa8be50cbf.r2.dev';
+const IMAGE_ALIASES={'/upgrades/icons/Tire_Rims/track_width_Icon.webp':'/upgrades/icons/Tire_Rims/track_width_icon.webp','/upgrades/icons/Tire_Rims/track_width_Icon_back.webp':'/upgrades/icons/Tire_Rims/track_width_icon_back.webp'};
 const manifestPath=join(PUB,'data/archive.json');
 const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
 const assert=(test,message)=>{if(!test)throw Error(message)};
@@ -28,7 +29,7 @@ async function fetchOnce(url){
 }
 function localImage(value){
  if(typeof value!=='string')return value;
- let p=value;if(p.startsWith(MEDIA+'/'))p=p.slice(MEDIA.length);
+ let p=IMAGE_ALIASES[value]||value;if(p.startsWith(MEDIA+'/'))p=p.slice(MEDIA.length);
  if(/^\/(logos|upgrades\/icons)\/[a-zA-Z0-9_./-]+\.webp$/.test(p)&&!p.includes('..'))return '/brand-assets'+p;
  throw Error('Percorso immagine non previsto: '+value);
 }
@@ -56,7 +57,7 @@ async function main(){
   assert(Number(rec.spec?.pi)>0&&Number(rec.spec?.w)>0,'Specifiche mancanti: '+car.s);
   for(const area of rec.build.areas){if(area.icon)assets.add(area.icon);for(const slot of area.slots||[]){if(slot.icon)assets.add(slot.icon);if(slot.emblem)assets.add(slot.emblem);for(const opt of slot.opts||[])if(opt.img)assets.add(opt.img)}}
  }
- const files=[],assetFiles=[],paths=[...assets].sort();let next=0,done=0;
+ const files=[],assetFiles=[],paths=[...new Set([...assets].map(p=>IMAGE_ALIASES[p]||p))].sort();let next=0,done=0;
  await Promise.all(Array.from({length:4},async()=>{
   while(next<paths.length){
    const source=paths[next++],local=localImage(source),relative=local.slice(1);
