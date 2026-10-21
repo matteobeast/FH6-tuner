@@ -1,0 +1,30 @@
+name: Materialize independent garage archive
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/independent-archive.yml'
+      - 'scripts/materialize-archive.mjs'
+      - 'scripts/archive-overrides.json'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: independent-garage-archive
+  cancel-in-progress: false
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Materialize archive once and verify all files
+        run: node scripts/materialize-archive.mjs
+      - name: Commit the independent archive
+        run: |
+          git add public/data public/brand-assets
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Archive all 622 complete car records and game upgrade images"
+          git push origin HEAD:main
