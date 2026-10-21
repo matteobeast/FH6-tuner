@@ -1,0 +1,48 @@
+name: Import verified post-launch roster
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/post-launch-roster.yml'
+      - 'scripts/import-post-launch.mjs'
+      - 'scripts/post-launch-roster.json'
+      - 'scripts/post-launch-client.json'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: post-launch-roster
+  cancel-in-progress: false
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Import reviewed official roster and verified car details once
+        run: node scripts/import-post-launch.mjs
+      - name: Apply reviewed client and tests
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs/promises';
+          import {gunzipSync} from 'node:zlib';
+          const payload=JSON.parse(await fs.readFile('scripts/post-launch-client.json','utf8'));
+          const files=JSON.parse(gunzipSync(Buffer.from(payload.gzip,'base64')));
+          const allowed=new Set(['public/garage-app.js','public/tuner-core.js','public/sw.js','tests/static-archive.test.mjs','tests/post-launch-roster.test.mjs']);
+          for(const [path,content]of Object.entries(files)){if(!allowed.has(path))throw Error('Invalid path');await fs.mkdir(path.slice(0,path.lastIndexOf('/')),{recursive:true});await fs.writeFile(path,content)}
+          NODE
+      - name: Verify archive, independence, recommendations and conversions
+        run: |
+          node --check worker.js
+          node --check public/garage-app.js
+          node --check public/tuner-core.js
+          node --test tests/static-archive.test.mjs tests/post-launch-roster.test.mjs
+          node tests/tuner-core.test.cjs
+      - name: Publish the complete verified snapshot
+        run: |
+          git add public tests
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Add 44 verified post-launch cars and reconcile official 658-car roster"
+          git push origin HEAD:main
