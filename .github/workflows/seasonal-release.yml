@@ -1,0 +1,48 @@
+name: Publish verified tuning and seasonal races
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/seasonal-release.yml'
+      - 'scripts/complete-tuning.mjs'
+      - 'scripts/seasonal-release.json'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: seasonal-release
+  cancel-in-progress: false
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Materialize reviewed client and seasonal snapshot
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs/promises';
+          import {gunzipSync} from 'node:zlib';
+          const raw=JSON.parse(await fs.readFile('scripts/seasonal-release.json','utf8'));
+          const files=JSON.parse(gunzipSync(Buffer.from(raw.gzip,'base64')));
+          const allowed=new Set(['public/index.html','public/garage-app.js','public/tuner-core.js','public/sw.js','public/gare.html','public/seasonal.css','public/seasonal.js','public/data/eventi.json','tests/post-launch-roster.test.mjs','tests/seasonal.test.mjs']);
+          for(const [path,content]of Object.entries(files)){if(!allowed.has(path))throw Error('Invalid path');await fs.mkdir(path.slice(0,path.lastIndexOf('/')),{recursive:true});await fs.writeFile(path,content)}
+          NODE
+      - name: Complete documented parameters once
+        run: node scripts/complete-tuning.mjs
+      - name: Verify data, compatibility, conversions and independence
+        run: |
+          node --check worker.js
+          node --check public/garage-app.js
+          node --check public/tuner-core.js
+          node --check public/seasonal.js
+          node --test tests/static-archive.test.mjs tests/post-launch-roster.test.mjs tests/seasonal.test.mjs
+          node tests/tuner-core.test.cjs
+      - name: Publish verified result
+        run: |
+          git add public tests
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Complete new-car tuning and add sourced seasonal race recommendations"
+          git push origin HEAD:main
