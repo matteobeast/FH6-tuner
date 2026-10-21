@@ -20,7 +20,7 @@ const stockWeight=Number(record.spec?.w)*(/^lb/.test(record.spec?.wu||'')?.45359
 const weightFactor=options.weight&&stockWeight>0?clamp(options.weight/stockWeight,.5,2):1;
 const powerRatio=Number(options.powerCV)>0&&Number(options.weight)>0?options.powerCV/options.weight:null;
 const powerLoad=powerRatio===null?0:clamp((powerRatio-.25)*40,-6,12);
-const activeFields=record.fieldSets?.[mode]||record.fields||[];
+const activeFields=record.fieldSetsByDrive?.[drive]?.[mode]||record.fieldSets?.[mode]||record.fields||[];
 const fields=activeFields.filter(f=>!/^(front|rear)_(accel|decel)$|^center_(balance|diff)$/.test(f.a?.key||''));
 const diffSource=activeFields.filter(f=>/^(front|rear)_(accel|decel)$|^center_(balance|diff)$/.test(f.a?.key||''));
 const keys=drive==='AWD'?['front_accel','front_decel','rear_accel','rear_decel','center_balance']:drive==='FWD'?['front_accel','front_decel']:['rear_accel','rear_decel'];
@@ -61,7 +61,7 @@ return fields.map(f=>{
  if(raw===null)return null;raw=clamp(raw,min,max);
  const [value,unit]=convert(f.u,raw*scale,metric),[lo]=convert(f.u,min*scale,metric),[hi]=convert(f.u,max*scale,metric);
  const digits=unit==='bar'?2:/gear_|final_drive/.test(key)?2:unit==='%'?0:1;
- return {key,label:labels[key]||key.replace('gear_','Marcia '),section:group(key),value:Number(value.toFixed(digits)),unit,min:Number(lo.toFixed(digits)),max:Number(hi.toFixed(digits)),kind,raw,derived:!!f.derived};
+ return {key,label:labels[key]||key.replace('gear_','Marcia '),section:group(key),value:Number(value.toFixed(digits)),unit,min:Number(lo.toFixed(digits)),max:Number(hi.toFixed(digits)),kind,raw,derived:!!f.derived,part:f.part||null,provenance:f.provenance||null};
 }).filter(Boolean);
 }
 
