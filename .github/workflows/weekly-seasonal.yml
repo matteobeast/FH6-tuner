@@ -1,8 +1,9 @@
 name: Weekly seasonal snapshot
 on:
   schedule:
-    # After the Thursday 14:30 UTC rotation. Friday is a conditional recovery only.
-    - cron: '17 17 * * 4,5'
+    # 19:30 Italian time year-round. Friday is a conditional recovery only.
+    - cron: '30 19 * * 4,5'
+      timezone: Europe/Rome
   workflow_dispatch:
   push:
     branches: [main]

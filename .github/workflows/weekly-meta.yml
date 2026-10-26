@@ -1,7 +1,8 @@
 name: Weekly meta cars and balance notes
 on:
   schedule:
-    - cron: '37 17 * * 4'
+    - cron: '30 19 * * 4'
+      timezone: Europe/Rome
   workflow_dispatch:
   push:
     branches: [main]
