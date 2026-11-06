@@ -76,3 +76,11 @@ test('a delayed tuner publication fills the new week on the one permitted recove
  assert.deepEqual(result.automation.pendingEvents,[]);assert.equal(result.events.reduce((n,e)=>n+e.recommendations.length,0),26);
  assert.equal((await updateSeasonal({root,now:date,fetchText:async()=>{throw Error('must not fetch')}})).requests,0);
 });
+test('untitled championship needs its class, restriction, every route and one unique group',async()=>{
+ const {matchGroup}=await import('../scripts/update-seasonal.mjs');
+ const row=['','','Championship','Rise to the Challenge','Dodge Challenger - A Class','Street: Daikoku Chase, Sunflower Charge, Norikura Descent'];
+ const group={title:'Seasonal Championship (Street) - ',restriction:'Dodge Challenger - Class A\nDaikoku Chase\nSunflower Charge\nNorikura Descent'};
+ assert.equal(matchGroup(row,[group]),group);
+ assert.equal(matchGroup(row,[group,group]),null);
+ for(const removed of ['Dodge Challenger','Class A','Sunflower Charge'])assert.equal(matchGroup(row,[{...group,restriction:group.restriction.replace(removed,'')}]),null);
+});

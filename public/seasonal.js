@@ -57,7 +57,7 @@ function renderEvent(){
  $('objective').textContent=e.objective;$('routes').innerHTML=(e.routes.length?e.routes:['Percorso della prova']).map((r,i)=>'<span class="route">'+(e.routes.length>1?(i+1)+'. ':'')+esc(r)+'</span>').join('');
  $('reward').textContent=e.reward.replace(/^Car: /,'Auto: ');
  $('pending-tunes').hidden=!!choice;$('recommendation-content').hidden=!choice;
- if(!choice){$('pending-tunes').innerHTML='Requisiti ufficiali aggiornati. Nessun assetto documentato e compatibile è ancora disponibile per questa gara. <a href="'+esc(safeURL(e.source.url))+'" target="_blank" rel="noopener noreferrer">Consulta la playlist ufficiale ↗</a>';return}
+ if(!choice){const a=e.carAdvice;$('pending-tunes').innerHTML=(a?'<h3>'+esc(a.name)+'</h3>'+(a.image?'<img src="'+esc(localImage(a.image))+'" alt="" width="220" style="max-width:100%;height:auto">':'')+'<p>'+esc(a.note)+'</p>'+(a.slug?'<a href="/?type=target&amp;car='+encodeURIComponent(a.slug)+'&amp;class='+encodeURIComponent(e.class)+'&amp;mode='+encodeURIComponent(e.mode)+'">Prepara nel garage →</a> · ':''):'Nessuna auto verificata per questi requisiti. ')+'<a href="'+esc(safeURL(e.source.url))+'" target="_blank" rel="noopener noreferrer">Playlist ufficiale ↗</a>';return}
  const car=data.profiles[choice.slug],s=car.stock,fixed=choice.fixed;
  $('car-image').src=localImage(car.image);$('car-image').alt=car.year+' '+car.name+' · anteprima di serie';$('car-make').textContent=car.year+' / '+car.make.toUpperCase();$('car-name').textContent=car.name;
  $('stock-line').textContent='Di serie: '+s.class+' '+s.pi+' PI · '+number(s.hp*1.0138697)+' CV · '+number(s.weight)+' kg · '+s.drive;

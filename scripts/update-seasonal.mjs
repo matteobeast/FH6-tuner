@@ -36,19 +36,23 @@ export function tuneGroups(csv){
 }
 export async function loadProfiles(root,previous={}){
  const catalog=JSON.parse(await fs.readFile(path.join(root,'public/data/cars.json'),'utf8')).cars,profiles={...previous};
- for(const entry of catalog){if(profiles[entry.s])continue;const c=JSON.parse(await fs.readFile(path.join(root,'public/data/cars',entry.s+'.json'),'utf8')),v=c.sourceData?.vehicle,o=c.official;
+ for(const entry of catalog){if(profiles[entry.s]?.rarity!==undefined)continue;const c=JSON.parse(await fs.readFile(path.join(root,'public/data/cars',entry.s+'.json'),'utf8')),v=c.sourceData?.vehicle,o=c.official;
   const specs=Object.fromEntries((c.details||[]).flatMap(d=>d.specs||[]).map(s=>[s.label,s.value]));
   const ratings=v?.ratings||Object.fromEntries(Object.entries({speed:'Speed',handling:'Handling',accel:'Acceleration',launch:'Launch',braking:'Braking',offroad:'Offroad'}).map(([k,l])=>[k,Math.round(parseFloat(specs[l])*10)/10]));
+  const rarity=String(v?.rarity||specs.Rarity||"").split(/\s*·/)[0].trim();
+  if(profiles[entry.s]){profiles[entry.s]={...profiles[entry.s],rarity};continue}
   if(!axes.every(k=>Number.isFinite(ratings[k])&&ratings[k]>=.1&&ratings[k]<=10))continue;
   if(!o?.type&&!v?.type)continue;
   try{await fs.access(path.join(root,'public/images',entry.s+'.webp'))}catch{continue}
   const year=o?.year||v?.year||Number(entry.n.slice(0,4)),name=o?.name||entry.n.replace(/^\d+ /,'');
-  profiles[entry.s]={slug:entry.s,name,year,image:'/images/'+entry.s+'.webp',make:o?.make||v?.make||specs.Make,type:o?.type||v?.type,country:o?.country||v?.country||specs.Country,electric:v?.ev??/Electric/i.test(c.snip||''),stock:{pi:entry.p,class:entry.c,hp:c.spec.hp,weight:c.spec.wu==='lb'?c.spec.w*.45359237:c.spec.w,frontPercent:c.spec.fp,drive:c.spec.drivetrain,ratings},source:{url:v?'https://forza6-db.milleni.me/data/cars.js':'https://fh6.sev4s3d.it/data/cars/'+entry.s+'.json',captured:o?.checkedAt||'2026-10-21',carId:Number(v?.id)||Number(specs['Model ID'])||Number(c.build?.carId)||null}};
+  profiles[entry.s]={slug:entry.s,name,year,rarity,image:'/images/'+entry.s+'.webp',make:o?.make||v?.make||specs.Make,type:o?.type||v?.type,country:o?.country||v?.country||specs.Country,electric:v?.ev??/Electric/i.test(c.snip||''),stock:{pi:entry.p,class:entry.c,hp:c.spec.hp,weight:c.spec.wu==='lb'?c.spec.w*.45359237:c.spec.w,frontPercent:c.spec.fp,drive:c.spec.drivetrain,ratings},source:{url:v?'https://forza6-db.milleni.me/data/cars.js':'https://fh6.sev4s3d.it/data/cars/'+entry.s+'.json',captured:o?.checkedAt||'2026-10-21',carId:Number(v?.id)||Number(specs['Model ID'])||Number(c.build?.carId)||null}};
  }
  return profiles;
 }
 function findCar(text,profiles){const key=norm(text),matches=Object.values(profiles).filter(p=>norm(p.year+' '+p.name)===key||norm(p.name)===key);return matches.length===1?matches[0]:null}
 export function eligible(car,rule){
+ if(rule.kind==='rarity')return !!car.rarity&&norm(car.rarity)===norm(rule.value);
+ if(rule.kind==='family')return car.name.toLowerCase()===rule.value||car.name.toLowerCase().startsWith(rule.value+' ');
  if(rule.kind==='type')return norm(car.type)===norm(rule.value);
  if(rule.kind==='make')return norm(car.make)===norm(rule.value);
  if(rule.kind==='country')return norm(car.country)===norm(rule.value);
@@ -58,12 +62,30 @@ export function eligible(car,rule){
 }
 function ruleFor(raw,profiles){
  const label=raw.split(/\s+-\s+(?:D|C|B|A|S1|S2|R|X)\s+Class/i)[0].trim(),cars=Object.values(profiles);
+ const rarity=label.match(/^Rarity:\s*(Common|Uncommon|Rare|Epic|Legendary)$/i);if(rarity)return {kind:'rarity',value:rarity[1],label};
+ if(/^Dodge Challenger$/i.test(label))return {kind:'family',value:'dodge challenger',label};
+ if(/^Eclectic Domestic$/i.test(label))return {kind:'type',value:'Eclectic Domestics',label};
  if(/^Electric Vehicles$/i.test(label))return {kind:'electric',value:true,label};
  for(const [kind,key]of [['country','country'],['make','make'],['type','type']]){const p=cars.find(c=>norm(c[key])===norm(label));if(p)return {kind,value:p[key],label}}
  const fixed=findCar(label,profiles);return fixed?{kind:'fixed',value:fixed.slug,label}:{kind:'unverified',value:label,label};
 }
 function modeFor(row){return /Drift Zone/i.test(row[2])?'drift':/^(Dirt|Cross Country):/i.test(row[5])?'dirt':'track'}
 function labelFor(row){return /Trial/i.test(row[2])?'The Trial':/Monthly Rivals/i.test(row[2])?'Rivali mensili':/Championship/i.test(row[2])?(/Dirt:/i.test(row[5])?'Stagionale sterrato':/Cross Country:/i.test(row[5])?'Stagionale cross country':'Stagionale asfalto'):row[2].replace('PR Stunt - ','')}
+// Accept shortened source labels only with corroborating details and a unique match.
+export function matchGroup(row,groups){
+ const title=g=>g.title.split('\n')[0].replace(/^.*? - /,'').trim();
+ const exact=groups.filter(g=>norm(title(g))===norm(row[3])&&title(g));if(exact.length)return exact.length===1?exact[0]:null;
+ const event=norm(row[3]),req=norm(row[4].split(' - ')[0]),routes=row[5].replace(/^[^:]+:\s*/,'').split(',').map(x=>norm(x)).filter(Boolean);
+ const cls=row[4].match(/\b(D|C|B|A|S1|S2|R|X)\s+Class/i)?.[1];if(!cls)return null;
+ const hits=groups.filter(g=>{
+  const parts=title(g).split(' - '),restriction=norm(g.restriction),sameClass=new RegExp('\\bClass\\s+'+cls+'\\b','i').test(g.restriction);
+  if(!sameClass)return false;
+  if(norm(parts[0])===event&&parts.slice(1).some(x=>norm(x)===req))return true;
+  if(!parts[0]&&req&&restriction.includes(req)&&routes.length>=2&&routes.every(x=>restriction.includes(x)))return true;
+  return /Speed Trap/i.test(row[2])&&/^Speed Trap - /i.test(g.title)&&norm(parts[0]+' Straight')===event&&restriction.includes(req)&&parts.slice(1).some(x=>norm(x)===norm(row[4].split(' - ').at(-1).replace(/\.0(?=\s)/,'')));
+ });
+ return hits.length===1?hits[0]:null;
+}
 export function buildSnapshot({html,csv,profiles,now=new Date(),previous={}}){
  const week=weekAt(now),rows=officialRows(html),seasonRows=rows.filter(r=>new RegExp('^S0?'+week.seriesNumber+' .+ - '+week.englishSeason+'$').test(r[0]));
  if(!seasonRows.length)throw Error('La fonte ufficiale non contiene ancora la settimana corrente: archivio conservato.');
@@ -74,7 +96,7 @@ export function buildSnapshot({html,csv,profiles,now=new Date(),previous={}}){
  const tab='Series '+week.seriesNumber+' '+(week.englishSeason==='Autumn'?'Autumn/Fall':week.englishSeason),source=SHEET+'edit?sheet='+encodeURIComponent(tab),excluded=[],usedProfiles={},events=[];
  for(const row of eventRows){
   const monthly=row[2]==='Monthly Rivals',fixed=monthly?findCar(row[4],profiles):null,requirements=ruleFor(row[4],profiles),cls=row[4].match(/\b(D|C|B|A|S1|S2|R|X)\s+Class/i)?.[1].toUpperCase()||fixed?.stock.class||null,cap=caps[cls]||null;
-  const id=row[3].toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''),group=groups.find(g=>norm(g.title.split('\n')[0].replace(/^.*? - /,''))===norm(row[3]));
+  const id=row[3].toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''),group=matchGroup(row,groups);
   const recommendations=[];
   if(fixed){usedProfiles[fixed.slug]=fixed;recommendations.push({slug:fixed.slug,code:null,author:'Playground Games',name:'Auto fornita dall’evento',class:cls,drive:fixed.stock.drive,components:[],source:OFFICIAL,finalPI:fixed.stock.pi,finalRatings:fixed.stock.ratings,completePartsList:true,fixed:true})}
   if(!monthly&&group&&!tunerError)for(const r of group.rows){
@@ -85,10 +107,17 @@ export function buildSnapshot({html,csv,profiles,now=new Date(),previous={}}){
   // Preserve reviewed ordering and rationale only for the exact same week, code and requirements.
   const old=previous.startsAt===week.startsAt?previous.events?.find(e=>e.id===id&&e.officialRequirement===row[4]):null;
   if(old){const order=new Map(old.recommendations.map((r,i)=>[r.code||'fixed',i]));recommendations.sort((a,b)=>(order.get(a.code||'fixed')??1000)-(order.get(b.code||'fixed')??1000))}
-  events.push({id,name:row[3],label:labelFor(row),class:cls,cap,mode:modeFor(row),requirements,officialRequirement:row[4],reward:row[1],routes:row[5]?row[5].replace(/^(Road|Street|Dirt|Cross Country):\s*/,'').split(/,\s*/):[],objective:monthly?'Registra un giro pulito':/Championship|Trial/.test(row[2])?'Completa il campionato':row[4],reason:old?.reason||(fixed?'Il gioco fornisce l’auto e fissa la preparazione.': 'Prima scelta pubblicata da '+(recommendations[0]?.author||'un preparatore')+' per questa gara; non è un primato cronometrico verificato.'),recommendations,source:{url:OFFICIAL,row},endsAt:monthly?week.seriesEndsAt:week.endsAt});
+  events.push({id,name:row[3],label:labelFor(row),class:cls,cap,mode:modeFor(row),requirements,officialRequirement:row[4],reward:row[1],routes:row[5]?row[5].replace(/^(Road|Street|Dirt|Cross Country):\s*/,'').split(/,\s*/):[],objective:monthly?'Registra un giro pulito':/Championship|Trial/.test(row[2])?'Completa il campionato':row[4],reason:(old?.recommendations[0]?.slug===recommendations[0]?.slug&&old?.recommendations[0]?.code===recommendations[0]?.code&&old?.reason)||(fixed?'Il gioco fornisce l’auto e fissa la preparazione.': 'Prima scelta pubblicata da '+(recommendations[0]?.author||'un preparatore')+' per questa gara; non è un primato cronometrico verificato.'),recommendations,source:{url:OFFICIAL,row},endsAt:monthly?week.seriesEndsAt:week.endsAt});
+ }
+ for(const e of events.filter(e=>!e.recommendations.length)){
+  if(e.source.row[2]==='Monthly Rivals'){e.carAdvice={name:e.officialRequirement,note:'La prova fornisce questa auto. Entra in Rivali e registra un giro pulito; non serve un codice assetto.'};continue}
+  const fixed=e.requirements.kind==='fixed',candidates=Object.values(profiles).filter(c=>eligible(c,e.requirements)&&(fixed||c.stock.class===e.class));
+  const score=c=>{const r=c.stock.ratings;return e.mode==='dirt'?r.offroad*3+r.handling*2+r.accel:e.source.row[2].includes('Speed Trap')?r.speed*4+r.accel:r.handling*3+r.braking*2+r.speed+r.accel};
+  const c=candidates.sort((a,b)=>score(b)-score(a)||b.stock.pi-a.stock.pi||a.slug.localeCompare(b.slug))[0];
+  if(c)e.carAdvice={name:c.year+' '+c.name,slug:c.slug,image:c.image,note:fixed?'Modello obbligatorio. Verifica la classe '+e.class+' prima della prova; manca un assetto specifico documentato.':'Scelta stimata tra le auto ammesse già in classe '+e.class+', in base alle prestazioni di serie per il terreno. Nessun tempo comparativo o assetto specifico verificato.'};
  }
  const pending=events.filter(e=>!e.recommendations.length).map(e=>e.id);
- return {schema:2,checkedAt:now.toISOString().slice(0,10),startsAt:week.startsAt,endsAt:week.endsAt,series:seriesLabel.replace(/^S\d+ /,''),season:week.season,seriesNumber:week.seriesNumber,profiles:usedProfiles,events,provenance:{official:{url:OFFICIAL,sha256:hash(html)},tuner:{url:source,author:'LogikJ',sha256:hash(csv||''),error:tunerError}},limitations:previous.limitations||[],excluded,automation:{scheduleUTC:'Thursday 17:17; Friday 17:17 only if incomplete',pendingEvents:pending,sourceRequests:'2 weekly; 1 additional tuner request only if incomplete',updatedAt:now.toISOString()}};
+ return {schema:2,checkedAt:now.toISOString().slice(0,10),startsAt:week.startsAt,endsAt:week.endsAt,series:seriesLabel.replace(/^S\d+ /,''),season:week.season,seriesNumber:week.seriesNumber,profiles:usedProfiles,events,provenance:{official:{url:OFFICIAL,sha256:hash(html)},tuner:{url:source,author:'LogikJ',sha256:hash(csv||''),error:tunerError}},limitations:previous.limitations||[],excluded,automation:{scheduleLocal:'Giovedì 19:30 Europe/Rome; venerdì 19:30 solo se incompleto',pendingEvents:pending,sourceRequests:'2 weekly; 1 additional tuner request only if incomplete',updatedAt:now.toISOString()}};
 }
 async function getText(url){const r=await fetch(url,{signal:AbortSignal.timeout(30000),headers:{'User-Agent':'FH6-Tuner seasonal snapshot (weekly; matteobeast/FH6-tuner)'}});if(!r.ok)throw Error('Fonte HTTP '+r.status);return r.text()}
 export async function updateSeasonal({root=fileURLToPath(new URL('../',import.meta.url)),now=new Date(),fetchText=getText,force=false}={}){
