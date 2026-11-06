@@ -11,6 +11,7 @@ on:
       - '.github/workflows/weekly-seasonal.yml'
       - 'scripts/update-seasonal.mjs'
       - 'tests/seasonal-update.test.mjs'
+      - 'tests/seasonal.test.mjs'
 permissions:
   contents: write
 concurrency:

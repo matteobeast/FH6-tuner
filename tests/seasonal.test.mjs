@@ -24,11 +24,20 @@ test('all seasonal recommendations match the official class and game vehicle req
  }
  assert(count>=0);
 });
-test('polygons contain actual stock game ratings and never simulated upgraded values',()=>{
- const axes=['speed','handling','accel','launch','braking','offroad'];
- for(const c of Object.values(data.profiles)){assert(c.source.carId);assert(c.source.captured);for(const k of axes)assert(Number.isFinite(c.stock.ratings[k])&&c.stock.ratings[k]>=.1&&c.stock.ratings[k]<=10)}
- assert.equal(data.profiles['bmw-m4-cs-2025'].stock.ratings.speed,7.5);
- assert.equal(data.profiles['bmw-m4-cs-2025'].stock.pi,733);
+test('polygons match the archived stock data for the cars in this playlist',async()=>{
+ const axes={speed:'Speed',handling:'Handling',accel:'Acceleration',launch:'Launch',braking:'Braking',offroad:'Offroad'};
+ const catalog=JSON.parse(await readFile(new URL('data/cars.json',base))).cars;
+ for(const c of Object.values(data.profiles)){
+  assert(c.source.carId);assert(c.source.captured);
+  assert.equal(c.stock.pi,catalog.find(car=>car.s===c.slug)?.p,c.slug+' stock PI');
+  const raw=JSON.parse(await readFile(new URL('data/cars/'+c.slug+'.json',base)));
+  const specs=Object.fromEntries((raw.details||[]).flatMap(d=>d.specs||[]).map(s=>[s.label,s.value]));
+  for(const [key,label] of Object.entries(axes)){
+   const actual=c.stock.ratings[key],expected=raw.sourceData?.vehicle?.ratings?.[key]??Math.round(parseFloat(specs[label])*10)/10;
+   assert(Number.isFinite(actual)&&actual>=.1&&actual<=10);
+   assert.equal(actual,expected,c.slug+' '+label);
+  }
+ }
 });
 test('navigation, local assets and snapshots work without KV or a runtime source dependency',async()=>{
  const html=await readFile(new URL('gare.html',base),'utf8'),js=await readFile(new URL('seasonal.js',base),'utf8'),home=await readFile(new URL('index.html',base),'utf8');
